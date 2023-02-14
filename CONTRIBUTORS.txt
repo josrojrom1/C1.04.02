@@ -8,7 +8,6 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-
 - Pablo Parra Mendez (pabparmen@alum.us.es)
 - José Antonio Reina Muñoz (josreimun@alum.us.es)
 - José Joaquín Rojas Romero (josrojrom1@alum.us.es)
