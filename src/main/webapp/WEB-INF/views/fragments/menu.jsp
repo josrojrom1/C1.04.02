@@ -21,6 +21,7 @@
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="47546590: Reina Munoz, Jose Antonio" action="http://www.youtube.com/"/>
 			<acme:menu-suboption code="77938490: Parra Mendez, Pablo" action="https://sevillafc.es/"/>
+			<acme:menu-suboption code="45388453: Ybarra Manrique, Miguel" action="https://www.youtube.com/"/>
 		</acme:menu-option>
 		
 
