@@ -20,18 +20,22 @@ public class Lecturer extends AbstractRole {
 
 	//Atributos------------------------------
 
+	//Alma Mater
 	@NotBlank
 	@Length(max = 76)
 	protected String			almaMater;
 
+	//A résumé
 	@NotBlank
 	@Length(max = 101)
-	protected String			áResumé;
+	protected String			resume;
 
+	//Qualifications
 	@NotBlank
 	@Length(max = 76)
 	protected String			qualifications;
 
+	//Optional link
 	@URL
 	protected String			optionalLink;
 
