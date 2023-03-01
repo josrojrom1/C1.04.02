@@ -1,8 +1,11 @@
 
 package acme.roles;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -27,12 +30,12 @@ public class Student extends AbstractRole {
 	protected String			statement;
 
 	@NotBlank
-	@Length(max = 101)
-	protected String			strongFeatures;
+	@Size(max = 101)
+	protected List<String>		strongFeatures;
 
 	@NotBlank
-	@Length(max = 101)
-	protected String			weakFeatures;
+	@Size(max = 101)
+	protected List<String>		weakFeatures;
 
 	@URL
 	protected String			optionalLink;
