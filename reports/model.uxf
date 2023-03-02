@@ -194,7 +194,7 @@ Assistant
 --
 + supervisor: String {NotBlank}
 + resume: String {NotBlank}
-+ expertiseList: List&lt;String&gt; {NotBlank}
++ expertiseList: String {NotBlank}
 + link: String
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -399,7 +399,7 @@ bg=green</panel_attributes>
       <x>91</x>
       <y>336</y>
       <w>189</w>
-      <h>77</h>
+      <h>91</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Tutorial
@@ -416,12 +416,12 @@ bg=green</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>182</x>
-      <y>406</y>
+      <y>420</y>
       <w>21</w>
-      <h>91</h>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -455,8 +455,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>238</x>
-      <y>651</y>
+      <x>294</x>
+      <y>644</y>
       <w>189</w>
       <h>77</h>
     </coordinates>
@@ -565,6 +565,25 @@ Peep
 + nick: String {NotBlank}
 + message: String {NotBlank}
 + email: String
++ optionalLink: String
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>63</x>
+      <y>623</y>
+      <w>189</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Session
+--
++ title: String {NotBlank}
++ abstract: String {NotBlank}
++ sessionType: SessionType
++ period: Duration
 + optionalLink: String
 bg=green</panel_attributes>
     <additional_attributes/>
