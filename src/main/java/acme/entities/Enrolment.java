@@ -1,12 +1,8 @@
 
 package acme.entities;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -29,7 +25,7 @@ public class Enrolment extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3} \\d{3}")
+	@Pattern(regexp = "[A-Z]{1,3}[0-9][0-9]{3}")
 	protected String			code;
 
 	@NotBlank
@@ -40,7 +36,6 @@ public class Enrolment extends AbstractEntity {
 	@Length(max = 101)
 	protected String			goals;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	protected Date				workTime;
+	protected Integer			workTime;
 
 }
