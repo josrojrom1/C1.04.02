@@ -51,6 +51,6 @@ public class Peep extends AbstractEntity {
 	protected String			email;
 
 	@URL
-	protected String			optionalLink;
+	protected String			link;
 
 }
