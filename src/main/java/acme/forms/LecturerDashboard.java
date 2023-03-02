@@ -14,7 +14,8 @@ public class LecturerDashboard extends AbstractForm {
 	//Atributos-------------
 
 	//GENERAL
-	protected Integer			totalNumOfTyHLectures;
+	protected Integer			totalNumOfTheoryLectures;
+	protected Integer			totalNumOfHandsonLectures;
 
 	//LEARNING TIME OF LECTURES
 	protected Double			lectureAverage;

@@ -32,7 +32,7 @@ public class Lecturer extends AbstractRole {
 
 	//Qualifications
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 101)
 	protected String			qualifications;
 
 	//Optional link

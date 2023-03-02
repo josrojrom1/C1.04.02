@@ -34,7 +34,7 @@ public class Lecture extends AbstractEntity {
 	//Estimated learning time (in hours, positive or nought)
 	@NotNull
 	@PositiveOrZero
-	protected Double			learningTime;
+	protected Integer			learningTime;
 
 	//Body (not blank, shorter than 101 char)
 	@NotBlank
@@ -43,7 +43,7 @@ public class Lecture extends AbstractEntity {
 
 	//Lecture type (theoretical or hands-on)
 	@NotNull
-	protected CourseType		type;
+	protected LessonType		lectureType;
 
 	//Optional link with further information
 	protected String			optionalLink;
