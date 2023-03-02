@@ -36,5 +36,4 @@ public class Student extends AbstractRole {
 
 	@URL
 	protected String			link;
-
 }
