@@ -9,29 +9,29 @@ import lombok.Setter;
 @Setter
 public class AuditorDashboard extends AbstractForm {
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
 	//Atributos-------------
 
 	//GENERAL
-	protected Integer			totalNumOfTyHAudits;
+	Integer						totalNumOfTyHAudits;
 
 	//auditing records in their audits
-	protected Double			auditRAverage;
+	Double						auditRAverage;
 
-	protected Double			auditRDeviation;
+	Double						auditRDeviation;
 
-	protected Double			auditRMinimun;
+	Double						auditRMinimun;
 
-	protected Double			auditRMaximun;
+	Double						auditRMaximun;
 
 	//time of the period lengths in their auditing records
-	protected Double			periodAverage;
+	Double						periodAverage;
 
-	protected Double			periodDeviation;
+	Double						periodDeviation;
 
-	protected Double			periodMinimun;
+	Double						periodMinimun;
 
-	protected Double			periodMaximun;
+	Double						periodMaximun;
 
 }
