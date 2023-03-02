@@ -18,6 +18,7 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
+		<!-- ANONYMOUS -->
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="47546590: Reina Munoz, Jose Antonio" action="https://www.youtube.com/"/>
 			<acme:menu-suboption code="77938490: Parra Mendez, Pablo" action="https://sevillafc.es/"/>
@@ -26,7 +27,7 @@
 			<acme:menu-suboption code="29580039: Albalat Ortiz, Samuel" action="https://cityofmist.co/"/>
 		</acme:menu-option>
 		
-
+		<!-- ADMINISTRATOR -->
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
@@ -35,6 +36,12 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/shut-down"/>
 		</acme:menu-option>
+		
+		<!-- LECTURER -->
+		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
+			<acme:menu-suboption code="master.menu.lecturer.dashboard" action="/lecturer/dashboard"/>
+		</acme:menu-option>
+		
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
 			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
