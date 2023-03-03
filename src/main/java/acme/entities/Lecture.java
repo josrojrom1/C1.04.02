@@ -2,6 +2,8 @@
 package acme.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
@@ -49,5 +51,11 @@ public class Lecture extends AbstractEntity {
 	//Optional link with further information
 	@URL
 	protected String			link;
+
+	//A course aggregates several lectures by the same lecturer
+	@NotNull
+	@Valid
+	@ManyToOne()
+	protected Course			course;
 
 }
