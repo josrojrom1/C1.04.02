@@ -7,3 +7,6 @@ user-account-assistant-01,true,"UserIdentity{name: 'Manolo', surname: 'Perez', e
 user-account-assistant-02,true,"UserIdentity{name: 'Simon', surname: 'Rivia', email: 'simon@acme.com'}",assistant2,assistant2
 user-account-administrator-02,true,"UserIdentity{name: 'Administrator1', surname: 'Acme', email: 'administrator1@acme.com'}",administrator1,administrator1
 user-account-administrator-03,true,"UserIdentity{name: 'Administrator2', surname: 'Acme', email: 'administrator2@acme.com'}",administrator2,administrator2
+user-account-student-01,false,"UserIdentity{name: 'Pedro', surname: 'Reguera', email: 'pedro@acme.com'}",student1,student1
+user-account-student-02,false,"UserIdentity{name: 'Fernando', surname: 'Alonso', email: 'falonso@acme.com'}",student2,student2
+

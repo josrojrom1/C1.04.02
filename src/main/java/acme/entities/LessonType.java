@@ -1,7 +1,7 @@
 
 package acme.entities;
 
-public enum CourseType {
+public enum LessonType {
 
 	THEORY, HANDS_ON
 

@@ -41,7 +41,7 @@ public class Course extends AbstractEntity {
 	protected String			abst;
 
 	//Course (theory course or hands-on course)
-	protected CourseType		courseType;
+	protected LessonType		courseType;
 
 	//Retail price (positive or nought)(Purely theoretical courses rejected by the system)
 	@PositiveOrZero
