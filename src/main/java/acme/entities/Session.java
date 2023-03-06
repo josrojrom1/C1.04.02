@@ -1,7 +1,7 @@
 
 package acme.entities;
 
-import java.time.Duration;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
@@ -29,10 +29,11 @@ public class Session extends AbstractEntity {
 	@Length(max = 101)
 	protected String			abst;
 
-	protected SessionType		sessionType;
+	protected LessonType		lessonType;
 
-	//TODO
-	protected Duration			period;
+	protected Date				periodStart;
+
+	protected Date				peridoFinish;
 
 	@URL
 	protected String			optionalLink;
