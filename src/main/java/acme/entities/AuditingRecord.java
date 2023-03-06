@@ -4,6 +4,8 @@ package acme.entities;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -37,8 +39,10 @@ public class AuditingRecord extends AbstractEntity {
 	//Period (in the past, at least one hour long -- servicio)
 	@NotNull
 	@Past
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				startPeriod;
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				endPeriod;
 
 	//Mark (“A+”, “A”, “B”, “C”, “F”, or “F-“)
