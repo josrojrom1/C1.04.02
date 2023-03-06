@@ -5,6 +5,8 @@ import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -32,8 +34,11 @@ public class AuditingRecord extends AbstractEntity {
 	@Length(max = 101)
 	protected String			assessment;
 
-	//Period (in the past, at least one hour long -- servicio?)
+	//Period (in the past, at least one hour long -- servicio)
+	@NotNull
+	@Past
 	protected Date				startPeriod;
+	@NotNull
 	protected Date				endPeriod;
 
 	//Mark (“A+”, “A”, “B”, “C”, “F”, or “F-“)
@@ -41,6 +46,6 @@ public class AuditingRecord extends AbstractEntity {
 
 	//Optional link
 	@URL
-	protected String			optionalLink;
+	protected String			link;
 
 }
