@@ -17,7 +17,7 @@ public class AsisstantDashboard extends AbstractForm {
 	protected Integer			totalNumOfTheoryTutorials;
 	protected Integer			totalNumOfHandsonTutorials;
 
-	//LEARNING TIME OF LECTURES
+	//LEARNING TIME OF tutorials
 	protected Double			tutorialAverage;
 
 	protected Double			tutorialDeviation;
@@ -26,7 +26,7 @@ public class AsisstantDashboard extends AbstractForm {
 
 	protected Double			tutorialMaximun;
 
-	//LEARNING TIME OF COURSES
+	//LEARNING TIME OF sessions
 	protected Double			sessionsAverage;
 
 	protected Double			sessionsDeviation;

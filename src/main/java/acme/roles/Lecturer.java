@@ -37,6 +37,6 @@ public class Lecturer extends AbstractRole {
 
 	//Optional link
 	@URL
-	protected String			optionalLink;
+	protected String			link;
 
 }

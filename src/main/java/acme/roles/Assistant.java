@@ -37,5 +37,5 @@ public class Assistant extends AbstractRole {
 
 	//optional link
 	@URL
-	protected String			optionalLink;
+	protected String			link;
 }
