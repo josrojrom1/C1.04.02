@@ -3,3 +3,7 @@ user-account-anonymous-01,false,"UserIdentity{name: 'John', surname: 'Doe', emai
 user-account-administrator-01,true,"UserIdentity{name: 'Administrator', surname: 'Acme', email: 'administrator@acme.com'}",administrator,administrator
 user-account-lecturer-01,false,"UserIdentity{name: 'Ivan', surname: 'Cabesita', email: 'ivanelloco@acme.com'}",lecturer1,lecturer1
 user-account-lecturer-02,false,"UserIdentity{name: 'Lucia', surname: 'Reguera', email: 'lucia@acme.com'}",lecturer2,lecturer2
+user-account-auditor-01,false,"UserIdentity{name: 'Jose', surname: 'Reina', email: 'josereina@acme.com'}",auditor1,auditor1
+user-account-auditor-02,false,"UserIdentity{name: 'Antonio', surname: 'Muñoz', email: 'antoniomunoz@acme.com'}",auditor2,auditor2
+user-account-student-01,false,"UserIdentity{name: 'Pedro', surname: 'Reguera', email: 'pedro@acme.com'}",student1,student1
+user-account-student-02,false,"UserIdentity{name: 'Fernando', surname: 'Alonso', email: 'falonso@acme.com'}",student2,student2
