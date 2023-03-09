@@ -20,37 +20,31 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class AuditingRecord extends AbstractEntity {
+public class Session extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	//Atributos--------------------------
-
-	//Subject (not blank, shorter than 76 characters)
 	@NotBlank
 	@Length(max = 76)
-	protected String			subject;
+	protected String			title;
 
-	//Assessment (not blank, shorter than 101 characters)
 	@NotBlank
 	@Length(max = 101)
-	protected String			assessment;
+	protected String			abst;
 
-	//Period (in the past, at least one hour long -- servicio)
+	protected LessonType		lessonType;
+
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	protected Date				startPeriod;
+	protected Date				periodStart;
 
 	@NotNull
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	protected Date				endPeriod;
+	protected Date				peridoFinish;
 
-	//Mark (“A+”, “A”, “B”, “C”, “F”, or “F-“)
-	protected Mark				mark;
-
-	//Optional link
 	@URL
-	protected String			link;
-
+	protected String			optionalLink;
 }
