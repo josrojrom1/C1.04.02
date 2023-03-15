@@ -4,8 +4,10 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,6 +16,7 @@ import javax.validation.constraints.Past;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.framework.components.accounts.Any;
 import acme.framework.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,15 +38,15 @@ public class Peep extends AbstractEntity {
 	@NotNull
 	protected Date				moment;
 
-	@Length(max = 76)
+	@Length(max = 75)
 	@NotBlank
 	protected String			title;
 
-	@Length(max = 76)
+	@Length(max = 75)
 	@NotBlank
 	protected String			nick;
 
-	@Length(max = 101)
+	@Length(max = 100)
 	@NotBlank
 	protected String			message;
 
@@ -52,5 +55,12 @@ public class Peep extends AbstractEntity {
 
 	@URL
 	protected String			link;
+
+	//relacion any manytoone
+
+	@NotNull
+	@Valid
+	@ManyToOne
+	protected Any				any;
 
 }
