@@ -22,7 +22,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class WorkBook extends AbstractEntity {
+public class Workbook extends AbstractEntity {
 
 	//Serialisation identifier-----------------------------
 
