@@ -56,8 +56,6 @@ public class Peep extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	//relacion any manytoone
-
 	@NotNull
 	@Valid
 	@ManyToOne
