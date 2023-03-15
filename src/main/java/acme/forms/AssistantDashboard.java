@@ -7,15 +7,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AsisstantDashboard extends AbstractForm {
+public class AssistantDashboard extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 
 	//Atributos-------------
 
 	//GENERAL
-	protected Integer			totalNumOfTheoryTutorials;
-	protected Integer			totalNumOfHandsonTutorials;
+	protected int				totalNumOfTheoryTutorials;
+	protected int				totalNumOfHandsonTutorials;
 
 	//LEARNING TIME OF tutorials
 	protected Double			tutorialAverage;
