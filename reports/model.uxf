@@ -4,13 +4,13 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2136</x>
+      <x>2160</x>
       <y>864</y>
-      <w>204</w>
+      <w>180</w>
       <h>156</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>150.0;10.0;150.0;110.0;10.0;110.0</additional_attributes>
+    <additional_attributes>130.0;10.0;130.0;110.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -203,17 +203,17 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1824</x>
+      <x>1728</x>
       <y>984</y>
-      <w>324</w>
+      <w>444</w>
       <h>132</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Student
 --
-+ statement: String {NotBlank,Lenght(max=76)}
-+ weakFeaturesList: String {NotBlank,Length(max=101)}
-+ strongFeaturesList: String {NotBlank,Length(max=101)}
++ statement: String {NotBlank,Lenght(max=75)}
++ weakFeaturesList: String {NotBlank,Length(max=100)}
++ strongFeaturesList: String {NotBlank,Length(max=100)}
 + link: String {URL}
 bg=red</panel_attributes>
     <additional_attributes/>
@@ -272,7 +272,7 @@ bg=pink</panel_attributes>
     <coordinates>
       <x>960</x>
       <y>1020</y>
-      <w>324</w>
+      <w>372</w>
       <h>156</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
@@ -280,9 +280,9 @@ Enrolment
 --
 + code: String {NotBlank,Unique,
 Pattern = “[A-Z]{1,3}[0-9][0-9]{3}”}
-+ motivation: String {NotBlank,Length(max=76)}
-+ goals: String {NotBlank,Length(max=101)}
-+ workTime: Integer {NotNull}
++ motivation: String {NotBlank,Length(max=75)}
++ goals: String {NotBlank,Length(max=100)}
++ workTime: Int {NotNull}
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -291,14 +291,14 @@ bg=pink</panel_attributes>
     <coordinates>
       <x>972</x>
       <y>612</y>
-      <w>324</w>
+      <w>456</w>
       <h>180</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Workbook
 --
-+ title: String {NotBlank,Length(max=76)}
-+ abst: String {NotBlank,Length(max=101)}
++ title: String {NotBlank,Length(max=75)}
++ abst: String {NotBlank,Length(max=100)}
 + lessonType: LessonType {NotNull}
 + timePeriod: Date {Temporal(TemporalType.TIMESTAMP,
 NotNull,PastOrPresent}
@@ -457,9 +457,9 @@ Peep
 --
 + moment: Date {NotNull,Past,
 Temporal(TemporalType.TIMESTAMP}
-+ title: String {NotBlank,Length(max=76)}
-+ nick: String {NotBlank,Length(max=76)}
-+ message: String {NotBlank,Length(max=101)}
++ title: String {NotBlank,Length(max=75)}
++ nick: String {NotBlank,Length(max=75)}
++ message: String {NotBlank,Length(max=100)}
 + email: String {Email}
 + link: String {URL}
 bg=pink</panel_attributes>
@@ -643,36 +643,37 @@ bg=green</panel_attributes>
     <coordinates>
       <x>3780</x>
       <y>432</y>
-      <w>324</w>
-      <h>216</h>
+      <w>348</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Banner
 --
 + moment: Date {NotNull,Past,
 Temporal(TemporalType.TIMESTAMP}
-+ Startperiod: Date {NotNull,Past,
++ startDisplayperiod: Date {NotNull,
 Temporal(TemporalType.TIMESTAMP}
-+ EndPeriod: Date {NotNull,
++ endDisplayPeriod: Date {NotNull,
 Temporal(TemporalType.TIMESTAMP}
 + pictureLink: String {NotBlank,URL}
 + weblink: String {NotBlank,URL}
++ slogan: String {NotBlank, Length(max=75)}
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1272</x>
+      <x>1320</x>
       <y>1044</y>
-      <w>576</w>
+      <w>432</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 registeredBy
 m2=0..n
 m1=1</panel_attributes>
-    <additional_attributes>460.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -742,7 +743,7 @@ bg=pink</panel_attributes>
       <h>132</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
-m2=0..n
+m2=1..n
 m1=
 &lt; has </panel_attributes>
     <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
@@ -817,16 +818,16 @@ m1=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1488</x>
+      <x>1500</x>
       <y>2592</y>
-      <w>492</w>
+      <w>480</w>
       <h>192</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 createdBy
 m2=0..n
 m1=1</panel_attributes>
-    <additional_attributes>380.0;140.0;380.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>370.0;140.0;370.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -1197,29 +1198,29 @@ m2=0..n</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2556</x>
-      <y>636</y>
+      <y>660</y>
       <w>1404</w>
-      <h>456</h>
+      <h>432</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 advertisedBy
 m2=0..n
 m1=1</panel_attributes>
-    <additional_attributes>10.0;350.0;1130.0;350.0;1130.0;10.0</additional_attributes>
+    <additional_attributes>10.0;330.0;1130.0;330.0;1130.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>588</x>
       <y>1092</y>
-      <w>1260</w>
+      <w>1164</w>
       <h>228</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 registeredBy
 m2=0..n
 m1=1</panel_attributes>
-    <additional_attributes>1030.0;10.0;680.0;10.0;680.0;170.0;10.0;170.0;10.0;110.0</additional_attributes>
+    <additional_attributes>950.0;10.0;680.0;10.0;680.0;170.0;10.0;170.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
@@ -1232,6 +1233,24 @@ m1=1</panel_attributes>
     <panel_attributes>(Service Logic)
 /timePeriodStart: 
 the marks in the corresponding auditing records 
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3780</x>
+      <y>240</y>
+      <w>324</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>(Service Logic)
+/startDisplayPeriod: a display period 
+(must start at any moment after the 
+instantiation/update moment
+
+/endDisplayPeriod:must  last for at 
+least one week
 bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
