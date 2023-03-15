@@ -4,8 +4,10 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
@@ -20,7 +22,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class WorkBookActivities extends AbstractEntity {
+public class Workbook extends AbstractEntity {
 
 	//Serialisation identifier-----------------------------
 
@@ -28,12 +30,12 @@ public class WorkBookActivities extends AbstractEntity {
 
 	//Attributes---------------------
 
-	@Length(max = 76)
+	@Length(max = 75)
 	@NotBlank
 	protected String			title;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			abst;
 
 	@NotNull
@@ -46,5 +48,10 @@ public class WorkBookActivities extends AbstractEntity {
 
 	@URL
 	protected String			link;
+
+	@NotNull
+	@Valid
+	@ManyToOne
+	protected Enrolment			enrolment;
 
 }

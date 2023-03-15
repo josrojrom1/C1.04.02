@@ -12,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.components.accounts.Administrator;
@@ -36,7 +37,6 @@ public class Banner extends AbstractEntity {
 	protected Date				moment;
 
 	@NotNull
-	@Past
 	@Valid
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				startDisplayPeriod;
@@ -58,5 +58,9 @@ public class Banner extends AbstractEntity {
 	@Valid
 	@ManyToOne
 	protected Administrator		administrator;
+
+	@NotBlank
+	@Length(max = 75)
+	protected String			slogan;
 
 }

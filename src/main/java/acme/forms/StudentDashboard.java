@@ -15,9 +15,9 @@ public class StudentDashboard extends AbstractForm {
 
 	//Attributes---------------------
 
-	protected Integer			totalNumberHandsonWorkbookActivities;
+	protected int				totalNumberHandsonWorkbookActivities;
 
-	protected Integer			totalNumberTheoryWorkbookActivities;
+	protected int				totalNumberTheoryWorkbookActivities;
 
 	protected Double			workbookAverage;
 
