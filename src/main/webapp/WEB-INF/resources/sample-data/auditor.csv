@@ -1,0 +1,3 @@
+key,key:userAccount,firm,professionalId,certifications,link
+auditor1,user-account-auditor-01,Esto es una firma del auditor 1,id000001,Certificados del auditor 1,https://example.es
+auditor2,user-account-auditor-02,Esto es una firma del auditor 2,id000002,Certificados del auditor 2,https://example.es
