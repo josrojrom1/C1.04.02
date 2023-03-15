@@ -4,11 +4,13 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -20,34 +22,36 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+public class Workbook extends AbstractEntity {
 
-public class Bulletin extends AbstractEntity {
+	//Serialisation identifier-----------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
-	//Atributos--------------
+	//Attributes---------------------
 
-	//Instantiation moment (in the past)
-	@Temporal(TemporalType.TIMESTAMP)
-	@Past
-	@NotNull
-	protected Date				moment;
-
-	//Title (not blank, shorter than 76 char)
+	@Length(max = 75)
 	@NotBlank
-	@Length(max = 76)
 	protected String			title;
 
-	//Message (not blank, shorter than 101 char)
 	@NotBlank
-	@Length(max = 101)
-	protected String			message;
+	@Length(max = 100)
+	protected String			abst;
 
-	//Flag (critical or not)
 	@NotNull
-	protected Boolean			flag;
+	protected LessonType		activityType;
 
-	//Optional link
+	@Temporal(TemporalType.TIMESTAMP)
+	@PastOrPresent
+	@NotNull
+	protected Date				timePeriod;
+
 	@URL
 	protected String			link;
+
+	@NotNull
+	@Valid
+	@ManyToOne
+	protected Enrolment			enrolment;
+
 }
