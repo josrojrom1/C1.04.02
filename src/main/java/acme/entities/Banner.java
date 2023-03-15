@@ -36,7 +36,6 @@ public class Banner extends AbstractEntity {
 	protected Date				moment;
 
 	@NotNull
-	@Past
 	@Valid
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				startDisplayPeriod;
