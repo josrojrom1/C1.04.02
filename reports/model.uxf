@@ -506,7 +506,7 @@ bg=yellow</panel_attributes>
       <w>248</w>
       <h>200</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
 AdminDashboard
 --
 + totalNumberOfPrincipal: Map&lt;String,Int&gt;
@@ -852,7 +852,7 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1152</x>
+      <x>1120</x>
       <y>440</y>
       <w>264</w>
       <h>168</h>
@@ -993,7 +993,8 @@ m2=1</panel_attributes>
       <h>824</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-m1=0..n</panel_attributes>
+m1=1
+m2=0..n</panel_attributes>
     <additional_attributes>870.0;1000.0;10.0;1000.0;10.0;10.0;190.0;10.0</additional_attributes>
   </element>
   <element>
