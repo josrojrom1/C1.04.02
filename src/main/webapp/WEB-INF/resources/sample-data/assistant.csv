@@ -1,3 +1,3 @@
-key,key:userAccount,supervisor,expertiseFields,resume,link,tutorialSession,tutorial
-assistant-01,user-account-assistant-01,miguel,"desing,testing",my resume,https://www.example.com,tutorial-session-01,tutorial-01
-assistant-02,user-account-assistant-02,miguel,"desing,testing",my resume,https://www.example.com,TODO,TODO
+key,key:userAccount,supervisor,expertiseFields,resume,link
+assistant-01,user-account-assistant-01,"miguel","desing and testing","my resume","https://www.example.com"
+assistant-02,user-account-assistant-02,"miguel","desing and testing","my resume","https://www.example.com"
