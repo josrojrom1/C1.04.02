@@ -45,6 +45,4 @@ public class Tutorial extends AbstractEntity {
 	@ManyToOne()
 	protected Assistant			assistant;
 
-	//@OneToMany()
-	//protected TutorialSession	tutorialSession;
 }

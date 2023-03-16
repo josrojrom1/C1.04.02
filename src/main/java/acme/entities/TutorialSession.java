@@ -49,4 +49,7 @@ public class TutorialSession extends AbstractEntity {
 
 	@ManyToOne()
 	protected Assistant			assistant;
+
+	@ManyToOne()
+	protected Tutorial			tutorial;
 }
