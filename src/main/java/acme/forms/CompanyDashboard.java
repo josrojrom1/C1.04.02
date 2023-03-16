@@ -14,7 +14,7 @@ public class CompanyDashboard extends AbstractForm {
 	//Atributos-------------
 
 	//GENERAL
-	Integer						totalNumOfTyHPractica;
+	Integer						totalNumOfPractica;
 
 	//length metrics of sessions in their practica
 	Double						practicaSAverage;
@@ -25,7 +25,7 @@ public class CompanyDashboard extends AbstractForm {
 
 	Double						practicaSMaximun;
 
-	//mterics of the period lengths in their practica
+	//metrics of the period lengths in their practica
 	Double						periodAverage;
 
 	Double						periodDeviation;

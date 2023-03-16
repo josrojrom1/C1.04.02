@@ -22,17 +22,17 @@ public class Company extends AbstractRole {
 
 	//Name
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	protected String			name;
 
 	//VAT number
 	@NotBlank
-	@Length(max = 26)
+	@Length(max = 25)
 	protected String			vat;
 
 	//Summary
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			summary;
 
 	//Optional link

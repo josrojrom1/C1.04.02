@@ -1,16 +1,16 @@
 
 package acme.entities;
 
-import java.time.Instant;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Future;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -32,7 +32,8 @@ public class Offer extends AbstractEntity {
 	//Moment (in the past)
 	@NotEmpty
 	@Past
-	protected Instant			moment;
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date				moment;
 
 	//Heading (not blank, shorter than 76 char)
 	@NotBlank
@@ -46,15 +47,13 @@ public class Offer extends AbstractEntity {
 
 	//Time period (one day ahead of moment, one week long)
 	@NotNull
-	@Future
 	protected Date				timePeriodStart;
 
 	@NotNull
-	@Future
 	protected Date				timePeriodEnd;
 
 	//Price (positive or nought)
-	@PositiveOrZero
+	@Valid
 	protected Money				retailPrice;
 
 	//Optional link

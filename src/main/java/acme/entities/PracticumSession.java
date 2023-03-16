@@ -4,7 +4,8 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Future;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -26,25 +27,30 @@ public class PracticumSession extends AbstractEntity {
 
 	//Title (not blank, shorter than 76 char)
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	protected String			title;
 
 	//Abstract (not blank, shorter than 101 char)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			abst;
 
 	//Time period (one week ahead, one week long)
 	@NotNull
-	@Future
+	@Valid
 	protected Date				timePeriodStart;
 
 	@NotNull
-	@Future
+	@Valid
 	protected Date				timePeriodEnd;
 
 	//Optional link
 	@URL
 	protected String			link;
+
+	@NotNull
+	@Valid
+	@ManyToOne
+	protected Practicum			practicum;
 
 }
