@@ -1,3 +1,8 @@
 key,key:userAccount,name,vat,summary,link
-company-01,user-account-company-01,esto es el name company1,vat de company 1,esto es el summary de la company1,https://example.es
-company-02,user-account-company-02,esto es el name company2,vat de company 2,esto es el summary de la company2,https://example.es
+company-01,user-account-company-01,"Este nombre tiene setenta y cinco caracteres a conocimiento previo sin mas+","vat de company-01","summary de company-01","https://example.es"
+company-02,user-account-company-02,"a","Este vat tieneveinticinco","summary de company-02","https://example.es"
+company-03,user-account-company-03,"name de company-03","a","Este summary tiene cien caracteres todos colocados por el mero hecho de tener un toal de 100 letrita","https://example.es"
+company-04,user-account-company-04,"name de company-04","vat de company-04","a","https://example.es"
+company-05,user-account-company-05,"name de company-05","vat de company-05","summary de company-05","https://example.es"
+company-06,user-account-company-06,"name de company-06","vat de company-06","summary de company-06",""
+company-07,user-account-company-06,"Dique 1: Water Seven","GB123445632","Somos una compañia dedicada a la reparación de barcos","https://onepiece.fandom.com/es/wiki/Dique_1"

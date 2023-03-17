@@ -1,3 +1,5 @@
 key,code,title,abst,goals,totalTime,key:company
-practicum-01,AAA1001,titulo practicum-01,abst practicum-01,goals practicum-01,6.5,company-01
-practicum-02,AAA1002,titulo practicum-02,abst practicum-02,goals practicum-02,5.5,company-02
+practicum-01-01,AAA1601,"ESTE TIUTLO TIENE 75 CARACTERES DE LONGITUD ¿PARA QUE? REALMENTE PARA NADA.",abst practicum-01-01,goals practicum-01,6.5,company-01
+practicum-01-02,ABB1072,"A","ESTE ABSTRACT TIENE 100 CARACTERES DE LONGITUD ¿PARA QUE? REALMENTE PARA NADA SIMPLEMENTE POSTUREOOO","goals practicum-01-02",5.5,company-01
+practicum-02-01,ABC1881,"titulo practicum-02-01","abst practicum-02-01","ESTAS GOALS TIENEN 100 CARACTERES DE LONGITUD ¿PARA QUE? REALMENTE PARA NADA SIMPLEMENTE POSTUREOOOS",10.5,company-02
+practicum-02-02,ADE1909,"titulo practicum-02-02","abst practicum-02-02","goals practicum-02-02",-5.5,company-02
