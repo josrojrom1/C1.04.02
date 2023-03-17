@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -48,23 +47,43 @@ public class Course extends AbstractEntity {
 	protected LessonType		courseType;
 
 	//Retail price (positive or nought)(Purely theoretical courses rejected by the system)
-	@PositiveOrZero
+	@Valid
 	protected Money				retailPrice;
 
 	//Optional link
 	@URL
 	protected String			link;
 
-	//manyToOne con @NotNull y @valid con lecturer
+	//manyToOne() con NotNull y valid --> lecturer
 	@ManyToOne()
 	@NotNull
 	@Valid
 	protected Lecturer			lecturer;
 
-	//manyToOne con @NotNull y @valid con audit
+
+	//Enrolment manyToOne() 
+	//@ManyToOne()
+	//@NotNull
+	//@Valid
+	//protected Enrolment			enrolment;
+
+	//Tutorial manyToOne() 
+	@ManyToOne()
+	@NotNull
+	@Valid
+	protected Tutorial			tutorial;
+
+	//Tutorial manyToOne() 
 	@ManyToOne()
 	@NotNull
 	@Valid
 	protected Audit				audit;
+
+	//Practicum manyToOne() 
+	//@ManyToOne()
+	//@NotNull
+	//@Valid
+	//protected Practicum			practicum;
+
 
 }
