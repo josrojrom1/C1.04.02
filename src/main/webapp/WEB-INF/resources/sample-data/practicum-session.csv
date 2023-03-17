@@ -1,2 +1,6 @@
 key,title,abst,timePeriodStart,timePeriodEnd,link,key:practicum
-practicum-session-01,"titulo practicum-session-01","abst practicum-session-01","2022/03/15 20:30","2022/03/27 20:30","https://example.es",practicum-01
+practicum-session-01-01,este titulo tiene un total de setenta y cinco caracteres y tal y cual sabes,abst practicum-session-01,2022/03/15 20:30,2022/03/27 20:30,https://example.es,practicum-01-01
+practicum-session-01-02,titulo practicum-session-01-02,"este abstract tiene un total de cien caracteres y tal y cual sabes, esta pensado para verificar esto",2022/03/15 20:30,2022/03/27 20:30,https://example.es,practicum-01-01
+practicum-session-01-03,a,a,2022/03/15 20:30,2022/03/27 20:30,,practicum-01-02
+practicum-session-02-01,titulo practicum-session-02-01,abst practicum-session-01,2022/03/15 20:30,2022/03/27 20:30,,practicum-02-01
+practicum-session-02-02,Reparación de tuberías,Esto es una práctica sobre como reparar tuberías,2022/03/15 20:30,2022/03/29 20:30,https://example.es,practicum-02-01

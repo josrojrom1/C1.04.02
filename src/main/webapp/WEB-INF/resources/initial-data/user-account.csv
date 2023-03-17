@@ -13,3 +13,8 @@ user-account-student-01,false,"UserIdentity{name: 'Pedro', surname: 'Reguera', e
 user-account-student-02,false,"UserIdentity{name: 'Fernando', surname: 'Alonso', email: 'falonso@acme.com'}",student2,student2
 user-account-company-01,false,"UserIdentity{name: 'Joseph', surname: 'Pietro', email: 'jopie@acme.com'}",company1,company1
 user-account-company-02,false,"UserIdentity{name: 'Retal', surname: 'Cerca', email: 'retcer@acme.com'}",company2,company2
+user-account-company-03,false,"UserIdentity{name: 'Joseph', surname: 'Pietro', email: 'jopie@acme.com'}",company3,company3
+user-account-company-04,false,"UserIdentity{name: 'Retal', surname: 'Cerca', email: 'retcer@acme.com'}",company4,company4
+user-account-company-05,false,"UserIdentity{name: 'Joseph', surname: 'Pietro', email: 'jopie@acme.com'}",company5,company5
+user-account-company-06,false,"UserIdentity{name: 'Retal', surname: 'Cerca', email: 'retcer@acme.com'}",company6,company6
+user-account-company-07,false,"UserIdentity{name: 'Joseph', surname: 'Pietro', email: 'jopie@acme.com'}",company7,company7
