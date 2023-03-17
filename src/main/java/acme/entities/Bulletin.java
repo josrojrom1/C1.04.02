@@ -49,5 +49,5 @@ public class Bulletin extends AbstractEntity {
 
 	//Optional link
 	@URL
-	protected String			optionalLink;
+	protected String			link;
 }
