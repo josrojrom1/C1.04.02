@@ -1,6 +1,8 @@
 
 package acme.forms;
 
+import java.util.Map;
+
 import acme.framework.data.AbstractForm;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,19 +16,18 @@ public class AdminDashboard extends AbstractForm {
 	//Atributos-------------
 
 	//Number of principals per role
-	Integer						totalNumOf;
+	Map<String, Integer>		totalNumOfPrincipal;
 
 	//Ratio of peeps with email and link
-	Double						emailAndLinkPeepRatio;
+	Double						ratioOfPeeps;
 
 	//Ratio of non-critical and critical bulletins
 
-	Double						criticalBulletinRatio;
+	Double						ratioOfCriticalBulletins;
 
-	Double						nonCriticalBulletinRatio;
+	Double						ratioOfNonCriticalBulletins;
 
 	//Metrics of the budget in offers grouped by currency
-	//(Faltan las currencies grouping)
 	Double						budgetAverage;
 
 	Double						budgetDeviation;
@@ -36,12 +37,12 @@ public class AdminDashboard extends AbstractForm {
 	Double						budgetMaximun;
 
 	//Metrics on the number of notes posted in the past 10 weeks
-	Double						notesAverage;
+	Double						numOfNotesAverage;
 
-	Double						notesDeviation;
+	Double						numOfNotesDeviation;
 
-	Double						notesMinimun;
+	Double						numOfNotesMinimun;
 
-	Double						notesMaximun;
+	Double						numOfNotesMaximun;
 
 }

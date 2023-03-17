@@ -14,24 +14,26 @@ public class CompanyDashboard extends AbstractForm {
 	//Atributos-------------
 
 	//GENERAL
-	Integer						totalNumOfPractica;
+	int							totalNumOfTheoryCourseByMonth;
+
+	int							totalNumOfHandsonCourseByMonth;
 
 	//length metrics of sessions in their practica
-	Double						practicaSAverage;
+	Double						periodLenghtOfSessionDeviation;
 
-	Double						practicaSDeviation;
+	Double						periodLenghtOfSessionAverage;
 
-	Double						practicaSMinimun;
+	Double						periodLenghtOfSessionMinimun;
 
-	Double						practicaSMaximun;
+	Double						periodLenghtOfSessionMaximun;
 
 	//metrics of the period lengths in their practica
-	Double						periodAverage;
+	Double						periodLenghtOfPracticaDeviation;
 
-	Double						periodDeviation;
+	Double						periodLenghtOfPracticaAverage;
 
-	Double						periodMinimun;
+	Double						periodLenghtOfPracticaMinimun;
 
-	Double						periodMaximun;
+	Double						periodLenghtOfPracticaMaximun;
 
 }
