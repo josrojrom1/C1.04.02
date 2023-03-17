@@ -47,6 +47,7 @@ public class Course extends AbstractEntity {
 	protected LessonType		courseType;
 
 	//Retail price (positive or nought)(Purely theoretical courses rejected by the system)
+	@NotNull
 	@Valid
 	protected Money				retailPrice;
 
@@ -54,17 +55,11 @@ public class Course extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	//manyToOne() con NotNull y valid --> lecturer
+	//Lecturer manyToOne()
 	@ManyToOne()
 	@NotNull
 	@Valid
 	protected Lecturer			lecturer;
-
-	//Enrolment manyToOne() 
-	//@ManyToOne()
-	//@NotNull
-	//@Valid
-	//protected Enrolment			enrolment;
 
 	//Tutorial manyToOne() 
 	@ManyToOne()

@@ -47,15 +47,16 @@ public class Offer extends AbstractEntity {
 	//Time period (one day ahead of moment, one week long)
 	@NotNull
 	@Valid
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				timePeriodStart;
 
 	@NotNull
 	@Valid
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				timePeriodEnd;
 
 	//Price (positive or nought)
+	@NotNull
 	@Valid
 	protected Money				retailPrice;
 
