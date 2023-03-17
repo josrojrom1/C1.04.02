@@ -40,12 +40,12 @@ public class PracticumSession extends AbstractEntity {
 	//Time period (one week ahead, one week long)
 	@NotNull
 	@Valid
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				timePeriodStart;
 
 	@NotNull
 	@Valid
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				timePeriodEnd;
 
 	//Optional link
