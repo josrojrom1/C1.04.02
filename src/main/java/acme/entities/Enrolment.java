@@ -4,7 +4,6 @@ package acme.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -45,7 +44,7 @@ public class Enrolment extends AbstractEntity {
 
 	@NotNull
 	@Valid
-	@OneToMany
+	@ManyToOne
 	protected Course			course;
 
 	@NotNull
