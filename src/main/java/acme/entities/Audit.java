@@ -33,17 +33,17 @@ public class Audit extends AbstractEntity {
 
 	//Conclusion (not blank, shorter than 101 characters)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			conclusion;
 
 	//Weak Points (not blank, shorter than 101 characters)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			weakPoints;
 
 	//Strong Points (not blank, shorter than 101 characters)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			strongPoints;
 
 	//Mark (computed as the mode of the marks in the corresponding
