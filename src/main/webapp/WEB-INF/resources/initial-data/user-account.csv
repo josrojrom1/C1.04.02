@@ -11,3 +11,5 @@ user-account-auditor-01,false,"UserIdentity{name: 'Jose', surname: 'Reina', emai
 user-account-auditor-02,false,"UserIdentity{name: 'Antonio', surname: 'Muñoz', email: 'antoniomunoz@acme.com'}",auditor2,auditor2
 user-account-student-01,false,"UserIdentity{name: 'Pedro', surname: 'Reguera', email: 'pedro@acme.com'}",student1,student1
 user-account-student-02,false,"UserIdentity{name: 'Fernando', surname: 'Alonso', email: 'falonso@acme.com'}",student2,student2
+user-account-company-01,false,"UserIdentity{name: 'Joseph', surname: 'Pietro', email: 'jopie@acme.com'}",company1,company1
+user-account-company-02,false,"UserIdentity{name: 'Retal', surname: 'Cerca', email: 'retcer@acme.com'}",company2,company2
