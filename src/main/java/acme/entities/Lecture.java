@@ -2,11 +2,14 @@
 package acme.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import acme.framework.data.AbstractEntity;
 import lombok.Getter;
@@ -23,12 +26,12 @@ public class Lecture extends AbstractEntity {
 
 	//Title (not blank, shorter than 76 char)
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	protected String			title;
 
 	//Abstract (not blank, shorter than 101 char)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			abst;
 
 	//Estimated learning time (in hours, positive or nought)
@@ -38,7 +41,7 @@ public class Lecture extends AbstractEntity {
 
 	//Body (not blank, shorter than 101 char)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			body;
 
 	//Lecture type (theoretical or hands-on)
@@ -46,6 +49,13 @@ public class Lecture extends AbstractEntity {
 	protected LessonType		lectureType;
 
 	//Optional link with further information
-	protected String			optionalLink;
+	@URL
+	protected String			link;
+
+	//A course aggregates several lectures by the same lecturer
+	@NotNull
+	@Valid
+	@ManyToOne()
+	protected Course			course;
 
 }

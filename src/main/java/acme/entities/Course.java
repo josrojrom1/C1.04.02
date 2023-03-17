@@ -3,15 +3,18 @@ package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.components.datatypes.Money;
 import acme.framework.data.AbstractEntity;
+import acme.roles.Lecturer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,23 +35,55 @@ public class Course extends AbstractEntity {
 
 	//Title (not blank, shorter than 76 char)
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	protected String			title;
 
 	//Abstract (not blank, shorter than 101 char)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			abst;
 
 	//Course (theory course or hands-on course)
 	protected LessonType		courseType;
 
 	//Retail price (positive or nought)(Purely theoretical courses rejected by the system)
-	@PositiveOrZero
+	@Valid
 	protected Money				retailPrice;
 
 	//Optional link
 	@URL
-	protected String			optionalLink;
+	protected String			link;
+
+	//manyToOne() con NotNull y valid --> lecturer
+	@ManyToOne()
+	@NotNull
+	@Valid
+	protected Lecturer			lecturer;
+
+
+	//Enrolment manyToOne() 
+	//@ManyToOne()
+	//@NotNull
+	//@Valid
+	//protected Enrolment			enrolment;
+
+	//Tutorial manyToOne() 
+	@ManyToOne()
+	@NotNull
+	@Valid
+	protected Tutorial			tutorial;
+
+	//Tutorial manyToOne() 
+	@ManyToOne()
+	@NotNull
+	@Valid
+	protected Audit				audit;
+
+	//Practicum manyToOne() 
+	//@ManyToOne()
+	//@NotNull
+	//@Valid
+	//protected Practicum			practicum;
+
 
 }

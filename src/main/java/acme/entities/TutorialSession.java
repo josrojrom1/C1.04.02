@@ -4,50 +4,57 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.data.AbstractEntity;
+import acme.roles.Assistant;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-
-public class Bulletin extends AbstractEntity {
+public class TutorialSession extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	//Atributos--------------
-
-	//Instantiation moment (in the past)
-	@Temporal(TemporalType.TIMESTAMP)
-	@Past
-	@NotNull
-	protected Date				moment;
-
-	//Title (not blank, shorter than 76 char)
+	//Atributos--------------------------
 	@NotBlank
 	@Length(max = 75)
 	protected String			title;
 
-	//Message (not blank, shorter than 101 char)
 	@NotBlank
 	@Length(max = 100)
-	protected String			message;
+	protected String			abst;
 
-	//Flag (critical or not)
+	protected LessonType		sessionType;
+
 	@NotNull
-	protected Boolean			flag;
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date				periodStart;
 
-	//Optional link
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date				periodFinish;
+
 	@URL
 	protected String			link;
+
+	@ManyToOne()
+	@NotNull
+	@Valid
+	protected Assistant			assistant;
+
+	@ManyToOne()
+	@NotNull
+	@Valid
+	protected Tutorial			tutorial;
 }

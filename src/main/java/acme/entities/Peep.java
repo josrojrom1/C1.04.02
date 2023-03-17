@@ -35,15 +35,15 @@ public class Peep extends AbstractEntity {
 	@NotNull
 	protected Date				moment;
 
-	@Length(max = 76)
+	@Length(max = 75)
 	@NotBlank
 	protected String			title;
 
-	@Length(max = 76)
+	@Length(max = 75)
 	@NotBlank
 	protected String			nick;
 
-	@Length(max = 101)
+	@Length(max = 100)
 	@NotBlank
 	protected String			message;
 

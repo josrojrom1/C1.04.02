@@ -6,9 +6,10 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -20,7 +21,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class WorkBookActivities extends AbstractEntity {
+public class Banner extends AbstractEntity {
 
 	//Serialisation identifier-----------------------------
 
@@ -28,23 +29,31 @@ public class WorkBookActivities extends AbstractEntity {
 
 	//Attributes---------------------
 
-	@Length(max = 76)
-	@NotBlank
-	protected String			title;
-
-	@NotBlank
-	@Length(max = 101)
-	protected String			abst;
-
-	@NotNull
-	protected LessonType		activityType;
-
 	@Temporal(TemporalType.TIMESTAMP)
-	@PastOrPresent
+	@Past
 	@NotNull
-	protected Date				timePeriod;
+	protected Date				moment;
 
+	@NotNull
+	@Valid
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date				startDisplayPeriod;
+
+	@NotNull
+	@Valid
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date				endDisplayPeriod;
+
+	@NotBlank
 	@URL
-	protected String			link;
+	protected String			pictureLink;
+
+	@NotBlank
+	@URL
+	protected String			webLink;
+
+	@NotBlank
+	@Length(max = 75)
+	protected String			slogan;
 
 }

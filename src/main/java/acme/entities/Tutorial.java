@@ -12,44 +12,41 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
 import acme.framework.data.AbstractEntity;
-import acme.roles.Student;
+import acme.roles.Assistant;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Enrolment extends AbstractEntity {
-
-	//Serialisation identifier-----------------------------
+public class Tutorial extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	//Attributes---------------------
+	//Atributos ===========================
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3}[0-9][0-9]{3}")
+	@Pattern(regexp = "[A-Z]{1,3}\\d\\d{3}")
 	protected String			code;
 
 	@NotBlank
 	@Length(max = 75)
-	protected String			motivation;
+	protected String			title;
+
+	@NotBlank
+	@Length(max = 100)
+	protected String			abst;
 
 	@NotBlank
 	@Length(max = 100)
 	protected String			goals;
 
-	protected Integer			workTime;
+	protected double			totalTime;
 
+	@ManyToOne()
 	@NotNull
 	@Valid
-	@ManyToOne
-	protected Course			course;
-
-	@NotNull
-	@Valid
-	@ManyToOne
-	protected Student			student;
+	protected Assistant			assistant;
 
 }
