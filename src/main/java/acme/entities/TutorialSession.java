@@ -15,7 +15,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.data.AbstractEntity;
-import acme.roles.Assistant;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,11 +46,6 @@ public class TutorialSession extends AbstractEntity {
 
 	@URL
 	protected String			link;
-
-	@ManyToOne()
-	@NotNull
-	@Valid
-	protected Assistant			assistant;
 
 	@ManyToOne()
 	@NotNull
