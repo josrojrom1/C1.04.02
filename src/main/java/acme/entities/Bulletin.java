@@ -35,12 +35,12 @@ public class Bulletin extends AbstractEntity {
 
 	//Title (not blank, shorter than 76 char)
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	protected String			title;
 
 	//Message (not blank, shorter than 101 char)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			message;
 
 	//Flag (critical or not)

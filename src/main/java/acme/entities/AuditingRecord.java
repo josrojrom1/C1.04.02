@@ -31,12 +31,12 @@ public class AuditingRecord extends AbstractEntity {
 
 	//Subject (not blank, shorter than 76 characters)
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	protected String			subject;
 
 	//Assessment (not blank, shorter than 101 characters)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			assessment;
 
 	//Period (in the past, at least one hour long -- servicio)
