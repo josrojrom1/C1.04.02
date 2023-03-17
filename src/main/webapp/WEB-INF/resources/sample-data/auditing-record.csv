@@ -1,0 +1,3 @@
+key,subject,assessment,startPeriod,endPeriod,mark,link,key:auditor,key:audit
+auditing-record-01,"matematicas","ejemplo de assessment","2022/03/15 20:30","2022/03/16 20:30","B",https://www.example.com,auditor-01,audit-01
+auditing-record-02,"matematicas","ejemplo de assessment","2022/03/15 20:30","2022/03/16 20:30","B",https://www.example.com,auditor-02,audit-02
