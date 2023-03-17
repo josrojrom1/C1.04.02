@@ -42,10 +42,10 @@ public class Enrolment extends AbstractEntity {
 
 	protected Integer			workTime;
 
-	//@NotNull
-	//@Valid
-	//@OneToMany
-	//protected Course			course;
+	@NotNull
+	@Valid
+	@ManyToOne
+	protected Course			course;
 
 	@NotNull
 	@Valid
