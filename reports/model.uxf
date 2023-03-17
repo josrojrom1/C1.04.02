@@ -247,8 +247,8 @@ bg=pink</panel_attributes>
     <coordinates>
       <x>729</x>
       <y>459</y>
-      <w>378</w>
-      <h>162</h>
+      <w>342</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Activity
@@ -256,10 +256,8 @@ Activity
 + title: String {NotBlank,Length(max=75)}
 + abst: String {NotBlank,Length(max=100)}
 + lessonType: LessonType {NotNull}
-+ startTimePeriod: Date {Temporal(TemporalType.TIMESTAMP,
-NotNull}
-+ endTimePeriod: Date {Temporal(TemporalType.TIMESTAMP,
-NotNull}
++ timePeriod: Date {Temporal(TemporalType.TIMESTAMP,
+NotNull,PastOrPresent}
 + link: String {URL}
 bg=pink</panel_attributes>
     <additional_attributes/>
@@ -567,15 +565,15 @@ m1=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>846</x>
-      <y>612</y>
+      <y>585</y>
       <w>45</w>
-      <h>171</h>
+      <h>198</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
 m2=1..n
 m1=
 has</panel_attributes>
-    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;200.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
