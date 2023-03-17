@@ -39,10 +39,4 @@ public class Assistant extends AbstractRole {
 	@URL
 	protected String			link;
 
-	//@OneToMany()
-	//protected Set<TutorialSession>	tutorialSession;
-
-	//@OneToMany()
-	//protected Set<Tutorial>		tutorial;
-
 }
