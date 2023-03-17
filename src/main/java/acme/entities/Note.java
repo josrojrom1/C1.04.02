@@ -33,17 +33,17 @@ public class Note extends AbstractEntity {
 
 	//Title (not blank, shorter than 101 char)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			title;
 
 	//Author (not blank, shorter than 76 char)
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	protected String			author;
 
 	//Message (not blank, shorter than 101 char)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			message;
 
 	//Email address (optional)
