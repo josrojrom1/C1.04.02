@@ -26,12 +26,12 @@ public class Lecture extends AbstractEntity {
 
 	//Title (not blank, shorter than 76 char)
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	protected String			title;
 
 	//Abstract (not blank, shorter than 101 char)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			abst;
 
 	//Estimated learning time (in hours, positive or nought)
@@ -41,7 +41,7 @@ public class Lecture extends AbstractEntity {
 
 	//Body (not blank, shorter than 101 char)
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			body;
 
 	//Lecture type (theoretical or hands-on)
