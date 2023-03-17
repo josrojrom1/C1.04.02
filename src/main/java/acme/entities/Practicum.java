@@ -10,27 +10,25 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
 
-import acme.framework.components.datatypes.Money;
 import acme.framework.data.AbstractEntity;
-import acme.roles.Lecturer;
+import acme.roles.Company;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Course extends AbstractEntity {
+public class Practicum extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	//Atributos--------------------------
+	//Attributes--------------------------
 
 	//Code (not blank, unique and pattern)
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3} \\d{3}")
+	@Pattern(regexp = "[A-Z]{1,3}\\d\\d{3}")
 	protected String			code;
 
 	//Title (not blank, shorter than 76 char)
@@ -43,40 +41,18 @@ public class Course extends AbstractEntity {
 	@Length(max = 100)
 	protected String			abst;
 
-	//Course (theory course or hands-on course)
-	protected LessonType		courseType;
+	//Goals (not blank, shorter than 101 char)
+	@NotBlank
+	@Length(max = 100)
+	protected String			goals;
 
-	//Retail price (positive or nought)(Purely theoretical courses rejected by the system)
-	@NotNull
-	@Valid
-	protected Money				retailPrice;
+	//Estimated total time (Practicum sessions time ± 10%)
 
-	//Optional link
-	@URL
-	protected String			link;
+	protected double			totalTime;
 
-	//Lecturer manyToOne()
 	@ManyToOne()
-	@NotNull
 	@Valid
-	protected Lecturer			lecturer;
-
-	//Tutorial manyToOne() 
-	@ManyToOne()
 	@NotNull
-	@Valid
-	protected Tutorial			tutorial;
-
-	//Tutorial manyToOne() 
-	@ManyToOne()
-	@NotNull
-	@Valid
-	protected Audit				audit;
-
-	//Practicum manyToOne() 
-	@ManyToOne()
-	@NotNull
-	@Valid
-	protected Practicum			practicum;
+	protected Company			company;
 
 }

@@ -14,7 +14,9 @@ public class AuditorDashboard extends AbstractForm {
 	//Atributos-------------
 
 	//GENERAL
-	Integer						totalNumOfTyHAudits;
+	int							totalNumOfTheoryAudits;
+
+	int							totalNumOfHandsonAudits;
 
 	//auditing records in their audits
 	Double						auditRAverage;
