@@ -1,0 +1,3 @@
+key,title,abst,learningTime,body,lectureType,link,key:course
+lecture-01,"esto es el title de la lecture 1","esto es el resumen lecturer 1",2,"body","THEORY","https://example.es",course-01
+lecture-02,"esto es el title de la lecture 2","esto es el resumen lecturer 2",3,"body","THEORY","https://example.es",course-02
