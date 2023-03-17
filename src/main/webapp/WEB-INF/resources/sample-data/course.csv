@@ -1,3 +1,3 @@
-key,code,title,abst,courseType,retailPrice,link,key:lecturer,key:tutorial
-course-01,"ABC 001","Esto es un titulo de prueba","abst de prueba","THEORY",1.5 EUR,"https://youtube.com",lecturer-01,tutorial-01
-course-02,"ABC 002","Esto es un titulo de prueba","abst de prueba","THEORY",1.0 EUR,null,lecturer-02,tutorial-02
+key,code,title,abst,courseType,retailPrice,link,key:lecturer,key:tutorial,key:audit
+course-01,"ABC 001","Esto es un titulo de prueba","abst de prueba","THEORY",1.5 EUR,"https://youtube.com",lecturer-01,tutorial-01,audit-01
+course-02,"ABC 002","Esto es un titulo de prueba","abst de prueba","THEORY",1.0 EUR,null,lecturer-02,tutorial-02,audit-02
