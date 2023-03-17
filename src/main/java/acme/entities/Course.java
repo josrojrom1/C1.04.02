@@ -61,4 +61,10 @@ public class Course extends AbstractEntity {
 	@Valid
 	protected Lecturer			lecturer;
 
+	//manyToOne con @NotNull y @valid con audit
+	@ManyToOne()
+	@NotNull
+	@Valid
+	protected Audit				audit;
+
 }
