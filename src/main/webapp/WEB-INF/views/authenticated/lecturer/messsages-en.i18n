@@ -8,8 +8,5 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.consumer.form.label.company = Company
-authenticated.consumer.form.label.sector = Sector
-
-authenticated.consumer.form.button.create = Register
-authenticated.consumer.form.button.update = Update
+master.menu.lecturer.dashboard = Lecturer dashboard
+master.menu.lecturer = Lecturer
