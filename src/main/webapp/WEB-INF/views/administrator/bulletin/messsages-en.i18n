@@ -24,3 +24,4 @@ administrator.bulletin.form.label.message = Message
 administrator.bulletin.form.label.flag = Flag
 administrator.bulletin.form.label.link = Link
 administrator.bulletin.form.button.create = Create
+administrator.bulletin.form.label.confirmation = Confirmation
