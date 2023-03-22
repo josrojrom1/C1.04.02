@@ -59,13 +59,13 @@ public class AuthenticatedBulletinListService extends AbstractService<Authentica
 	@Override
 	public void load() {
 
-		final Collection<Bulletin> object;
-		int id;
+		final Collection<Bulletin> objects;
+		final int id;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findAllBulletinsById(id);
+		//id = super.getRequest().getData("id", int.class);
+		objects = this.repository.findAllBulletins();
 
-		super.getBuffer().setData(object);
+		super.getBuffer().setData(objects);
 
 	}
 

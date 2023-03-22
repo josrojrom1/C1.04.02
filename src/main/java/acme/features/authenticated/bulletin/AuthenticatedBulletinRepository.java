@@ -15,7 +15,7 @@ public interface AuthenticatedBulletinRepository extends AbstractRepository {
 	@Query("select b from Bulletin b where b.id = :id")
 	Bulletin findOneBulletinById(int id);
 
-	@Query("select b from Bulletin b where b.id = :id")
-	Collection<Bulletin> findAllBulletinsById(int id);
+	@Query("select b from Bulletin b")
+	Collection<Bulletin> findAllBulletins();
 
 }
