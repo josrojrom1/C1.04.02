@@ -39,8 +39,9 @@ public class AuthenticatedBulletinShowService extends AbstractService<Authentica
 
 		id = super.getRequest().getData("id", int.class);
 		bulletin = this.repository.findOneBulletinById(id);
-		deadLine = MomentHelper.deltaFromCurrentMoment(-30, ChronoUnit.DAYS);
-		status = MomentHelper.isAfter(bulletin.getMoment(), deadLine);
+		deadLine = MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.SECONDS);
+		//Comprobamos que el moment del bulletin esta antes que un seg menos de la fecha actual
+		status = MomentHelper.isBefore(bulletin.getMoment(), deadLine);
 
 		super.getResponse().setAuthorised(status);
 	}
