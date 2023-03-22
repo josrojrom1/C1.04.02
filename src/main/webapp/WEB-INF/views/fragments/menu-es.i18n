@@ -47,10 +47,9 @@ master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
 master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
+master.menu.user-account.consumer = Datos de consumidor
+master.menu.user-account.become-consumer = Hazte consumidor
 
 # master.menu.authenticated ####################################################
 master.menu.authenticated = Autenticado
-master.menu.authenticated.list.bulletins = Listar mis boletines
-
-master.menu.user-account.consumer = Datos de consumidor
-master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.authenticated.bulletin.list = Listar mis boletines

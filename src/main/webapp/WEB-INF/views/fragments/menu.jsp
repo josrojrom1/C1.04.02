@@ -20,8 +20,8 @@
 	<acme:menu-left>
 	
 		<!-- AUTHENTICATED -->
-		<acme:menu-option code="master.menu.authenticated" action="/master/authenticated" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.list.bulletins" action="/authenticated/bulletin/list"/>
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
 		</acme:menu-option>
 		
 		<!-- ANONYMOUS -->
