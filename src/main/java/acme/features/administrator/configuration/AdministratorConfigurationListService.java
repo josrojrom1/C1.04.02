@@ -39,13 +39,12 @@ public class AdministratorConfigurationListService extends AbstractService<Admin
 
 	@Override
 	public void unbind(final Configuration object) {
-		if (object != null) {
-			Tuple tuple;
+		assert object != null;
+		Tuple tuple;
 
-			tuple = super.unbind(object, "systemCurrency", "acceptedCurrencies");
+		tuple = super.unbind(object, "systemCurrency", "acceptedCurrencies");
 
-			super.getResponse().setData(tuple);
-		}
+		super.getResponse().setData(tuple);
 
 	}
 }
