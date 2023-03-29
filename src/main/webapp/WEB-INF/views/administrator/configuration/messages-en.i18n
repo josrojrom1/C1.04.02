@@ -13,3 +13,6 @@ administrator.configuration.form.label.systemCurrency = System Currency
 administrator.configuration.form.label.acceptedCurrencies = Accepted Currencies
 administrator.configuration.list.label.systemCurrency = System Currency
 administrator.configuration.list.label.acceptedCurrencies = Accepted Currencies
+
+#--------------UPDATE------------------------------#
+administrator.configuration.form.button.update= Update
