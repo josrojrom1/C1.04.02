@@ -47,7 +47,7 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 
 	@Override
 	public void validate(final Configuration object) {
-		assert object != null;
+		assert object != null;//TODO comprobar lista accepted
 	}
 
 	@Override
@@ -63,7 +63,6 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 		Tuple tuple;
 
 		tuple = super.unbind(object, "systemCurrency", "acceptedCurrencies");
-		tuple.put("readonly", false);
 		super.getResponse().setData(tuple);
 	}
 }
