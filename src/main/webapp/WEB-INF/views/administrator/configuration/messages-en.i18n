@@ -16,3 +16,7 @@ administrator.configuration.list.label.acceptedCurrencies = Accepted Currencies
 
 #--------------UPDATE------------------------------#
 administrator.configuration.form.button.update= Update
+
+
+#--------------Errors------------------------------#
+administrator.configuration.form.error.currency= This currency is not accepted

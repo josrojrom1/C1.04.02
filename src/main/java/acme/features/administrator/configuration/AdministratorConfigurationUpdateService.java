@@ -47,7 +47,9 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 
 	@Override
 	public void validate(final Configuration object) {
-		assert object != null;//TODO comprobar lista accepted
+		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("systemCurrency"))
+			super.state(object.getAcceptedCurrencies().contains(object.getSystemCurrency()), "systemCurrency", "administrator.configuration.form.error.currency");
 	}
 
 	@Override
