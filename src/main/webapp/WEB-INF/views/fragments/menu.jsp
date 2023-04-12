@@ -51,7 +51,7 @@
 		
 		<!-- LECTURER -->
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
-			<acme:menu-suboption code="master.menu.lecturer.dashboard" action="/lecturer/lecturerDashboard"/>
+			<acme:menu-suboption code="master.menu.lecturer.dashboard" action="/lecturer/dashboard"/>
 		</acme:menu-option>
 		
 
