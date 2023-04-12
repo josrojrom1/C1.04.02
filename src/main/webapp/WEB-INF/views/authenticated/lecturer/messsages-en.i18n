@@ -10,3 +10,10 @@
 
 master.menu.lecturer.dashboard = Lecturer dashboard
 master.menu.lecturer = Lecturer
+
+authenticated.lecturer.form.label.almaMater = Alma Mater
+authenticated.lecturer.form.label.resume = Resume
+authenticated.lecturer.form.label.qualifications = Qualifications
+authenticated.lecturer.form.label.link = Link
+authenticated.lecturer.form.button.create = Create
+authenticated.lecturer.form.button.update = Update

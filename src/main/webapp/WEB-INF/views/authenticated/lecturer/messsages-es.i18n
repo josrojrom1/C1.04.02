@@ -10,3 +10,10 @@
 
 master.menu.lecturer.dashboard = Panel del profesor
 master.menu.lecturer = Profesor
+
+authenticated.lecturer.form.label.almaMater = Alma Mater
+authenticated.lecturer.form.label.resume = Resumen
+authenticated.lecturer.form.label.qualifications = Cualificaciones
+authenticated.lecturer.form.label.link = Enlace
+authenticated.lecturer.form.button.create = Crear
+authenticated.lecturer.form.button.update = Actualizar
