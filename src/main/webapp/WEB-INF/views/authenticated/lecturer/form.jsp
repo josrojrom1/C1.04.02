@@ -19,6 +19,7 @@
 	<acme:input-textbox code="authenticated.consumer.form.label.company" path="company"/>
 	<acme:input-textbox code="authenticated.consumer.form.label.sector" path="sector"/>
 	
+	<!-- Submits CREATE y UPDATE -->
 	<acme:submit test="${_command == 'create'}" code="authenticated.consumer.form.button.create" action="/authenticated/consumer/create"/>
 	<acme:submit test="${_command == 'update'}" code="authenticated.consumer.form.button.update" action="/authenticated/consumer/update"/>
 </acme:form>
