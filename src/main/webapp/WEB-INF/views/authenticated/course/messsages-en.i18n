@@ -1,0 +1,34 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+#--------------LIST--------------------------------#
+authenticated.course.list.label.code = Moment
+authenticated.course.list.label.title = Title
+authenticated.course.list.label.abst = Abstract
+authenticated.course.list.label.courseType = Course type
+authenticated.course.list.label.retailPrice = Price
+authenticated.course.list.label.link = Link
+authenticated.course.list.label.lecturer = Lecturer
+authenticated.course.list.label.tutorial = Tutorial
+authenticated.course.list.label.audit = Audit
+authenticated.course.list.label.practicum = Practicum
+
+#--------------SHOW--------------------------------#
+authenticated.course.form.label.code = Moment
+authenticated.course.form.label.title = Title
+authenticated.course.form.label.abst = Abstract
+authenticated.course.form.label.courseType = Course type
+authenticated.course.form.label.retailPrice = Price
+authenticated.course.form.label.link = Link
+authenticated.course.form.label.lecturer = Lecturer
+authenticated.course.form.label.tutorial = Tutorial
+authenticated.course.form.label.audit = Audit
+authenticated.course.form.label.practicum = Practicum

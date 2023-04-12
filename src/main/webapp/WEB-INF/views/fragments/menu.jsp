@@ -24,6 +24,10 @@
 			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
 		</acme:menu-option>
 		
+		<acme:menu-option code="master.menu.courses" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.course.list" action="/authenticated/course/list"/>
+		</acme:menu-option>
+		
 		<!-- ANONYMOUS -->
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="47546590: Reina Munoz, Jose Antonio" action="https://www.youtube.com/"/>
