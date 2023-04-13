@@ -11,6 +11,8 @@
 ﻿# master.menu #################################################################
 
 master.menu.home = Inicio
+master.menu.authenticated= Autentificados
+master.menu.authenticated.note= Notas
 master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
