@@ -12,7 +12,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AuthenticatedNoteRepository extends AbstractRepository {
 
-	@Query("select n from Note n where n.id :=id")
+	@Query("select n from Note n where n.id = :id")
 	Note findOneNoteById(int id);
 
 	@Query("select n from Note n")
