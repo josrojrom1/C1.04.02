@@ -14,7 +14,7 @@
 	
 	<jstl:if test="${!readonly}">
 		<acme:input-checkbox code="authenticated.note.form.label.confirmation" path="confirmation"/>
-		<acme:submit code="authenticated.note.form.label.create" action="/authenticated/note/create"/>
+		<acme:submit code="authenticated.note.form.button.create" action="/authenticated/note/create"/>
 	</jstl:if>
 	
 </acme:form>

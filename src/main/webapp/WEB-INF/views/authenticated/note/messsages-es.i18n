@@ -15,6 +15,7 @@ authenticated.note.list.label.author = Autor
 authenticated.note.list.label.message = Mensaje
 authenticated.note.list.label.email = Correo
 authenticated.note.list.label.link = Enlace
+authenticated.note.list.button.create = Crear
 
 #-------------------SHOW-------------------------#
 authenticated.note.form.label.moment = Momento
@@ -23,3 +24,5 @@ authenticated.note.form.label.author = Autor
 authenticated.note.form.label.message = Mensaje
 authenticated.note.form.label.email = Correo
 authenticated.note.form.label.link = Enlace
+authenticated.note.form.button.create = Crear
+authenticated.note.form.label.confirmation = Confirmar
