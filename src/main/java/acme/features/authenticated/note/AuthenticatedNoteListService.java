@@ -30,17 +30,7 @@ public class AuthenticatedNoteListService extends AbstractService<Authenticated,
 	@Override
 	public void authorise() {
 
-		boolean status;
-		int id;
-		Note note;
-		Date deadline;
-
-		id = super.getRequest().getData("id", int.class);
-		note = this.repository.findOneNoteById(id);
-		deadline = MomentHelper.deltaFromCurrentMoment(-30, ChronoUnit.DAYS);
-		status = MomentHelper.isAfter(note.getMoment(), deadline);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 
 	}
 
@@ -48,8 +38,10 @@ public class AuthenticatedNoteListService extends AbstractService<Authenticated,
 	public void load() {
 
 		Collection<Note> objects;
+		Date deadline;
 
-		objects = this.repository.findAllNotes();
+		deadline = MomentHelper.deltaFromCurrentMoment(-30, ChronoUnit.DAYS);
+		objects = this.repository.findRecentNotes(deadline);
 		super.getBuffer().setData(objects);
 	}
 

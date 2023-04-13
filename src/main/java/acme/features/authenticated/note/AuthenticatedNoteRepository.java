@@ -2,6 +2,7 @@
 package acme.features.authenticated.note;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,5 +18,8 @@ public interface AuthenticatedNoteRepository extends AbstractRepository {
 
 	@Query("select n from Note n")
 	Collection<Note> findAllNotes();
+
+	@Query("SELECT n from Note n where n.moment >= :deadline")
+	Collection<Note> findRecentNotes(Date deadline);
 
 }
