@@ -13,3 +13,5 @@
 	
 	
 </acme:list>
+
+<acme:button code = "authenticated.note.list.label.create" action = "/authenticated/note/create"/>
