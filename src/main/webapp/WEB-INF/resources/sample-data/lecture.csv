@@ -1,6 +1,6 @@
 key,title,abst,learningTime,body,lectureType,link,key:course
-lecture-01,"esto es el title de la lecture 1","esto es el resumen lecturer 1",2,"body","THEORY","https://example.es",course-01
-lecture-02,"a","esto es el resumen lecturer 2",3,"body","THEORY","https://example.es",course-02
+lecture-01,"esto es el title de la lecture 1","esto es el resumen lecturer 1",2,"body","HANDS_ON","https://example.es",course-01
+lecture-02,"a","esto es el resumen lecturer 2",3,"body","THEORY","https://example.es",course-01
 lecture-03,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345","a",3,"body","THEORY","https://example.es",course-02
-lecture-04,"esto es el title de la lecture 2","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",3,"a","THEORY",null,course-02
+lecture-04,"esto es el title de la lecture 2","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",3,"a","HANDS_ON",null,course-02
 lecture-05,"esto es el title de la lecture 2","esto es el resumen lecturer 2",3,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","HANDS_ON","https://example.es",course-02

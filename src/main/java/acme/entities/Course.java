@@ -1,9 +1,14 @@
 
 package acme.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,6 +19,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.framework.components.datatypes.Money;
 import acme.framework.data.AbstractEntity;
+import acme.framework.helpers.MomentHelper;
 import acme.roles.Lecturer;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,10 +49,11 @@ public class Course extends AbstractEntity {
 	@Length(max = 100)
 	protected String			abst;
 
-	//Course (theory course or hands-on course)
+	//Course (theory course or hands-on course)(Purely theoretical courses rejected by the system)
+
 	protected LessonType		courseType;
 
-	//Retail price (positive or nought)(Purely theoretical courses rejected by the system)
+	//Retail price (positive or nought)
 	@NotNull
 	@Valid
 	protected Money				retailPrice;
@@ -55,28 +62,54 @@ public class Course extends AbstractEntity {
 	@URL
 	protected String			link;
 
+	protected boolean			draftMode;
+
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date				deadLine;
+
+
+	//Atributo derivado "esta disponible"
+	@Transient
+	public boolean isAvailable() {
+		boolean result;
+
+		result = !this.draftMode && MomentHelper.isFuture(this.deadLine);
+
+		return result;
+	}
+
+	//Atributo derivado tipo de curso en funcion de las lectures que tiene
+	//	@Transient
+	//	public boolean handsonCourse() {
+	//		final boolean result;
+	//		result =
+	//		return result;
+	//	}
+
+
 	//Lecturer manyToOne()
 	@ManyToOne()
 	@NotNull
 	@Valid
-	protected Lecturer			lecturer;
+	protected Lecturer	lecturer;
 
 	//Tutorial manyToOne() 
 	@ManyToOne()
 	@NotNull
 	@Valid
-	protected Tutorial			tutorial;
+	protected Tutorial	tutorial;
 
 	//Tutorial manyToOne() 
 	@ManyToOne()
 	@NotNull
 	@Valid
-	protected Audit				audit;
+	protected Audit		audit;
 
 	//Practicum manyToOne() 
 	@ManyToOne()
 	@NotNull
 	@Valid
-	protected Practicum			practicum;
+	protected Practicum	practicum;
 
 }

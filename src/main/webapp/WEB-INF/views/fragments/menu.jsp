@@ -18,14 +18,22 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
-	
+			
+		<!-- ANY LIST COURSES -->
+		<acme:menu-option code="master.menu.courses">
+			<acme:menu-suboption code="master.menu.course.list-all" action="/any/course/list-all"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
+			<acme:menu-suboption code="master.menu.lecturer.course.list-mine" action="/lecturer/course/list-mine"/>
+		</acme:menu-option>
+		
+					
+		
+		
 		<!-- AUTHENTICATED -->
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.courses" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.course.list" action="/authenticated/course/list"/>
 		</acme:menu-option>
 		
 		<!-- ANONYMOUS -->
@@ -36,6 +44,7 @@
 			<acme:menu-suboption code="45388453: Ybarra Manrique, Miguel" action="https://open.spotify.com/?"/>
 			<acme:menu-suboption code="29580039: Albalat Ortiz, Samuel" action="https://cityofmist.co/"/>
 		</acme:menu-option>
+
 		
 		<!-- ADMINISTRATOR -->
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -50,18 +59,7 @@
 		</acme:menu-option>
 		
 		<!-- LECTURER -->
-		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
-			<acme:menu-suboption code="master.menu.lecturer.dashboard" action="/lecturer/dashboard"/>
-		</acme:menu-option>
-		
-
-		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
-			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
-		</acme:menu-option>
-
-		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
-			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
-		</acme:menu-option>
+		<acme:menu-option code="master.menu.lecturer.dashboard" access="hasRole('Lecturer')" action="/lecturer/dashboard"></acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>

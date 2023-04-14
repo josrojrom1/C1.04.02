@@ -14,12 +14,13 @@ master.menu.home = Home
 master.menu.sign-up = Sign up
 master.menu.sign-in = Sign in
 master.menu.sign-out = Sign out
-
+master.menu.courses = Courses
 
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
 master.menu.anonymous.favourite-link = Favourite link
+master.menu.anonymous.courses = Courses
 
 # master.menu.administrator ###################################################
 
@@ -31,15 +32,12 @@ master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 master.menu.administrator.bulletin.list = List bulletins
 
-# master.menu.provider ########################################################
+# master.menu.lecturer ########################################################
 
-master.menu.provider = Provider
-master.menu.provider.favourite-link = Favourite link
+master.menu.lecturer.course.list-mine = List mine courses
+master.menu.lecturer = Lecturer
+master.menu.lecturer.dashboard = Dashboard
 
-# master.menu.consumer ##########################################################
-
-master.menu.consumer = Consumer
-master.menu.consumer.favourite-link = Favourite link
 
 # master.menu.user-account ####################################################
 
@@ -55,6 +53,5 @@ master.menu.user-account.lecturer = Become a lecturer
 master.menu.authenticated = Authenticated
 master.menu.authenticated.bulletin.list = List my bulletins
 
-master.menu.courses = Courses
-master.menu.authenticated.course.list = List courses
+
 

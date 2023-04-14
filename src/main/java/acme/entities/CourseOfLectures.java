@@ -32,4 +32,10 @@ public class CourseOfLectures extends AbstractEntity {
 	@NotNull
 	protected Lecture			lecture;
 
+	//Atributos derivados
+
+	//	protected notPureTheoreticalCourses() {
+	//		
+	//	}
+
 }
