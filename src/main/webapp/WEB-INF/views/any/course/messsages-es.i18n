@@ -9,7 +9,7 @@
 # they accept any liabilities with respect to them.
 
 #--------------LIST--------------------------------#
-any.course.list.label.code = Momento
+any.course.list.label.code = Código
 any.course.list.label.title = Título
 any.course.list.label.abst = Resumen
 any.course.list.label.courseType = Tipo de curso
@@ -21,7 +21,7 @@ any.course.list.label.audit = Auditoría
 any.course.list.label.practicum = Practicum
 
 #--------------SHOW--------------------------------#
-any.course.form.label.code = Moment
+any.course.form.label.code = Código
 any.course.form.label.title = Título
 any.course.form.label.abst = Resumen
 any.course.form.label.courseType = Tipo de curso

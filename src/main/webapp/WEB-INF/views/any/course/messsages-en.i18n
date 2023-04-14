@@ -10,7 +10,7 @@
 
 
 #--------------LIST--------------------------------#
-any.course.list.label.code = Moment
+any.course.list.label.code = Code
 any.course.list.label.title = Title
 any.course.list.label.abst = Abstract
 any.course.list.label.courseType = Course type
@@ -22,7 +22,7 @@ any.course.list.label.audit = Audit
 any.course.list.label.practicum = Practicum
 
 #--------------SHOW--------------------------------#
-any.course.form.label.code = Moment
+any.course.form.label.code = Code
 any.course.form.label.title = Title
 any.course.form.label.abst = Abstract
 any.course.form.label.courseType = Course type
