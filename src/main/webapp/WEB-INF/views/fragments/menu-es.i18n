@@ -11,8 +11,6 @@
 ﻿# master.menu #################################################################
 
 master.menu.home = Inicio
-master.menu.authenticated= Autentificados
-master.menu.authenticated.note= Notas
 master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
@@ -21,6 +19,12 @@ master.menu.sign-out = Salir
 
 master.menu.anonymous = Anónimo
 master.menu.anonymous.favourite-link = Enlace favorito
+
+# master.menu.authenticated #################################################################
+master.menu.authenticated.note= Notas
+master.menu.authenticated.note.list = Lista de Notas
+master.menu.peep = Mensajes
+master.menu.peep.list = Lista de mensajes
 
 # master.menu.administrator ###################################################
 
