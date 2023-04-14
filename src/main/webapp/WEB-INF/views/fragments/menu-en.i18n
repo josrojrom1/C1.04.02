@@ -26,6 +26,7 @@ master.menu.authenticated.note= Notes
 master.menu.authenticated.note.list = List of Notes
 master.menu.peep = Peeps
 master.menu.peep.list = List of Peeps
+master.menu.peep.create = Publish
 
 
 # master.menu.administrator ###################################################

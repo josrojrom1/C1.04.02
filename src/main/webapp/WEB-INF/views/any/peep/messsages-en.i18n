@@ -26,5 +26,6 @@ any.peep.form.label.nick = Nick
 any.peep.form.label.message = Message
 any.peep.form.label.email = Email
 any.peep.form.label.link = Link
+any.peep.form.label.create = Publish
 
 

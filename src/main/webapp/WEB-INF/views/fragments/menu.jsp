@@ -28,9 +28,10 @@
 		</acme:menu-option>
 		
 		
-		<!-- ANY LIST COURSES -->
+		<!-- ANY LIST PEEPS -->
         <acme:menu-option code="master.menu.peep">
         	<acme:menu-suboption code="master.menu.peep.list" action="/any/peep/list"/>
+        	<acme:menu-suboption code="master.menu.peep.create" action="/any/peep/create"/>
         </acme:menu-option>
         	
 		
