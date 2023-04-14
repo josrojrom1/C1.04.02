@@ -6,7 +6,10 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.Audit;
 import acme.entities.Course;
+import acme.entities.Practicum;
+import acme.entities.Tutorial;
 import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
@@ -58,9 +61,14 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		assert object != null;
 
 		Tuple tuple;
+		final Tutorial tutorial = object.getTutorial();
+		final Audit audit = object.getAudit();
+		final Practicum practicum = object.getPracticum();
 
-		tuple = super.unbind(object, "code"/* , "title", "abst", "courseType", "retailPrice", "link", "draftMode", "deadLine", "tutorial", "audit", "practicum" */);
-
+		tuple = super.unbind(object, "code", "title", "abst", "courseType", "retailPrice", "link"/* , "draftMode", "deadLine", "tutorial", "audit", "practicum" */);
+		tuple.put("tutorial", tutorial.getTitle());
+		tuple.put("audit", audit.getCode());
+		tuple.put("practicum", practicum.getCode());
 		super.getResponse().setData(tuple);
 	}
 
