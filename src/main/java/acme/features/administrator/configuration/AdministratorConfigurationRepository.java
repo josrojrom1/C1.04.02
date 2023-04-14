@@ -17,4 +17,7 @@ public interface AdministratorConfigurationRepository extends AbstractRepository
 
 	@Query("SELECT c FROM Configuration c")
 	public Collection<Configuration> findAllConfiguration();
+
+	@Query("SELECT c FROM Configuration c")
+	public Configuration findConfiguration();
 }

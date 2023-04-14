@@ -2,7 +2,7 @@
 package acme.entities.configuration;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 import acme.framework.data.AbstractEntity;
 import lombok.Getter;
@@ -17,10 +17,10 @@ public class Configuration extends AbstractEntity {
 	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
-	@NotNull
+	@NotBlank
 	protected String			systemCurrency;
 
-	@NotNull
+	@NotBlank
 	protected String			acceptedCurrencies;
 
 }

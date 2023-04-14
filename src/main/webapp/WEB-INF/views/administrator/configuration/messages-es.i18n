@@ -13,3 +13,9 @@ administrator.configuration.form.label.systemCurrency = Moneda del sistema
 administrator.configuration.form.label.acceptedCurrencies = Monedas aceptadas
 administrator.configuration.list.label.systemCurrency = Moneda del sistema
 administrator.configuration.list.label.acceptedCurrencies = Monedas aceptadas
+
+#-------------UPDATE-------------------------------#
+administrator.configuration.form.button.update= Actualizar
+
+#-------------Errors-------------------------------#
+administrator.configuration.form.error.currency= Esta moneda no está aceptada
