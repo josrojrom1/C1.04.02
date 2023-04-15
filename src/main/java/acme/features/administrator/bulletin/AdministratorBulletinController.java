@@ -17,7 +17,7 @@ public class AdministratorBulletinController extends AbstractController<Administ
 	protected AdministratorBulletinCreateService	createService;
 
 	@Autowired
-	protected AdministratorBulletinCreateService	listService;
+	protected AdministratorBulletinListService		listService;
 
 	@Autowired
 	protected AdministratorBulletinShowService		showService;

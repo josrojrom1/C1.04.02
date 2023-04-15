@@ -14,7 +14,7 @@ administrator.bulletin.list.label.title = Título
 administrator.bulletin.list.label.message = Mensaje
 administrator.bulletin.list.label.flag = Flag
 administrator.bulletin.list.label.link = Enlace
-administrator.bulletin.list.button.create = Crear
+administrator.bulletin.list.button.create = Crear boletín
 
 #--------------SHOW--------------------------------#
 administrator.bulletin.form.label.moment = Momento
@@ -22,5 +22,5 @@ administrator.bulletin.form.label.title = Título
 administrator.bulletin.form.label.message = Mensaje
 administrator.bulletin.form.label.flag = Flag
 administrator.bulletin.form.label.link = Enlace
-administrator.bulletin.form.button.create = Crear
+administrator.bulletin.form.button.create = Publicar
 administrator.bulletin.form.label.confirmation = Confirmación

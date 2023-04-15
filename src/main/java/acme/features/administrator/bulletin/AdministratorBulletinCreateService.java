@@ -43,10 +43,10 @@ public class AdministratorBulletinCreateService extends AbstractService<Administ
 		moment = MomentHelper.getCurrentMoment();
 
 		object = new Bulletin();
-		object.setTitle("");
 		object.setMoment(moment);
+		object.setTitle("");
 		object.setMessage("");
-		object.setFlag(FlagType.CRITICAL);
+		object.setFlag(FlagType.NOT_CRITICAL);
 		object.setLink("");
 
 		super.getBuffer().setData(object);
@@ -61,12 +61,14 @@ public class AdministratorBulletinCreateService extends AbstractService<Administ
 
 	@Override
 	public void validate(final Bulletin object) {
-		assert object != null;
-
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+		/*
+		 * assert object != null;
+		 * 
+		 * boolean confirmation;
+		 * 
+		 * confirmation = super.getRequest().getData("confirmation", boolean.class);
+		 * super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+		 */
 	}
 
 	@Override
