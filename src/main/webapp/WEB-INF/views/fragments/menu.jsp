@@ -59,7 +59,7 @@
 		</acme:menu-option>
 		
 		<!-- LECTURER -->
-		<acme:menu-option code="master.menu.lecturer.dashboard" access="hasRole('Lecturer')" action="/lecturer/dashboard"></acme:menu-option>
+		<acme:menu-option code="master.menu.lecturer.dashboard" access="hasRole('Lecturer')" action="/lecturer/lecturer-dashboard/show"></acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>

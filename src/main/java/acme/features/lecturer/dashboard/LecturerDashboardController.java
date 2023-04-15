@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.lecturer.dashboard;
+package acme.features.lecturer.dashboard;
 
 import javax.annotation.PostConstruct;
 

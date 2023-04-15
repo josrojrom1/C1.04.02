@@ -11,4 +11,4 @@
 lecturer.dashboard.form.title.general-indicators = Indicadores generales
 lecturer.dashboard.form.title.application-statuses = Estados de solicitud
 lecturer.dashboard.form.label.total-num-theory-lectures =  Número total de lecciones de teoría
-
+lecturer.dashboard.form.label.total-num-handson-lectures = Número total de lecciones prácticas

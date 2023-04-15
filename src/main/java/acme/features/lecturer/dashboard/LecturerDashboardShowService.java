@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.lecturer.dashboard;
+package acme.features.lecturer.dashboard;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,8 +46,13 @@ public class LecturerDashboardShowService extends AbstractService<Lecturer, Lect
 		final LecturerDashboard dashboard;
 
 		final Integer totalNumOfTheoryLectures;
+		final Integer totalNumOfHandsonLectures;
+		//final Double averageNumberOfLecturesLearningTime;
 
 		totalNumOfTheoryLectures = this.repository.totalNumOfTheoryLectures();
+		totalNumOfHandsonLectures = this.repository.totalNumOfHandsonLectures();
+
+		//averageNumberOfLecturesLearningTime = this.repository.averageNumberOfLecturesLearningTime();
 		/*
 		 * Double averageNumberOfApplicationsPerEmployer;
 		 * Double averageNumberOfApplicationsPerWorker;
@@ -66,6 +71,7 @@ public class LecturerDashboardShowService extends AbstractService<Lecturer, Lect
 		dashboard = new LecturerDashboard();
 
 		dashboard.setTotalNumOfTheoryLectures(totalNumOfTheoryLectures);
+		dashboard.setTotalNumOfHandsonLectures(totalNumOfHandsonLectures);
 		/*
 		 * 
 		 * dashboard.setAvegageNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);
@@ -83,11 +89,7 @@ public class LecturerDashboardShowService extends AbstractService<Lecturer, Lect
 		Tuple tuple;
 
 		tuple = super.unbind(object, //
-			"totalNumOfTheoryLectures"/*
-										 * , "averageNumberOfApplicationsPerWorker", //
-										 * "avegageNumberOfApplicationsPerEmployer", "ratioOfPendingApplications", //
-										 * "ratioOfRejectedApplications", "ratioOfAcceptedApplications"
-										 */);
+			"totalNumOfTheoryLectures", "totalNumOfHandsonLectures");
 
 		super.getResponse().setData(tuple);
 	}

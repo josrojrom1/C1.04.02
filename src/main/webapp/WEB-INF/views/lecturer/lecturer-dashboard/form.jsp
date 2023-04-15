@@ -27,7 +27,27 @@
 		<td>
 			<acme:print value="${totalNumOfTheoryLectures}"/>
 		</td>
+		
+		<th scope="row">
+			<acme:message code="lecturer.dashboard.form.label.total-num-handson-lectures"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumOfHandsonLectures}"/>
+		</td>
 	</tr>
+	
+	<!-- LEARNING TIME OF LECTURES (AVG,DEV,MIN,MAX)-->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<!-- 
 	<tr>
 		<th scope="row">

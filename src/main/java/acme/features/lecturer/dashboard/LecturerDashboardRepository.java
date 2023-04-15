@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.lecturer.dashboard;
+package acme.features.lecturer.dashboard;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -20,7 +20,13 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface LecturerDashboardRepository extends AbstractRepository {
 
-	@Query("select count(l) from Lecture l where l.lectureType = THEORY")
+	@Query("select count(a) from Lecture a where a.lectureType = 'THEORY'")
 	Integer totalNumOfTheoryLectures();
+
+	@Query("select count(a) from Lecture a where a.lectureType = 'HANDS_ON'")
+	Integer totalNumOfHandsonLectures();
+
+	//@Query("select avg(select count(a.learningTime) from Lecture a) from Lecture e")
+	//Double averageNumberOfLecturesLearningTime();
 
 }
