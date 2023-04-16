@@ -1,6 +1,7 @@
 
 package acme.features.lecturer.course;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import acme.entities.Audit;
 import acme.entities.Course;
 import acme.entities.Practicum;
 import acme.entities.Tutorial;
+import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
@@ -61,14 +63,32 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		assert object != null;
 
 		Tuple tuple;
-		final Tutorial tutorial = object.getTutorial();
-		final Audit audit = object.getAudit();
-		final Practicum practicum = object.getPracticum();
+		final SelectChoices tutorialChoices;
+		final SelectChoices auditChoices;
+		final SelectChoices practicumChoices;
+
+		final Collection<Tutorial> tutorials;
+		final Collection<Audit> audits;
+		final Collection<Practicum> practicums;
+
+		tutorials = this.repository.findAllTutorials();
+		audits = this.repository.findAllAudits();
+		practicums = this.repository.findAllPracticums();
+
+		tutorialChoices = SelectChoices.from(tutorials, "code", object.getTutorial());
+		auditChoices = SelectChoices.from(audits, "code", object.getAudit());
+		practicumChoices = SelectChoices.from(practicums, "code", object.getPracticum());
 
 		tuple = super.unbind(object, "code", "title", "abst", "courseType", "retailPrice", "link"/* , "draftMode", "deadLine", "tutorial", "audit", "practicum" */);
-		tuple.put("tutorial", tutorial.getTitle());
-		tuple.put("audit", audit.getCode());
-		tuple.put("practicum", practicum.getCode());
+		tuple.put("tutorial", tutorialChoices.getSelected().getKey());
+		tuple.put("audit", auditChoices.getSelected().getKey());
+		tuple.put("practicum", practicumChoices.getSelected().getKey());
+
+		tuple.put("tutorials", tutorialChoices);
+		tuple.put("audits", auditChoices);
+		tuple.put("practicums", practicumChoices);
+
+		tuple.put("readonly", false);
 		super.getResponse().setData(tuple);
 	}
 

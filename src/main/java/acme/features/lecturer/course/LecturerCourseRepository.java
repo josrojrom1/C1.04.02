@@ -43,4 +43,7 @@ public interface LecturerCourseRepository extends AbstractRepository {
 	@Query("select p from Practicum p where p.id = :practicumId")
 	Practicum findOnePracticumById(int practicumId);
 
+	@Query("select c from Course c where c.code = :code")
+	Course findOneCourseByCode(String code);
+
 }

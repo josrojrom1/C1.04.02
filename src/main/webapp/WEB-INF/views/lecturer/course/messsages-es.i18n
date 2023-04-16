@@ -19,6 +19,7 @@ lecturer.course.list.label.lecturer = Profesor
 lecturer.course.list.label.tutorial = Tutorial
 lecturer.course.list.label.audit = Auditoría
 lecturer.course.list.label.practicum = Practicum
+lecturer.course.list.button.create = Crear nuevo curso
 
 #--------------SHOW--------------------------------#
 lecturer.course.form.label.code = Código
@@ -31,3 +32,4 @@ lecturer.course.form.label.lecturer = Profesor
 lecturer.course.form.label.tutorial = Tutorial
 lecturer.course.form.label.audit = Auditoría
 lecturer.course.form.label.practicum = Practicum
+lecturer.course.form.button.create = Crear

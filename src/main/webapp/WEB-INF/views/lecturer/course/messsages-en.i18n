@@ -20,6 +20,7 @@ lecturer.course.list.label.lecturer = Lecturer
 lecturer.course.list.label.tutorial = Tutorial
 lecturer.course.list.label.audit = Audit
 lecturer.course.list.label.practicum = Practicum
+lecturer.course.list.button.create = Crete new course
 
 #--------------SHOW--------------------------------#
 lecturer.course.form.label.code = Code
@@ -32,3 +33,4 @@ lecturer.course.form.label.lecturer = Lecturer
 lecturer.course.form.label.tutorial = Tutorial
 lecturer.course.form.label.audit = Audit
 lecturer.course.form.label.practicum = Practicum
+lecturer.course.form.button.create = Create
