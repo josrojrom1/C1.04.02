@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Bulletin;
+import acme.entities.FlagType;
 import acme.framework.components.accounts.Administrator;
+import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 
@@ -62,15 +64,15 @@ public class AdministratorBulletinShowService extends AbstractService<Administra
 	public void unbind(final Bulletin object) {
 
 		assert object != null;
-		//SelectChoices choices;
+		final SelectChoices choices;
 		Tuple tuple;
 
-		//choices = SelectChoices.from(FlagType.class, object.getFlag());
+		choices = SelectChoices.from(FlagType.class, object.getFlag());
 
 		tuple = super.unbind(object, "moment", "title", "message", "flag", "link");
-		//tuple.put("confirmation", false);
-		//tuple.put("readonly", false);
-		//tuple.put("flagType", choices);
+		tuple.put("confirmation", false);
+		tuple.put("readonly", false);
+		tuple.put("flagType", choices);
 		super.getResponse().setData(tuple);
 
 	}

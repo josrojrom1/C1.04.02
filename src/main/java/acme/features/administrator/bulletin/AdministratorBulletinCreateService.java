@@ -61,14 +61,11 @@ public class AdministratorBulletinCreateService extends AbstractService<Administ
 
 	@Override
 	public void validate(final Bulletin object) {
-		/*
-		 * assert object != null;
-		 * 
-		 * boolean confirmation;
-		 * 
-		 * confirmation = super.getRequest().getData("confirmation", boolean.class);
-		 * super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
-		 */
+		assert object != null;
+		boolean confirmation;
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+
 	}
 
 	@Override
@@ -90,10 +87,11 @@ public class AdministratorBulletinCreateService extends AbstractService<Administ
 		Tuple tuple;
 
 		choices = SelectChoices.from(FlagType.class, object.getFlag());
-
 		tuple = super.unbind(object, "moment", "title", "message", "flag", "link");
 		tuple.put("confirmation", false);
 		tuple.put("readonly", false);
+
+		tuple.put("flag", choices.getSelected().getKey());
 		tuple.put("flagType", choices);
 
 		super.getResponse().setData(tuple);
