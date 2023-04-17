@@ -3,10 +3,10 @@ user-account-anonymous-01,false,"UserIdentity{name: 'John', surname: 'Doe', emai
 user-account-administrator-01,true,"UserIdentity{name: 'Administrator', surname: 'Acme', email: 'administrator@acme.com'}",administrator,administrator
 user-account-lecturer-01,true,"UserIdentity{name: 'Ivan', surname: 'Cabesita', email: 'ivanelloco@acme.com'}",lecturer1,lecturer1
 user-account-lecturer-02,false,"UserIdentity{name: 'Lucia', surname: 'Reguera', email: 'lucia@acme.com'}",lecturer2,lecturer2
-user-account-assistant-01,false,"UserIdentity{name: 'Manolo', surname: 'Perez', email: 'manolo@acme.com'}",assistant1,assistant1
-user-account-assistant-02,false,"UserIdentity{name: 'Simon', surname: 'Rivia', email: 'simon@acme.com'}",assistant2,assistant2
-user-account-administrator-02,false,"UserIdentity{name: 'Administrator1', surname: 'Acme', email: 'administrator1@acme.com'}",administrator1,administrator1
-user-account-administrator-03,false,"UserIdentity{name: 'Administrator2', surname: 'Acme', email: 'administrator2@acme.com'}",administrator2,administrator2
+user-account-assistant-01,true,"UserIdentity{name: 'Manolo', surname: 'Perez', email: 'manolo@acme.com'}",assistant1,assistant1
+user-account-assistant-02,true,"UserIdentity{name: 'Simon', surname: 'Rivia', email: 'simon@acme.com'}",assistant2,assistant2
+user-account-administrator-02,true,"UserIdentity{name: 'Administrator1', surname: 'Acme', email: 'administrator1@acme.com'}",administrator1,administrator1
+user-account-administrator-03,true,"UserIdentity{name: 'Administrator2', surname: 'Acme', email: 'administrator2@acme.com'}",administrator2,administrator2
 user-account-auditor-01,false,"UserIdentity{name: 'Jose', surname: 'Reina', email: 'josereina@acme.com'}",auditor1,auditor1
 user-account-auditor-02,false,"UserIdentity{name: 'Antonio', surname: 'Muñoz', email: 'antoniomunoz@acme.com'}",auditor2,auditor2
 user-account-student-01,false,"UserIdentity{name: 'Pedro', surname: 'Reguera', email: 'pedro@acme.com'}",student1,student1
