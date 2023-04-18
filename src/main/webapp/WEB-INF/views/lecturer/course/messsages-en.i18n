@@ -34,3 +34,5 @@ lecturer.course.form.label.tutorial = Tutorial
 lecturer.course.form.label.audit = Audit
 lecturer.course.form.label.practicum = Practicum
 lecturer.course.form.button.create = Create
+lecturer.course.form.button.delete = Delete
+lecturer.course.form.button.update = Update
