@@ -27,7 +27,7 @@
 			<acme:input-select code="lecturer.lecture.form.label.lectureType"  path="lectureType"  choices="${lectureTypes}"/>
 			<acme:input-url code="lecturer.lecture.form.label.link" path="link"/>
 		
-			<acme:button code="lecturer.lecture.form.button.update" action="/lecturer/lecture/update?id=${id}"/>
+			<acme:submit code="lecturer.lecture.form.button.update" action="/lecturer/lecture/update"/>
 			<acme:submit code="lecturer.lecture.form.button.publish" action="/lecturer/lecture/publish"/>
 			<acme:submit code="lecturer.lecture.form.button.delete" action="/lecturer/lecture/delete"/>
 			
@@ -54,8 +54,7 @@
 		
 			<acme:submit code="lecturer.lecture.form.button.create" action="/lecturer/lecture/create"/>
 		</jstl:when>
-		
-				
+
 			
 		
 	</jstl:choose>

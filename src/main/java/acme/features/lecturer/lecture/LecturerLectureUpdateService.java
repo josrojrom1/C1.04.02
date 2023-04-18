@@ -75,7 +75,6 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 		tuple.put("id", object.getId());
 		tuple.put("lectureTypes", choices);
 		tuple.put("draftMode", object.isDraftMode());
-		tuple.put("readOnly", false);
 
 		super.getResponse().setData(tuple);
 	}
