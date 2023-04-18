@@ -18,9 +18,10 @@
 <acme:form>
 	<acme:input-textbox code="lecturer.lecture.form.label.title" path="title"/>
 	<acme:input-textarea code="lecturer.lecture.form.label.abst" path="abst"/>
-	<acme:input-double code="lecturer.lecture.form.label.learningTime" path="learningTime"/>
+	<acme:input-integer code="lecturer.lecture.form.label.learningTime" path="learningTime"/>
 	<acme:input-textarea code="lecturer.lecture.form.label.body" path="body"/>
-	
+
+	<!-- SELECT CHOICES -->
 	<acme:input-select code="lecturer.lecture.form.label.lectureType"  path="lectureType"  choices="${lectureTypes}"  />
 	
 	

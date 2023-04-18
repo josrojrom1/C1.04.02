@@ -19,6 +19,9 @@ public class LecturerLectureController extends AbstractController<Lecturer, Lect
 	@Autowired
 	protected LecturerLectureShowService		showService;
 
+	//@Autowired
+	//protected LecturerLectureCreateService		createService;
+
 
 	@PostConstruct
 	protected void initialise() {
