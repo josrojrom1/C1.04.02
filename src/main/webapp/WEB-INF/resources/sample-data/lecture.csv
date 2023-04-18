@@ -1,6 +1,7 @@
-key,title,abst,learningTime,body,lectureType,link,key:course
-lecture-01,"esto es el title de la lecture 1","esto es el resumen lecturer 1",2,"body","HANDS_ON","https://example.es",course-01
-lecture-02,"a","esto es el resumen lecturer 2",3,"body","THEORY","https://example.es",course-01
-lecture-03,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345","a",3,"body","THEORY","https://example.es",course-02
-lecture-04,"esto es el title de la lecture 2","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",3,"a","HANDS_ON",null,course-02
-lecture-05,"esto es el title de la lecture 2","esto es el resumen lecturer 2",3,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","HANDS_ON","https://example.es",course-02
+key,title,abst,learningTime,body,lectureType,draftMode,link,key:lecturer
+lecture-01,"HTML + CSS + JavaScript","En esta asignatura aprenderá como programar en lenguajes orientados al desarrollo web desde cero",2,"body","HANDS_ON",false,"https://example.es",lecturer-01
+lecture-02,"PHP + mariaDB","En esta asignatura aprenderá a gestionar peticiones mediante PHP y a crear una BD en mariaDB",3,"body","THEORY",false,"https://example.es",lecturer-01
+lecture-03,"Planificación Automática","En esta asignatura aprenderá las bases de los algoritmos de planificación automática",3,"body","HANDS_ON",false,"https://example.es",lecturer-02
+lecture-04,"esto es el title de la lecture 2","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",3,"a","HANDS_ON",false,null,lecturer-02
+lecture-05,"esto es el title de la lecture 2","esto es el resumen lecturer 2",3,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","HANDS_ON",false,"https://example.es",lecturer-02
+lecture-06,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345","a",3,"body","THEORY",false,"https://example.es",lecturer-02

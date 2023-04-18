@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.Audit;
 import acme.entities.Course;
+import acme.entities.LessonType;
 import acme.entities.Practicum;
 import acme.entities.Tutorial;
 import acme.framework.components.jsp.SelectChoices;
@@ -66,6 +67,7 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		final SelectChoices tutorialChoices;
 		final SelectChoices auditChoices;
 		final SelectChoices practicumChoices;
+		final SelectChoices courseTypeChoices;
 
 		final Collection<Tutorial> tutorials;
 		final Collection<Audit> audits;
@@ -75,18 +77,21 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		audits = this.repository.findAllAudits();
 		practicums = this.repository.findAllPracticums();
 
+		courseTypeChoices = SelectChoices.from(LessonType.class, object.getCourseType());
 		tutorialChoices = SelectChoices.from(tutorials, "code", object.getTutorial());
 		auditChoices = SelectChoices.from(audits, "code", object.getAudit());
 		practicumChoices = SelectChoices.from(practicums, "code", object.getPracticum());
 
-		tuple = super.unbind(object, "code", "title", "abst", "courseType", "retailPrice", "link"/* , "draftMode", "deadLine", "tutorial", "audit", "practicum" */);
+		tuple = super.unbind(object, "code", "title", "abst", "courseType", "retailPrice", "link", "draftMode", "deadLine", "tutorial", "audit", "practicum");
 		tuple.put("tutorial", tutorialChoices.getSelected().getKey());
 		tuple.put("audit", auditChoices.getSelected().getKey());
 		tuple.put("practicum", practicumChoices.getSelected().getKey());
+		tuple.put("courseType", courseTypeChoices.getSelected().getKey());
 
 		tuple.put("tutorials", tutorialChoices);
 		tuple.put("audits", auditChoices);
 		tuple.put("practicums", practicumChoices);
+		tuple.put("courseTypes", courseTypeChoices);
 
 		tuple.put("readonly", false);
 		super.getResponse().setData(tuple);
