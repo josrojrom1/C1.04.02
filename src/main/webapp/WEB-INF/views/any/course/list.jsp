@@ -6,7 +6,6 @@
 
 <acme:list>
 	<acme:list-column code="any.course.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="any.course.list.label.courseType" path="courseType" width="10%"/>
 	<acme:list-column code="any.course.list.label.retailPrice" path="retailPrice" width="10%"/>
 	<acme:list-column code="any.course.list.label.title" path="title" width="70%"/>
 </acme:list>

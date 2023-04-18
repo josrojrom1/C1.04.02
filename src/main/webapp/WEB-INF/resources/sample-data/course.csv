@@ -1,7 +1,7 @@
-key,code,title,abst,courseType,retailPrice,link,draftMode,deadLine,key:lecturer,key:tutorial,key:audit,key:practicum
-course-01,"PRO 001","Curso de Programación Web básico","En este curso aprenderá las bases para el desarrollo web","HANDS_ON",19.95 EUR,"https://youtube.com/cursoChuloDeHTML",false,2030/12/11 23:00,lecturer-01,tutorial-01-01,audit-01-02,practicum-01-02
-course-02,"CIA 002","Curso de Inteligencia Artificial","Introduccón a la clasificacón de documentos y el uso de librerías python","HANDS_ON",15.19 EUR,null,false,2030/12/11 23:00,lecturer-02,tutorial-01-01,audit-01-01,practicum-02-02
-course-03,"ABC 003","a","a","HANDS_ON",32.32 EUR,null,false,2030/12/11 23:00,lecturer-01,tutorial-02-01,audit-01-01,practicum-01-02
-course-04,"ABC 004","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345","a","HANDS_ON",32.32 EUR,null,false,2030/12/11 23:00,lecturer-01,tutorial-02-01,audit-01-01,practicum-01-01
-course-05,"ABC 005","a","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","HANDS_ON",32.32 EUR,null,false,2030/12/11 23:00,lecturer-01,tutorial-02-01,audit-01-01,practicum-01-01
-course-06,"ABC 006","Esto es un titulo de prueba","abst de prueba","HANDS_ON",1.5 EUR,"https://youtube.com",true,2030/12/11 23:00,lecturer-01,tutorial-01-01,audit-01-02,practicum-01-02
+key,code,title,abst,retailPrice,link,draftMode,key:lecturer
+course-01,"CPR 001","Curso de Programación Web básico","En este curso aprenderá las bases para el desarrollo web",19.95 EUR,"https://youtube.com/cursoChuloDeHTML",false,lecturer-01
+course-02,"CIA 001","Curso de Inteligencia Artificial","Introduccón a la clasificacón de documentos y el uso de librerías python",15.19 EUR,null,false,lecturer-02
+course-03,"ABC 001","a","a",32.32 EUR,null,false,lecturer-01
+course-04,"ABC 002","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345","a",32.32 EUR,null,false,lecturer-01
+course-05,"ABC 003","a","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",32.32 EUR,null,false,lecturer-01
+course-06,"ABC 004","Esto es un titulo de prueba","abst de prueba",1.5 EUR,"https://youtube.com",true,lecturer-01

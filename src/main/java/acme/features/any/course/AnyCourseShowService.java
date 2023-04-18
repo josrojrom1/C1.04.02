@@ -4,14 +4,10 @@ package acme.features.any.course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.Audit;
 import acme.entities.Course;
-import acme.entities.Practicum;
-import acme.entities.Tutorial;
 import acme.framework.components.accounts.Any;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
-import acme.roles.Lecturer;
 
 @Service
 public class AnyCourseShowService extends AbstractService<Any, Course> {
@@ -22,14 +18,21 @@ public class AnyCourseShowService extends AbstractService<Any, Course> {
 
 	@Override
 	public void check() {
-		//boolean status;
-		//status = super.getRequest().hasData("id", int.class);
+		boolean status;
+		status = super.getRequest().hasData("id", int.class);
 		super.getResponse().setChecked(true);
 	}
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		Course course;
+
+		id = super.getRequest().getData("id", int.class);
+		course = this.repository.findOneCourseById(id);
+		status = course != null;
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -44,14 +47,7 @@ public class AnyCourseShowService extends AbstractService<Any, Course> {
 	@Override
 	public void unbind(final Course object) {
 		Tuple tuple;
-		final Lecturer lecturer = object.getLecturer();
-		final Tutorial tutorial = object.getTutorial();
-		final Audit audit = object.getAudit();
-		final Practicum practicum = object.getPracticum();
-		tuple = super.unbind(object, "code", "title", "abst", "courseType", "retailPrice", "link"/* , "lecturer" , "tutorial", "audit", "practicum" */);
-		tuple.put("tutorial", tutorial.getTitle());
-		tuple.put("audit", audit.getCode());
-		tuple.put("practicum", practicum.getCode());
+		tuple = super.unbind(object, "code", "title", "abst", "retailPrice", "link");
 		super.getResponse().setData(tuple);
 	}
 }

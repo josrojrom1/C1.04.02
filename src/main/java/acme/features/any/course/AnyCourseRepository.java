@@ -21,7 +21,4 @@ public interface AnyCourseRepository extends AbstractRepository {
 	@Query("select c from Course c where c.id = :id")
 	Course findOneCourseById(int id);
 
-	@Query("select c from Course c where c.courseType = handson")
-	Collection<Course> findAllCoursesNotPureTheoretical();
-
 }

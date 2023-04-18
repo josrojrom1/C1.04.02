@@ -2,19 +2,14 @@
 package acme.features.lecturer.course;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.Audit;
 import acme.entities.Course;
+import acme.entities.Lecture;
 import acme.entities.LessonType;
-import acme.entities.Practicum;
-import acme.entities.Tutorial;
-import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
 
@@ -27,8 +22,9 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 
 	@Override
 	public void check() {
-
-		super.getResponse().setChecked(true);
+		boolean status;
+		status = super.getRequest().hasData("id", int.class);
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
@@ -37,15 +33,13 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		int id;
 		final Course course;
 		final Lecturer lecturer;
-		Date currentMoment;
 
 		id = super.getRequest().getData("id", int.class);
 		course = this.repository.findOneCourseById(id);
 		lecturer = course == null ? null : course.getLecturer();
-		currentMoment = MomentHelper.getCurrentMoment();
-		status = super.getRequest().getPrincipal().hasRole(lecturer) || course != null && !course.isDraftMode() && MomentHelper.isAfter(course.getDeadLine(), currentMoment);
-
+		status = super.getRequest().getPrincipal().hasRole(lecturer) || course != null;
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -59,41 +53,27 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 
 	}
 
+	public LessonType courseType(final Collection<Lecture> lecturesFromACourse) {
+		int theory = 0;
+		int handson = 0;
+		LessonType res = LessonType.THEORY;
+		for (final Lecture l : lecturesFromACourse)
+			if (l.getLectureType().equals(LessonType.THEORY))
+				theory += 1;
+			else if (l.getLectureType().equals(LessonType.HANDS_ON))
+				handson += 1;
+		if (theory < handson || theory == handson)
+			res = LessonType.HANDS_ON;
+		return res;
+	}
+
 	@Override
 	public void unbind(final Course object) {
 		assert object != null;
 
 		Tuple tuple;
-		final SelectChoices tutorialChoices;
-		final SelectChoices auditChoices;
-		final SelectChoices practicumChoices;
-		final SelectChoices courseTypeChoices;
-
-		final Collection<Tutorial> tutorials;
-		final Collection<Audit> audits;
-		final Collection<Practicum> practicums;
-
-		tutorials = this.repository.findAllTutorials();
-		audits = this.repository.findAllAudits();
-		practicums = this.repository.findAllPracticums();
-
-		courseTypeChoices = SelectChoices.from(LessonType.class, object.getCourseType());
-		tutorialChoices = SelectChoices.from(tutorials, "code", object.getTutorial());
-		auditChoices = SelectChoices.from(audits, "code", object.getAudit());
-		practicumChoices = SelectChoices.from(practicums, "code", object.getPracticum());
-
-		tuple = super.unbind(object, "code", "title", "abst", "courseType", "retailPrice", "link", "draftMode", "deadLine", "tutorial", "audit", "practicum");
-		tuple.put("tutorial", tutorialChoices.getSelected().getKey());
-		tuple.put("audit", auditChoices.getSelected().getKey());
-		tuple.put("practicum", practicumChoices.getSelected().getKey());
-		tuple.put("courseType", courseTypeChoices.getSelected().getKey());
-
-		tuple.put("tutorials", tutorialChoices);
-		tuple.put("audits", auditChoices);
-		tuple.put("practicums", practicumChoices);
-		tuple.put("courseTypes", courseTypeChoices);
-
-		tuple.put("readonly", false);
+		tuple = super.unbind(object, "code", "title", "abst", "courseType", "retailPrice", "link");
+		tuple.put("courseType", this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
 		super.getResponse().setData(tuple);
 	}
 

@@ -14,10 +14,10 @@ import acme.framework.controllers.AbstractController;
 public class AnyCourseController extends AbstractController<Any, Course> {
 
 	@Autowired
-	protected AnyCourseListAllService	listAllService;
+	protected AnyCourseListService	listService;
 
 	@Autowired
-	protected AnyCourseShowService		showService;
+	protected AnyCourseShowService	showService;
 
 
 	@PostConstruct
@@ -25,9 +25,9 @@ public class AnyCourseController extends AbstractController<Any, Course> {
 
 		//COMANDOS BÁSICOS
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("list", this.listService);
 
 		//COMANDOS CUSTOM
-		super.addCustomCommand("list-all", "list", this.listAllService);
 
 	}
 

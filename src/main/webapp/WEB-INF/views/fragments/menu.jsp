@@ -21,7 +21,7 @@
 			
 		<!-- ANY LIST COURSES -->
 		<acme:menu-option code="master.menu.courses">
-			<acme:menu-suboption code="master.menu.course.list-all" action="/any/course/list-all"/>
+			<acme:menu-suboption code="master.menu.course.list" action="/any/course/list"/>
 		</acme:menu-option>
 		
 		<!-- LECTURER -->
@@ -29,7 +29,7 @@
 			<acme:menu-suboption code="master.menu.lecturer.dashboard" action="/lecturer/lecturer-dashboard/show"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.lecturer.lecture.list" action="/lecturer/lecture/list"/>
-			<acme:menu-suboption code="master.menu.lecturer.course.list-mine" action="/lecturer/course/list-mine"/>
+			<acme:menu-suboption code="master.menu.lecturer.course.list" action="/lecturer/course/list"/>
 		</acme:menu-option>
 		
 					

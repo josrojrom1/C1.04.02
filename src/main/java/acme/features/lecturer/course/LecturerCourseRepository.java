@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.entities.Audit;
 import acme.entities.Course;
+import acme.entities.Lecture;
 import acme.entities.Practicum;
 import acme.entities.Tutorial;
 import acme.framework.repositories.AbstractRepository;
@@ -45,5 +46,8 @@ public interface LecturerCourseRepository extends AbstractRepository {
 
 	@Query("select c from Course c where c.code = :code")
 	Course findOneCourseByCode(String code);
+
+	@Query("select col.lecture from CourseOfLecture col where col.course.id = :id")
+	Collection<Lecture> findAllLecturesByCourse(int id);
 
 }
