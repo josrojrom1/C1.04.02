@@ -37,3 +37,6 @@ lecturer.course.form.button.create = Create
 lecturer.course.form.button.delete = Delete
 lecturer.course.form.button.update = Update
 lecturer.course.form.button.publish = Publish
+lecturer.course.form.button.lectures = Related lectures
+
+

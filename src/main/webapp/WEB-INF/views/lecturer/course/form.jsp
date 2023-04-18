@@ -26,6 +26,7 @@
 			<acme:input-money code="lecturer.course.form.label.retailPrice" path="retailPrice" readonly = "True"/>
 			<acme:input-textbox code="lecturer.course.form.label.link" path="link" readonly = "True"/>
 			
+			<acme:button code="lecturer.course.form.button.lectures" action="/lecturer/lecture/list?masterId=${id}"/>
 			<acme:submit code="lecturer.course.form.button.delete" action="/lecturer/course/delete"/>
 		</jstl:when>
 		

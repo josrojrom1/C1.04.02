@@ -30,12 +30,12 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
+		int masterId;
 		final Course course;
 		final Lecturer lecturer;
 
-		id = super.getRequest().getData("id", int.class);
-		course = this.repository.findOneCourseById(id);
+		masterId = super.getRequest().getData("id", int.class);
+		course = this.repository.findOneCourseById(masterId);
 		lecturer = course == null ? null : course.getLecturer();
 		status = super.getRequest().getPrincipal().hasRole(lecturer) || course != null;
 		super.getResponse().setAuthorised(status);

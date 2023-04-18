@@ -36,3 +36,5 @@ lecturer.course.form.button.create = Crear
 lecturer.course.form.button.delete = Borrar
 lecturer.course.form.button.update = Actualizar
 lecturer.course.form.button.publish = Publicar
+lecturer.course.form.button.lectures = Asignaturas relacionadas
+
