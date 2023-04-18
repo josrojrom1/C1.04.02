@@ -45,7 +45,7 @@ public class Bulletin extends AbstractEntity {
 
 	//Flag (critical or not)
 	@NotNull
-	protected Boolean			flag;
+	protected FlagType			flag;
 
 	//Optional link
 	@URL
