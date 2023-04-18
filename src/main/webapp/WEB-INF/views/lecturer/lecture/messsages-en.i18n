@@ -11,24 +11,22 @@
 
 #------------------LIST--------------------------
 lecturer.lecture.list.label.title = Title
-lecturer.lecture.list.label.learningTime = Learning time
+lecturer.lecture.list.label.learningTime = Learning time (hours)
 lecturer.lecture.list.button.create = Create new lecture
 
 #------------------SHOW--------------------------
-
 lecturer.lecture.form.label.title = Title
-lecturer.lecture.form.label.resumen= Abstract
+lecturer.lecture.form.label.abst = Abstract
 lecturer.lecture.form.label.lectureType = Lecture Type
 lecturer.lecture.form.label.body = Body
-lecturer.lecture.form.label.learningTime = Learning time
+lecturer.lecture.form.label.learningTime = Learning time (hours)
+lecturer.lecture.form.label.link = Link
 
 lecturer.lecture.form.button.create = Create Lecture
 lecturer.lecture.form.button.update = Update Lecture
 lecturer.lecture.form.button.delete = Delete Lecture
 lecturer.lecture.form.button.publish = Publish Lecture
 
-
-
-lecturer.lecture.form.error.estimatedTime = Must be greater than 0.0
-lecturer.lecture.form.error.lectureType = Can't choose that option for lectures
+#----------------VALIDATE ERROR LOGS--------------
+lecturer.lecture.form.error.learningTime = Must be greater than 1 hour
 

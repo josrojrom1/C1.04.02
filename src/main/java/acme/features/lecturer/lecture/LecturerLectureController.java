@@ -19,8 +19,8 @@ public class LecturerLectureController extends AbstractController<Lecturer, Lect
 	@Autowired
 	protected LecturerLectureShowService		showService;
 
-	//@Autowired
-	//protected LecturerLectureCreateService		createService;
+	@Autowired
+	protected LecturerLectureCreateService		createService;
 
 
 	@PostConstruct
@@ -28,6 +28,7 @@ public class LecturerLectureController extends AbstractController<Lecturer, Lect
 
 		//BASIC COMMANDS
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
 
 		//CUSTOM COMMANDS
 		super.addCustomCommand("list-mine", "list", this.listMineService);

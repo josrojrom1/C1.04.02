@@ -10,22 +10,22 @@
 
 
 #------------------LIST--------------------------
-lecturer.lecture.list.label.title = Title
-lecturer.lecture.list.label.learningTime = Learning Time
+lecturer.lecture.list.label.title = Título
+lecturer.lecture.list.label.learningTime = Tiempo de aprendizaje (horas)
 lecturer.lecture.list.button.create = Crear nueva asignatura
 
 #------------------SHOW--------------------------
-
 lecturer.lecture.form.label.title = Titulo
-lecturer.lecture.form.label.resumen= Resumen
-lecturer.lecture.form.label.lectureType = Tipo de Clase
-lecturer.lecture.form.label.learningTime = Tiempo de aprendizaje
+lecturer.lecture.form.label.abst = Resumen
+lecturer.lecture.form.label.lectureType = Tipo de asignatura
+lecturer.lecture.form.label.learningTime = Tiempo de aprendizaje (horas)
 lecturer.lecture.form.label.body = Cuerpo
+lecturer.lecture.form.label.link = Enlace
+
 lecturer.lecture.forms.button.create = Crear Clase
 lecturer.lecture.form.button.update = Actualizar Clase
 lecturer.lecture.form.button.delete = Borrar Clase
 lecturer.lecture.form.button.publish = Publicar Clase
 
-
-lecturer.lecture.form.error.estimatedTime = Debe ser mayor que 0.0
-lecturer.lecture.form.error.lectureType = No se puede elegir esa opcion para clases
+#----------------VALIDATE ERROR LOGS--------------
+lecturer.lecture.form.error.learningTime = Debe ser mayor que 1 hora
