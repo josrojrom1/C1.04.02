@@ -13,7 +13,7 @@ import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
 
 @Service
-public class LecturerLectureListMineService extends AbstractService<Lecturer, Lecture> {
+public class LecturerLectureListService extends AbstractService<Lecturer, Lecture> {
 
 	@Autowired
 	protected LecturerLectureRepository repository;
@@ -43,6 +43,7 @@ public class LecturerLectureListMineService extends AbstractService<Lecturer, Le
 		assert object != null;
 		Tuple tuple;
 		tuple = super.unbind(object, "title", "abst", "learningTime", "body", "lectureType", "link");
+		tuple.put("draftMode", object.isDraftMode());
 		super.getResponse().setData(tuple);
 	}
 

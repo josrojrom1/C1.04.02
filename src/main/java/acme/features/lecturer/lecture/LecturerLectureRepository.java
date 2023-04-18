@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.CourseOfLecture;
 import acme.entities.Lecture;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Lecturer;
@@ -24,5 +25,8 @@ public interface LecturerLectureRepository extends AbstractRepository {
 
 	@Query("select l from Lecturer l where l.id = :id")
 	Lecturer findLecturerById(int id);
+
+	@Query("select col from CourseOfLecture col where col.lecture = :lecture")
+	Collection<CourseOfLecture> findCourseOfLecturesByLecture(Lecture lecture);
 
 }

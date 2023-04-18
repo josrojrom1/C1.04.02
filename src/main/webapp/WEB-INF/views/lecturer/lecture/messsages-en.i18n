@@ -22,10 +22,10 @@ lecturer.lecture.form.label.body = Body
 lecturer.lecture.form.label.learningTime = Learning time (hours)
 lecturer.lecture.form.label.link = Link
 
-lecturer.lecture.form.button.create = Create Lecture
-lecturer.lecture.form.button.update = Update Lecture
-lecturer.lecture.form.button.delete = Delete Lecture
-lecturer.lecture.form.button.publish = Publish Lecture
+lecturer.lecture.form.button.create = Create
+lecturer.lecture.form.button.update = Update
+lecturer.lecture.form.button.delete = Delete
+lecturer.lecture.form.button.publish = Publish
 
 #----------------VALIDATE ERROR LOGS--------------
 lecturer.lecture.form.error.learningTime = Must be greater than 1 hour

@@ -12,35 +12,50 @@ import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
 
 @Service
-public class LecturerLectureCreateService extends AbstractService<Lecturer, Lecture> {
+public class LecturerLecturePublishService extends AbstractService<Lecturer, Lecture> {
 
+	// Internal State ------------------------------------------
 	@Autowired
 	protected LecturerLectureRepository repository;
+
+	//AbstractServiceInterface -------------------------------
 
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+		status = super.getRequest().hasData("id", int.class);
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		Lecture lecture;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		lecture = this.repository.findLectureById(id);
+		status = lecture != null;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		final Lecture object;
-		final Lecturer lecturer;
-		lecturer = this.repository.findLecturerById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new Lecture();
-		object.setLecturer(lecturer);
+		Lecture object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findLectureById(id);
+
 		super.getBuffer().setData(object);
 	}
 
 	@Override
 	public void bind(final Lecture object) {
 		assert object != null;
+
 		super.bind(object, "title", "abst", "learningTime", "body", "lectureType", "link");
 	}
 
@@ -48,15 +63,13 @@ public class LecturerLectureCreateService extends AbstractService<Lecturer, Lect
 	public void validate(final Lecture object) {
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("learningTime"))
-			// 0.082999 son 5 minutos aproximandamente
 			super.state(object.getLearningTime() >= 1, "learningTime", "lecturer.lecture.form.error.learningTime");
 	}
 
 	@Override
 	public void perform(final Lecture object) {
 		assert object != null;
-		object.setDraftMode(true);
-
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
@@ -64,13 +77,15 @@ public class LecturerLectureCreateService extends AbstractService<Lecturer, Lect
 	public void unbind(final Lecture object) {
 		assert object != null;
 
-		Tuple tuple;
 		SelectChoices choices;
+		Tuple tuple;
 
 		choices = SelectChoices.from(LessonType.class, object.getLectureType());
 		tuple = super.unbind(object, "title", "abst", "learningTime", "body", "lectureType", "link");
 		tuple.put("lectureTypes", choices);
+		tuple.put("draftMode", object.isDraftMode());
 
 		super.getResponse().setData(tuple);
 	}
+
 }
