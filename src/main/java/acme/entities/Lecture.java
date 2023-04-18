@@ -61,10 +61,6 @@ public class Lecture extends AbstractEntity {
 	@ManyToOne(optional = false)
 	protected Lecturer			lecturer;
 
-	//A course aggregates several lectures by the same lecturer
-	//@NotNull
-	//@Valid
-	//@ManyToOne()
-	//protected CourseOfLecture	courseOfLecture;
+	
 
 }

@@ -24,7 +24,11 @@
 			<acme:menu-suboption code="master.menu.course.list-all" action="/any/course/list-all"/>
 		</acme:menu-option>
 		
+		<!-- LECTURER -->
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
+			<acme:menu-suboption code="master.menu.lecturer.dashboard" action="/lecturer/lecturer-dashboard/show"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.lecturer.lecture.list-mine" action="/lecturer/lecture/list-mine"/>
 			<acme:menu-suboption code="master.menu.lecturer.course.list-mine" action="/lecturer/course/list-mine"/>
 		</acme:menu-option>
 		
@@ -58,8 +62,6 @@
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/shut-down"/>
 		</acme:menu-option>
 		
-		<!-- LECTURER -->
-		<acme:menu-option code="master.menu.lecturer.dashboard" access="hasRole('Lecturer')" action="/lecturer/lecturer-dashboard/show"></acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>
