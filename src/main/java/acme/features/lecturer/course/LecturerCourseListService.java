@@ -45,7 +45,7 @@ public class LecturerCourseListService extends AbstractService<Lecturer, Course>
 	public void unbind(final Course object) {
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "title", "abst", "courseType", "retailPrice", "link");
+		tuple = super.unbind(object, "code", "title", "abst", "retailPrice", "link");
 		super.getResponse().setData(tuple);
 
 	}
