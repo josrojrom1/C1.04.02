@@ -2,7 +2,7 @@ key,enabled,identity,password,username
 user-account-anonymous-01,false,"UserIdentity{name: 'John', surname: 'Doe', email: 'john.doe@acme.com'}",HIDDEN-PASSWORD,anonymous
 user-account-administrator-01,true,"UserIdentity{name: 'Administrator', surname: 'Acme', email: 'administrator@acme.com'}",administrator,administrator
 user-account-lecturer-01,true,"UserIdentity{name: 'Ivan', surname: 'Cabesita', email: 'ivanelloco@acme.com'}",lecturer1,lecturer1
-user-account-lecturer-02,false,"UserIdentity{name: 'Lucia', surname: 'Reguera', email: 'lucia@acme.com'}",lecturer2,lecturer2
+user-account-lecturer-02,true,"UserIdentity{name: 'Lucia', surname: 'Reguera', email: 'lucia@acme.com'}",lecturer2,lecturer2
 user-account-assistant-01,false,"UserIdentity{name: 'Manolo', surname: 'Perez', email: 'manolo@acme.com'}",assistant1,assistant1
 user-account-assistant-02,false,"UserIdentity{name: 'Simon', surname: 'Rivia', email: 'simon@acme.com'}",assistant2,assistant2
 user-account-administrator-02,false,"UserIdentity{name: 'Administrator1', surname: 'Acme', email: 'administrator1@acme.com'}",administrator1,administrator1
