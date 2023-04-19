@@ -1,6 +1,9 @@
 
 package acme.features.administrator.banner;
 
+import java.time.Duration;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +16,14 @@ import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 
 @Service
-public class AdministratorBannerUpdateService extends AbstractService<Administrator, Banner> {
+public class AdministratorBannerCreateService extends AbstractService<Administrator, Banner> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	protected AdministratorBannerRepository repository;
+
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -34,19 +41,16 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 		Banner object;
 		Date moment;
 		moment = MomentHelper.getCurrentMoment();
-		int id;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneBannerById(id);
-		object.setMoment(object.getMoment());
-		object.setStartDisplayPeriod(object.getStartDisplayPeriod());
-		object.setEndDisplayPeriod(object.getEndDisplayPeriod());
+		object = new Banner();
+		object.setMoment(moment);
+		object.setStartDisplayPeriod(moment);
+		object.setEndDisplayPeriod(moment);
 		object.setPictureLink("");
 		object.setWebLink("");
 		object.setSlogan("");
 
 		super.getBuffer().setData(object);
-
 	}
 
 	@Override
@@ -54,7 +58,6 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 		assert object != null;
 
 		super.bind(object, "moment", "startDisplayPeriod", "endDisplayPeriod", "pictureLink", "webLink", "slogan");
-
 	}
 
 	@Override
@@ -63,8 +66,14 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 		if (!super.getBuffer().getErrors().hasErrors("startDisplayPeriod"))
 			super.state(object.getStartDisplayPeriod().after(object.getMoment()), "startDisplayPeriod", "administrator.banner.form.error.date");
 
+		Date deadline;
+
+		deadline = MomentHelper.deltaFromCurrentMoment(7, ChronoUnit.DAYS);
+
 		if (!super.getBuffer().getErrors().hasErrors("endDisplayPeriod"))
-			super.state(object.getStartDisplayPeriod().before(object.getEndDisplayPeriod()), "endDisplayPeriod", "administrator.banner.form.error.date");
+			super.state(Duration.between(object.getStartDisplayPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(), object.getEndDisplayPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()).toDays() >= 7,
+				"endDisplayPeriod", "administrator.banner.form.error.date");
+
 	}
 
 	@Override
@@ -77,9 +86,12 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 	@Override
 	public void unbind(final Banner object) {
 		assert object != null;
+
 		Tuple tuple;
 
 		tuple = super.unbind(object, "moment", "startDisplayPeriod", "endDisplayPeriod", "pictureLink", "webLink", "slogan");
+
 		super.getResponse().setData(tuple);
 	}
+
 }
