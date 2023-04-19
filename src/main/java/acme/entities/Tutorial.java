@@ -44,6 +44,8 @@ public class Tutorial extends AbstractEntity {
 
 	protected double			totalTime;
 
+	protected boolean			draftMode;
+
 	@ManyToOne()
 	@NotNull
 	@Valid
