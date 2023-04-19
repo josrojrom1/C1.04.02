@@ -11,7 +11,6 @@
 # master.menu #################################################################
 
 master.menu.home = Home
-master.menu.authenticated= Authenticated 
 master.menu.authenticated.note= Notes
 master.menu.sign-up = Sign up
 master.menu.sign-in = Sign in
@@ -52,11 +51,12 @@ master.menu.user-account.general-data = General data
 master.menu.user-account.provider = Provider data
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-lecturer = Become a lecturer
+master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.auditor = Auditor data
+master.menu.user-account.become-consumer = Become a auditor
 
 
 # master.menu.authenticated ####################################################
 master.menu.authenticated = Authenticated
 master.menu.authenticated.bulletin.list = List bulletins
-
-
 
