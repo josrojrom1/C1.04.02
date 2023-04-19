@@ -1,0 +1,8 @@
+key,moment,title,message,flag,link
+bulletin-01,"2022/01/01 03:00","Anuncios sobre nuevos cursos disponibles","Todos los estudiantes tendrán a su disposición los nuevos cursos del año 2022",NOT_CRITICAL,null
+bulletin-02,"2022/01/02 09:32","Aplicación inactiva temporalmente","La aplicación sufrirá periodos de inactividad debido a mejoras técnicas",CRITICAL,"https://tenemosunproblema.com"
+bulletin-03,"2022/03/15 14:45","Idioma en inglés disponible","La aplicación se encuentra totalmente traducida al Español (España) e Inglés (EEUU)",NOT_CRITICAL,null
+bulletin-04,"2022/03/20 19:35","Actualizadas algunas columnas de la base de datos de boletin","Ahora se mostrará más información en cada boletín",CRITICAL,"https://nuevabasedatos/datosNuevos.es"
+bulletin-05,"2022/05/10 10:44","testing-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa75","a","NOT_CRITICAL",null
+bulletin-06,"2022/06/01 10:44","zA","testing-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa100","NOT_CRITICAL","https://youtube/videoSobreTesting/userRandom1.com"
+bulletin-07,"2022/06/29 10:44","z123","a","NOT_CRITICAL",null

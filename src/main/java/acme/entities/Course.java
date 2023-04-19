@@ -30,7 +30,7 @@ public class Course extends AbstractEntity {
 	//Code (not blank, unique and pattern)
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3} \\d{3}")
+	@Pattern(regexp = "[A-Z]{1,3} \\d{3}", message = "{validation.course.code}")
 	protected String			code;
 
 	//Title (not blank, shorter than 76 char)
@@ -43,10 +43,9 @@ public class Course extends AbstractEntity {
 	@Length(max = 100)
 	protected String			abst;
 
-	//Course (theory course or hands-on course)
-	protected LessonType		courseType;
+	//CourseType atributo derivado (se calcula segun las lectures que tenga)
 
-	//Retail price (positive or nought)(Purely theoretical courses rejected by the system)
+	//Retail price (positive or nought)
 	@NotNull
 	@Valid
 	protected Money				retailPrice;
@@ -55,28 +54,12 @@ public class Course extends AbstractEntity {
 	@URL
 	protected String			link;
 
+	protected boolean			draftMode;
+
 	//Lecturer manyToOne()
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
 	protected Lecturer			lecturer;
-
-	//Tutorial manyToOne() 
-	@ManyToOne()
-	@NotNull
-	@Valid
-	protected Tutorial			tutorial;
-
-	//Tutorial manyToOne() 
-	@ManyToOne()
-	@NotNull
-	@Valid
-	protected Audit				audit;
-
-	//Practicum manyToOne() 
-	@ManyToOne()
-	@NotNull
-	@Valid
-	protected Practicum			practicum;
 
 }

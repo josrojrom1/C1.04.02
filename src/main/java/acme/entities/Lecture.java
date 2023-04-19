@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.data.AbstractEntity;
+import acme.roles.Lecturer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,10 +53,14 @@ public class Lecture extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	//A course aggregates several lectures by the same lecturer
+	boolean						draftMode;
+
+	//Una Lecture es creada siempre por un Lecturer
 	@NotNull
 	@Valid
-	@ManyToOne()
-	protected Course			course;
+	@ManyToOne(optional = false)
+	protected Lecturer			lecturer;
+
+	
 
 }
