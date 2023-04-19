@@ -18,6 +18,27 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
+			
+		<!-- ANY LIST COURSES -->
+		<acme:menu-option code="master.menu.courses">
+			<acme:menu-suboption code="master.menu.course.list" action="/any/course/list"/>
+		</acme:menu-option>
+		
+		<!-- AUTHENTICATED -->
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.tutorial" action="/authenticated/tutorial/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.note" action="/authenticated/note/list"/>
+		</acme:menu-option>
+		
+		<!-- LECTURER -->
+		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
+			<acme:menu-suboption code="master.menu.lecturer.dashboard" action="/lecturer/lecturer-dashboard/show"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.lecturer.lecture.list" action="/lecturer/lecture/list"/>
+			<acme:menu-suboption code="master.menu.lecturer.course.list" action="/lecturer/course/list"/>
+		</acme:menu-option>
+		
 		<!-- ANONYMOUS -->
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="47546590: Reina Munoz, Jose Antonio" action="https://www.youtube.com/"/>
@@ -26,9 +47,12 @@
 			<acme:menu-suboption code="45388453: Ybarra Manrique, Miguel" action="https://open.spotify.com/?"/>
 			<acme:menu-suboption code="29580039: Albalat Ortiz, Samuel" action="https://cityofmist.co/"/>
 		</acme:menu-option>
+
 		
 		<!-- ADMINISTRATOR -->
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
+			<acme:menu-suboption code="master.menu.administrator.bulletin.list" action="/administrator/bulletin/list"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-suboption code="master.menu.administrator.configuration" action="/administrator/configuration/list"/>
 			<acme:menu-separator/>
@@ -37,10 +61,8 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/shut-down"/>
 		</acme:menu-option>
-		<!-- AUTHENTICATED -->
-		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.tutorial" action="/authenticated/tutorial/list"/>
-		</acme:menu-option>
+
+		
 		<!-- LECTURER -->
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
 			<acme:menu-suboption code="master.menu.lecturer.dashboard" action="/lecturer/dashboard"/>
@@ -49,6 +71,7 @@
 		<acme:menu-option code="master.menu.assistant" access="hasRole('Assistant')">
 			<acme:menu-suboption code="master.menu.assistant.tutorial" action="/assistant/tutorial/list"/>
 		</acme:menu-option>
+
 		
 	</acme:menu-left>
 
@@ -57,9 +80,15 @@
 		<acme:menu-option code="master.menu.sign-in" action="/master/sign-in" access="isAnonymous()"/>
 
 		<acme:menu-option code="master.menu.user-account" access="isAuthenticated()">
+			<!-- UPDATE user account -->
 			<acme:menu-suboption code="master.menu.user-account.general-data" action="/authenticated/user-account/update"/>
+			<!-- BECOME ASSISTANT -->
 			<acme:menu-suboption code="master.menu.user-account.become-assistant" action="/authenticated/assistant/create" access="!hasRole('Assistant')"/>
+			<!-- BECOME LECTURER -->
+			<acme:menu-suboption code="master.menu.user-account.become-lecturer" action="/authenticated/lecturer/create" access="!hasRole('Lecturer')"/>
+			<acme:menu-suboption code="master.menu.user-account.lecturer" action="/authenticated/lecturer/update" access="hasRole('Lecturer')"/>
 		</acme:menu-option>
+		
 
 		<acme:menu-option code="master.menu.sign-out" action="/master/sign-out" access="isAuthenticated()"/>
 	</acme:menu-right>

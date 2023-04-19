@@ -8,8 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.consumer.form.label.compañía = Compañía
-authenticated.consumer.form.label.sector = Sector
+master.menu.lecturer.dashboard = Panel del profesor
+master.menu.lecturer = Profesor
 
-authenticated.consumer.form.button.create = Registrar
-authenticated.consumer.form.button.update = Actualizar
+authenticated.lecturer.form.label.almaMater = Alma Mater
+authenticated.lecturer.form.label.resume = Resumen
+authenticated.lecturer.form.label.qualifications = Cualificaciones
+authenticated.lecturer.form.label.link = Enlace
+authenticated.lecturer.form.button.create = Crear
+authenticated.lecturer.form.button.update = Actualizar

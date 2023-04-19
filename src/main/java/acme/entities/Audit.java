@@ -54,4 +54,8 @@ public class Audit extends AbstractEntity {
 	@ManyToOne()
 	@Valid
 	protected Auditor			auditor;
+
+	@ManyToOne()
+	@Valid
+	protected Course			course;
 }
