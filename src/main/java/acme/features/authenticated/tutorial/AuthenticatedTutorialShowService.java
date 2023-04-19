@@ -8,7 +8,6 @@ import acme.entities.Tutorial;
 import acme.framework.components.accounts.Authenticated;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
-import acme.roles.Assistant;
 
 @Service
 public class AuthenticatedTutorialShowService extends AbstractService<Authenticated, Tutorial> {
@@ -46,10 +45,13 @@ public class AuthenticatedTutorialShowService extends AbstractService<Authentica
 	public void unbind(final Tutorial object) {
 		assert object != null;
 		Tuple tuple;
-		final Assistant assistant = object.getAssistant();
+
+		String assistant;
+		assistant = object.getAssistant().getUserAccount().getIdentity().getName();
+		assistant = assistant + " " + object.getAssistant().getUserAccount().getIdentity().getSurname();
 
 		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
-		tuple.put("assistant", assistant.getUserAccount().getUsername());
+		tuple.put("assistant", assistant);
 		super.getResponse().setData(tuple);
 	}
 }

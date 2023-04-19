@@ -32,7 +32,7 @@ public class AuthenticatedTutorialListService extends AbstractService<Authentica
 	public void load() {
 
 		Collection<Tutorial> objects;
-		objects = this.repository.findAllTutorials();
+		objects = this.repository.findAllPublishedTutorials();
 		super.getBuffer().setData(objects);
 	}
 
@@ -41,8 +41,12 @@ public class AuthenticatedTutorialListService extends AbstractService<Authentica
 		assert object != null;
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime", "assistant");
+		String assistant;
+		assistant = object.getAssistant().getUserAccount().getIdentity().getName();
+		assistant = assistant + " " + object.getAssistant().getUserAccount().getIdentity().getSurname();
 
+		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
+		tuple.put("assistant", assistant);
 		super.getResponse().setData(tuple);
 	}
 }

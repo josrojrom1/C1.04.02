@@ -16,6 +16,6 @@ authenticated.tutorial.show.label.goals = Objetivos
 authenticated.tutorial.show.label.totalTime = Tiempo total
 authenticated.tutorial.show.label.assistant = Asistente
 #-------------List-------------------------------#
-authenticated.tutorial.list.label.code= Código
+authenticated.tutorial.list.label.assistant = Asistente
 authenticated.tutorial.list.label.title= Título
 #-------------Errors-------------------------------#

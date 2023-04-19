@@ -5,6 +5,6 @@
 
 
 <acme:list>
-	<acme:list-column code="authenticated.tutorial.list.label.code" path="code" width="50%"/>
 	<acme:list-column code="authenticated.tutorial.list.label.title" path="title" width="50%"/>
+	<acme:list-column code="authenticated.tutorial.list.label.assistant" path="assistant" width="50%"/>
 </acme:list>
