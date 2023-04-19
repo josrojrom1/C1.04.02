@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.consumer;
+package acme.features.authenticated.auditor;
 
 import javax.annotation.PostConstruct;
 
@@ -19,18 +19,18 @@ import org.springframework.stereotype.Controller;
 
 import acme.framework.components.accounts.Authenticated;
 import acme.framework.controllers.AbstractController;
-import acme.roles.Consumer;
+import acme.roles.Auditor;
 
 @Controller
-public class AuthenticatedConsumerController extends AbstractController<Authenticated, Consumer> {
+public class AuthenticatedAuditorController extends AbstractController<Authenticated, Auditor> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuthenticatedConsumerCreateService	createService;
+	protected AuthenticatedAuditorCreateService	createService;
 
 	@Autowired
-	protected AuthenticatedConsumerUpdateService	updateService;
+	protected AuthenticatedAuditorUpdateService	updateService;
 
 	// Constructors -----------------------------------------------------------
 
