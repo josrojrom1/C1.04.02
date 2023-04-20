@@ -14,7 +14,7 @@ import acme.framework.services.AbstractService;
 import acme.roles.Assistant;
 
 @Service
-public class AssistantTutorialShowService extends AbstractService<Assistant, Tutorial> {
+public class AssistantTutorialPublishService extends AbstractService<Assistant, Tutorial> {
 
 	@Autowired
 	protected AssistantTutorialRepository repository;
@@ -35,7 +35,7 @@ public class AssistantTutorialShowService extends AbstractService<Assistant, Tut
 
 		masterId = super.getRequest().getData("id", int.class);
 		tutorial = this.repository.findOneTutorial(masterId);
-		status = tutorial != null && super.getRequest().getPrincipal().hasRole(tutorial.getAssistant()) && tutorial.getAssistant().getId() == super.getRequest().getPrincipal().getActiveRoleId();
+		status = tutorial != null && tutorial.isDraftMode() && super.getRequest().getPrincipal().hasRole(tutorial.getAssistant()) && tutorial.getAssistant().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -44,18 +44,53 @@ public class AssistantTutorialShowService extends AbstractService<Assistant, Tut
 	public void load() {
 		Tutorial object;
 		int id;
+
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneTutorial(id);
 		super.getBuffer().setData(object);
 	}
 
 	@Override
+	public void bind(final Tutorial object) {
+		assert object != null;
+		int courseId;
+		Course course;
+
+		courseId = super.getRequest().getData("course", int.class);
+		course = this.repository.findOneCourseById(courseId);
+
+		super.bind(object, "code", "title", "abst", "goals", "totalTime");
+		object.setCourse(course);
+	}
+
+	@Override
+	public void validate(final Tutorial object) {
+		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Tutorial existing;
+			existing = this.repository.findOneTutorialByCode(object.getCode());
+			super.state(existing == null || existing.getId() == object.getId(), "code", "assistant.tutorial.form.error.duplicated");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("totalTime"))
+			super.state(object.getTotalTime() >= 0, "totalTime", "assistant.tutorial.form.error.totalTime");
+	}
+
+	@Override
+	public void perform(final Tutorial object) {
+		assert object != null;
+		object.setDraftMode(false);
+		this.repository.save(object);
+	}
+
+	@Override
 	public void unbind(final Tutorial object) {
 		assert object != null;
-
 		Collection<Course> courses;
+
 		courses = this.repository.findAllPublishedCourses();
+
 		SelectChoices courseChoices;
+
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 
 		Tuple tuple;
