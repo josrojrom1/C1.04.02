@@ -44,8 +44,11 @@ public class AssistantTutorialListMineService extends AbstractService<Assistant,
 		assert object != null;
 		Tuple tuple;
 
+		String assistant;
+		assistant = object.getAssistant().getUserAccount().getIdentity().getName();
+		assistant = assistant + " " + object.getAssistant().getUserAccount().getIdentity().getSurname();
 		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
-
+		tuple.put("assistant", assistant);
 		super.getResponse().setData(tuple);
 	}
 }

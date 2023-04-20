@@ -15,6 +15,7 @@ authenticated.tutorial.show.label.abst = Abstract
 authenticated.tutorial.show.label.goals = Goals
 authenticated.tutorial.show.label.totalTime = Total time
 authenticated.tutorial.show.label.assistant = Assistant
+authenticated.tutorial.show.label.course = Course
 #--------------LIST------------------------------#
 authenticated.tutorial.list.label.assistant = Assistant
 authenticated.tutorial.list.label.title = Title

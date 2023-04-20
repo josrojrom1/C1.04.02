@@ -10,4 +10,5 @@
 	<acme:input-textbox code="authenticated.tutorial.show.label.goals" path="goals"/>
 	<acme:input-double code="authenticated.tutorial.show.label.totalTime" path="totalTime"/>
 	<acme:input-textbox code="authenticated.tutorial.show.label.assistant" path="assistant"/>
+	<acme:input-textbox code="authenticated.tutorial.show.label.course" path="course"/>
 </acme:form>

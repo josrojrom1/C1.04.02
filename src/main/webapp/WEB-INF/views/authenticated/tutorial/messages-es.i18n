@@ -15,6 +15,7 @@ authenticated.tutorial.show.label.abst = Abstracto
 authenticated.tutorial.show.label.goals = Objetivos
 authenticated.tutorial.show.label.totalTime = Tiempo total
 authenticated.tutorial.show.label.assistant = Asistente
+authenticated.tutorial.show.label.course = Curso
 #-------------List-------------------------------#
 authenticated.tutorial.list.label.assistant = Asistente
 authenticated.tutorial.list.label.title= Título

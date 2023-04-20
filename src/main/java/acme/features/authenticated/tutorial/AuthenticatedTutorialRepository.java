@@ -18,6 +18,6 @@ public interface AuthenticatedTutorialRepository extends AbstractRepository {
 	@Query("SELECT t FROM Tutorial t WHERE t.id = :id")
 	public Tutorial findOneTutorial(int id);
 
-	@Query("SELECT t FROM Tutorial t WHERE t.draftMode=false")
+	@Query("SELECT t FROM Tutorial t WHERE t.draftMode=false AND t.course.draftMode=false")
 	public Collection<Tutorial> findAllPublishedTutorials();
 }

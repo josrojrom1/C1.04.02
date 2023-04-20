@@ -13,9 +13,18 @@ assistant.tutorial.show.label.code = Código
 assistant.tutorial.show.label.title = Título
 assistant.tutorial.show.label.abst = Abstracto
 assistant.tutorial.show.label.goals = Objetivos
-assistant.tutorial.show.label.totalTime = Tiempo total
+assistant.tutorial.show.label.totalTime = Tiempo total estimado
 assistant.tutorial.show.label.assistant = Asistente
+assistant.tutorial.show.label.course = Curso
+
+assistant.tutorial.form.button.update = Actualizar
+assistant.tutorial.form.button.delete = Eliminar
+assistant.tutorial.form.button.create = Crear
 #-------------List-------------------------------#
 assistant.tutorial.list.label.code= Código
 assistant.tutorial.list.label.title= Título
+assistant.tutorial.list.label.assistant= Asistente
+assistant.tutorial.list.button.create = Crear
 #-------------Errors-------------------------------#
+assistant.tutorial.form.error.duplicated = Código duplicado
+assistant.tutorial.form.error.totalTime = El tiempo no puede ser negativo
