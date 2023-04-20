@@ -11,3 +11,8 @@
 	<acme:input-money code="any.course.form.label.retailPrice" path="retailPrice"/>
 	<acme:input-textbox code="any.course.form.label.link" path="link"/>
 </acme:form>
+<jstl:choose>
+	<jstl:when test="${principal}">
+		<acme:button code="master.menu.authenticated.audit.list" action="/authenticated/audit/list?masterId=${id}"/>
+	</jstl:when>
+</jstl:choose>

@@ -32,13 +32,22 @@
 			<acme:menu-suboption code="master.menu.lecturer.course.list" action="/lecturer/course/list"/>
 		</acme:menu-option>
 		
+		<!-- AUDITOR -->
+		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
+
+			<acme:menu-suboption code="master.menu.auditor.audit.list" action="/auditor/audit/list"/>
+		</acme:menu-option>
+		
 					
 		
 		
 		<!-- AUTHENTICATED -->
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.audit.list" action="/authenticated/audit/list"/>
 		</acme:menu-option>
+
+		
 		
 		<!-- ANONYMOUS -->
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
