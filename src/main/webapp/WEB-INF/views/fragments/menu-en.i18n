@@ -37,6 +37,18 @@ master.menu.administrator.bulletin.list = List bulletins
 master.menu.administrator.configuration = System Configuration
 master.menu.administrator.banner = System Banner
 
+# master.menu.assistant ###################################################
+
+master.menu.assistant = Assistant
+master.menu.assistant.tutorial = Tutorials
+
+# master.menu.authenticated ###################################################
+
+master.menu.authenticated = Authenticated
+master.meny.authenticated.tutorial = Tutorials
+master.menu.authenticated.bulletin.list = List bulletins
+master.menu.authenticated.note = List notes
+
 # master.menu.lecturer ########################################################
 
 master.menu.lecturer.lecture.list = List my lectures
@@ -49,14 +61,10 @@ master.menu.lecturer.dashboard = Dashboard
 
 master.menu.user-account = Account
 master.menu.user-account.general-data = General data
-master.menu.user-account.provider = Provider data
-master.menu.user-account.consumer = Consumer data
+master.menu.user-account.become-assistant = Become a assistant
 master.menu.user-account.become-lecturer = Become a lecturer
+master.menu.user-account.assistant = Assistant data
 
-
-# master.menu.authenticated ####################################################
-master.menu.authenticated = Authenticated
-master.menu.authenticated.bulletin.list = List bulletins
 
 
 
