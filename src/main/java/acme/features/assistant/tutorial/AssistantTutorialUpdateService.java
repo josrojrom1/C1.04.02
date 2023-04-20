@@ -87,7 +87,7 @@ public class AssistantTutorialUpdateService extends AbstractService<Assistant, T
 		assert object != null;
 		Collection<Course> courses;
 
-		courses = this.repository.findAllCourses();
+		courses = this.repository.findAllPublishedCourses();
 
 		SelectChoices courseChoices;
 

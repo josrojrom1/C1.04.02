@@ -32,12 +32,13 @@ public class AssistantTutorialDeleteService extends AbstractService<Assistant, T
 	@Override
 	public void authorise() {
 		boolean status;
-		Tutorial tutorial;
 		int id;
+		Tutorial tutorial;
 
 		id = super.getRequest().getData("id", int.class);
 		tutorial = this.repository.findOneTutorial(id);
-		status = tutorial != null && tutorial.isDraftMode();
+		status = tutorial != null && tutorial.isDraftMode() && super.getRequest().getPrincipal().hasRole(tutorial.getAssistant()) && tutorial.getAssistant().getId() == super.getRequest().getPrincipal().getActiveRoleId();
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -78,7 +79,7 @@ public class AssistantTutorialDeleteService extends AbstractService<Assistant, T
 		assert object != null;
 
 		Collection<Course> courses;
-		courses = this.repository.findAllCourses();
+		courses = this.repository.findAllPublishedCourses();
 		SelectChoices courseChoices;
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 
