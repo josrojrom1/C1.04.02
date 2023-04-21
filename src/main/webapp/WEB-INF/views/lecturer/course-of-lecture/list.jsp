@@ -15,16 +15,9 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
-<acme:form>
+<h3><acme:message code="lecturer.courseOfLecture.list.label.message.remove.lecture"/></h3>
 
-	
-	<acme:input-textbox code="lecturer.courseOfLecture.form.label.course.title" path="courseTitle" readonly="true"/>
-	<acme:input-select code="lecturer.courseOfLecture.form.label.lecture" path="lecture" choices="${lectures}"/>
-	
-	
-	<jstl:if test="${_command == 'create'}">
-		<acme:submit code="lecturer.courseOfLecture.form.button.create" action="/lecturer/courseOfLecture/create?id=${id}"/>
-	</jstl:if>
-	
+<acme:list>
+	<acme:list-column code="lecturer.course-lecture.list.label.lecture" path="lecture"/>
+</acme:list>
 
-</acme:form>

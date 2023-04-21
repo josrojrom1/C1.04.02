@@ -20,8 +20,11 @@
 	<acme:list-column code="lecturer.lecture.list.label.learningTime" path="learningTime"/>
 </acme:list>
 
+<jstl:if test="${_command != 'listLectureFromCourse'}">
+	<acme:button code="lecturer.lecture.list.button.create" action="/lecturer/lecture/create"/>
+</jstl:if>
 
-<acme:button code="lecturer.lecture.list.button.create" action="/lecturer/lecture/create"/>
+
 	
 
 	
