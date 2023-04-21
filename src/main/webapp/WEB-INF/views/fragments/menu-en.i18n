@@ -47,12 +47,13 @@ master.menu.administrator.banner = System Banner
 # master.menu.assistant ###################################################
 
 master.menu.assistant = Assistant
-master.menu.assistant.tutorial = Tutorials
+master.menu.assistant.tutorial = List my tutorials
+master.menu.assistant.tutorialSession = List my sessions
 
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Authenticated
-master.meny.authenticated.tutorial = Tutorials
+master.menu.authenticated.tutorial = List tutorials
 master.menu.authenticated.bulletin.list = List bulletins
 master.menu.authenticated.note = List notes
 master.menu.authenticated.audit.list = List all audits

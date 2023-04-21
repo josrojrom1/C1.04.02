@@ -34,6 +34,7 @@ public class TutorialSession extends AbstractEntity {
 	@Length(max = 100)
 	protected String			abst;
 
+	@NotNull
 	protected LessonType		sessionType;
 
 	@NotNull
@@ -47,7 +48,7 @@ public class TutorialSession extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
 	protected Tutorial			tutorial;

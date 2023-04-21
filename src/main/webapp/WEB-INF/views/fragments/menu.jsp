@@ -101,6 +101,7 @@
 		<!-- ASSISTANT -->
 		<acme:menu-option code="master.menu.assistant" access="hasRole('Assistant')">
 			<acme:menu-suboption code="master.menu.assistant.tutorial" action="/assistant/tutorial/list"/>
+			<acme:menu-suboption code="master.menu.assistant.tutorialSession" action="/assistant/tutorial-session/list-mine"/>
 		</acme:menu-option>
 
 		
