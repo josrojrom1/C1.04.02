@@ -69,7 +69,7 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 	@Override
 	public void perform(final Enrolment object) {
 		assert object != null;
-		object.setIsFinalised(true);
+		object.setIsFinalised(false);
 
 		this.repository.save(object);
 	}
