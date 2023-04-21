@@ -28,8 +28,8 @@
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.tutorial" action="/authenticated/tutorial/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.practicum" action="/authenticated/practicum/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.note" action="/authenticated/note/list"/>
-			<acme:menu-suboption code="master.menu.authenticated.offer" action="/authenticated/offer/list"/>
 		</acme:menu-option>
 		
 		<!-- LECTURER -->
@@ -49,11 +49,27 @@
 			<acme:menu-suboption code="29580039: Albalat Ortiz, Samuel" action="https://cityofmist.co/"/>
 		</acme:menu-option>
 
+
 		
+		<!-- ANY LIST PEEPS -->
+        <acme:menu-option code="master.menu.peep" >
+        	<acme:menu-suboption code="master.menu.peep.list" action="/any/peep/list"/>
+        	
+        </acme:menu-option>
+        
+        	
+		
+		<!-- AUTHENTICATED LIST NOTES -->
+			<acme:menu-option code="master.menu.authenticated.note" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.note.list" action="/authenticated/note/list"/>
+			</acme:menu-option>
+			
+	
+		
+
 		<!-- ADMINISTRATOR -->
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.bulletin.list" action="/administrator/bulletin/list"/>
-			<acme:menu-suboption code="master.menu.administrator.offer.list" action="/administrator/offer/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-suboption code="master.menu.administrator.configuration" action="/administrator/configuration/list"/>
@@ -68,6 +84,11 @@
 		<!-- ASSISTANT -->
 		<acme:menu-option code="master.menu.assistant" access="hasRole('Assistant')">
 			<acme:menu-suboption code="master.menu.assistant.tutorial" action="/assistant/tutorial/list"/>
+		</acme:menu-option>
+		
+		<!-- COMPANY -->
+		<acme:menu-option code="master.menu.company" access="hasRole('Company')">
+			<acme:menu-suboption code="master.menu.company.practicum" action="/company/practicum/list"/>
 		</acme:menu-option>
 
 		

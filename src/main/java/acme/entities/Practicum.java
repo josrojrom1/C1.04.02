@@ -50,9 +50,15 @@ public class Practicum extends AbstractEntity {
 
 	protected double			totalTime;
 
+	protected boolean			draftMode;
+
 	@ManyToOne()
 	@Valid
 	@NotNull
 	protected Company			company;
+
+	@ManyToOne()
+	@Valid
+	protected Course			course;
 
 }
