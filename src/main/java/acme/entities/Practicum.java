@@ -52,6 +52,7 @@ public class Practicum extends AbstractEntity {
 
 	protected boolean			draftMode;
 
+	protected boolean			addendum;
 	@ManyToOne()
 	@Valid
 	@NotNull

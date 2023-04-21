@@ -6,19 +6,25 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.Course;
 import acme.entities.Practicum;
-import acme.entities.Tutorial;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
 public interface AuthenticatedPracticumRepository extends AbstractRepository {
 
-	@Query("SELECT t FROM Practicum t")
+	@Query("SELECT p FROM Practicum p")
 	public Collection<Practicum> findAllPracticums();
 
-	@Query("SELECT t FROM Practicum t WHERE t.id = :id")
+	@Query("SELECT p FROM Practicum p WHERE p.id = :id")
 	public Practicum findOnePracticum(int id);
 
-	@Query("SELECT t FROM Practicum t WHERE t.draftMode=false")
+	@Query("SELECT p FROM Practicum p WHERE p.draftMode=false")
 	public Collection<Practicum> findAllPublishedPracticums();
+
+	@Query("SELECT c from Course c where c.id = :id")
+	Course findCourseById(int id);
+
+	@Query("SELECT p from Practicum p where p.course.id = :id")
+	Collection<Practicum> findCoursePracticums(int id);
 }

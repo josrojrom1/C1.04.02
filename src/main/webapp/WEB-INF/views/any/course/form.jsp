@@ -14,5 +14,6 @@
 <jstl:choose>
 	<jstl:when test="${principal}">
 		<acme:button code="master.menu.authenticated.audit.list" action="/authenticated/audit/list?masterId=${id}"/>
+		<acme:button code="master.menu.authenticated.practicum.list" action="/authenticated/practicum/list?masterId=${id}"/>
 	</jstl:when>
 </jstl:choose>

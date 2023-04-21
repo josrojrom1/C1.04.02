@@ -52,7 +52,8 @@ master.menu.assistant.tutorialSession = Listar mis sesiones
 # master.menu.company ###################################################
 
 master.menu.company = Empresa
-master.menu.company.practicum = Prácticas
+master.menu.company.practicum = Listar mis prácticas
+master.menu.company.practicumSession = Listar mis sesiones
 
 # master.menu.authenticated ###################################################
 
@@ -62,6 +63,7 @@ master.menu.authenticated.bulletin.list = Listar mis boletines
 master.menu.authenticated.note = Listar las notas
 master.menu.authenticated.offer = Listar las ofertas
 master.menu.authenticated.audit.list = Listar todas las auditorias
+master.menu.authenticated.practicum.list = Listar todas las prácticas
 master.menu.authenticated.practicum = Listar las prácticas
 master.menu.authenticated.tutorial = Listar las tutorias
 

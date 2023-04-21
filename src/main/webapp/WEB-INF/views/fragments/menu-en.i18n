@@ -58,6 +58,7 @@ master.menu.authenticated.bulletin.list = List bulletins
 master.menu.authenticated.note = List notes
 master.menu.authenticated.offer = List offers
 master.menu.authenticated.audit.list = List all audits
+master.menu.authenticated.practicum.list = List all practicum
 master.meny.authenticated.practicum = List practica
 
 # master.menu.lecturer ########################################################
@@ -70,7 +71,8 @@ master.menu.lecturer.dashboard = Dashboard
 # master.menu.company ###################################################
 
 master.menu.company = Company
-master.menu.company.practicum = Practica
+master.menu.company.practicum = List my practica
+master.menu.assistant.practicumSession = List my sessions
 
 # master.menu.auditor ########################################################
 master.menu.auditor.audit.list = List my audits

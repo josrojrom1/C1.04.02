@@ -69,7 +69,7 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 	public void perform(final Practicum object) {
 		assert object != null;
 		object.setDraftMode(true);
-
+		object.setAddendum(false);
 		this.repository.save(object);
 	}
 
@@ -88,6 +88,7 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", true);
+		tuple.put("addendum", false);
 		tuple.put("courseChoices", courseChoices);
 
 		super.getResponse().setData(tuple);

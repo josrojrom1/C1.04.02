@@ -97,6 +97,7 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", object.isDraftMode());
+		tuple.put("addendum", object.isAddendum());
 		tuple.put("courseChoices", courseChoices);
 
 		super.getResponse().setData(tuple);
