@@ -1,5 +1,7 @@
 key,subject,assessment,startPeriod,endPeriod,mark,link,correction,key:audit
 auditing-record-01-01,Matemáticas,D5=)iº4@0qP8/7€tOCP!x$!Z4qUWIPT=UaQFdxtVz$h¡·n6y7@d%r!lm7v%F&(@5MMynVHwPgfeONZw50E4TI!4gdZzZ8&oGmByZ,2022/03/15 17:47,2022/03/16 20:30,B,https://www.kahoot.com,false,audit-01-01
-auditing-record-01-02,Diseño y Pruebas II,4@0qP8/7€tOCP!x$!Z4qUWIPT=U,2012/06/24 05:37,2012/06/27 21:37,B,,false,audit-01-01
+auditing-record-01-02,Diseño y Pruebas II,4@0qP8/7€tOCP!x$!Z4qUWIPT=U,2012/06/24 05:37,2012/06/27 21:37,A,,false,audit-01-01
+auditing-record-01-03,Diseño y Pruebas II,4@0qP8/7€tOCP!x$!Z4qUWIPT=U,2012/06/24 05:37,2012/06/27 21:37,A,,false,audit-01-01
+auditing-record-01-04,Diseño y Pruebas II,4@0qP8/7€tOCP!x$!Z4qUWIPT=U,2012/06/24 05:37,2012/06/27 21:37,C,,false,audit-01-01
 auditing-record-02-01,Diseño y Pruebas I,E,2020/06/24 07:27,2020/08/03 11:07,A_PLUS,https://www.youtube.com,false,audit-02-01
 auditing-record-02-02,=OZ3FS9dTNCv06aWcD!SgxDldCHzY(ImwpMR/g5Eq$!p&?$(G3¿%)Q6$)&l8UK?IbMxvuBrvj$e,n6y7@d%r!lm7v%F&(@5MMynVHwPgfeONZw50E4TI!4gd,2015/01/30 01:32,2015/02/22 18:50,A_PLUS,https://www.mongodb.com,false,audit-02-01

@@ -21,8 +21,9 @@
 	<acme:input-textbox code="auditor.audit.form.label.weakPoints" path="weakPoints"/>
 	<acme:input-textbox code="auditor.audit.form.label.strongPoints" path="strongPoints"/>
 	<acme:input-select code="auditor.audit.form.label.course" path="course" choices="${courseChoices}"/>
-	<acme:input-select code="auditor.audit.form.label.mark" path="mark" choices="${markChoices}"/>
-	
+	<jstl:if test="${acme:anyOf(_command, 'show')}">
+		<acme:input-textbox  code="auditor.audit.form.label.mark" path="mark" readonly = "true"/>
+	</jstl:if>
 	<!--<jstl:if test="${acme:anyOf(_command, 'show') && !draftMode}">
 	<acme:input-textbox code="auditor.audit.form.label.mark" path="mark"/>
 		<acme:input-textbox code="auditor.audit.form.label.course" path="course"/>
@@ -45,8 +46,9 @@
 	<jstl:if test="${acme:anyOf(_command, 'create')}">
 		<acme:submit code="auditor.audit.form.button.create" action="/auditor/audit/create"/>
 	</jstl:if>
-	<acme:button code="auditor.audit.form.button.auditingRecordList" action="/auditor/auditing-record/list?id=${id}"/>
-	
+	<jstl:if test="${!acme:anyOf(_command, 'create')}">
+		<acme:button code="auditor.audit.form.button.auditingRecordList" action="/auditor/auditing-record/list?id=${id}"/>
+	</jstl:if>
 	
 	
 </acme:form>

@@ -5,7 +5,6 @@
 
 <acme:list>
 	<acme:list-column code="auditor.audit.list.label.code" path="code" width="20%"/>
-	<acme:list-column code="auditor.audit.list.label.mark" path="mark" width="20%"/>
 	<acme:list-column code="auditor.audit.list.label.auditor" path="auditor" width="20%"/>
 	<acme:list-column code="auditor.audit.list.label.course" path="course" width="20%"/>
 

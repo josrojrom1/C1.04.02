@@ -47,7 +47,7 @@ public class AuditorAuditListMineService extends AbstractService<Auditor, Audit>
 		String auditor;
 		auditor = object.getAuditor().getUserAccount().getIdentity().getName();
 		auditor = auditor + " " + object.getAuditor().getUserAccount().getIdentity().getSurname();
-		tuple = super.unbind(object, "code", "conclusion", "weakPoints", "strongPoints", "mark");
+		tuple = super.unbind(object, "code", "conclusion", "weakPoints", "strongPoints");
 		tuple.put("auditor", auditor);
 		tuple.put("course", object.getCourse().getTitle());
 		super.getResponse().setData(tuple);

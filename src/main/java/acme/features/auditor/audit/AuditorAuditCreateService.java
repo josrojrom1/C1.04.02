@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.Audit;
 import acme.entities.Course;
-import acme.entities.Mark;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -50,7 +49,7 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findOneCourseById(courseId);
-		super.bind(object, "code", "conclusion", "weakPoints", "strongPoints", "mark");
+		super.bind(object, "code", "conclusion", "weakPoints", "strongPoints");
 		object.setCourse(course);
 	}
 
@@ -81,18 +80,18 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 		courses = this.repository.findPublishedCourses();
 
 		SelectChoices courseChoices;
-		SelectChoices markChoices;
+		//SelectChoices markChoices;
 
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
-		markChoices = SelectChoices.from(Mark.class, object.getMark());
+		//markChoices = SelectChoices.from(Mark.class, object.getMark());
 
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "conclusion", "weakPoints", "strongPoints", "mark");
+		tuple = super.unbind(object, "code", "conclusion", "weakPoints", "strongPoints");
 		tuple.put("course", courseChoices.getSelected().getKey());
 		//tuple.put("mark", markChoices.getSelected().getKey());
 		tuple.put("draftMode", true);
 		tuple.put("courseChoices", courseChoices);
-		tuple.put("markChoices", markChoices);
+		//tuple.put("markChoices", markChoices);
 
 		super.getResponse().setData(tuple);
 	}
