@@ -390,7 +390,7 @@ bg=pink</panel_attributes>
       <x>594</x>
       <y>1242</y>
       <w>174</w>
-      <h>84</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Tutorial
@@ -401,6 +401,7 @@ Tutorial
 + abst: String {NotBlank,Length(max=100)}
 + goals: String {NotBlank, Length(max=100)}
 + totalTime: double
++ draftMode: boolean
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -864,7 +865,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>222</x>
+      <x>258</x>
       <y>468</y>
       <w>30</w>
       <h>78</h>
@@ -895,9 +896,9 @@ m2=0..n</panel_attributes>
       <w>534</w>
       <h>618</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=1
-m2=0..n</panel_attributes>
+    <panel_attributes>lt=-&gt;
+m2=1
+m1=0..n</panel_attributes>
     <additional_attributes>870.0;1000.0;10.0;1000.0;10.0;10.0;190.0;10.0</additional_attributes>
   </element>
   <element>

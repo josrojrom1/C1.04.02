@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -48,10 +47,16 @@ public class Audit extends AbstractEntity {
 
 	//Mark (computed as the mode of the marks in the corresponding
 	//auditing records; ties must be bro-ken arbitrarily if necessary)
-	@NotNull
+
 	protected Mark				mark;
 
 	@ManyToOne()
 	@Valid
 	protected Auditor			auditor;
+
+	@ManyToOne()
+	@Valid
+	protected Course			course;
+
+	protected boolean			draftMode;
 }
