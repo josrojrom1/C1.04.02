@@ -10,6 +10,7 @@ import acme.roles.Student;
 
 @Repository
 public interface AuthenticatedStudentRepository extends AbstractRepository {
+	//hola
 
 	@Query("SELECT ua FROM UserAccount ua where ua.id = :id")
 	UserAccount findOneUserAccountById(int id);
