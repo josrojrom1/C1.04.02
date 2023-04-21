@@ -11,7 +11,6 @@
 ﻿# master.menu #################################################################
 
 master.menu.home = Inicio
-master.menu.authenticated.note= Notas
 master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
@@ -26,6 +25,13 @@ master.menu.anonymous = Anónimo
 master.menu.anonymous.favourite-link = Enlace favorito
 master.menu.anonymous.courses = Cursos
 
+# master.menu.authenticated #################################################################
+master.menu.authenticated.note= Notas
+master.menu.authenticated.note.list = Lista de Notas
+master.menu.peep = Mensajes
+master.menu.peep.list = Lista de mensajes
+master.menu.peep.create= Publicar
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
@@ -37,6 +43,19 @@ master.menu.administrator.shut-down = Parar el sistema
 master.menu.administrator.bulletin.list = Listar boletines
 master.menu.administrator.configuration = Configuración de sistema
 master.menu.administrator.banner = Banner del sistema
+
+# master.menu.assistant ###################################################
+
+master.menu.assistant = Asistente
+master.menu.assistant.tutorial = Tutorías
+
+# master.menu.authenticated ###################################################
+
+master.menu.authenticated = Autenticado
+master.menu.authenticated.tutorial = Tutoría
+master.menu.authenticated.bulletin.list = Listar mis boletines
+master.menu.authenticated.note = Listar las notas
+master.menu.authenticated.audit.list = Listar todas las auditorias
 
 # master.menu.lecturer ########################################################
 
@@ -59,7 +78,10 @@ master.menu.consumer.favourite-link = Enlace favorito
 
 master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
+master.menu.user-account.become-assistant = Hazte asistente
+master.menu.user-account.become-student = Hazte estudiante
 master.menu.user-account.become-lecturer = Hazte profesor
+
 master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
 master.menu.user-account.consumer = Datos de consumidor
@@ -68,9 +90,10 @@ master.menu.user-account.auditor = Datos de auditor
 master.menu.user-account.become-auditor = Hazte auditor
 
 
-# master.menu.authenticated ####################################################
-master.menu.authenticated = Autenticado
-master.menu.authenticated.bulletin.list = Listar mis boletines
-master.menu.authenticated.audit.list = Listar todas las auditorias
+master.menu.user-account.assistant = Datos de asistente
+master.menu.user-account.student = Datos del estudiante
+
+
+
 
 
