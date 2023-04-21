@@ -3,7 +3,6 @@ package acme.features.administrator.banner;
 
 import java.time.Duration;
 import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,10 +64,6 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("startDisplayPeriod"))
 			super.state(object.getStartDisplayPeriod().after(object.getMoment()), "startDisplayPeriod", "administrator.banner.form.error.date");
-
-		Date deadline;
-
-		deadline = MomentHelper.deltaFromCurrentMoment(7, ChronoUnit.DAYS);
 
 		if (!super.getBuffer().getErrors().hasErrors("endDisplayPeriod"))
 			super.state(Duration.between(object.getStartDisplayPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(), object.getEndDisplayPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()).toDays() >= 7,

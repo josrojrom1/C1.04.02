@@ -11,11 +11,11 @@
 # master.menu #################################################################
 
 master.menu.home = Home
-
 master.menu.sign-up = Sign up
 master.menu.sign-in = Sign in
 master.menu.sign-out = Sign out
 master.menu.courses = Courses
+master.menu.audits = Audits
 master.menu.course.list = List all
 
 # master.menu.anonymous #######################################################
@@ -55,6 +55,7 @@ master.menu.authenticated = Authenticated
 master.meny.authenticated.tutorial = Tutorials
 master.menu.authenticated.bulletin.list = List bulletins
 master.menu.authenticated.note = List notes
+master.menu.authenticated.audit.list = List all audits
 
 # master.menu.lecturer ########################################################
 
@@ -63,6 +64,9 @@ master.menu.lecturer.course.list = List my courses
 master.menu.lecturer = Lecturer
 master.menu.lecturer.dashboard = Dashboard
 
+# master.menu.auditor ########################################################
+master.menu.auditor.audit.list = List my audits
+master.menu.auditor = Auditor
 
 # master.menu.user-account ####################################################
 
@@ -71,8 +75,14 @@ master.menu.user-account.general-data = General data
 master.menu.user-account.become-assistant = Become a assistant
 master.menu.user-account.become-student = Become a student
 master.menu.user-account.become-lecturer = Become a lecturer
+
+master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.auditor = Auditor data
+master.menu.user-account.become-consumer = Become a auditor
+
 master.menu.user-account.assistant = Assistant data
 master.menu.user-account.student = Student data
+
 
 
 

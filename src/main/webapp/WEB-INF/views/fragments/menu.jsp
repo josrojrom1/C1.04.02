@@ -39,6 +39,24 @@
 			<acme:menu-suboption code="master.menu.lecturer.course.list" action="/lecturer/course/list"/>
 		</acme:menu-option>
 		
+
+		<!-- AUDITOR -->
+		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
+
+			<acme:menu-suboption code="master.menu.auditor.audit.list" action="/auditor/audit/list"/>
+		</acme:menu-option>
+		
+					
+		
+		
+		<!-- AUTHENTICATED -->
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.audit.list" action="/authenticated/audit/list"/>
+		</acme:menu-option>
+
+		
+
 		<!-- ANONYMOUS -->
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="47546590: Reina Munoz, Jose Antonio" action="https://www.youtube.com/"/>
@@ -95,15 +113,27 @@
 		<acme:menu-option code="master.menu.user-account" access="isAuthenticated()">
 			<!-- UPDATE user account -->
 			<acme:menu-suboption code="master.menu.user-account.general-data" action="/authenticated/user-account/update"/>
+
+
+			
 			<!-- BECOME STUDENT -->
 			<acme:menu-suboption code="master.menu.user-account.become-student" action="/authenticated/student/create" access="!hasRole('Student')"/>
 			<acme:menu-suboption code="master.menu.user-account.student" action="/authenticated/student/update" access="hasRole('Student')"/>
 			<!-- BECOME ASSISTANT -->
 			<acme:menu-suboption code="master.menu.user-account.become-assistant" action="/authenticated/assistant/create" access="!hasRole('Assistant')"/>
 			<acme:menu-suboption code="master.menu.user-account.assistant" action="/authenticated/assistant/update" access="hasRole('Assistant')"/>
+
 			<!-- BECOME LECTURER -->
 			<acme:menu-suboption code="master.menu.user-account.become-lecturer" action="/authenticated/lecturer/create" access="!hasRole('Lecturer')"/>
 			<acme:menu-suboption code="master.menu.user-account.lecturer" action="/authenticated/lecturer/update" access="hasRole('Lecturer')"/>
+
+			<acme:menu-suboption code="master.menu.user-account.become-provider" action="/authenticated/provider/create" access="!hasRole('Provider')"/>
+			<acme:menu-suboption code="master.menu.user-account.provider" action="/authenticated/provider/update" access="hasRole('Provider')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRole('Consumer')"/>
+			<acme:menu-suboption code="master.menu.user-account.consumer" action="/authenticated/consumer/update" access="hasRole('Consumer')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-auditor" action="/authenticated/auditor/create" access="!hasRole('Auditor')"/>
+			<acme:menu-suboption code="master.menu.user-account.auditor" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
+
 		</acme:menu-option>
 		
 
