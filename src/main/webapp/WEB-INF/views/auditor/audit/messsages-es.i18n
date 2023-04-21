@@ -26,3 +26,6 @@ auditor.audit.form.button.create = Crear
 auditor.audit.form.button.delete = Eliminar
 auditor.audit.form.button.update = Actualizar
 auditor.audit.form.button.publish = Publicar
+auditor.audit.form.button.auditingRecordList = Registros de auditoria
+auditor.auditingRecord.list.button.createAuditingRecord = Crear registro de auditoria
+auditor.audit.form.button.addCorrection = Añadir Correccion

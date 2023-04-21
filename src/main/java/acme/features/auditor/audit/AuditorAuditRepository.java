@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import acme.entities.Audit;
 import acme.entities.AuditingRecord;
 import acme.entities.Course;
+import acme.entities.Mark;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Auditor;
 
@@ -38,5 +39,11 @@ public interface AuditorAuditRepository extends AbstractRepository {
 
 	@Query("SELECT ar FROM AuditingRecord ar WHERE ar.audit.id=:id")
 	public Collection<AuditingRecord> findAuditingRecordById(int id);
+
+	@Query("SELECT ar.mark FROM AuditingRecord ar WHERE ar.audit.id=:id")
+	public Collection<Mark> findMarksByAuditId(int id);
+
+	//Map<Mark, Integer> -> groupBy(Mark).count
+	//values.max()
 
 }
