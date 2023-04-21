@@ -7,12 +7,7 @@
 
 	<acme:input-moment code="any.peep.form.label.moment" path="moment"/>
 	<acme:input-textbox code="any.peep.form.label.title" path="title"/>
-	<jstl:if test="${_command == 'create'}">
-		<acme:input-textbox code="any.peep.form.label.nick" path="nick" readonly="true"/>
-		</jstl:if>
-		<jstl:if test="${_command == 'create'}">
-			<acme:input-textbox code="any.peep.form.label.nick" path="nick"/>
-		</jstl:if>
+	<acme:input-textbox code="any.peep.form.label.nick" path="nick" readonly="${readonly1}"/>
 	<acme:input-textarea code="any.peep.form.label.message" path="message"/>
 	<acme:input-email code="any.peep.form.label.email" path="email"/>
 	<acme:input-url code="any.peep.form.label.link" path="link"/>
