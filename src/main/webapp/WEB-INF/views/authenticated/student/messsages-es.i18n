@@ -8,12 +8,10 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-master.menu.lecturer.dashboard = Panel del profesor
-master.menu.lecturer = Profesor
+authenticated.student.form.label.statement = Declaración
+authenticated.student.form.label.strongFeatures = Puntos Fuertes
+authenticated.student.form.label.weakFeatures = Puntos Débiles
+authenticated.student.form.label.link = Enlace
 
-authenticated.lecturer.form.label.almaMater = Alma Mater
-authenticated.lecturer.form.label.resume = Resumen
-authenticated.lecturer.form.label.qualifications = Cualificaciones
-authenticated.lecturer.form.label.link = Enlace
-authenticated.lecturer.form.button.create = Crear
-authenticated.lecturer.form.button.update = Actualizar
+authenticated.student.form.button.create = Registro
+authenticated.student.form.button.update = Actualizar

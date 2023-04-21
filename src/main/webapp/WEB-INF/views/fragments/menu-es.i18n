@@ -70,7 +70,9 @@ master.menu.consumer.favourite-link = Enlace favorito
 master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
 master.menu.user-account.become-assistant = Hazte asistente
+master.menu.user-account.become-student = Hazte estudiante
 master.menu.user-account.become-lecturer = Hazte profesor
 master.menu.user-account.assistant = Datos de asistente
+master.menu.user-account.student = Datos del estudiante
 
 

@@ -14,10 +14,10 @@ public interface AuthenticatedStudentRepository extends AbstractRepository {
 	@Query("SELECT ua FROM UserAccount ua where ua.id = :id")
 	UserAccount findOneUserAccountById(int id);
 
-	@Query("SELECT s FORM Student s where s.id = :id")
+	@Query("SELECT s FROM Student s where s.id = :id")
 	public Student findOneStudentById(int id);
 
-	@Query("SELECT s FROM Student s WHERE s.usserAccount.id = :id")
+	@Query("SELECT s FROM Student s WHERE s.userAccount.id = :id")
 	Student findOneStudentByUserAccountId(int id);
 
 }
