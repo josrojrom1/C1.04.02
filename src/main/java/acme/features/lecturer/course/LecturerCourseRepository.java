@@ -54,4 +54,10 @@ public interface LecturerCourseRepository extends AbstractRepository {
 	@Query("select col from CourseOfLecture col where col.course = :course")
 	Collection<CourseOfLecture> findCourseOfLecturesByCourse(Course course);
 
+	@Query("select c.acceptedCurrencies from Configuration c")
+	Collection<String> findConfigurationAcceptedCurrencies();
+
+	@Query("select c.code from Course c")
+	Collection<String> findAllCodesFromCourses();
+
 }

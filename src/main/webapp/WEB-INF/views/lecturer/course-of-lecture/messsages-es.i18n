@@ -11,5 +11,6 @@
 
 #-------------------------SHOW-------------------------------
 lecturer.courseOfLecture.form.label.course.title = Título del curso
-lecturer.courseOfLecture.form.label.lecture = Asignatura
+lecturer.courseOfLecture.form.label.lecture.title = Título de la asignatura
 lecturer.courseOfLecture.form.button.create = Añadir asignatura
+lecturer.courseOfLecture.list.label.message.remove.lecture = La asignatura seleccionada será eliminada
