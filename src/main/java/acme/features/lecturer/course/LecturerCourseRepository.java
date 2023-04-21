@@ -55,7 +55,7 @@ public interface LecturerCourseRepository extends AbstractRepository {
 	Collection<CourseOfLecture> findCourseOfLecturesByCourse(Course course);
 
 	@Query("select c.acceptedCurrencies from Configuration c")
-	Collection<String> findConfigurationAcceptedCurrencies();
+	String findConfigurationAcceptedCurrencies();
 
 	@Query("select c.code from Course c")
 	Collection<String> findAllCodesFromCourses();
