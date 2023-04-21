@@ -40,12 +40,13 @@ master.menu.administrator.banner = Banner del sistema
 # master.menu.assistant ###################################################
 
 master.menu.assistant = Asistente
-master.menu.assistant.tutorial = Tutorías
+master.menu.assistant.tutorial = Listar mis tutorías
+master.menu.assistant.tutorialSession = Listar mis sesiones
 
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Autenticado
-master.menu.authenticated.tutorial = Tutoría
+master.menu.authenticated.tutorial = Listar las tutorías
 master.menu.authenticated.bulletin.list = Listar mis boletines
 master.menu.authenticated.note = Listar las notas
 

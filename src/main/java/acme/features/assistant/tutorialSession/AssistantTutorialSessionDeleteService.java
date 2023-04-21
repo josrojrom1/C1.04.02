@@ -1,10 +1,7 @@
 
 package acme.features.assistant.tutorialSession;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,15 +11,14 @@ import acme.entities.Tutorial;
 import acme.entities.TutorialSession;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Assistant;
 
 @Service
-public class AssistantTutorialSessionUpdateService extends AbstractService<Assistant, TutorialSession> {
+public class AssistantTutorialSessionDeleteService extends AbstractService<Assistant, TutorialSession> {
 
 	@Autowired
-	AssistantTutorialSessionRepository repository;
+	protected AssistantTutorialSessionRepository repository;
 
 
 	@Override
@@ -40,7 +36,7 @@ public class AssistantTutorialSessionUpdateService extends AbstractService<Assis
 
 		id = super.getRequest().getData("id", int.class);
 		session = this.repository.findOneTutorialSession(id);
-		status = session != null && session.getTutorial().isDraftMode() && super.getRequest().getPrincipal().hasRole(Assistant.class) && session.getTutorial().getAssistant().getId() == super.getRequest().getPrincipal().getActiveRoleId();
+		status = session != null && super.getRequest().getPrincipal().hasRole(Assistant.class) && session.getTutorial().getAssistant().getId() == super.getRequest().getPrincipal().getActiveRoleId() && session.getTutorial().isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -63,28 +59,11 @@ public class AssistantTutorialSessionUpdateService extends AbstractService<Assis
 	@Override
 	public void validate(final TutorialSession object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("periodStart")) {
-			final Date moment = MomentHelper.deltaFromCurrentMoment(1, ChronoUnit.DAYS);
-			super.state(object.getPeriodStart().after(moment), "periodStart", "assistant.tutorialSession.form.error.periodStart");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("periodFinish"))
-			super.state(object.getPeriodStart().before(object.getPeriodFinish()), "periodStart, periodFinish", "assistant.tutorialSession.form.error.periodFinish");
-
-		if (!super.getBuffer().getErrors().hasErrors("periodFinish")) {
-			final Duration duration = MomentHelper.computeDuration(object.getPeriodStart(), object.getPeriodFinish());
-			final Duration d1 = Duration.ofHours(1);
-			final Duration d2 = Duration.ofHours(5);
-			super.state(d1.compareTo(duration) <= 0 && d2.compareTo(duration) >= 0, "*", "assistant.tutorialSession.form.error.duration");
-		}
 	}
 
 	@Override
 	public void perform(final TutorialSession object) {
-		assert object != null;
-
-		this.repository.save(object);
+		this.repository.delete(object);
 	}
 
 	@Override
@@ -101,12 +80,10 @@ public class AssistantTutorialSessionUpdateService extends AbstractService<Assis
 		tuple = super.unbind(object, "title", "abst", "periodStart", "periodFinish", "link");
 		tuple.put("tutorial", choices.getSelected().getKey());
 		tuple.put("choices", choices);
-		tuple.put("lessonType", lessonChoices.getSelected().getKey());
 		tuple.put("draftMode", object.getTutorial().isDraftMode());
+		tuple.put("lessonType", lessonChoices.getSelected().getKey());
 		tuple.put("lessonChoices", lessonChoices);
 		tuple.put("readTutorial", true);
-		tuple.put("masterId", super.getRequest().getData("masterId", int.class));
 		super.getResponse().setData(tuple);
 	}
-
 }
