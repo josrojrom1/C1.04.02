@@ -30,3 +30,4 @@ assistant.tutorial.list.button.create = Create
 #--------------Errors------------------------------#
 assistant.tutorial.form.error.duplicated = Code is already taken
 assistant.tutorial.form.error.totalTime = Time can´t be negative
+assistant.tutorial.form.error.spam = Do not spam

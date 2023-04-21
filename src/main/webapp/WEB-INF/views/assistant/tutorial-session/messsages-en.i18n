@@ -29,3 +29,4 @@ assistant.tutorialSession.form.error.duplicated = Code is already taken
 assistant.tutorialSession.form.error.duration = The duration has to between 1 and 5 hours
 assistant.tutorialSession.form.error.periodStart = The start period has to be at least one day ahead
 assistant.tutorialSession.form.error.periodFinish = The start has to be before the end
+assistant.tutorialSession.form.error.spam = Do not Spam
