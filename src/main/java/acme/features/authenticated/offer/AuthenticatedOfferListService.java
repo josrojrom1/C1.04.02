@@ -27,7 +27,9 @@ public class AuthenticatedOfferListService extends AbstractService<Authenticated
 	@Override
 	public void authorise() {
 
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Authenticated.class);
+		super.getResponse().setAuthorised(status);
 
 	}
 

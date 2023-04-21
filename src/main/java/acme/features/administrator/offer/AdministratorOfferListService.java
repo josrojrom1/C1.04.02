@@ -1,47 +1,42 @@
 
-package acme.features.authenticated.offer;
+package acme.features.administrator.offer;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Offer;
-import acme.framework.components.accounts.Authenticated;
+import acme.framework.components.accounts.Administrator;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 
 @Service
-public class AuthenticatedOfferShowService extends AbstractService<Authenticated, Offer> {
+public class AdministratorOfferListService extends AbstractService<Administrator, Offer> {
 
 	@Autowired
-	protected AuthenticatedOfferRepository repository;
+	protected AdministratorOfferRepository repository;
 
 
 	@Override
 	public void check() {
-		boolean status;
-
-		status = super.getRequest().hasData("id", int.class);
-
-		super.getResponse().setChecked(status);
-
+		super.getResponse().setChecked(true);
 	}
 
 	@Override
 	public void authorise() {
 		boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Authenticated.class);
+		status = super.getRequest().getPrincipal().hasRole(Administrator.class);
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Offer object;
-		int id;
+		Collection<Offer> objects;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneOfferById(id);
+		objects = this.repository.findAllOffers();
 
-		super.getBuffer().setData(object);
+		super.getBuffer().setData(objects);
 	}
 
 	@Override
@@ -49,7 +44,9 @@ public class AuthenticatedOfferShowService extends AbstractService<Authenticated
 		assert object != null;
 
 		Tuple tuple;
+
 		tuple = super.unbind(object, "moment", "heading", "summary", "timePeriodStart", "timePeriodEnd", "retailPrice", "link");
+
 		super.getResponse().setData(tuple);
 	}
 }

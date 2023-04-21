@@ -16,7 +16,6 @@ authenticated.offer.list.label.timePeriodStart = Inicio
 authenticated.offer.list.label.timePeriodEnd = Fin
 authenticated.offer.list.label.retailPrice = Precio
 authenticated.offer.list.label.link = Link
-authenticated.offer.list.button.create = Crear
 
 #-------------------SHOW-------------------------#
 authenticated.offer.form.label.moment = Momento
@@ -26,5 +25,3 @@ authenticated.offer.form.label.timePeriodStart = Inicio
 authenticated.offer.form.label.timePeriodEnd = Fin
 authenticated.offer.form.label.retailPrice = Precio
 authenticated.offer.form.label.link = Link
-authenticated.offer.form.button.create = Crear
-authenticated.offer.form.label.confirmation = Confirmar

@@ -13,10 +13,5 @@
 	<acme:input-money code="authenticated.offer.form.label.retailPrice" path="retailPrice"/>
 	<acme:input-url code="authenticated.offer.form.label.link" path="link"/>
 	
-	<jstl:if test="${_command == 'create'}">
-		<acme:input-checkbox code="authenticated.offer.form.label.confirmation" path="confirmation"/>
-		<acme:submit code="authenticated.offer.form.button.create" action="/authenticated/offer/create"/>
-	</jstl:if>
-	
 </acme:form>
 
