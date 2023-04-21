@@ -18,7 +18,6 @@ master.menu.courses = Cursos
 master.menu.course.list = Listar todos
 master.menu.audits = Auditorias
 
-
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anónimo
@@ -50,13 +49,21 @@ master.menu.assistant = Asistente
 master.menu.assistant.tutorial = Listar mis tutorías
 master.menu.assistant.tutorialSession = Listar mis sesiones
 
+# master.menu.company ###################################################
+
+master.menu.company = Empresa
+master.menu.company.practicum = Prácticas
+
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Autenticado
 master.menu.authenticated.tutorial = Listar las tutorías
 master.menu.authenticated.bulletin.list = Listar mis boletines
 master.menu.authenticated.note = Listar las notas
+master.menu.authenticated.offer = Listar las ofertas
 master.menu.authenticated.audit.list = Listar todas las auditorias
+master.menu.authenticated.practicum = Listar las prácticas
+master.menu.authenticated.tutorial = Listar las tutorias
 
 # master.menu.lecturer ########################################################
 
@@ -69,7 +76,6 @@ master.menu.lecturer.dashboard = Panel de control
 master.menu.auditor.audit.list = Listar mis auditorias
 master.menu.auditor = Auditor
 
-
 # master.menu.consumer ##########################################################
 
 master.menu.consumer = Consumidor
@@ -80,6 +86,8 @@ master.menu.consumer.favourite-link = Enlace favorito
 master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
 master.menu.user-account.become-assistant = Hazte asistente
+master.menu.user-account.become-company = Hazte empresa
+master.menu.user-account.company = Datos de empresa
 master.menu.user-account.become-student = Hazte estudiante
 master.menu.user-account.become-lecturer = Hazte profesor
 
@@ -93,8 +101,5 @@ master.menu.user-account.become-auditor = Hazte auditor
 
 master.menu.user-account.assistant = Datos de asistente
 master.menu.user-account.student = Datos del estudiante
-
-
-
 
 

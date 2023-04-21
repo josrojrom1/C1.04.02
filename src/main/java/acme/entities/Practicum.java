@@ -50,6 +50,8 @@ public class Practicum extends AbstractEntity {
 
 	protected double			totalTime;
 
+	protected boolean			draftMode;
+
 	@ManyToOne()
 	@Valid
 	@NotNull

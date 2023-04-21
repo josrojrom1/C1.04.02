@@ -28,7 +28,9 @@
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.tutorial" action="/authenticated/tutorial/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.practicum" action="/authenticated/practicum/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.note" action="/authenticated/note/list"/>
+      <acme:menu-suboption code="master.menu.authenticated.offer" action="/authenticated/offer/list"/>
 		</acme:menu-option>
 		
 		<!-- LECTURER -->
@@ -38,7 +40,6 @@
 			<acme:menu-suboption code="master.menu.lecturer.lecture.list" action="/lecturer/lecture/list"/>
 			<acme:menu-suboption code="master.menu.lecturer.course.list" action="/lecturer/course/list"/>
 		</acme:menu-option>
-		
 
 		<!-- AUDITOR -->
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
@@ -54,9 +55,6 @@
 			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.audit.list" action="/authenticated/audit/list"/>
 		</acme:menu-option>
-
-		
-
 		<!-- ANONYMOUS -->
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="47546590: Reina Munoz, Jose Antonio" action="https://www.youtube.com/"/>
@@ -101,7 +99,12 @@
 		<!-- ASSISTANT -->
 		<acme:menu-option code="master.menu.assistant" access="hasRole('Assistant')">
 			<acme:menu-suboption code="master.menu.assistant.tutorial" action="/assistant/tutorial/list"/>
-			<acme:menu-suboption code="master.menu.assistant.tutorialSession" action="/assistant/tutorial-session/list-mine"/>
+      <acme:menu-suboption code="master.menu.assistant.tutorialSession" action="/assistant/tutorial-session/list-mine"/>
+		</acme:menu-option>
+		
+		<!-- COMPANY -->
+		<acme:menu-option code="master.menu.company" access="hasRole('Company')">
+			<acme:menu-suboption code="master.menu.company.practicum" action="/company/practicum/list"/>
 		</acme:menu-option>
 
 		
@@ -115,7 +118,9 @@
 			<!-- UPDATE user account -->
 			<acme:menu-suboption code="master.menu.user-account.general-data" action="/authenticated/user-account/update"/>
 
-
+			<!-- BECOME COMPANY -->
+			<acme:menu-suboption code="master.menu.user-account.become-company" action="/authenticated/company/create" access="!hasRole('Company')"/>
+			<acme:menu-suboption code="master.menu.user-account.company" action="/authenticated/company/update" access="hasRole('Company')"/>
 			
 			<!-- BECOME STUDENT -->
 			<acme:menu-suboption code="master.menu.user-account.become-student" action="/authenticated/student/create" access="!hasRole('Student')"/>
@@ -137,7 +142,6 @@
 
 		</acme:menu-option>
 		
-
 		<acme:menu-option code="master.menu.sign-out" action="/master/sign-out" access="isAuthenticated()"/>
 	</acme:menu-right>
 </acme:menu-bar>
