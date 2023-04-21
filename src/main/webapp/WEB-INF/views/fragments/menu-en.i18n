@@ -49,6 +49,10 @@ master.menu.administrator.banner = System Banner
 master.menu.assistant = Assistant
 master.menu.assistant.tutorial = Tutorials
 
+# master.menu.student ##################################################
+master.menu.student = Student
+master.menu.student.enrolment = Enrolment
+
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Authenticated
