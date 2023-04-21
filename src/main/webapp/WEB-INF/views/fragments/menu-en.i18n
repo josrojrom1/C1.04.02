@@ -41,6 +41,7 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 master.menu.administrator.bulletin.list = List bulletins
+master.menu.administrator.offer.list = List offers
 master.menu.administrator.configuration = System Configuration
 master.menu.administrator.banner = System Banner
 
@@ -49,6 +50,10 @@ master.menu.administrator.banner = System Banner
 master.menu.assistant = Assistant
 master.menu.assistant.tutorial = List my tutorials
 master.menu.assistant.tutorialSession = List my sessions
+
+# master.menu.student ##################################################
+master.menu.student = Student
+master.menu.student.enrolment = Enrolment
 
 # master.menu.authenticated ###################################################
 

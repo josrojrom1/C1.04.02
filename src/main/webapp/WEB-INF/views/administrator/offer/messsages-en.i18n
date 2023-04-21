@@ -28,6 +28,7 @@ administrator.offer.form.label.timePeriodEnd = End
 administrator.offer.form.label.retailPrice = Price
 administrator.offer.form.label.link = Link
 administrator.offer.form.label.confirmation = Confirm
+administrator.offer.form.label.moneyExchange = Money exchange
 
 administrator.offer.form.button.update = Update
 administrator.offer.form.button.delete = Delete

@@ -16,6 +16,7 @@ authenticated.offer.list.label.timePeriodStart = Start
 authenticated.offer.list.label.timePeriodEnd = End
 authenticated.offer.list.label.retailPrice = Price
 authenticated.offer.list.label.link = Link
+authenticated.offer.form.label.moneyExchange = Money Exchange
 
 #-------------------SHOW-------------------------#
 authenticated.offer.form.label.moment = Moment

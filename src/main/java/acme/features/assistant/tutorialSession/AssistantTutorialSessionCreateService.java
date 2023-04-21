@@ -17,12 +17,16 @@ import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Assistant;
+import acme.utility.SpamDetector;
 
 @Service
 public class AssistantTutorialSessionCreateService extends AbstractService<Assistant, TutorialSession> {
 
 	@Autowired
-	protected AssistantTutorialSessionRepository repository;
+	protected AssistantTutorialSessionRepository	repository;
+
+	@Autowired
+	protected SpamDetector							textValidator;
 
 
 	@Override
@@ -80,6 +84,16 @@ public class AssistantTutorialSessionCreateService extends AbstractService<Assis
 			final Duration d1 = Duration.ofHours(1);
 			final Duration d2 = Duration.ofHours(5);
 			super.state(d1.compareTo(duration) <= 0 && d2.compareTo(duration) >= 0, "*", "assistant.tutorialSession.form.error.duration");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "assistant.tutorialSession.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("abst")) {
+			String validar;
+			validar = object.getAbst();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "assistant.tutorialSession.form.error.spam");
 		}
 
 	}

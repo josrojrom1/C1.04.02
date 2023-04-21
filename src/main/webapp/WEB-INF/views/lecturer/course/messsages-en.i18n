@@ -38,6 +38,7 @@ lecturer.course.form.button.delete = Delete
 lecturer.course.form.button.update = Update
 lecturer.course.form.button.publish = Publish
 lecturer.course.form.button.lectures = Related lectures
+lecturer.course.form.label.moneyExchange = Money exchange
 
 #---------------COURSE OF LECTURE-----------------------
 lecturer.lecture.form.error.retailPrice.positiveOrZero = The price should be positive or zero.

@@ -29,3 +29,4 @@ assistant.tutorialSession.form.error.duplicated = El código ya existe
 assistant.tutorialSession.form.error.duration = La duración tiene que estar entre 1 y 5 horas
 assistant.tutorialSession.form.error.periodStart = El comienzo tiene que ser al menos dentro de un día
 assistant.tutorialSession.form.error.periodFinish = El comienzo tiene que ser antes que el final
+assistant.tutorialSession.form.error.spam = No hagas spam

@@ -46,7 +46,11 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="E:/DP2/Workspace-23/Projects/Acme-L3-D03-23.3.1/src/main/resources/SpamDetector-0.0.1-SNAPSHOT.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/Miguel/Desktop/uni/3/DP2/Workspace-23/Projects/Acme-L3-D03-23.3/src/main/resources/SpamDetector-0.0.1-SNAPSHOT.jar">
+>>>>>>> branch 'main' of https://github.com/josrojrom1/C1.04.02.git
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

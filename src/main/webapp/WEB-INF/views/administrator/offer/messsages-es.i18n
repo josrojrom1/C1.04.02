@@ -28,7 +28,7 @@ administrator.offer.form.label.timePeriodEnd = Final
 administrator.offer.form.label.retailPrice = Precio
 administrator.offer.form.label.link = Link
 administrator.offer.form.label.confirmation = Confirmar
-
+administrator.offer.form.label.moneyExchange = Cambio de divisa
 administrator.offer.form.button.update = Actualizar
 administrator.offer.form.button.delete = Borrar
 administrator.offer.form.button.create = Crear Oferta

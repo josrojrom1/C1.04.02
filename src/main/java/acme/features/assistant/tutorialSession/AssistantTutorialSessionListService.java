@@ -45,6 +45,7 @@ public class AssistantTutorialSessionListService extends AbstractService<Assista
 
 		id = super.getRequest().getData("masterId", int.class);
 		objects = this.repository.findManyTutorialSessionByTutorial(id);
+		super.getResponse().setGlobal("masterId", id);
 		super.getBuffer().setData(objects);
 	}
 
@@ -55,14 +56,15 @@ public class AssistantTutorialSessionListService extends AbstractService<Assista
 		Tuple tuple;
 		int id;
 		boolean showCreate;
-		tuple = super.unbind(object, "title");
 
 		id = super.getRequest().getData("masterId", int.class);
 		tutorial = this.repository.findOneTutorial(id);
-		showCreate = tutorial.isDraftMode() && super.getRequest().getPrincipal().hasRole(tutorial.getAssistant());
-		tuple.put("tutorial", tutorial.getCode());
-		super.getResponse().setData(tuple);
+		showCreate = tutorial.isDraftMode() && super.getRequest().getPrincipal().hasRole(Assistant.class);
 		super.getResponse().setGlobal("masterId", id);
 		super.getResponse().setGlobal("showCreate", showCreate);
+		tuple = super.unbind(object, "title");
+		tuple.put("tutorial", tutorial.getCode());
+		tuple.put("showCreate", showCreate);
+		super.getResponse().setData(tuple);
 	}
 }

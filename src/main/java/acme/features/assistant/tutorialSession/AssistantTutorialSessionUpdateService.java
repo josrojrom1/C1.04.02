@@ -17,12 +17,16 @@ import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Assistant;
+import acme.utility.SpamDetector;
 
 @Service
 public class AssistantTutorialSessionUpdateService extends AbstractService<Assistant, TutorialSession> {
 
 	@Autowired
-	AssistantTutorialSessionRepository repository;
+	AssistantTutorialSessionRepository	repository;
+
+	@Autowired
+	protected SpamDetector				textValidator;
 
 
 	@Override
@@ -63,12 +67,11 @@ public class AssistantTutorialSessionUpdateService extends AbstractService<Assis
 	@Override
 	public void validate(final TutorialSession object) {
 		assert object != null;
-
+		//validación de la fechas
 		if (!super.getBuffer().getErrors().hasErrors("periodStart")) {
 			final Date moment = MomentHelper.deltaFromCurrentMoment(1, ChronoUnit.DAYS);
 			super.state(object.getPeriodStart().after(moment), "periodStart", "assistant.tutorialSession.form.error.periodStart");
 		}
-
 		if (!super.getBuffer().getErrors().hasErrors("periodFinish"))
 			super.state(object.getPeriodStart().before(object.getPeriodFinish()), "periodStart, periodFinish", "assistant.tutorialSession.form.error.periodFinish");
 
@@ -78,6 +81,17 @@ public class AssistantTutorialSessionUpdateService extends AbstractService<Assis
 			final Duration d2 = Duration.ofHours(5);
 			super.state(d1.compareTo(duration) <= 0 && d2.compareTo(duration) >= 0, "*", "assistant.tutorialSession.form.error.duration");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "assistant.tutorialSession.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("abst")) {
+			String validar;
+			validar = object.getAbst();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "assistant.tutorialSession.form.error.spam");
+		}
+
 	}
 
 	@Override

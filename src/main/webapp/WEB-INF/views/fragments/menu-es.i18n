@@ -31,6 +31,11 @@ master.menu.peep = Mensajes
 master.menu.peep.list = Lista de mensajes
 master.menu.peep.create= Publicar
 
+
+# master.menu.student ##################################################
+master.menu.student = Estudiante
+master.menu.student.enrolment = Inscripción
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
@@ -40,6 +45,7 @@ master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
 master.menu.administrator.bulletin.list = Listar boletines
+master.menu.administrator.offer.list = Listar ofertas
 master.menu.administrator.configuration = Configuración de sistema
 master.menu.administrator.banner = Banner del sistema
 
