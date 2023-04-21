@@ -48,7 +48,24 @@
 			<acme:menu-suboption code="29580039: Albalat Ortiz, Samuel" action="https://cityofmist.co/"/>
 		</acme:menu-option>
 
+
 		
+		<!-- ANY LIST PEEPS -->
+        <acme:menu-option code="master.menu.peep" >
+        	<acme:menu-suboption code="master.menu.peep.list" action="/any/peep/list"/>
+        	
+        </acme:menu-option>
+        
+        	
+		
+		<!-- AUTHENTICATED LIST NOTES -->
+			<acme:menu-option code="master.menu.authenticated.note" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.note.list" action="/authenticated/note/list"/>
+			</acme:menu-option>
+			
+	
+		
+
 		<!-- ADMINISTRATOR -->
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.bulletin.list" action="/administrator/bulletin/list"/>
