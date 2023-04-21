@@ -16,13 +16,17 @@ import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
+import acme.utility.SpamDetector;
 
 @Service
 public class AuditorAuditingRecordCorrectService extends AbstractService<Auditor, AuditingRecord> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuditorAuditingRecordRepository repository;
+	protected AuditorAuditingRecordRepository	repository;
+
+	@Autowired
+	protected SpamDetector						textValidator;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -83,6 +87,17 @@ public class AuditorAuditingRecordCorrectService extends AbstractService<Auditor
 		Boolean confirm;
 		confirm = super.getRequest().getData("confirm", boolean.class);
 		super.state(confirm, "confirm", "javax.validation.constraints.AssertTrue.message");
+
+		if (!super.getBuffer().getErrors().hasErrors("subject")) {
+			String validar;
+			validar = object.getSubject();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "subject", "auditor.auditingRecord.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("assessment")) {
+			String validar;
+			validar = object.getAssessment();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "assessment", "auditor.auditingRecord.error.spam");
+		}
 
 	}
 

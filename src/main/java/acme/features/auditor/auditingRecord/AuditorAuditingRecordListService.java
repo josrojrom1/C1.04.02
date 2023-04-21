@@ -48,7 +48,7 @@ public class AuditorAuditingRecordListService extends AbstractService<Auditor, A
 		String auditor;
 		auditor = object.getAudit().getAuditor().getUserAccount().getIdentity().getName();
 		auditor = auditor + " " + object.getAudit().getAuditor().getUserAccount().getIdentity().getSurname();
-		tuple = super.unbind(object, "subject", "assessment", "startPeriod", "endPeriod", "mark", "link");
+		tuple = super.unbind(object, "subject", "assessment", "startPeriod", "endPeriod", "mark", "link", "correction");
 		tuple.put("auditor", auditor);
 		tuple.put("audit", object.getAudit().getCode());
 		int id;

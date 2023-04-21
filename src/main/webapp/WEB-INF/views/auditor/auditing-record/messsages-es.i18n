@@ -30,3 +30,4 @@ auditor.auditingRecord.form.button.correct = Añadir correccion
 auditor.auditingRecord.form.label.confirmation = Confirmar
 
 auditor.auditingRecord.form.error.date = El periodo final debe ser despues del periodo de inicio(Minimo 1 hora anterior a este momento)
+auditor.auditingRecord.error.spam = No incluyas Spam

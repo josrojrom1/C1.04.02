@@ -12,6 +12,7 @@ import acme.framework.helpers.BinderHelper;
 import acme.framework.helpers.PrincipalHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
+import acme.utility.SpamDetector;
 
 @Service
 public class AuthenticatedAuditorUpdateService extends AbstractService<Authenticated, Auditor> {
@@ -19,7 +20,10 @@ public class AuthenticatedAuditorUpdateService extends AbstractService<Authentic
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuthenticatedAuditorRepository repository;
+	protected AuthenticatedAuditorRepository	repository;
+
+	@Autowired
+	protected SpamDetector						textValidator;
 
 	// AbstractService interface ----------------------------------------------ç
 
@@ -57,6 +61,18 @@ public class AuthenticatedAuditorUpdateService extends AbstractService<Authentic
 	@Override
 	public void validate(final Auditor object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("firm")) {
+			String validar;
+			validar = object.getFirm();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "firm", "authenticated.auditor.error.spam");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("certifications")) {
+			String validar;
+			validar = object.getCertifications();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "certifications", "authenticated.auditor.error.spam");
+		}
 	}
 
 	@Override
