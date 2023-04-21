@@ -29,3 +29,5 @@ auditor.audit.form.button.publish = Publish
 auditor.audit.form.button.auditingRecordList = Auditing records
 auditor.auditingRecord.list.button.createAuditingRecord = Create auditing record
 auditor.audit.form.button.addCorrection = Add Correction
+
+auditor.audit.error.spam = Don't include Spam

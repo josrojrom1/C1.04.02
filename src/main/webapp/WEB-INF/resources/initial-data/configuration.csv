@@ -1,2 +1,2 @@
-key,system-currency,accepted-currencies
-configuration-01,EUR,"EUR, USD, GBP"
+key,system-currency,accepted-currencies,spamTerms,spamThreshold
+configuration-01,EUR,"EUR, USD, GBP","(sex,1.0),(sexo,1.0),(viagra,1.0),(cialis,1.0),(nigeria,0.5),(you've won,0.5),(has ganado,0.5),(one million,0.5),(un millón,0.5)",0.10

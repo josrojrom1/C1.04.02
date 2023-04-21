@@ -12,12 +12,16 @@ import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
+import acme.utility.SpamDetector;
 
 @Service
 public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
 	@Autowired
-	protected AuditorAuditRepository repository;
+	protected AuditorAuditRepository	repository;
+
+	@Autowired
+	SpamDetector						textValidator;
 
 
 	@Override
@@ -62,7 +66,23 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 			existing = this.repository.findOneAuditByCode(object.getCode());
 			super.state(existing == null, "code", "auditor.audit.form.error.duplicated");
 		}
-		//validar marks
+
+		if (!super.getBuffer().getErrors().hasErrors("conclusion")) {
+			String conclusion;
+			conclusion = object.getConclusion();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(conclusion), "conclusion", "auditor.audit.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("weakPoints")) {
+			String weak;
+			weak = object.getWeakPoints();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(weak), "weakPoints", "auditor.audit.error.spam");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("strongPoints")) {
+			String strong;
+			strong = object.getStrongPoints();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(strong), "strongPoints", "auditor.audit.error.spam");
+		}
 	}
 
 	@Override

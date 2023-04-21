@@ -15,12 +15,16 @@ import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
+import acme.utility.SpamDetector;
 
 @Service
 public class AuditorAuditingRecordUpdateService extends AbstractService<Auditor, AuditingRecord> {
 
 	@Autowired
-	protected AuditorAuditingRecordRepository repository;
+	protected AuditorAuditingRecordRepository	repository;
+
+	@Autowired
+	protected SpamDetector						textValidator;
 
 
 	@Override
@@ -71,7 +75,17 @@ public class AuditorAuditingRecordUpdateService extends AbstractService<Auditor,
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
 			super.state(Duration.between(object.getStartPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(), ahora.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()).toHours() >= 1, "startPeriod",
 				"auditor.auditingRecord.form.error.date");
-		//validar marks
+
+		if (!super.getBuffer().getErrors().hasErrors("subject")) {
+			String validar;
+			validar = object.getSubject();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "subject", "auditor.auditingRecord.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("assessment")) {
+			String validar;
+			validar = object.getAssessment();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "assessment", "auditor.auditingRecord.error.spam");
+		}
 	}
 
 	@Override

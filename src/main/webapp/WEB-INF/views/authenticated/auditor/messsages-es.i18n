@@ -15,3 +15,5 @@ authenticated.auditor.form.label.link = Enlace
 
 authenticated.auditor.form.button.create = Registrar
 authenticated.auditor.form.button.update = Actualizar
+
+authenticated.auditor.error.spam = No incluyas Spam
