@@ -12,6 +12,7 @@ import acme.entities.CourseOfLecture;
 import acme.entities.Lecture;
 import acme.entities.Practicum;
 import acme.entities.Tutorial;
+import acme.entities.configuration.Configuration;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Lecturer;
 
@@ -60,4 +61,6 @@ public interface LecturerCourseRepository extends AbstractRepository {
 	@Query("select c.code from Course c")
 	Collection<String> findAllCodesFromCourses();
 
+	@Query("SELECT c FROM Configuration c")
+	Configuration findConfiguration();
 }

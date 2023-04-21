@@ -16,7 +16,7 @@ authenticated.offer.list.label.timePeriodStart = Inicio
 authenticated.offer.list.label.timePeriodEnd = Fin
 authenticated.offer.list.label.retailPrice = Precio
 authenticated.offer.list.label.link = Link
-
+authenticated.offer.form.label.moneyExchange = Cambio de divisa
 #-------------------SHOW-------------------------#
 authenticated.offer.form.label.moment = Momento
 authenticated.offer.form.label.heading = Título

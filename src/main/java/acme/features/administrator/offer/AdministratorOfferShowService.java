@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Offer;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.forms.MoneyExchange;
 import acme.framework.components.accounts.Administrator;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -13,7 +15,10 @@ import acme.framework.services.AbstractService;
 public class AdministratorOfferShowService extends AbstractService<Administrator, Offer> {
 
 	@Autowired
-	protected AdministratorOfferRepository repository;
+	protected AdministratorOfferRepository				repository;
+
+	@Autowired
+	protected AuthenticatedMoneyExchangePerformService	moneyExchangeService;
 
 
 	//Check method determines if the request has the required input data
@@ -52,9 +57,12 @@ public class AdministratorOfferShowService extends AbstractService<Administrator
 	public void unbind(final Offer object) {
 
 		assert object != null;
+		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
+		MoneyExchange moneyExchange;
+		moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
 		Tuple tuple;
-
 		tuple = super.unbind(object, "moment", "heading", "summary", "timePeriodStart", "timePeriodEnd", "retailPrice", "link");
+		tuple.put("moneyExchange", moneyExchange.getTarget());
 		super.getResponse().setData(tuple);
 	}
 

@@ -41,6 +41,7 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 master.menu.administrator.bulletin.list = List bulletins
+master.menu.administrator.offer.list = List offers
 master.menu.administrator.configuration = System Configuration
 master.menu.administrator.banner = System Banner
 
