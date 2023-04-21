@@ -30,7 +30,9 @@
 			<acme:menu-suboption code="master.menu.authenticated.tutorial" action="/authenticated/tutorial/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.practicum" action="/authenticated/practicum/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.note" action="/authenticated/note/list"/>
-      <acme:menu-suboption code="master.menu.authenticated.offer" action="/authenticated/offer/list"/>
+      		<acme:menu-suboption code="master.menu.authenticated.offer" action="/authenticated/offer/list"/>
+      		<acme:menu-suboption code="master.menu.authenticated.audit.list" action="/authenticated/audit/list"/>
+      		
 		</acme:menu-option>
 		
 		<!-- LECTURER -->
@@ -47,14 +49,6 @@
 			<acme:menu-suboption code="master.menu.auditor.audit.list" action="/auditor/audit/list"/>
 		</acme:menu-option>
 		
-					
-		
-		
-		<!-- AUTHENTICATED -->
-		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
-			<acme:menu-suboption code="master.menu.authenticated.audit.list" action="/authenticated/audit/list"/>
-		</acme:menu-option>
 		<!-- ANONYMOUS -->
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="47546590: Reina Munoz, Jose Antonio" action="https://www.youtube.com/"/>
