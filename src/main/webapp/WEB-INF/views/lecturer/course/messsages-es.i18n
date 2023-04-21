@@ -41,3 +41,4 @@ lecturer.course.form.button.lectures = Asignaturas relacionadas
 lecturer.lecture.form.error.retailPrice.positiveOrZero = El precio del curso ha de ser positivo o cero
 lecturer.lecture.form.error.retailPrice.currency = Solo se pueden usar las divisas del sistema
 lecturer.lecture.form.error.course.code.duplicated = El código introducido está repetido
+lecturer.course.form.button.courseOfLecture.create = Añadir asignaturas al curso

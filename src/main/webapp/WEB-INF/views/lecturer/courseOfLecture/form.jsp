@@ -23,7 +23,7 @@
 	
 	
 	<jstl:if test="${_command == 'create'}">
-		<acme:submit code="lecturer.courseOfLecture.form.button.create" action="/lecturer/courseOfLecture/create"/>
+		<acme:submit code="lecturer.courseOfLecture.form.button.create" action="/lecturer/courseOfLecture/create?id=${id}"/>
 	</jstl:if>
 	
 

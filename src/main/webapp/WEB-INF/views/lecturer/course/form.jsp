@@ -12,6 +12,8 @@
 			<acme:input-textarea code="lecturer.course.form.label.abst" path="abst"/>
 			<acme:input-money code="lecturer.course.form.label.retailPrice" path="retailPrice"/>
 			<acme:input-textbox code="lecturer.course.form.label.link" path="link"/>
+
+			<acme:button code="lecturer.course.button.courseOfLecture" action="/lecturer/courseOfLecture/create?id=${id}"/>			
 			
 			<acme:submit code="lecturer.course.form.button.update" action="/lecturer/course/update"/>
 			<acme:submit code="lecturer.course.form.button.publish" action="/lecturer/course/publish"/>

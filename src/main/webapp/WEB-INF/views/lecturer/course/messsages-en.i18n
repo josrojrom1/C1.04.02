@@ -42,4 +42,5 @@ lecturer.course.form.button.lectures = Related lectures
 lecturer.lecture.form.error.retailPrice.positiveOrZero = The price of the course should be positive or zero.
 lecturer.lecture.form.error.retailPrice.currency = Only can use a currency accepted by the system
 lecturer.lecture.form.error.course.code.duplicated = The code introduced is used by another course 
+lecturer.course.form.button.courseOfLecture.create = Add lectures to the course
 
