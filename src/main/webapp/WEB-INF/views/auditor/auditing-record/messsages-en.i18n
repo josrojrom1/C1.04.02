@@ -30,3 +30,5 @@ auditor.auditingRecord.form.label.confirmation = Confirm
 
 auditor.auditingRecord.form.error.date = The end period must be after start period(Min 1 hour from current moment)
 
+auditor.auditingRecord.error.spam = Don't include Spam
+

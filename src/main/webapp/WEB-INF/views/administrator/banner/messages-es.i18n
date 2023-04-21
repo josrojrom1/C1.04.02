@@ -32,3 +32,4 @@ administrator.banner.list.button.create = Crear Nuevo
 
 #-------------Errors-------------------------------#
 administrator.banner.form.error.date= Estas fechas no son validas
+administrator.banner.error.spam = No incluyas Spam
