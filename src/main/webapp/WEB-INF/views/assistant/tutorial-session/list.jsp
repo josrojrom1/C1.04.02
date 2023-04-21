@@ -9,6 +9,6 @@
 	<acme:list-column code="assistant.tutorialSession.list.label.tutorial" path="tutorial" width="50%"/>
 </acme:list>
 <jstl:if test="${showCreate}">
-	<acme:button code="assistant.tutorialSession.list.button.create" action="/assistant/tutorial-session/create?masterId=${ masterId }"/>
+	<acme:button code="assistant.tutorialSession.list.button.create" action="/assistant/tutorial-session/create?masterId=${masterId}"/>
 </jstl:if>
 
