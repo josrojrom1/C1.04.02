@@ -63,6 +63,12 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
 			super.state(object.getRetailPrice().getAmount() <= 99999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
 
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
+			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.lecture.form.error.retailPrice.negative");
+
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
+			super.state(this.repository.findConfigurationAcceptedCurrencies().stream().collect(Collectors.toList()).contains(object.getRetailPrice().getCurrency()), "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
+
 		assert object != null;
 
 	}

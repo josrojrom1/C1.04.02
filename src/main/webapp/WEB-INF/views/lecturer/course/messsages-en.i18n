@@ -41,9 +41,10 @@ lecturer.course.form.button.lectures = Related lectures
 
 #------------VALIDATION ERROR MESSAGES-------------------
 lecturer.lecture.form.error.retailPrice.max = The máximum price is 99999
-lecturer.lecture.form.error.retailPrice.positiveOrZero = The price should be positive or zero.
+lecturer.lecture.form.error.retailPrice.positiveOrZero = The price should be positive or zero
+lecturer.lecture.form.error.retailPrice.negative = Negative numbers aren't allow
 lecturer.lecture.form.error.course.code.duplicated = The code introduced is used by another course 
-lecturer.lecture.form.error.retailPrice.currency = Only can use a currency accepted by the system
+lecturer.lecture.form.error.retailPrice.currency = You can only use currencies accepted by the system
 
 #---------------COURSE OF LECTURE-----------------------
 lecturer.course.button.courseOfLecture.create = Add lectures
