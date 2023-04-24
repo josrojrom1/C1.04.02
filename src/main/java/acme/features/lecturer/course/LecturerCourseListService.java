@@ -34,7 +34,6 @@ public class LecturerCourseListService extends AbstractService<Lecturer, Course>
 	public void load() {
 		final Collection<Course> objects;
 		final Principal principal;
-
 		principal = super.getRequest().getPrincipal();
 		objects = this.repository.findAllCoursesByLecturerId(principal.getActiveRoleId());
 
