@@ -46,6 +46,6 @@ lecturer.lecture.form.error.course.code.duplicated = The code introduced is used
 lecturer.lecture.form.error.retailPrice.currency = Only can use a currency accepted by the system
 
 #---------------COURSE OF LECTURE-----------------------
-lecturer.course.button.courseOfLecture.create = Add lectures to the course
+lecturer.course.button.courseOfLecture.create = Add lectures
 lecturer.course.button.courseOfLecture.list = Remove lecture
 

@@ -12,10 +12,12 @@
 lecturer.courseOfLecture.form.label.lecture.delete = Remove lecture
 lecturer.courseOfLecture.form.label.lecture.title = lecture title
 lecturer.courseOfLecture.form.label.course.delete = from course
-lecturer.courseOfLecture.form.label.course.title = course title
+lecturer.courseOfLecture.form.label.course.title = Course title
 lecturer.courseOfLecture.form.button.create = Add lecture
 lecturer.courseOfLecture.list.label.message.remove.lecture = The selected lecture will be removed
 lecturer.courseOfLecture.form.label.lectures = Lectures
+lecturer.courseOfLecture.button.delete = Remove
+lecturer.courseOflecture.list.label.lectures = List of the lectures from the course
 
 #---------------------VALIDATION ERROR MESSAGES---------------------
 lecturer.courseOfLecture.form.error.lecture.exists = The lecture is already in the course
