@@ -62,11 +62,11 @@ public class LecturerCourseOfLectureCreateService extends AbstractService<Lectur
 	@Override
 	public void validate(final CourseOfLecture object) {
 		final int courseId = super.getRequest().getData("id", int.class);
-		final Collection<Lecture> lectures = this.repository.findAllLecturesFromCourseOfLecture(courseId);
+		final Collection<Lecture> lectures = this.repository.findAllLecturesFromCourseOfLectureByCourseId(courseId);
 		final int lectureId = super.getRequest().getData("lecture", int.class);
 		final Lecture lecture = this.repository.findLectureById(lectureId);
 		if (!super.getBuffer().getErrors().hasErrors("lecture"))
-			super.state(!lectures.contains(lecture), "lecture", "lecturer.courseOfLecture.form.error.lecture");
+			super.state(!lectures.contains(lecture), "lecture", "lecturer.courseOfLecture.form.error.lecture.exists");
 
 	}
 
