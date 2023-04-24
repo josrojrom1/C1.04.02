@@ -33,7 +33,6 @@ public class LecturerLecturePublishService extends AbstractService<Lecturer, Lec
 		boolean status;
 		Lecture lecture;
 		int id;
-
 		id = super.getRequest().getData("id", int.class);
 		lecture = this.repository.findLectureById(id);
 		status = lecture != null;
@@ -45,7 +44,6 @@ public class LecturerLecturePublishService extends AbstractService<Lecturer, Lec
 	public void load() {
 		Lecture object;
 		int id;
-
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findLectureById(id);
 
@@ -83,7 +81,6 @@ public class LecturerLecturePublishService extends AbstractService<Lecturer, Lec
 		choices = SelectChoices.from(LessonType.class, object.getLectureType());
 		tuple = super.unbind(object, "title", "abst", "learningTime", "body", "lectureType", "link");
 		tuple.put("lectureTypes", choices);
-		tuple.put("draftMode", object.isDraftMode());
 		super.getResponse().setData(tuple);
 	}
 
