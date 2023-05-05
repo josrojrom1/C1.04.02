@@ -21,6 +21,7 @@ assistant.tutorial.form.button.update = Actualizar
 assistant.tutorial.form.button.delete = Eliminar
 assistant.tutorial.form.button.create = Crear
 assistant.tutorial.form.button.publish = Publicar
+assistant.tutorial.form.button.sessions = Listar sesiones
 #-------------List-------------------------------#
 assistant.tutorial.list.label.code= Código
 assistant.tutorial.list.label.title= Título
@@ -29,3 +30,4 @@ assistant.tutorial.list.button.create = Crear
 #-------------Errors-------------------------------#
 assistant.tutorial.form.error.duplicated = Código duplicado
 assistant.tutorial.form.error.totalTime = El tiempo no puede ser negativo
+assistant.tutorial.form.error.spam = No hagas spam

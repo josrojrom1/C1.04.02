@@ -53,14 +53,12 @@ public class Lecture extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	boolean						draftMode;
+	protected boolean			draftMode;
 
 	//Una Lecture es creada siempre por un Lecturer
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	protected Lecturer			lecturer;
-
-	
 
 }

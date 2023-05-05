@@ -1,0 +1,31 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+#--------------SHOW--------------------------------#
+student.enrolment.show.label.code = Código
+student.enrolment.show.label.motivation = Motivo
+student.enrolment.show.label.course = Curso
+student.enrolment.show.label.goals = Objetivos
+student.enrolment.show.label.workTime = Tiempo de Trabajo
+student.enrolment.show.button.create = Registrar
+
+student.enrolment.form.button.update = Update
+student.enrolment.form.button.delete = Delete
+student.enrolment.form.button.create = Create
+student.enrolment.form.button.publish = Publish
+#--------------LIST------------------------------#
+student.enrolment.list.label.code = Código
+student.enrolment.list.label.motivation = Motivo
+student.enrolment.list.label.course = Curso
+student.enrolment.list.button.create = Registrar
+#--------------Errors------------------------------#
+student.enrolment.form.error.duplicated = El código ya existe
+student.enrolment.form.error.workTime = El tiempo no puede ser negativo

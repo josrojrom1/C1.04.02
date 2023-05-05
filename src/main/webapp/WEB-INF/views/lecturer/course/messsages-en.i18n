@@ -9,7 +9,7 @@
 # they accept any liabilities with respect to them.
 
 
-#--------------LIST--------------------------------#
+#--------------LIST--------------------------------
 lecturer.course.list.label.code = Code
 lecturer.course.list.label.title = Title
 lecturer.course.list.label.abst = Abstract
@@ -22,7 +22,7 @@ lecturer.course.list.label.audit = Audit
 lecturer.course.list.label.practicum = Practicum
 lecturer.course.list.button.create = Crete new course
 
-#--------------SHOW--------------------------------#
+#--------------SHOW--------------------------------
 lecturer.course.form.label.code = Code
 lecturer.course.form.label.title = Title
 lecturer.course.form.label.abst = Abstract
@@ -38,5 +38,12 @@ lecturer.course.form.button.delete = Delete
 lecturer.course.form.button.update = Update
 lecturer.course.form.button.publish = Publish
 lecturer.course.form.button.lectures = Related lectures
+lecturer.course.form.label.moneyExchange = Money exchange
 
+#---------------COURSE OF LECTURE-----------------------
+lecturer.lecture.form.error.retailPrice.positiveOrZero = The price should be positive or zero.
+lecturer.lecture.form.error.retailPrice.currency = Only can use a currency accepted by the system
+lecturer.lecture.form.error.course.code.duplicated = The code introduced is used by another course 
+lecturer.course.button.courseOfLecture.create = Add lectures to the course
+lecturer.course.button.courseOfLecture.list = Remove lecture
 

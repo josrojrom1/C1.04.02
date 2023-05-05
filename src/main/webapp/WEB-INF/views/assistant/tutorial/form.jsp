@@ -19,4 +19,7 @@
 	<jstl:if test="${acme:anyOf(_command, 'create')}">
 		<acme:submit code="assistant.tutorial.form.button.create" action="/assistant/tutorial/create"/>
 	</jstl:if>
+	<jstl:if test="${acme:anyOf(_command, 'show|delete|update|publish')}">
+		<acme:button code="assistant.tutorial.form.button.sessions" action="/assistant/tutorial-session/list?masterId=${id}"/>
+	</jstl:if>
 </acme:form>

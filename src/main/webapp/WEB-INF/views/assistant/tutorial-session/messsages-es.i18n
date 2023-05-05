@@ -1,0 +1,32 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+#--------------SHOW--------------------------------#
+assistant.tutorialSession.form.label.title = Título
+assistant.tutorialSession.form.label.abst = Resumen
+assistant.tutorialSession.form.label.sessionType = Tipo de sesión
+assistant.tutorialSession.form.label.periodStart = Inicio de periodo
+assistant.tutorialSession.form.label.periodFinish = Final del periodo
+assistant.tutorialSession.form.label.link = Link
+assistant.tutorialSession.form.label.tutorial = Tutoría
+
+assistant.tutorialSession.form.button.update = Actualizar
+assistant.tutorialSession.form.button.delete = Eliminar
+assistant.tutorialSession.form.button.create = Crear
+#--------------LIST------------------------------#
+assistant.tutorialSession.list.label.title = Título
+assistant.tutorialSession.list.label.tutorial = Tutoría
+assistant.tutorialSession.list.button.create = Crear
+#--------------Errors------------------------------#
+assistant.tutorialSession.form.error.duplicated = El código ya existe
+assistant.tutorialSession.form.error.duration = La duración tiene que estar entre 1 y 5 horas
+assistant.tutorialSession.form.error.periodStart = El comienzo tiene que ser al menos dentro de un día
+assistant.tutorialSession.form.error.periodFinish = El comienzo tiene que ser antes que el final
+assistant.tutorialSession.form.error.spam = No hagas spam

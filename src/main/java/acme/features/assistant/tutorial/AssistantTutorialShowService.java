@@ -63,7 +63,6 @@ public class AssistantTutorialShowService extends AbstractService<Assistant, Tut
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", object.isDraftMode());
 		tuple.put("courseChoices", courseChoices);
-
 		super.getResponse().setData(tuple);
 	}
 }
