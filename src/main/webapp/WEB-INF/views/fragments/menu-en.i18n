@@ -54,6 +54,7 @@ master.menu.assistant.tutorialSession = List my sessions
 # master.menu.student ##################################################
 master.menu.student = Student
 master.menu.student.enrolment = Enrolment
+master.menu.student.activity = Activity
 
 # master.menu.authenticated ###################################################
 
