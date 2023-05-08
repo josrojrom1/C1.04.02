@@ -52,6 +52,7 @@ master.menu.assistant.tutorial = Tutorials
 # master.menu.student ##################################################
 master.menu.student = Student
 master.menu.student.enrolment = Enrolment
+master.menu.student.activity = Activity
 
 # master.menu.authenticated ###################################################
 

@@ -23,7 +23,9 @@ public class StudentEnrolmentDeleteService extends AbstractService<Student, Enro
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+		status = super.getRequest().hasData("id", int.class);
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
@@ -41,16 +43,18 @@ public class StudentEnrolmentDeleteService extends AbstractService<Student, Enro
 
 	@Override
 	public void load() {
-		final int id = super.getRequest().getData("id", int.class);
-		final Enrolment enrolment = this.repository.findEnrolmentById(id);
-		super.getBuffer().setData(enrolment);
+		int id;
+		Enrolment object;
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findEnrolmentById(id);
+		super.getBuffer().setData(object);
 	}
 
 	@Override
 	public void bind(final Enrolment object) {
 		assert object != null;
 
-		super.bind(object, "code", "motivation", "goals", "student", "workTime", "course", "creditCardHolder", "lowerNibble");
+		super.bind(object, "code", "motivation", "goals", "student", "workTime", "course", "creditCardHolder", "lowerNibble", "isFinalised");
 	}
 
 	@Override
@@ -61,9 +65,11 @@ public class StudentEnrolmentDeleteService extends AbstractService<Student, Enro
 	@Override
 	public void perform(final Enrolment object) {
 		assert object != null;
+		int id;
+		Collection<Activity> activities;
 
-		final int id = object.getId();
-		final Collection<Activity> activities = this.repository.findActivitiesByEnrolmentId(id);
+		id = object.getId();
+		activities = this.repository.findAllActivitiesFromEnrolmentId(id);
 
 		this.repository.deleteAll(activities);
 		this.repository.delete(object);
@@ -82,7 +88,7 @@ public class StudentEnrolmentDeleteService extends AbstractService<Student, Enro
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "motivation", "goals", "workTime", "creditCardHolder", "lowerNibble");
 		tuple.put("course", courseChoices.getSelected().getKey());
-		tuple.put("IsFinalised", false);
+		tuple.put("isFinalised", false);
 		tuple.put("courseChoices", courseChoices);
 	}
 

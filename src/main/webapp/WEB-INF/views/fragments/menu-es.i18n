@@ -34,6 +34,7 @@ master.menu.peep.create= Publicar
 # master.menu.student ##################################################
 master.menu.student = Estudiante
 master.menu.student.enrolment = Inscripción
+master.menu.student.activity = Actividades
 
 # master.menu.administrator ###################################################
 
