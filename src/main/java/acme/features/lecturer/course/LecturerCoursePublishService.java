@@ -1,6 +1,7 @@
 
 package acme.features.lecturer.course;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,17 +45,14 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	public void load() {
 		Course object;
 		int id;
-
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneCourseById(id);
-
 		super.getBuffer().setData(object);
 	}
 
 	@Override
 	public void bind(final Course object) {
 		assert object != null;
-
 		super.bind(object, "code", "title", "abst", "retailPrice", "link");
 	}
 
@@ -63,8 +61,25 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
 			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "lecturer.lecture.form.error.retailPrice.positiveOrZero");
 
-		//if (!super.getBuffer().getErrors().hasErrors("code"))
-		//	super.state(!this.repository.findAllCodesFromCourses().contains(object.getCode()), "code", "lecturer.lecture.form.error.course.code.duplicated");
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
+			super.state(object.getRetailPrice().getAmount() <= 99999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
+
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
+			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.lecture.form.error.retailPrice.negative");
+
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+			String currencies;
+			boolean b = false;
+			currencies = this.repository.findConfigurationAcceptedCurrencies();
+			final List<String> listCurrencies;
+			final String[] aux = currencies.replace("[", "").replace("]", "").split(",");
+			listCurrencies = Arrays.asList(aux);
+			for (final String c : listCurrencies)
+				if (c.equals(object.getRetailPrice().getCurrency()))
+					b = true;
+
+			super.state(b != false, "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
+		}
 
 		assert object != null;
 
@@ -73,9 +88,11 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	@Override
 	public void perform(final Course object) {
 		assert object != null;
-		final Collection<Lecture> cl = this.repository.findAllLecturesByCourse(object.getId());
-		final List<Boolean> lb = cl.stream().map(x -> x.isDraftMode()).collect(Collectors.toList());
-		if (!lb.contains(true) && !lb.isEmpty())
+		final Collection<Lecture> lecturesByCourse = this.repository.findAllLecturesByCourse(object.getId());
+		final List<Boolean> drafModeList = lecturesByCourse.stream().map(x -> x.isDraftMode()).collect(Collectors.toList());
+		final List<LessonType> lectureTypes = lecturesByCourse.stream().map(x -> x.getLectureType()).collect(Collectors.toList());
+		//Comprobamos que no existan lectures no publicadas y que tengan al menos una de practicas para que no sea puramente teorica
+		if (!drafModeList.contains(true) && !drafModeList.isEmpty() && lectureTypes.contains(LessonType.HANDS_ON))
 			object.setDraftMode(false);
 		else
 			object.setDraftMode(true);
@@ -91,11 +108,10 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 				theory += 1;
 			else if (l.getLectureType().equals(LessonType.HANDS_ON))
 				handsOn += 1;
-		if (theory < handsOn)
+		if (theory > handsOn)
+			res = LessonType.THEORY;
+		else
 			res = LessonType.HANDS_ON;
-		else if (theory == handsOn)
-			res = LessonType.HANDS_ON;
-
 		return res;
 	}
 

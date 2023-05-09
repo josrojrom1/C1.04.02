@@ -6,8 +6,10 @@
 
 <acme:form>
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
-			<acme:input-textbox code="lecturer.course.form.label.code" path="code"/>
+	
+	
+		<jstl:when test="${acme:anyOf(_command, 'show|update') && draftMode == true}">
+			<acme:input-textbox code="lecturer.course.form.label.code" readonly="true" path="code"/>
 			<acme:input-textbox code="lecturer.course.form.label.title" path="title"/>
 			<acme:input-textarea code="lecturer.course.form.label.abst" path="abst"/>
 			<acme:input-money code="lecturer.course.form.label.retailPrice" path="retailPrice"/>
@@ -25,6 +27,7 @@
 		</jstl:when>
 		
 		<jstl:when test="${acme:anyOf(_command, 'show') && draftMode == false}">
+
 			<acme:input-textbox code="lecturer.course.form.label.code" path="code" readonly = "True"/>
 			<acme:input-textbox code="lecturer.course.form.label.title" path="title" readonly = "True"/>
 			<acme:input-textarea code="lecturer.course.form.label.abst" path="abst" readonly = "True"/>
@@ -32,7 +35,7 @@
 			<acme:input-money code="lecturer.course.form.label.moneyExchange" path="moneyExchange" readonly="true"/>
 			<acme:input-textbox code="lecturer.course.form.label.link" path="link" readonly = "True"/>
 			
-			<acme:button code="lecturer.course.form.button.lectures" action="/lecturer/lecture/list-lecture-from-course?masterId=${id}"/>
+			<acme:button code="lecturer.course.form.button.lectures" action="/lecturer/lecture/list-lecture-from-course?id=${id}"/>
 			<acme:submit code="lecturer.course.form.button.delete" action="/lecturer/course/delete"/>
 		</jstl:when>
 		

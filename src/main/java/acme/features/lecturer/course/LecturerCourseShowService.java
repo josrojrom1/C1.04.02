@@ -35,12 +35,11 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int id;
 		final Course course;
 		final Lecturer lecturer;
-
-		masterId = super.getRequest().getData("id", int.class);
-		course = this.repository.findOneCourseById(masterId);
+		id = super.getRequest().getData("id", int.class);
+		course = this.repository.findOneCourseById(id);
 		lecturer = course == null ? null : course.getLecturer();
 		status = super.getRequest().getPrincipal().hasRole(lecturer) || course != null;
 		super.getResponse().setAuthorised(status);
@@ -49,7 +48,6 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 
 	@Override
 	public void load() {
-
 		Course object;
 		int id;
 		id = super.getRequest().getData("id", int.class);
@@ -59,15 +57,17 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 	}
 
 	public LessonType courseType(final Collection<Lecture> lecturesFromACourse) {
-		int theory = 0;
-		int handson = 0;
+		int theory = 0;//..........En este método calculamos el courseType de un curso.
+		int handson = 0;//.........Recordemos que el sistema rechaza cursos puros teóricos.
 		LessonType res = LessonType.THEORY;
 		for (final Lecture l : lecturesFromACourse)
 			if (l.getLectureType().equals(LessonType.THEORY))
 				theory += 1;
 			else if (l.getLectureType().equals(LessonType.HANDS_ON))
 				handson += 1;
-		if (theory < handson || theory == handson)
+		if (theory > handson)
+			res = LessonType.THEORY;
+		else
 			res = LessonType.HANDS_ON;
 		return res;
 	}

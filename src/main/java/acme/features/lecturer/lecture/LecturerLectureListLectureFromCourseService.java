@@ -39,7 +39,6 @@ public class LecturerLectureListLectureFromCourseService extends AbstractService
 	@Override
 	public void unbind(final Lecture object) {
 		assert object != null;
-
 		Tuple tuple;
 		tuple = super.unbind(object, "title", "abst", "learningTime", "body", "lectureType", "link");
 		super.getResponse().setData(tuple);

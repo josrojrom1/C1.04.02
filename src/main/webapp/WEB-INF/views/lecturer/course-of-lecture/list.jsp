@@ -18,6 +18,6 @@
 <h3><acme:message code="lecturer.courseOfLecture.list.label.message.remove.lecture"/></h3>
 
 <acme:list>
-	<acme:list-column code="lecturer.course-lecture.list.label.lecture" path="lecture"/>
+	<acme:list-column code="lecturer.courseOflecture.list.label.lectures" path="lecture"/>
 </acme:list>
 

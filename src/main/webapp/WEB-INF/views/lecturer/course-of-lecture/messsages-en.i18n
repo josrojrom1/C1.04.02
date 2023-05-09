@@ -9,16 +9,15 @@
 # they accept any liabilities with respect to them.
 
 #-------------------------SHOW-------------------------------
-lecturer.courseOfLecture.form.label.lecture.delete = Delete lecture
-lecturer.courseOfLecture.form.label.lecture.title = Lecture title:  
-lecturer.courseOfLecture.form.label.course.delete = from Course 
-lecturer.courseOfLecture.form.label.course.title = Course title:
-lecturer.courseOfLecture.form.button.create = Add lecture
-lecturer.courseOfLecture.form.label.course = Courses
-lecturer.courseOfLecture.form.label.lecture = Lectures
 lecturer.courseOfLecture.form.label.lecture.delete = Remove lecture
-
-#-----------------------LIST----------------------------------
+lecturer.courseOfLecture.form.label.lecture.title = lecture title
+lecturer.courseOfLecture.form.label.course.delete = from course
+lecturer.courseOfLecture.form.label.course.title = Course title
+lecturer.courseOfLecture.form.button.create = Add lecture
 lecturer.courseOfLecture.list.label.message.remove.lecture = The selected lecture will be removed
-lecturer.courseOfLecture.list.label.lecture.title = Lecture title
+lecturer.courseOfLecture.form.label.lectures = Lectures
+lecturer.courseOfLecture.button.delete = Remove
+lecturer.courseOflecture.list.label.lectures = List of the lectures from the course
 
+#---------------------VALIDATION ERROR MESSAGES---------------------
+lecturer.courseOfLecture.form.error.lecture.exists = The lecture is already in the course

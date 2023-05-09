@@ -10,7 +10,15 @@
 
 
 #-------------------------SHOW-------------------------------
+lecturer.courseOfLecture.form.label.lecture.delete = Quitar asignatura
+lecturer.courseOfLecture.form.label.lecture.title = título de la asignatura
+lecturer.courseOfLecture.form.label.course.delete = del curso
 lecturer.courseOfLecture.form.label.course.title = Título del curso
-lecturer.courseOfLecture.form.label.lecture.title = Título de la asignatura
 lecturer.courseOfLecture.form.button.create = Añadir asignatura
 lecturer.courseOfLecture.list.label.message.remove.lecture = La asignatura seleccionada será eliminada
+lecturer.courseOfLecture.form.label.lectures = Asignaturas
+lecturer.courseOfLecture.button.delete = Quitar
+lecturer.courseOflecture.list.label.lectures = Lista de asignaturas del curso
+
+#---------------------VALIDATION ERROR MESSAGES---------------------
+lecturer.courseOfLecture.form.error.lecture.exists = La asignatura ya está en el curso

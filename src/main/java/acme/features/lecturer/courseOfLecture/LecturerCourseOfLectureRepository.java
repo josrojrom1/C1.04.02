@@ -17,9 +17,6 @@ public interface LecturerCourseOfLectureRepository extends AbstractRepository {
 	@Query("select c from Course c where c.id = :id")
 	Course findCourseById(int id);
 
-	//@Query("select distinct(l) from Lecture l left join CourseOfLecture col on l.id = col.lecture.id where col.course.id != :courseId AND l.lecturer.id = :lecturerId")
-	//Collection<Lecture> findAvaibleLecturesForCourse(int courseId, int lecturerId);
-
 	@Query("select col from CourseOfLecture col where col.id = :id")
 	CourseOfLecture findCourseOfLectureById(int id);
 
@@ -30,7 +27,7 @@ public interface LecturerCourseOfLectureRepository extends AbstractRepository {
 	Lecture findLectureById(Integer lectureId);
 
 	@Query("select col.lecture from CourseOfLecture col where col.course.id = :id")
-	Collection<Lecture> findAllLecturesFromCourseOfLecture(int id);
+	Collection<Lecture> findAllLecturesFromCourseOfLectureByCourseId(int id);
 
 	@Query("select l from Lecture l where l.draftMode = false AND l.lecturer.id = :lecturerId")
 	Collection<Lecture> findPublishedLecturesFromLecturer(int lecturerId);
