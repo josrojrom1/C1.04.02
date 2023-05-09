@@ -47,6 +47,7 @@ public class Course extends AbstractEntity {
 
 	//Retail price (positive or nought)
 	@NotNull
+	@Valid
 	protected Money				retailPrice;
 
 	//Optional link

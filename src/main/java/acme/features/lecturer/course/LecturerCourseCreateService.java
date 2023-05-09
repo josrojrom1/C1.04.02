@@ -1,6 +1,9 @@
 
 package acme.features.lecturer.course;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +52,8 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void validate(final Course object) {
 
+		assert object != null;
+
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
 			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "lecturer.lecture.form.error.retailPrice.positiveOrZero");
 
@@ -58,13 +63,27 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
 			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.lecture.form.error.retailPrice.negative");
 
-		//if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
-		//	super.state(this.repository.findConfigurationAcceptedCurrencies().stream().collect(Collectors.toList()).contains(object.getRetailPrice().getCurrency()), "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+			String currencies;
+			boolean b = false;
+			currencies = this.repository.findConfigurationAcceptedCurrencies();
+			final List<String> listCurrencies;
+			final String[] aux = currencies.replace(" ", "").replace("[", "").replace("]", "").split(",");
+			listCurrencies = Arrays.asList(aux);
+			for (final String c : listCurrencies)
+				if (c.equals(object.getRetailPrice().getCurrency())) {
+					System.out.println(c);
+					b = true;
+				}
+			System.out.println(currencies);
+			System.out.println(object.getRetailPrice().getCurrency());
+			System.out.println(b);
+			super.state(b != false, "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("code"))
 			super.state(!this.repository.findAllCodesFromCourses().contains(object.getCode()), "code", "lecturer.lecture.form.error.course.code.duplicated");
 
-		assert object != null;
 	}
 
 	@Override

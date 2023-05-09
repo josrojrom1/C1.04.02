@@ -1,6 +1,7 @@
 
 package acme.features.lecturer.course;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -66,8 +67,23 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
 			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.lecture.form.error.retailPrice.negative");
 
-		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
-			super.state(this.repository.findConfigurationAcceptedCurrencies().stream().collect(Collectors.toList()).contains(object.getRetailPrice().getCurrency()), "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+			String currencies;
+			boolean b = false;
+			currencies = this.repository.findConfigurationAcceptedCurrencies();
+			final List<String> listCurrencies;
+			final String[] aux = currencies.replace("[", "").replace("]", "").split(",");
+			listCurrencies = Arrays.asList(aux);
+			for (final String c : listCurrencies)
+				if (c.equals(object.getRetailPrice().getCurrency())) {
+					System.out.println(c);
+					b = true;
+				}
+			System.out.println(currencies);
+			System.out.println(object.getRetailPrice().getCurrency());
+			System.out.println(b);
+			super.state(b != false, "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
+		}
 
 		assert object != null;
 
