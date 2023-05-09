@@ -18,21 +18,21 @@ public class LecturerDashboard extends AbstractForm {
 	protected Integer			totalNumOfHandsonLectures;
 
 	//LEARNING TIME OF LECTURES
-	protected Double			lectureAverage;
+	protected Double			lectureLearningTimeAverage;
 
-	protected Double			lectureDeviation;
+	protected Double			lectureLearningTimeDeviation;
 
-	protected Double			lectureMinimun;
+	protected Double			lectureLearningTimeMinimum;
 
-	protected Double			lectureMaximun;
+	protected Double			lectureLearningTimeMaximum;
 
 	//LEARNING TIME OF COURSES
-	protected Double			courseAverage;
+	protected Double			courseLearningTimeAverage;
 
-	protected Double			courseDeviation;
+	protected Double			courseLearningTimeDeviation;
 
-	protected Double			courseMinimun;
+	protected Double			courseLearningTimeMinimum;
 
-	protected Double			courseMaximun;
+	protected Double			courseLearningTimeMaximum;
 
 }

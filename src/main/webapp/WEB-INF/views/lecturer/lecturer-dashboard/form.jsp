@@ -15,112 +15,78 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
-<h2>
+<h1>
 	<acme:message code="lecturer.dashboard.form.title.general-indicators"/>
-</h2>
+</h1>
 
 <table class="table table-sm">
+
+
 	<tr>
-		<th scope="row">
-			<acme:message code="lecturer.dashboard.form.label.total-num-theory-lectures"/>
-		</th>
-		<td>
-			<acme:print value="${totalNumOfTheoryLectures}"/>
-		</td>
+		<!-- TOTAL NUM THEORY/HANDS ON LECTURES)-->
+		<th><h2><acme:message code="lecturer.dashboard.form.lectures-section"/></h2></th>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="lecturer.dashboard.form.label.total-num-theory-lectures"/></th>	
+		<td><acme:print value="${totalNumOfTheoryLectures}"/></td>
+	</tr>
 		
-		<th scope="row">
-			<acme:message code="lecturer.dashboard.form.label.total-num-handson-lectures"/>
-		</th>
-		<td>
-			<acme:print value="${totalNumOfHandsonLectures}"/>
-		</td>
+	<tr>
+		<th scope="row"><acme:message code="lecturer.dashboard.form.label.total-num-handson-lectures"/></th>
+		<td><acme:print value="${totalNumOfHandsonLectures}"/></td>
+	
 	</tr>
 	
 	<!-- LEARNING TIME OF LECTURES (AVG,DEV,MIN,MAX)-->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!-- 
 	<tr>
-		<th scope="row">
-			<acme:message code="lecturer.dashboard.form.label.average-number-applications-worker"/>
-		</th>
-		<td>
-			<acme:print value="${averageNumberOfApplicationsPerWorker}"/>
-		</td>
+		<th scope="row"><acme:message code="lecturer.dasboard.form.label.lecture-learning-time-average"/></th>
+		<td><acme:print value="${lectureLearningTimeAverage}"/></td>
 	</tr>
+	
 	<tr>
-		<th scope="row">
-			<acme:message code="lecturer.dashboard.form.label.average-number-applications-employer"/>
-		</th>
-		<td>
-			<acme:print value="${avegageNumberOfApplicationsPerEmployer}"/>
-		</td>
+		<th scope="row"><acme:message code="lecturer.dasboard.form.label.lecture-learning-time-deviation"/></th>
+		<td><acme:print value="${lectureLearningTimeDeviation}"/></td>
 	</tr>
-	 -->	
+	
+	<tr>
+		<th scope="row"><acme:message code="lecturer.dasboard.form.label.lecture-learning-time-maximum"/></th>
+		<td><acme:print value="${lectureLearningTimeMaximum}"/></td>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="lecturer.dasboard.form.label.lecture-learning-time-minimum"/></th>
+		<td><acme:print value="${lectureLearningTimeMinimum}"/></td>
+	</tr>
+	
+	<!-- LEARNING TIME OF COURSES (AVG,DEV,MIN,MAX)-->	
+	<tr>
+		<th><h2><acme:message code="lecturer.dashboard.form.courses-section"/></h2></th>
+	</tr>
+	
+	
+	<tr>
+		<th scope="row"><acme:message code="lecturer.dasboard.form.label.course-learning-time-average"/></th>
+		<td><acme:print value="${courseLearningTimeAverage}"/></td>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="lecturer.dasboard.form.label.course-learning-time-deviation"/></th>
+		<td><acme:print value="${courseLearningTimeDeviation}"/></td>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="lecturer.dasboard.form.label.course-learning-time-maximum"/></th>
+		<td><acme:print value="${courseLearningTimeMaximum}"/></td>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="lecturer.dasboard.form.label.course-learning-time-minimum"/></th>
+		<td><acme:print value="${courseLearningTimeMinimum}"/></td>
+	</tr>
+	
+	
 </table>
-
-<h2>
-	<acme:message code="lecturer.dashboard.form.title.application-statuses"/>
-</h2>
-
-<div>
-	<canvas id="canvas"></canvas>
-</div>
-
-<!-- 
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		var data = {
-			labels : [
-					"PENDING", "ACCEPTED", "REJECTED"
-			],
-			datasets : [
-				{
-					data : [
-						<jstl:out value="${ratioOfPendingApplications}"/>, 
-						<jstl:out value="${ratioOfAcceptedApplications}"/>, 
-						<jstl:out value="${ratioOfRejectedApplications}"/>
-					]
-				}
-			]
-		};
-		var options = {
-			scales : {
-				yAxes : [
-					{
-						ticks : {
-							suggestedMin : 0.0,
-							suggestedMax : 1.0
-						}
-					}
-				]
-			},
-			legend : {
-				display : false
-			}
-		};
 	
-		var canvas, context;
-	
-		canvas = document.getElementById("canvas");
-		context = canvas.getContext("2d");
-		new Chart(context, {
-			type : "bar",
-			data : data,
-			options : options
-		});
-	});
-</script>
- -->
 <acme:return/>
 

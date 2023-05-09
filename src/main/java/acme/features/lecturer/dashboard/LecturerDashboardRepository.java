@@ -12,6 +12,8 @@
 
 package acme.features.lecturer.dashboard;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -26,7 +28,19 @@ public interface LecturerDashboardRepository extends AbstractRepository {
 	@Query("select count(a) from Lecture a where a.lectureType = 'HANDS_ON'")
 	Integer totalNumOfHandsonLectures();
 
-	//@Query("select avg(select count(a.learningTime) from Lecture a) from Lecture e")
-	//Double averageNumberOfLecturesLearningTime();
+	@Query("select avg(l.learningTime) from Lecture l where l.lecturer.id = :id")
+	Double averageLearningTimeOfLectures(int id);
+
+	@Query("select stddev(l.learningTime) from Lecture l where l.lecturer.id = :id")
+	Double deviationLearningTimeOfLectures(int id);
+
+	@Query("select min(l.learningTime) from Lecture l where l.lecturer.id = :id")
+	Double minimumLearningTimeOfLectures(int id);
+
+	@Query("select max(l.learningTime) from Lecture l where l.lecturer.id = :id")
+	Double maximumLearningTimeOfLectures(int id);
+
+	@Query("SELECT sum(l.learningTime) FROM Lecture l JOIN CourseOfLecture col ON l = col.lecture JOIN Course c ON col.course = c WHERE c.lecturer.id = :id group by c")
+	List<Double> learningTimeOfCourses(int id);
 
 }

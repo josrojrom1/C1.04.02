@@ -67,13 +67,8 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 			final String[] aux = currencies.replace("[", "").replace("]", "").split(",");
 			listCurrencies = Arrays.asList(aux);
 			for (final String c : listCurrencies)
-				if (c.equals(object.getRetailPrice().getCurrency())) {
-					System.out.println(c);
+				if (c.equals(object.getRetailPrice().getCurrency()))
 					b = true;
-				}
-			System.out.println(currencies);
-			System.out.println(object.getRetailPrice().getCurrency());
-			System.out.println(b);
 			super.state(b != false, "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
 		}
 		assert object != null;

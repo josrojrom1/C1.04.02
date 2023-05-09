@@ -10,7 +10,15 @@
 
 
 lecturer.dashboard.form.title.general-indicators = General indicators
-lecturer.dashboard.form.title.application-statuses = Application statuses  
 lecturer.dashboard.form.label.total-num-theory-lectures =  Total number of theory lectures
 lecturer.dashboard.form.label.total-num-handson-lectures = Total number of hands on lectures
-
+lecturer.dasboard.form.label.lecture-learning-time-average = Average learning time of lectures
+lecturer.dasboard.form.label.lecture-learning-time-deviation = Deviation learning time of lectures
+lecturer.dasboard.form.label.lecture-learning-time-maximum = Máximum learning time of lectures
+lecturer.dasboard.form.label.lecture-learning-time-minimum = Mínimun learning time of lectures
+lecturer.dashboard.form.lectures-section = Lectures
+lecturer.dashboard.form.courses-section = Course
+lecturer.dasboard.form.label.course-learning-time-average = Average learning time of courses
+lecturer.dasboard.form.label.course-learning-time-deviation = Deviation learning time of courses
+lecturer.dasboard.form.label.course-learning-time-maximum = Máximum learning time of courses
+lecturer.dasboard.form.label.course-learning-time-minimum = Mínimun learning time of courses
