@@ -48,12 +48,12 @@ public class Tutorial extends AbstractEntity {
 
 	protected boolean			draftMode;
 
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
 	protected Assistant			assistant;
 
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
 	protected Course			course;

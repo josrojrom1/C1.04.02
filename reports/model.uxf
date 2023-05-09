@@ -240,6 +240,7 @@ Pattern = “[A-Z]{1,3}[0-9][0-9]{3}”}
 + motivation: String {NotBlank,Length(max=75)}
 + goals: String {NotBlank,Length(max=100)}
 + workTime: Int 
++ isFinished: boolean
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -269,7 +270,7 @@ bg=pink</panel_attributes>
       <x>186</x>
       <y>618</y>
       <w>180</w>
-      <h>96</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Course
@@ -281,6 +282,7 @@ Pattern="[A-Z]{1,3} //d{3}"}
 + courseType: LessonType {NotNull}
 + retailPrice: Money {NotNull}
 + link: String {URL}
++ draftMode:boolean
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -290,7 +292,7 @@ bg=pink</panel_attributes>
       <x>354</x>
       <y>1014</y>
       <w>198</w>
-      <h>90</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Audit
@@ -301,6 +303,7 @@ Audit
 + strongPoints: String {NotBlank, Length(max=100)}
 + weakPoints: String {NotBlank, Length(max=100)}
 + mark: Mark
++ draftMode: boolean
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -349,7 +352,7 @@ bg=pink</panel_attributes>
       <x>180</x>
       <y>378</y>
       <w>174</w>
-      <h>96</h>
+      <h>102</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Lecture
@@ -361,6 +364,7 @@ Lecture
 + learningTime: Int {NotNull,PositiveOrZero}
 + lectureType: LessonType {NotNull}
 + link: String {URL}
++ draftMode:boolean
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -599,10 +603,10 @@ m1=
       <w>570</w>
       <h>858</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=-&gt;
 supportedBy
-m1=1
-m2=0..n</panel_attributes>
+m2=1
+m1=0..n</panel_attributes>
     <additional_attributes>930.0;1400.0;10.0;1400.0;10.0;10.0;310.0;10.0</additional_attributes>
   </element>
   <element>
@@ -633,9 +637,9 @@ bg=green</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>360</x>
-      <y>882</y>
+      <y>870</y>
       <w>198</w>
-      <h>84</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 AuditingRecord
@@ -646,6 +650,7 @@ AuditingRecord
 + startPeriod: Date {Past, NotNull}
 + mark: Mark
 + link: String {Url}
++ correction: boolean
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -667,15 +672,15 @@ m1=
     <id>Relation</id>
     <coordinates>
       <x>210</x>
-      <y>708</y>
+      <y>720</y>
       <w>156</w>
-      <h>348</h>
+      <h>336</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=-&gt;
 regardedBy
-m1=1
-m2=0..n</panel_attributes>
-    <additional_attributes>240.0;550.0;10.0;550.0;10.0;10.0</additional_attributes>
+m2=1
+m1=0..n</panel_attributes>
+    <additional_attributes>240.0;530.0;10.0;530.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -866,14 +871,14 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>258</x>
-      <y>468</y>
+      <y>474</y>
       <w>30</w>
-      <h>78</h>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
 m2=1..n</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -896,9 +901,9 @@ m2=0..n</panel_attributes>
       <w>534</w>
       <h>618</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=1
-m2=0..n</panel_attributes>
+    <panel_attributes>lt=-&gt;
+m2=1
+m1=0..n</panel_attributes>
     <additional_attributes>870.0;1000.0;10.0;1000.0;10.0;10.0;190.0;10.0</additional_attributes>
   </element>
   <element>
@@ -971,7 +976,7 @@ bg=pink</panel_attributes>
       <x>558</x>
       <y>1476</y>
       <w>198</w>
-      <h>90</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Practicum
@@ -982,6 +987,8 @@ Practicum
 + abst: String {NotBlank, Length(max=100)}
 + goals: String {NotBlank, Length(max=100)}
 + totalTime: double
++ draftMode: boolean
++ adendum: boolean
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -1003,7 +1010,7 @@ bg=blue</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>558</x>
-      <y>1572</y>
+      <y>1578</y>
       <w>192</w>
       <h>54</h>
     </coordinates>

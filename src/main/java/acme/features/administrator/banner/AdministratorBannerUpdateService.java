@@ -11,12 +11,16 @@ import acme.framework.components.accounts.Administrator;
 import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
+import acme.utility.SpamDetector;
 
 @Service
 public class AdministratorBannerUpdateService extends AbstractService<Administrator, Banner> {
 
 	@Autowired
-	protected AdministratorBannerRepository repository;
+	protected AdministratorBannerRepository	repository;
+
+	@Autowired
+	protected SpamDetector					textValidator;
 
 
 	@Override
@@ -65,6 +69,12 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 
 		if (!super.getBuffer().getErrors().hasErrors("endDisplayPeriod"))
 			super.state(object.getStartDisplayPeriod().before(object.getEndDisplayPeriod()), "endDisplayPeriod", "administrator.banner.form.error.date");
+
+		if (!super.getBuffer().getErrors().hasErrors("slogan")) {
+			String validar;
+			validar = object.getSlogan();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "slogan", "administrator.banner.error.spam");
+		}
 	}
 
 	@Override

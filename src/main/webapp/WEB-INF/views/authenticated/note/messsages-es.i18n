@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-#-------------------SHOW-------------------------#
+#-------------------LIST-------------------------#
 authenticated.note.list.label.moment = Momento
 authenticated.note.list.label.title = Título
 authenticated.note.list.label.author = Autor

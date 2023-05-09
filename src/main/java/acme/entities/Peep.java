@@ -40,7 +40,7 @@ public class Peep extends AbstractEntity {
 	protected String			title;
 
 	@Length(max = 75)
-	@NotBlank
+	//@NotBlank  (Restriccion Anonymous)
 	protected String			nick;
 
 	@Length(max = 100)

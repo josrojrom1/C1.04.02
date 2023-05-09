@@ -1,0 +1,38 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+#--------------LIST--------------------------------#
+administrator.offer.list.label.moment = Moment
+administrator.offer.list.label.heading = Title
+administrator.offer.list.label.summary = Message
+administrator.offer.list.label.timePeriodStart = Start
+administrator.offer.list.label.timePeriodEnd = End
+administrator.offer.list.label.retailPrice = Price
+administrator.offer.list.label.link = Link
+
+administrator.offer.list.button.create = Create Offer
+#--------------SHOW--------------------------------#
+administrator.offer.form.label.moment = Moment
+administrator.offer.form.label.heading = Title
+administrator.offer.form.label.summary = Message
+administrator.offer.form.label.timePeriodStart = Start
+administrator.offer.form.label.timePeriodEnd = End
+administrator.offer.form.label.retailPrice = Price
+administrator.offer.form.label.link = Link
+administrator.offer.form.label.confirmation = Confirm
+administrator.offer.form.label.moneyExchange = Money exchange
+
+administrator.offer.form.button.update = Update
+administrator.offer.form.button.delete = Delete
+administrator.offer.form.button.create = Create Offer
+#--------------ERRORS--------------------------------#
+administrator.offer.form.error.totalTime = Start and end must be a week apart from each other
+administrator.offer.form.error.instanceMoment = Moment has to be at least a day prior to start

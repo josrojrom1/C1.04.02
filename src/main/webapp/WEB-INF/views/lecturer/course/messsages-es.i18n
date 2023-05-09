@@ -37,6 +37,7 @@ lecturer.course.form.button.delete = Borrar
 lecturer.course.form.button.update = Actualizar
 lecturer.course.form.button.publish = Publicar
 lecturer.course.form.button.lectures = Asignaturas relacionadas
+lecturer.course.form.label.moneyExchange = Cambio de divisa
 
 #------------VALIDATION ERROR MESSAGES-------------------
 lecturer.lecture.form.error.retailPrice.positiveOrZero = El precio del curso ha de ser positivo o cero

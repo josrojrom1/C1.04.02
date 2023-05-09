@@ -14,8 +14,12 @@
 	<jstl:if test="${acme:anyOf(_command, 'show|delete|update|publish') && draftMode}">
 		<acme:submit code="assistant.tutorial.form.button.update" action="/assistant/tutorial/update"/>
 		<acme:submit code="assistant.tutorial.form.button.delete" action="/assistant/tutorial/delete"/>
+		<acme:submit code="assistant.tutorial.form.button.publish" action="/assistant/tutorial/publish"/>
 	</jstl:if>
 	<jstl:if test="${acme:anyOf(_command, 'create')}">
 		<acme:submit code="assistant.tutorial.form.button.create" action="/assistant/tutorial/create"/>
+	</jstl:if>
+	<jstl:if test="${acme:anyOf(_command, 'show|delete|update|publish')}">
+		<acme:button code="assistant.tutorial.form.button.sessions" action="/assistant/tutorial-session/list?masterId=${id}"/>
 	</jstl:if>
 </acme:form>

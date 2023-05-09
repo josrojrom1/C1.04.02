@@ -1,0 +1,40 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+#--------------SHOW--------------------------------#
+student.enrolment.show.label.code = Code
+student.enrolment.show.label.motivation = Motivation
+student.enrolment.show.label.course = Course
+student.enrolment.show.label.goals = Goals
+student.enrolment.show.label.workTime = Work Time
+student.enrolment.show.button.create = Register
+student.enrolment.form.label.creditCardHolder= Credit card holder
+student.enrolment.form.label.expiryDate= Expiry date
+student.enrolment.form.label.cvc= CCV
+student.enrolment.form.label.upperNibble= Upper nibble
+student.enrolment.form.label.lowerNibble= Lower nibble
+
+
+student.enrolment.form.button.update = Update
+student.enrolment.form.button.delete = Delete
+student.enrolment.form.button.create = Create
+student.enrolment.form.button.publish = Publish
+student.enrolment.form.button.finalise= Finalise
+#--------------LIST------------------------------#
+student.enrolment.list.label.code = Code
+student.enrolment.list.label.motivation = Motivation
+student.enrolment.list.label.course = Course
+student.enrolment.list.button.create = Register
+#--------------Errors------------------------------#
+student.enrolment.form.error.duplicated = Code is already taken
+student.enrolment.form.error.workTime = Time can´t be negative
+student.enrolment.authentication.note.form.error.notAccepted = Not accepted
+Student.enrolment.authentication.note.form.error.finalisationError = Not valid
+

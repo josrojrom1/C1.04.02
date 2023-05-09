@@ -10,7 +10,7 @@
 
 
 
-#-------------------SHOW-------------------------#
+#-------------------LIST-------------------------#
 authenticated.note.list.label.moment = Moment
 authenticated.note.list.label.title = Title
 authenticated.note.list.label.author = Author

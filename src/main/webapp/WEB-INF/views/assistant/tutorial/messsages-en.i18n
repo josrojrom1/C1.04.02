@@ -20,6 +20,8 @@ assistant.tutorial.show.label.course = Course
 assistant.tutorial.form.button.update = Update
 assistant.tutorial.form.button.delete = Delete
 assistant.tutorial.form.button.create = Create
+assistant.tutorial.form.button.publish = Publish
+assistant.tutorial.form.button.sessions = List sessions
 #--------------LIST------------------------------#
 assistant.tutorial.list.label.code = Code
 assistant.tutorial.list.label.title = Title
@@ -28,3 +30,4 @@ assistant.tutorial.list.button.create = Create
 #--------------Errors------------------------------#
 assistant.tutorial.form.error.duplicated = Code is already taken
 assistant.tutorial.form.error.totalTime = Time can´t be negative
+assistant.tutorial.form.error.spam = Do not spam

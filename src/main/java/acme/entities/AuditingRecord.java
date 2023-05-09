@@ -16,7 +16,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.data.AbstractEntity;
-import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -57,10 +56,7 @@ public class AuditingRecord extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	@ManyToOne()
-	@Valid
-	@NotNull
-	protected Auditor			auditor;
+	protected boolean			correction;
 
 	@ManyToOne()
 	@Valid

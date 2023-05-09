@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Course;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.forms.MoneyExchange;
 import acme.framework.components.accounts.Any;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -13,7 +15,10 @@ import acme.framework.services.AbstractService;
 public class AnyCourseShowService extends AbstractService<Any, Course> {
 
 	@Autowired
-	protected AnyCourseRepository repository;
+	protected AnyCourseRepository						repository;
+
+	@Autowired
+	protected AuthenticatedMoneyExchangePerformService	moneyExchangeService;
 
 
 	@Override
@@ -45,7 +50,12 @@ public class AnyCourseShowService extends AbstractService<Any, Course> {
 	@Override
 	public void unbind(final Course object) {
 		Tuple tuple;
+		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
+		MoneyExchange moneyExchange;
+		moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
 		tuple = super.unbind(object, "code", "title", "abst", "retailPrice", "link");
+		tuple.put("principal", super.getRequest().getPrincipal().isAuthenticated());
+		tuple.put("moneyExchange", moneyExchange.getTarget());
 		super.getResponse().setData(tuple);
 	}
 }

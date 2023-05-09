@@ -38,6 +38,7 @@ lecturer.course.form.button.delete = Delete
 lecturer.course.form.button.update = Update
 lecturer.course.form.button.publish = Publish
 lecturer.course.form.button.lectures = Related lectures
+lecturer.course.form.label.moneyExchange = Money exchange
 
 #------------VALIDATION ERROR MESSAGES-------------------
 lecturer.lecture.form.error.retailPrice.max = The máximum price is 99999
