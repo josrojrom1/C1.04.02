@@ -4,18 +4,17 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="student.activity.show.label.title" path="title"/>
-	<acme:input-textbox code="student.activity.show.label.abst" path="abst"/>
-	<acme:input-select code="student.activity.show.label.activityType" path="activityType" choices="${choices}"/>
-	<acme:input-moment code="student.activity.show.label.startTimePeriod" path="startTimePeriod"/>
-	<acme:input-moment code="student.activity.show.label.endTimePeriod" path="startTimePeriod"/>
-	<acme:input-integer code="student.activity.show.label.masterId" path="masterId"/>
-	<acme:input-url code="student.activity.show.label.link" path="link" />
+	<acme:input-textbox code="student.activity.form.label.title" path="title"/>
+	<acme:input-textbox code="student.activity.form.label.abst" path="abst"/>
+	<acme:input-select code="student.activity.form.label.activityType" path="activityType" choices="${lessonChoices}"/>
+	<acme:input-moment code="student.activity.form.label.startTimePeriod" path="startTimePeriod"/>
+	<acme:input-moment code="student.activity.form.label.endTimePeriod" path="endTimePeriod"/>
+	<acme:input-url code="student.activity.form.label.link" path="link" />
+	<acme:input-select code="student.activity.form.label.enrolment" path="enrolment" choices="${choices}" readonly="${readEnrolment}"/>
 	
-	<jstl:if test="${acme:anyOf(_command, 'show|delete|update|finalise')}">
+	<jstl:if test="${acme:anyOf(_command, 'show|delete|update|finalise') && isFinalised}">
 		<acme:submit code="student.activity.form.button.update" action="/student/activity/update"/>
 		<acme:submit code="student.activity.form.button.delete" action="/student/activity/delete"/>
-	
 	</jstl:if>
 	<jstl:if test="${acme:anyOf(_command, 'create')}">
 		<acme:submit code="student.activity.form.button.create" action="/student/activity/create"/>
