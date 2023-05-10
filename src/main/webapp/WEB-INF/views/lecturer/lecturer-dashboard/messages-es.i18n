@@ -9,6 +9,15 @@
 # they accept any liabilities with respect to them.
 
 lecturer.dashboard.form.title.general-indicators = Indicadores generales
-lecturer.dashboard.form.title.application-statuses = Estados de solicitud
-lecturer.dashboard.form.label.total-num-theory-lectures =  Número total de lecciones de teoría
-lecturer.dashboard.form.label.total-num-handson-lectures = Número total de lecciones prácticas
+lecturer.dashboard.form.label.total-num-theory-lectures =  Número total de asignaturas de teoría
+lecturer.dashboard.form.label.total-num-handson-lectures = Número total de asignaturas prácticas
+lecturer.dasboard.form.label.lecture-learning-time-average = Media de horas de aprendizaje de asignaturas
+lecturer.dasboard.form.label.lecture-learning-time-deviation = Desviación de horas de aprendizaje de asignaturas
+lecturer.dasboard.form.label.lecture-learning-time-maximum = Máximo tiempo de aprendizaje de asignaturas
+lecturer.dasboard.form.label.lecture-learning-time-minimum = Mínimo tiempo de aprendizaje de asignaturas
+lecturer.dashboard.form.lectures-section = Asignaturas
+lecturer.dashboard.form.courses-section = Cursos
+lecturer.dasboard.form.label.course-learning-time-average = Media de horas de aprendizaje de cursos
+lecturer.dasboard.form.label.course-learning-time-deviation = Desviación de horas de aprendizaje de cursos
+lecturer.dasboard.form.label.course-learning-time-maximum = Máximo tiempo de aprendizaje de cursos
+lecturer.dasboard.form.label.course-learning-time-minimum = Mínimo tiempo de aprendizaje de cursos

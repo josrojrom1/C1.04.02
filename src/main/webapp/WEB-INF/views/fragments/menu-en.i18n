@@ -11,11 +11,11 @@
 # master.menu #################################################################
 
 master.menu.home = Home
-
 master.menu.sign-up = Sign up
 master.menu.sign-in = Sign in
 master.menu.sign-out = Sign out
 master.menu.courses = Courses
+master.menu.audits = Audits
 master.menu.course.list = List all
 
 # master.menu.anonymous #######################################################
@@ -41,13 +41,15 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 master.menu.administrator.bulletin.list = List bulletins
+master.menu.administrator.offer.list = List offers
 master.menu.administrator.configuration = System Configuration
 master.menu.administrator.banner = System Banner
 
 # master.menu.assistant ###################################################
 
 master.menu.assistant = Assistant
-master.menu.assistant.tutorial = Tutorials
+master.menu.assistant.tutorial = List my tutorials
+master.menu.assistant.tutorialSession = List my sessions
 
 # master.menu.student ##################################################
 master.menu.student = Student
@@ -58,9 +60,14 @@ master.menu.student.course= Courses
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Authenticated
-master.meny.authenticated.tutorial = Tutorials
+master.menu.authenticated.tutorial = List tutorials
 master.menu.authenticated.bulletin.list = List bulletins
 master.menu.authenticated.note = List notes
+master.menu.authenticated.offer = List offers
+master.menu.authenticated.audit.list = List all audits
+master.menu.authenticated.practicum.list = List all practicum
+master.meny.authenticated.practicum = List practica
+master.menu.authenticated.practicum = List practicums
 
 # master.menu.lecturer ########################################################
 
@@ -69,14 +76,28 @@ master.menu.lecturer.course.list = List my courses
 master.menu.lecturer = Lecturer
 master.menu.lecturer.dashboard = Dashboard
 
+# master.menu.company ###################################################
+
+master.menu.company = Company
+master.menu.company.practicum = List my practica
+master.menu.assistant.practicumSession = List my sessions
+
+# master.menu.auditor ########################################################
+master.menu.auditor.audit.list = List my audits
+master.menu.auditor = Auditor
+
 
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
 master.menu.user-account.general-data = General data
-master.menu.user-account.become-assistant = Become a assistant
+master.menu.user-account.become-assistant = Become an assistant
+master.menu.user-account.become-company = Become a company
+master.menu.user-account.company = Company data
 master.menu.user-account.become-student = Become a student
 master.menu.user-account.become-lecturer = Become a lecturer
+master.menu.user-account.auditor = Auditor data
+master.menu.user-account.become-auditor = Become an auditor
 master.menu.user-account.assistant = Assistant data
 master.menu.user-account.student = Student data
 

@@ -19,7 +19,7 @@
 
 	<jstl:choose>	 
 	
-		<jstl:when test="${acme:anyOf(_command, 'show|delete|update|publish') && draftMode== true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|delete|publish') && draftMode== true}">
 			<acme:input-textbox code="lecturer.lecture.form.label.title" path="title"/>
 			<acme:input-textarea code="lecturer.lecture.form.label.abst" path="abst"/>
 			<acme:input-integer code="lecturer.lecture.form.label.learningTime" path="learningTime"/>
@@ -27,7 +27,7 @@
 			<acme:input-select code="lecturer.lecture.form.label.lectureType"  path="lectureType"  choices="${lectureTypes}"/>
 			<acme:input-url code="lecturer.lecture.form.label.link" path="link"/>
 		
-			<acme:submit code="lecturer.lecture.form.button.update" action="/lecturer/lecture/update"/>
+			<acme:submit code="lecturer.lecture.form.button.update" action="/lecturer/lecture/update?id=${id}"/>
 			<acme:submit code="lecturer.lecture.form.button.publish" action="/lecturer/lecture/publish"/>
 			<acme:submit code="lecturer.lecture.form.button.delete" action="/lecturer/lecture/delete"/>
 			
@@ -53,6 +53,17 @@
 			<acme:input-url code="lecturer.lecture.form.label.link" path="link"/>
 		
 			<acme:submit code="lecturer.lecture.form.button.create" action="/lecturer/lecture/create"/>
+		</jstl:when>
+		
+		<jstl:when test="${_command == 'update'}">
+			<acme:input-textbox code="lecturer.lecture.form.label.title" path="title"/>
+			<acme:input-textarea code="lecturer.lecture.form.label.abst" path="abst"/>
+			<acme:input-integer code="lecturer.lecture.form.label.learningTime" path="learningTime"/>
+			<acme:input-textarea code="lecturer.lecture.form.label.body" path="body"/>
+			<acme:input-select code="lecturer.lecture.form.label.lectureType"  path="lectureType"  choices="${lectureTypes}"/>
+			<acme:input-url code="lecturer.lecture.form.label.link" path="link"/>
+		
+			<acme:submit code="lecturer.lecture.form.button.update" action="/lecturer/lecture/update"/>
 		</jstl:when>
 
 			

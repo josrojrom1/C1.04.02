@@ -10,7 +10,6 @@ import acme.entities.Tutorial;
 import acme.framework.components.accounts.Authenticated;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
-import acme.roles.Assistant;
 
 @Service
 public class AuthenticatedTutorialListService extends AbstractService<Authenticated, Tutorial> {
@@ -27,7 +26,7 @@ public class AuthenticatedTutorialListService extends AbstractService<Authentica
 	@Override
 	public void authorise() {
 		boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Assistant.class);
+		status = super.getRequest().getPrincipal().hasRole(Authenticated.class);
 		super.getResponse().setAuthorised(status);
 	}
 

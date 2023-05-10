@@ -19,7 +19,7 @@ any.course.list.label.lecturer = Profesor
 any.course.list.label.tutorial = Tutorial
 any.course.list.label.audit = Auditoría
 any.course.list.label.practicum = Practicum
-
+any.course.form.label.moneyExchange = Cambio de divisa
 #--------------SHOW--------------------------------#
 any.course.form.label.code = Código
 any.course.form.label.title = Título

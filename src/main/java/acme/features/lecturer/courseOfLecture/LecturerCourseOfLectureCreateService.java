@@ -1,11 +1,14 @@
 
 package acme.features.lecturer.courseOfLecture;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Course;
 import acme.entities.CourseOfLecture;
+import acme.entities.Lecture;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -25,7 +28,9 @@ public class LecturerCourseOfLectureCreateService extends AbstractService<Lectur
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = this.getRequest().getPrincipal().hasRole(Lecturer.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -41,11 +46,27 @@ public class LecturerCourseOfLectureCreateService extends AbstractService<Lectur
 	@Override
 	public void bind(final CourseOfLecture object) {
 		assert object != null;
-		super.bind(object, "course", "lecture");
+		Lecture lecture;
+		Integer lectureId;
+		final int id = super.getRequest().getData("id", int.class);
+		final Course course = this.repository.findCourseById(id);
+		lectureId = super.getRequest().getData("lecture", int.class);
+		lecture = this.repository.findLectureById(lectureId);
+
+		super.bind(object, "course");
+
+		object.setLecture(lecture);
+		object.setCourse(course);
 	}
 
 	@Override
 	public void validate(final CourseOfLecture object) {
+		final int courseId = super.getRequest().getData("id", int.class);
+		final Collection<Lecture> lectures = this.repository.findAllLecturesFromCourseOfLectureByCourseId(courseId);
+		final int lectureId = super.getRequest().getData("lecture", int.class);
+		final Lecture lecture = this.repository.findLectureById(lectureId);
+		if (!super.getBuffer().getErrors().hasErrors("lecture"))
+			super.state(!lectures.contains(lecture), "lecture", "lecturer.courseOfLecture.form.error.lecture.exists");
 
 	}
 
@@ -65,10 +86,10 @@ public class LecturerCourseOfLectureCreateService extends AbstractService<Lectur
 		Course course;
 		SelectChoices choices;
 
-		courseId = super.getRequest().getData("courseId", int.class);
+		courseId = super.getRequest().getData("id", int.class);
 		lecturerId = super.getRequest().getPrincipal().getActiveRoleId();
 		course = this.repository.findCourseById(courseId);
-		choices = SelectChoices.from(this.repository.findAvaibleLecturesForCourse(courseId, lecturerId), "title", object.getLecture());
+		choices = SelectChoices.from(this.repository.findPublishedLecturesFromLecturer(lecturerId), "title", object.getLecture());
 
 		tuple = super.unbind(object, "course", "lecture");
 
@@ -77,6 +98,8 @@ public class LecturerCourseOfLectureCreateService extends AbstractService<Lectur
 
 		tuple.put("courseTitle", course.getTitle());
 		tuple.put("id", courseId);
+
+		tuple.put("colId", object.getId());
 
 		super.getResponse().setData(tuple);
 	}

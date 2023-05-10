@@ -30,7 +30,7 @@ public class Course extends AbstractEntity {
 	//Code (not blank, unique and pattern)
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3} \\d{3}", message = "{validation.course.code}")
+	@Pattern(regexp = "[A-Z]{1,3} \\d{3}")
 	protected String			code;
 
 	//Title (not blank, shorter than 76 char)

@@ -22,7 +22,7 @@ lecturer.lecture.form.label.learningTime = Tiempo de aprendizaje (horas)
 lecturer.lecture.form.label.body = Cuerpo
 lecturer.lecture.form.label.link = Enlace
 
-lecturer.lecture.forms.button.create = Crear
+lecturer.lecture.form.button.create = Crear
 lecturer.lecture.form.button.update = Actualizar
 lecturer.lecture.form.button.delete = Borrar
 lecturer.lecture.form.button.publish = Publicar

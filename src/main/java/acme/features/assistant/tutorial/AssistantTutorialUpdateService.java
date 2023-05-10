@@ -12,12 +12,16 @@ import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Assistant;
+import acme.utility.SpamDetector;
 
 @Service
 public class AssistantTutorialUpdateService extends AbstractService<Assistant, Tutorial> {
 
 	@Autowired
-	protected AssistantTutorialRepository repository;
+	protected AssistantTutorialRepository	repository;
+
+	@Autowired
+	protected SpamDetector					textValidator;
 
 
 	@Override
@@ -30,11 +34,11 @@ public class AssistantTutorialUpdateService extends AbstractService<Assistant, T
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int id;
 		Tutorial tutorial;
 
-		masterId = super.getRequest().getData("id", int.class);
-		tutorial = this.repository.findOneTutorial(masterId);
+		id = super.getRequest().getData("id", int.class);
+		tutorial = this.repository.findOneTutorial(id);
 		status = tutorial != null && tutorial.isDraftMode() && super.getRequest().getPrincipal().hasRole(tutorial.getAssistant()) && tutorial.getAssistant().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 
 		super.getResponse().setAuthorised(status);
@@ -73,6 +77,22 @@ public class AssistantTutorialUpdateService extends AbstractService<Assistant, T
 		}
 		if (!super.getBuffer().getErrors().hasErrors("totalTime"))
 			super.state(object.getTotalTime() >= 0, "totalTime", "assistant.tutorial.form.error.totalTime");
+
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "assistant.tutorial.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("abst")) {
+			String validar;
+			validar = object.getAbst();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "assistant.tutorial.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("goals")) {
+			String validar;
+			validar = object.getGoals();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "assistant.tutorial.form.error.spam");
+		}
 	}
 
 	@Override
