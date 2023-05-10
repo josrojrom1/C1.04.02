@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.Course;
 import acme.entities.Lecture;
-import acme.features.lecturer.course.LecturerCourseCreateService;
+import acme.features.lecturer.course.LecturerCoursePublishService;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
@@ -20,7 +20,7 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 	protected StudentCourseRepository		repository;
 
 	@Autowired
-	protected LecturerCourseCreateService	servicecourse;
+	protected LecturerCoursePublishService	servicecourse;
 
 
 	@Override
