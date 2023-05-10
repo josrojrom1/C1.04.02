@@ -1,6 +1,7 @@
 
 package acme.testing.authenticated.note;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -23,6 +24,16 @@ public class AuthenticatedNoteListTest extends TestHarness {
 		super.checkColumnHasValue(recordIndex, 2, author);
 
 		super.signOut();
+	}
+	//No se puede hacer test negativo en los tests
+
+	@Test
+	public void test200Hacking() {
+		//This test tries to request the list of notes as anonymous principal
+
+		super.checkLinkExists("Sign in");
+		super.request("/authenticated/notes/list");
+		super.checkPanicExists();
 	}
 
 }
