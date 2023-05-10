@@ -11,7 +11,9 @@
 	<acme:input-moment code="authenticated.offer.form.label.timePeriodStart" path="timePeriodStart"/>
 	<acme:input-moment code="authenticated.offer.form.label.timePeriodEnd" path="timePeriodEnd"/>
 	<acme:input-money code="authenticated.offer.form.label.retailPrice" path="retailPrice"/>
+	<jstl:if test="${showExchange}">
 	<acme:input-money code="authenticated.offer.form.label.moneyExchange" path="moneyExchange" readonly="true"/>
+	</jstl:if>
 	<acme:input-url code="authenticated.offer.form.label.link" path="link"/>
 	
 </acme:form>
