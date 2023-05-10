@@ -1,7 +1,9 @@
 
 package acme.features.student.activity;
 
-import java.sql.Date;
+import java.time.temporal.ChronoUnit;
+import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import acme.entities.Enrolment;
 import acme.entities.LessonType;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
+import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
@@ -23,36 +26,29 @@ public class StudentActivityCreateService extends AbstractService<Student, Activ
 
 	@Override
 	public void check() {
-		boolean status;
 
-		status = super.getRequest().hasData("masterId", int.class);
-
-		super.getResponse().setChecked(status);
+		super.getResponse().setChecked(true);
 	}
 
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-		Enrolment enrolment;
 
-		id = super.getRequest().getData("masterId", int.class);
-		enrolment = this.repository.findEnrolmentById(id);
-		status = enrolment != null && enrolment.getIsFinalised() != true && super.getRequest().getPrincipal().hasRole(enrolment.getStudent());
+		status = super.getRequest().getPrincipal().hasRole(Student.class);
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		final Activity object;
-		final int id;
-		Enrolment enrolment;
+		Activity object;
 
-		enrolment = this.repository.findEnrolmentById(super.getRequest().getPrincipal().getActiveRoleId());
+		Date moment;
+
+		moment = MomentHelper.getCurrentMoment();
 
 		object = new Activity();
-		object.setEnrolment(enrolment);
-
+		object.setStartTimePeriod(moment);
+		object.setEndTimePeriod(moment);
 		super.getBuffer().setData(object);
 
 	}
@@ -60,10 +56,8 @@ public class StudentActivityCreateService extends AbstractService<Student, Activ
 	@Override
 	public void bind(final Activity object) {
 		assert object != null;
-
-		assert object != null;
 		int enrolmentId;
-		Enrolment enrolment;
+		final Enrolment enrolment;
 
 		enrolmentId = super.getRequest().getData("enrolment", int.class);
 		enrolment = this.repository.findEnrolmentById(enrolmentId);
@@ -75,10 +69,14 @@ public class StudentActivityCreateService extends AbstractService<Student, Activ
 	@Override
 	public void validate(final Activity object) {
 		assert object != null;
+		//validación de la fechas
+		if (!super.getBuffer().getErrors().hasErrors("startTimePeriod")) {
+			final Date moment = MomentHelper.deltaFromCurrentMoment(1, ChronoUnit.DAYS);
+			super.state(object.getStartTimePeriod().after(moment), "startTimePeriod", "student.activity.form.error.startTimePeriod");
+		}
 
-		final Date startTime = (Date) object.getStartTimePeriod();
-		final Date endTime = (Date) object.getEndTimePeriod();
-		super.state(startTime.before(endTime), "*", "student.activity.form.error.invalidDuration");
+		if (!super.getBuffer().getErrors().hasErrors("endTimePeriod"))
+			super.state(object.getStartTimePeriod().before(object.getEndTimePeriod()), "startTimePeriod, endTimePeriod", "student.activity.form.error.endTimePeriod");
 
 	}
 
@@ -91,15 +89,24 @@ public class StudentActivityCreateService extends AbstractService<Student, Activ
 
 	@Override
 	public void unbind(final Activity object) {
-		final SelectChoices choices;
+		assert object != null;
+		Collection<Enrolment> enrolments;
+		SelectChoices choices;
+		SelectChoices lessonChoices;
 		Tuple tuple;
+		int enrolmentId;
 
-		choices = SelectChoices.from(LessonType.class, object.getActivityType());
+		enrolmentId = super.getRequest().getPrincipal().getActiveRoleId();
+		enrolments = this.repository.findAllEnrolmentsFinalisedFromStudentId(enrolmentId);
+		choices = SelectChoices.from(enrolments, "code", object.getEnrolment());
+		lessonChoices = SelectChoices.from(LessonType.class, object.getActivityType());
 
-		tuple = super.unbind(object, "title", "abst", "activityType", "startTimePeriod", "endTimePeriod", "link");
-		tuple.put("masterId", object.getEnrolment().getId());
-		tuple.put("isFinalised", object.getEnrolment().getIsFinalised());
-		tuple.put("activityTypes", choices);
+		tuple = super.unbind(object, "title", "abst", "startTimePeriod", "endTimePeriod", "link");
+		tuple.put("enrolment", choices.getSelected().getKey());
+		tuple.put("choices", choices);
+		tuple.put("activityType", lessonChoices.getSelected().getKey());
+		tuple.put("lessonChoices", lessonChoices);
+		tuple.put("readEnrolment", false);
 		super.getResponse().setData(tuple);
 	}
 }

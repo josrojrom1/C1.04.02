@@ -1,6 +1,8 @@
 
 package acme.features.student.activity;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,41 +23,42 @@ public class StudentActivityDeleteService extends AbstractService<Student, Activ
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+		status = super.getRequest().hasData("id", int.class);
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-		Activity activity;
 
-		id = super.getRequest().getData("id", int.class);
-		activity = this.repository.findActivityById(id);
-		status = activity != null && super.getRequest().getPrincipal().hasRole(activity.getEnrolment().getStudent());
+		status = super.getRequest().getPrincipal().hasRole(Student.class);
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		final int id = super.getRequest().getData("id", int.class);
-		final Activity activity = this.repository.findActivityById(id);
-		super.getBuffer().setData(activity);
+		Activity object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findActivityById(id);
+
+		super.getBuffer().setData(object);
 	}
 
 	@Override
 	public void bind(final Activity object) {
 		assert object != null;
-
-		assert object != null;
 		int enrolmentId;
-		Enrolment enrolment;
+		final Enrolment enrolment;
 
 		enrolmentId = super.getRequest().getData("enrolment", int.class);
 		enrolment = this.repository.findEnrolmentById(enrolmentId);
 
 		super.bind(object, "title", "abst", "activityType", "startTimePeriod", "endTimePeriod", "link");
 		object.setEnrolment(enrolment);
+
 	}
 
 	@Override
@@ -71,15 +74,24 @@ public class StudentActivityDeleteService extends AbstractService<Student, Activ
 	}
 	@Override
 	public void unbind(final Activity object) {
-		final SelectChoices choices;
+		assert object != null;
+		Collection<Enrolment> enrolments;
+		SelectChoices choices;
+		SelectChoices lessonChoices;
 		Tuple tuple;
+		int enrolmentId;
 
-		choices = SelectChoices.from(LessonType.class, object.getActivityType());
+		enrolmentId = super.getRequest().getPrincipal().getActiveRoleId();
+		enrolments = this.repository.findAllEnrolmentsFinalisedFromStudentId(enrolmentId);
+		choices = SelectChoices.from(enrolments, "code", object.getEnrolment());
+		lessonChoices = SelectChoices.from(LessonType.class, object.getActivityType());
 
-		tuple = super.unbind(object, "title", "abst", "activityType", "startTimePeriod", "endTimePeriod", "link");
-		tuple.put("enrolment", object.getEnrolment().getId());
-		tuple.put("isFinalised", object.getEnrolment().getIsFinalised());
-		tuple.put("activityTypes", choices);
+		tuple = super.unbind(object, "title", "abst", "startTimePeriod", "endTimePeriod", "link");
+		tuple.put("enrolment", choices.getSelected().getKey());
+		tuple.put("choices", choices);
+		tuple.put("activityType", lessonChoices.getSelected().getKey());
+		tuple.put("lessonChoices", lessonChoices);
+		tuple.put("readEnrolment", false);
 		super.getResponse().setData(tuple);
 	}
 

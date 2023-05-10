@@ -10,22 +10,20 @@
 
 
 #--------------SHOW--------------------------------#
-student.enrolment.show.label.code = Código
-student.enrolment.show.label.motivation = Motivo
-student.enrolment.show.label.course = Curso
-student.enrolment.show.label.goals = Objetivos
-student.enrolment.show.label.workTime = Tiempo de Trabajo
-student.enrolment.show.button.create = Registrar
+student.activity.form.label.title= Título
+student.activity.form.label.abst= Resumen
+student.activity.form.label.activityType = Tipo de actividad
+student.activity.form.label.startTimePeriod = Fecha de inicio
+student.activity.form.label.endTimePeriod = Fecha de fin
+student.activity.form.label.link = Enlace
+student.activity.form.label.enrolment = Matrícula
 
-student.enrolment.form.button.update = Update
-student.enrolment.form.button.delete = Delete
-student.enrolment.form.button.create = Create
-student.enrolment.form.button.publish = Publish
+student.activity.form.button.update = Actualizar
+student.activity.form.button.delete = Borrar 
+student.activity.form.button.create = Crear
 #--------------LIST------------------------------#
-student.enrolment.list.label.code = Código
-student.enrolment.list.label.motivation = Motivo
-student.enrolment.list.label.course = Curso
-student.enrolment.list.button.create = Registrar
+student.activity.list.label.title= Título
+student.activity.list.label.abst= Resumen
+student.activity.list.label.enrolment = Matrícula
+student.activity.list.button.create = Crear
 #--------------Errors------------------------------#
-student.enrolment.form.error.duplicated = El código ya existe
-student.enrolment.form.error.workTime = El tiempo no puede ser negativo

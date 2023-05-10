@@ -9,22 +9,20 @@
 # they accept any liabilities with respect to them.
 
 #--------------SHOW--------------------------------#
-student.enrolment.show.label.code = Code
-student.enrolment.show.label.motivation = Motivation
-student.enrolment.show.label.course = Course
-student.enrolment.show.label.goals = Goals
-student.enrolment.show.label.workTime = Work Time
-student.enrolment.show.button.create = Register
+student.activity.form.label.title= Title
+student.activity.form.label.abst= Abstract
+student.activity.form.label.activityType = Activity Type
+student.activity.form.label.startTimePeriod = Start Time Period
+student.activity.form.label.endTimePeriod = End Time Period
+student.activity.form.label.link = Link
+student.activity.form.label.enrolment = Enrolment
 
-student.enrolment.form.button.update = Update
-student.enrolment.form.button.delete = Delete
-student.enrolment.form.button.create = Create
-student.enrolment.form.button.publish = Publish
+student.activity.form.button.update = Update
+student.activity.form.button.delete = Delete
+student.activity.form.button.create = Create
 #--------------LIST------------------------------#
-student.enrolment.list.label.code = Code
-student.enrolment.list.label.motivation = Motivation
-student.enrolment.list.label.course = Course
-student.enrolment.list.button.create = Register
+student.activity.list.label.title= title
+student.activity.list.label.abst= Abstract
+student.activity.list.label.enrolment = Enrolment
+student.activity.list.button.create = Create
 #--------------Errors------------------------------#
-student.enrolment.form.error.duplicated = Code is already taken
-student.enrolment.form.error.workTime = Time can´t be negative
