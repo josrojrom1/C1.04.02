@@ -58,6 +58,8 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 
 	@Override
 	public void validate(final Course object) {
+		assert object != null;
+
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
 			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "lecturer.lecture.form.error.retailPrice.positiveOrZero");
 			super.state(object.getRetailPrice().getAmount() <= 99999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
@@ -76,7 +78,11 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 			super.state(b != false, "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
 		}
 
-		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Course existing;
+			existing = this.repository.findOneCourseByCode(object.getCode());
+			super.state(existing == null || existing.getId() == object.getId(), "code", "lecturer.lecture.form.error.course.code.duplicated");
+		}
 
 	}
 
