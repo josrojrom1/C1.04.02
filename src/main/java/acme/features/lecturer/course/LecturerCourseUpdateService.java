@@ -50,16 +50,11 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void validate(final Course object) {
 
-		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
 			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "lecturer.lecture.form.error.retailPrice.positiveOrZero");
-
-		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
 			super.state(object.getRetailPrice().getAmount() <= 99999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
-
-		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
 			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.lecture.form.error.retailPrice.negative");
 
-		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
 			String currencies;
 			boolean b = false;
 			currencies = this.repository.findConfigurationAcceptedCurrencies();
@@ -72,6 +67,12 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 			super.state(b != false, "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
 		}
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Course existing;
+			existing = this.repository.findOneCourseByCode(object.getCode());
+			super.state(existing == null || existing.getId() == object.getId(), "code", "lecturer.lecture.form.error.course.code.duplicated");
+		}
 	}
 
 	@Override

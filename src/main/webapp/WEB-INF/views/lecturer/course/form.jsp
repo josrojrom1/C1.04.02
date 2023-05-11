@@ -9,7 +9,7 @@
 	
 	
 		<jstl:when test="${acme:anyOf(_command, 'show|update') && draftMode == true}">
-			<acme:input-textbox code="lecturer.course.form.label.code" readonly="true" path="code"/>
+			<acme:input-textbox code="lecturer.course.form.label.code" path="code"/>
 			<acme:input-textbox code="lecturer.course.form.label.title" path="title"/>
 			<acme:input-textarea code="lecturer.course.form.label.abst" path="abst"/>
 			<acme:input-money code="lecturer.course.form.label.retailPrice" path="retailPrice"/>

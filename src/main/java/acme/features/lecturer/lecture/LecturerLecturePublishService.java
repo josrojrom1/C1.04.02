@@ -35,8 +35,9 @@ public class LecturerLecturePublishService extends AbstractService<Lecturer, Lec
 		int id;
 		id = super.getRequest().getData("id", int.class);
 		lecture = this.repository.findLectureById(id);
-		status = lecture != null;
-
+		status = lecture != null && lecture.isDraftMode() && //
+			super.getRequest().getPrincipal().hasRole(lecture.getLecturer()) && //
+			lecture.getLecturer().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 		super.getResponse().setAuthorised(status);
 	}
 
