@@ -4,7 +4,6 @@ package acme.features.lecturer.course;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -89,14 +88,13 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	@Override
 	public void perform(final Course object) {
 		assert object != null;
-		final Collection<Lecture> lecturesByCourse = this.repository.findAllLecturesByCourse(object.getId());
-		final List<Boolean> drafModeList = lecturesByCourse.stream().map(x -> x.isDraftMode()).collect(Collectors.toList());
-		final List<LessonType> lectureTypes = lecturesByCourse.stream().map(x -> x.getLectureType()).collect(Collectors.toList());
-		//Comprobamos que no existan lectures no publicadas y que tengan al menos una de practicas para que no sea puramente teorica
-		if (!drafModeList.contains(true) && !drafModeList.isEmpty() && lectureTypes.contains(LessonType.HANDS_ON))
-			object.setDraftMode(false);
+		final Collection<Boolean> lecturesDraftModeByCourse = this.repository.findAllLecturesDraftModeByCourse(object.getId());
+		final Collection<LessonType> lecturesLessonTypeByCourse = this.repository.findAllLecturesLessonTypeByCourse(object.getId());
+
+		if (lecturesDraftModeByCourse.contains(true) || lecturesDraftModeByCourse.isEmpty() || !lecturesLessonTypeByCourse.contains(LessonType.HANDS_ON))
+			object.setDraftMode(true);//En caso de que alguna lecture no este publicada, la lista del curso este vacia, o no existan lectures de practica entonces no se publica
 		else
-			object.setDraftMode(true);
+			object.setDraftMode(false);//En caso contrario podemos publicar el curso correctamente
 		this.repository.save(object);
 	}
 
