@@ -52,12 +52,17 @@ public class AuthenticatedOfferShowService extends AbstractService<Authenticated
 	@Override
 	public void unbind(final Offer object) {
 		assert object != null;
-		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
-		MoneyExchange moneyExchange;
-		moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
 		Tuple tuple;
 		tuple = super.unbind(object, "moment", "heading", "summary", "timePeriodStart", "timePeriodEnd", "retailPrice", "link");
-		tuple.put("moneyExchange", moneyExchange.getTarget());
+		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
+		if (!systemCurrency.equals(object.getRetailPrice().getCurrency())) {
+			MoneyExchange moneyExchange;
+			moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
+			tuple.put("moneyExchange", moneyExchange.getTarget());
+			tuple.put("showExchange", true);
+		} else
+			tuple.put("showExchange", false);
+
 		super.getResponse().setData(tuple);
 	}
 }
