@@ -12,12 +12,16 @@ import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
+import acme.utility.SpamDetector;
 
 @Service
 public class StudentEnrolmentCreateService extends AbstractService<Student, Enrolment> {
 
 	@Autowired
-	protected StudentEnrolmentRepository repository;
+	protected StudentEnrolmentRepository	repository;
+
+	@Autowired
+	protected SpamDetector					textValidator;
 
 
 	@Override
@@ -64,6 +68,17 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 		}
 		if (!super.getBuffer().getErrors().hasErrors("workTime"))
 			super.state(object.getWorkTime() >= 0, "workTime", "student.enrolment.form.error.workTime");
+
+		if (!super.getBuffer().getErrors().hasErrors("motivation")) {
+			String validar;
+			validar = object.getMotivation();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "student.enrolment.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("goals")) {
+			String validar;
+			validar = object.getGoals();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "student.enrolment.form.error.spam");
+		}
 	}
 
 	@Override

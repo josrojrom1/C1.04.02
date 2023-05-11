@@ -16,12 +16,16 @@ import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
+import acme.utility.SpamDetector;
 
 @Service
 public class StudentActivityCreateService extends AbstractService<Student, Activity> {
 
 	@Autowired
-	protected StudentActivityRepository repository;
+	protected StudentActivityRepository	repository;
+
+	@Autowired
+	protected SpamDetector				textValidator;
 
 
 	@Override
@@ -77,6 +81,17 @@ public class StudentActivityCreateService extends AbstractService<Student, Activ
 
 		if (!super.getBuffer().getErrors().hasErrors("endTimePeriod"))
 			super.state(object.getStartTimePeriod().before(object.getEndTimePeriod()), "startTimePeriod, endTimePeriod", "student.activity.form.error.endTimePeriod");
+
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "student.activity.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("abst")) {
+			String validar;
+			validar = object.getAbst();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "student.activity.form.error.spam");
+		}
 
 	}
 
