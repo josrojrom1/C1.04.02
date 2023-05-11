@@ -12,7 +12,7 @@
 	<acme:input-url code="student.activity.form.label.link" path="link" />
 	<acme:input-select code="student.activity.form.label.enrolment" path="enrolment" choices="${choices}" readonly="${readEnrolment}"/>
 	
-	<jstl:if test="${acme:anyOf(_command, 'show|delete|update|finalise') && isFinalised}">
+	<jstl:if test="${acme:anyOf(_command, 'show|delete|update') && isFinalised}">
 		<acme:submit code="student.activity.form.button.update" action="/student/activity/update"/>
 		<acme:submit code="student.activity.form.button.delete" action="/student/activity/delete"/>
 	</jstl:if>
