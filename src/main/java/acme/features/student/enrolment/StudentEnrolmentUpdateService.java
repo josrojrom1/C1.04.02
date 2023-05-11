@@ -93,6 +93,7 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("isFinalised", false);
 		tuple.put("courseChoices", courseChoices);
+		super.getResponse().setData(tuple);
 	}
 
 }
