@@ -12,12 +12,16 @@ import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
+import acme.utility.SpamDetector;
 
 @Service
 public class StudentEnrolmentUpdateService extends AbstractService<Student, Enrolment> {
 
 	@Autowired
-	protected StudentEnrolmentRepository repository;
+	protected StudentEnrolmentRepository	repository;
+
+	@Autowired
+	protected SpamDetector					textValidator;
 
 
 	@Override
@@ -69,6 +73,25 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 	@Override
 	public void validate(final Enrolment object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Enrolment existing;
+			existing = this.repository.findEnrolmentByCode(object.getCode());
+			super.state(existing == null, "code", "student.enrolment.form.error.duplicated");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("workTime"))
+			super.state(object.getWorkTime() >= 0, "workTime", "student.enrolment.form.error.workTime");
+
+		if (!super.getBuffer().getErrors().hasErrors("motivation")) {
+			String validar;
+			validar = object.getMotivation();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "student.enrolment.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("goals")) {
+			String validar;
+			validar = object.getGoals();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "student.enrolment.form.error.spam");
+		}
 	}
 
 	@Override
@@ -93,6 +116,7 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("isFinalised", false);
 		tuple.put("courseChoices", courseChoices);
+		super.getResponse().setData(tuple);
 	}
 
 }

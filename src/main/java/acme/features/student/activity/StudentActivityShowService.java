@@ -1,10 +1,13 @@
 
 package acme.features.student.activity;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Activity;
+import acme.entities.Enrolment;
 import acme.entities.LessonType;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
@@ -35,13 +38,13 @@ public class StudentActivityShowService extends AbstractService<Student, Activit
 
 		id = super.getRequest().getData("id", int.class);
 		activity = this.repository.findActivityById(id);
-		status = activity != null && super.getRequest().getPrincipal().hasRole(activity.getEnrolment().getStudent());
+		status = activity != null && super.getRequest().getPrincipal().hasRole(Student.class) && activity.getEnrolment().getStudent().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		final Activity object;
+		Activity object;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
@@ -53,16 +56,27 @@ public class StudentActivityShowService extends AbstractService<Student, Activit
 	@Override
 	public void unbind(final Activity object) {
 		assert object != null;
-
-		final SelectChoices choices;
+		Collection<Enrolment> enrolments;
+		SelectChoices choices;
+		SelectChoices lessonChoices;
 		Tuple tuple;
+		int enrolmentId;
 
-		choices = SelectChoices.from(LessonType.class, object.getActivityType());
+		enrolmentId = super.getRequest().getPrincipal().getActiveRoleId();
+		enrolments = this.repository.findAllEnrolmentsFinalisedFromStudentId(enrolmentId);
+		choices = SelectChoices.from(enrolments, "code", object.getEnrolment());
+		lessonChoices = SelectChoices.from(LessonType.class, object.getActivityType());
 
-		tuple = super.unbind(object, "title", "abst", "activityType", "startTimePeriod", "endTimePeriod", "link");
-
-		tuple.put("activityTypes", choices);
+		tuple = super.unbind(object, "title", "abst", "startTimePeriod", "endTimePeriod", "link");
+		tuple.put("enrolment", choices.getSelected().getKey());
+		tuple.put("choices", choices);
+		tuple.put("isFinalised", object.getEnrolment().getIsFinalised());
+		tuple.put("activityType", lessonChoices.getSelected().getKey());
+		tuple.put("lessonChoices", lessonChoices);
+		tuple.put("readEnrolment", false);
+		tuple.put("masterId", object.getEnrolment().getId());
 		super.getResponse().setData(tuple);
+
 	}
 
 }

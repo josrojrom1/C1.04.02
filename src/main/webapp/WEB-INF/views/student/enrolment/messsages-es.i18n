@@ -37,3 +37,4 @@ student.enrolment.form.error.duplicated = El código ya existe
 student.enrolment.form.error.workTime = El tiempo no puede ser negativo
 student.enrolment.authentication.note.form.error.notAccepted = No aceptado
 Student.enrolment.authentication.note.form.error.finalisationError = No válido
+student.enrolment.form.error.spam = No hagas spam

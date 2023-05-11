@@ -56,6 +56,7 @@ master.menu.student = Student
 master.menu.student.enrolment = Enrolment
 master.menu.student.activity = Activity
 master.menu.student.course= Courses
+master.menu.student.dashboard= Student dashboard
 
 # master.menu.authenticated ###################################################
 

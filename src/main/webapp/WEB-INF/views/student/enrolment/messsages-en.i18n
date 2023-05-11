@@ -37,4 +37,5 @@ student.enrolment.form.error.duplicated = Code is already taken
 student.enrolment.form.error.workTime = Time can´t be negative
 student.enrolment.authentication.note.form.error.notAccepted = Not accepted
 Student.enrolment.authentication.note.form.error.finalisationError = Not valid
+student.enrolment.form.error.spam = Do not spam
 
