@@ -1,0 +1,4 @@
+recordIndex,code,title,abst,retailPrice,link
+0,"AAA 000","Titulo del curso de prueba 1","Resumen de prueba del curso 0",EUR 9.00,""
+1,"AAA 001","Titulo del curso de prueba 2","Resumen de prueba del curso 1",EUR 19.00,""
+2,"AAA 002","Titulo del curso de prueba 3","Resumen de prueba del curso 2",USD 3.00,"https://example.com"
