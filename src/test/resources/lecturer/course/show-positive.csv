@@ -1,0 +1,6 @@
+recordIndex,code,title,abst,retailPrice,link
+0,"ABC 001","a","a",EUR 32.32,""
+1,"ABC 002","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345","a",EUR 32.32,""
+2,"ABC 003","a","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",EUR 32.32,""
+3,"ABC 004","Esto es un titulo de prueba","abst de prueba",EUR 1.50,https://youtube.com
+4,"CPR 001","Curso de Programación Web básico","En este curso aprenderá las bases para el desarrollo web",USD 19.95,https://youtube.com/cursoChuloDeHTML

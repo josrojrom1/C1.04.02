@@ -9,7 +9,7 @@ import acme.testing.TestHarness;
 
 public class LecturerCourseListTest extends TestHarness {
 
-	//Test POSITIVO
+	//TEST POSITIVO
 	@ParameterizedTest
 	@CsvFileSource(resources = "/lecturer/course/list-all-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String code, final String title, final String price) {
