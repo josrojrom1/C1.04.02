@@ -10,7 +10,7 @@ import acme.entities.Course;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
-public interface LecturerLectureTestRepository extends AbstractRepository {
+public interface LecturerCourseTestRepository extends AbstractRepository {
 
 	@Query("select c from Course c where c.lecturer.userAccount.username = :username")
 	Collection<Course> findManyCoursesByLecturerUsername(String username);

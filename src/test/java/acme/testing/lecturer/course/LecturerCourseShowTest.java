@@ -14,7 +14,7 @@ import acme.testing.TestHarness;
 public class LecturerCourseShowTest extends TestHarness {
 
 	@Autowired
-	protected LecturerLectureTestRepository repository;
+	protected LecturerCourseTestRepository repository;
 
 
 	@ParameterizedTest
