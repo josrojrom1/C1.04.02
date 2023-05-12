@@ -27,13 +27,7 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void authorise() {
 		boolean status;
-		Course course;
-		int id;
-		id = super.getRequest().getData("id", int.class);
-		course = this.repository.findOneCourseById(id);
-		status = course != null && course.isDraftMode() && //
-			super.getRequest().getPrincipal().hasRole(course.getLecturer()) && //
-			course.getLecturer().getId() == super.getRequest().getPrincipal().getActiveRoleId();
+		status = super.getRequest().getPrincipal().hasRole(Lecturer.class);
 		super.getResponse().setAuthorised(status);
 	}
 
