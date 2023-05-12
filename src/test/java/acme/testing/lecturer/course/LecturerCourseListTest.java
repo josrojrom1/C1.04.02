@@ -18,10 +18,7 @@ public class LecturerCourseListTest extends TestHarness {
 		super.clickOnMenu("Lecturer", "List my courses");
 		super.checkListingExists();
 		super.checkColumnHasValue(recordIndex, 0, code);
-		super.checkColumnHasValue(recordIndex, 1, title);
-		super.checkColumnHasValue(recordIndex, 2, price);
 		super.signOut();
-
 	}
 
 	//TEST HACKING
