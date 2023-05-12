@@ -28,7 +28,7 @@ public class LecturerLectureListService extends AbstractService<Lecturer, Lectur
 	public void authorise() { //Solo autorizamos listar lectures si somos un lecturer
 		boolean status;
 		status = super.getRequest().getPrincipal().hasRole(Lecturer.class);
-		super.getResponse().setAuthorised(true);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
