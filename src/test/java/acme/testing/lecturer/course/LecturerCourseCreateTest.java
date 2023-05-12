@@ -8,6 +8,7 @@ import acme.testing.TestHarness;
 
 public class LecturerCourseCreateTest extends TestHarness {
 
+	//TEST POSITIVO
 	@ParameterizedTest
 	@CsvFileSource(resources = "/lecturer/course/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String code, final String title, final String abst, final String retailPrice, final String link) {
@@ -34,6 +35,26 @@ public class LecturerCourseCreateTest extends TestHarness {
 		super.checkInputBoxHasValue("abst", abst);
 		super.checkInputBoxHasValue("retailPrice", retailPrice);
 		super.checkInputBoxHasValue("link", link);
+		super.signOut();
+	}
+
+	//TEST NEGATIVO
+	@ParameterizedTest
+	@CsvFileSource(resources = "/lecturer/course/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test200Negative(final int recordIndex, final String code, final String title, final String abst, final String retailPrice, final String link) {
+		// HINT: En este test intentamos crear cursos con datos incorrectos.
+
+		super.signIn("lecturer1", "lecturer1");
+		super.clickOnMenu("Lecturer", "List my courses");
+		super.clickOnButton("Create new course");
+		super.checkFormExists();
+		super.fillInputBoxIn("code", code);
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("abst", abst);
+		super.fillInputBoxIn("retailPrice", retailPrice);
+		super.fillInputBoxIn("link", link);
+		super.clickOnSubmit("Create");
+		super.checkErrorsExist();
 		super.signOut();
 	}
 
