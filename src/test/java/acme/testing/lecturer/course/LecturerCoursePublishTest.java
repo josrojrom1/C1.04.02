@@ -75,39 +75,38 @@ public class LecturerCoursePublishTest extends TestHarness {
 				super.signOut();
 			}
 	}
-	//
-	//	@Test
-	//	public void test301Hacking() {
-	//		// HINT: this test tries to publish a published course that was registered by the principal.
-	//
-	//		Collection<Job> courses;
-	//		String params;
-	//
-	//		super.signIn("lecturer1", "lecturer1");
-	//		courses = this.repository.findManyJobsByEmployerUsername("lecturer1");
-	//		for (final Job course : courses)
-	//			if (!course.isDraftMode()) {
-	//				params = String.format("id=%d", course.getId());
-	//				super.request("/lecturer/course/publish", params);
-	//			}
-	//		super.signOut();
-	//	}
-	//
-	//	@Test
-	//	public void test302Hacking() {
-	//		// HINT: this test tries to publish a course that wasn't registered by the principal,
-	//		// HINT+ be it published or unpublished.
-	//
-	//		Collection<Job> courses;
-	//		String params;
-	//
-	//		super.signIn("lecturer2", "lecturer2");
-	//		courses = this.repository.findManyJobsByEmployerUsername("lecturer1");
-	//		for (final Job course : courses) {
-	//			params = String.format("id=%d", course.getId());
-	//			super.request("/lecturer/course/publish", params);
-	//		}
-	//		super.signOut();
-	//	}
+
+	@Test
+	public void test301Hacking() {
+		// HINT: En este test intentamos publicar un curso ya publicado por otro Lecturer distinto.
+
+		Collection<Course> courses;
+		String params;
+
+		super.signIn("lecturer1", "lecturer1");
+		courses = this.repository.findManyCoursesByLecturerUsername("lecturer1");
+		for (final Course course : courses)
+			if (!course.isDraftMode()) {
+				params = String.format("id=%d", course.getId());
+				super.request("/lecturer/course/publish", params);
+			}
+		super.signOut();
+	}
+
+	@Test
+	public void test302Hacking() {
+		// HINT: En este test intentamos publicar un curso que no pertenece al lecturer
+
+		Collection<Course> courses;
+		String params;
+
+		super.signIn("lecturer2", "lecturer2");
+		courses = this.repository.findManyCoursesByLecturerUsername("lecturer1");
+		for (final Course course : courses) {
+			params = String.format("id=%d", course.getId());
+			super.request("/lecturer/course/publish", params);
+		}
+		super.signOut();
+	}
 
 }
