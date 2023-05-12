@@ -47,34 +47,24 @@ public class LecturerCourseUpdateTest extends TestHarness {
 		super.signOut();
 	}
 
-	//	@ParameterizedTest
-	//	@CsvFileSource(resources = "/employer/job/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	//	public void test200Negative(final int recordIndex, final String reference, final String contractor, final String title, final String deadline, final String salary, final String score, final String moreInfo, final String description) {
-	//		// HINT: this test attempts to update a job with wrong data.
-	//
-	//		super.signIn("employer1", "employer1");
-	//
-	//		super.clickOnMenu("Employer", "List my courses");
-	//		super.checkListingExists();
-	//		super.sortListing(0, "asc");
-	//
-	//		super.checkColumnHasValue(recordIndex, 0, reference);
-	//		super.clickOnListingRecord(recordIndex);
-	//		super.checkFormExists();
-	//		super.fillInputBoxIn("reference", reference);
-	//		super.fillInputBoxIn("contractor", contractor);
-	//		super.fillInputBoxIn("title", title);
-	//		super.fillInputBoxIn("deadline", deadline);
-	//		super.fillInputBoxIn("salary", salary);
-	//		super.fillInputBoxIn("score", score);
-	//		super.fillInputBoxIn("moreInfo", moreInfo);
-	//		super.fillInputBoxIn("description", description);
-	//		super.clickOnSubmit("Update");
-	//
-	//		super.checkErrorsExist();
-	//
-	//		super.signOut();
-	//	}
+	@ParameterizedTest
+	@CsvFileSource(resources = "/lecturer/course/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test200Negative(final int recordIndex, final String code, final String title, final String abst, final String retailPrice, final String link) {
+		// HINT: En este test actualizamos un course con datos incorrectos
+		super.signIn("lecturer1", "lecturer1");
+		super.clickOnMenu("Lecturer", "List my courses");
+		super.checkListingExists();
+		super.clickOnListingRecord(0);
+		super.checkFormExists();
+		super.fillInputBoxIn("code", code);
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("abst", abst);
+		super.fillInputBoxIn("retailPrice", retailPrice);
+		super.fillInputBoxIn("link", link);
+		super.clickOnSubmit("Update");
+		super.checkErrorsExist();
+		super.signOut();
+	}
 
 	//	@Test
 	//	public void test300Hacking() {
