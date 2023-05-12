@@ -29,7 +29,7 @@ public class LecturerLectureUpdateTest extends TestHarness {
 		super.clickOnMenu("Lecturer", "List my lectures");
 		super.checkListingExists();
 		super.sortListing(0, "desc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.checkFormExists();
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("abst", abst);
@@ -39,8 +39,7 @@ public class LecturerLectureUpdateTest extends TestHarness {
 		super.fillInputBoxIn("link", link);
 		super.clickOnSubmit("Update");
 		super.checkListingExists();
-		super.sortListing(0, "desc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("abst", abst);
