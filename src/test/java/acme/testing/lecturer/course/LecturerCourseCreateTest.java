@@ -1,6 +1,7 @@
 
 package acme.testing.lecturer.course;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -55,6 +56,26 @@ public class LecturerCourseCreateTest extends TestHarness {
 		super.fillInputBoxIn("link", link);
 		super.clickOnSubmit("Create");
 		super.checkErrorsExist();
+		super.signOut();
+	}
+
+	//TEST HACKING
+	@Test
+	public void test300Hacking() {
+		// HINT: Este test intenta crear un curso usando principals con roles inapropiados
+
+		super.checkLinkExists("Sign in");
+		super.request("/lecturer/course/create");
+		super.checkPanicExists();
+
+		super.signIn("administrator", "administrator");
+		super.request("/lecturer/course/create");
+		super.checkPanicExists();
+		super.signOut();
+
+		super.signIn("assistant1", "assistant1");
+		super.request("/lecturer/course/create");
+		super.checkPanicExists();
 		super.signOut();
 	}
 
