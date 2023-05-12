@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.entities.Course;
+import acme.entities.Lecture;
 import acme.testing.TestHarness;
 
 public class LecturerLectureShowTest extends TestHarness {
@@ -17,42 +17,43 @@ public class LecturerLectureShowTest extends TestHarness {
 	protected LecturerLectureTestRepository repository;
 
 
+	//TEST POSITIVO
 	@ParameterizedTest
-	@CsvFileSource(resources = "/lecturer/course/show-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int recordIndex, final String code, final String title, final String abst, final String retailPrice, final String link) {
-		// HINT: En este test nos autenticamos como Lecturer, listamos sus cursos y despues hacemos click en uno de ellos y comprobamos que contiene los datos esperados  
-
+	@CsvFileSource(resources = "/lecturer/lecture/show-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test100Positive(final int recordIndex, final String title, final String abst, final String learningTime, final String body, final String lectureType, final String link) {
+		// HINT: En este test nos autenticamos como Lecturer, listamos sus lectures y despues hacemos click en una de ellas y comprobamos que contiene los datos esperados  
 		super.signIn("lecturer1", "lecturer1");
-		super.clickOnMenu("Lecturer", "List my courses");
+		super.clickOnMenu("Lecturer", "List my lectures");
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
-		super.checkInputBoxHasValue("code", code);
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("abst", abst);
-		super.checkInputBoxHasValue("retailPrice", retailPrice);
+		super.checkInputBoxHasValue("learningTime", learningTime);
+		super.checkInputBoxHasValue("body", body);
+		super.checkInputBoxHasValue("lectureType", lectureType);
 		super.checkInputBoxHasValue("link", link);
 		super.signOut();
 	}
 
+	//TEST HACKING
 	@Test
 	public void test300Hacking() {
 		// HINT: this test tries to show an unpublished job by someone who is not the principal.
 
-		Collection<Course> courses;
+		Collection<Lecture> lectures;
 		String param;
 
-		courses = this.repository.findManyCoursesByLecturerUsername("lecturer1");
-		for (final Course course : courses)
-			if (course.isDraftMode()) {
-				param = String.format("id=%d", course.getId());
-				super.checkLinkExists("Sign in");
-				super.request("/lecturer/course/show", param);
-				super.checkPanicExists();
-				super.signIn("administrator", "administrator");
-				super.request("/lecturer/course/show", param);
-				super.checkPanicExists();
-				super.signOut();
-			}
-	}
+		lectures = this.repository.findManyLecturesByLecturerUsername("lecturer1");
+		for (final Lecture lecture : lectures) {
 
+			param = String.format("id=%d", lecture.getId());
+			super.checkLinkExists("Sign in");
+			super.request("/lecturer/lecture/show", param);
+			super.checkPanicExists();
+			super.signIn("administrator", "administrator");
+			super.request("/lecturer/lecture/show", param);
+			super.checkPanicExists();
+			super.signOut();
+		}
+	}
 }
