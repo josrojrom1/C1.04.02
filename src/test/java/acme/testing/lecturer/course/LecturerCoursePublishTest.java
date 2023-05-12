@@ -17,7 +17,7 @@ public class LecturerCoursePublishTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/lecturer/course/publish-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int recordIndex, final String reference) {
+	public void test100Positive(final int recordIndex) {
 		// HINT: En este test nos autenticamos como Lecturer, listamos los courses, seleccionamos uno de ellos y lo publicamos
 		super.signIn("lecturer1", "lecturer1");
 		super.clickOnMenu("Lecturer", "List my courses");
@@ -30,25 +30,19 @@ public class LecturerCoursePublishTest extends TestHarness {
 		super.signOut();
 	}
 
-	//	@ParameterizedTest
-	//	@CsvFileSource(resources = "/employer/job/publish-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	//	public void test200Negative(final int recordIndex, final String reference) {
-	//		// HINT: this test attempts to publish a job that cannot be published, yet.
-	//
-	//		super.signIn("employer1", "employer1");
-	//
-	//		super.clickOnMenu("Employer", "List my jobs");
-	//		super.checkListingExists();
-	//		super.sortListing(0, "asc");
-	//
-	//		super.checkColumnHasValue(recordIndex, 0, reference);
-	//		super.clickOnListingRecord(recordIndex);
-	//		super.checkFormExists();
-	//		super.clickOnSubmit("Publish");
-	//		super.checkAlertExists(false);
-	//
-	//		super.signOut();
-	//	}
+	@ParameterizedTest
+	@CsvFileSource(resources = "/lecturer/course/publish-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test200Negative(final int recordIndex) {
+		// HINT: En este test intentamos publicar un course el cual aun no puede ser publicado, en este caso porque no tiene lectures
+		super.signIn("lecturer1", "lecturer1");
+		super.clickOnMenu("Lecturer", "List my courses");
+		super.checkListingExists();
+		super.clickOnListingRecord(0);
+		super.checkFormExists();
+		super.checkNotButtonExists("Publish");
+		super.checkNotErrorsExist();
+		super.signOut();
+	}
 	//
 	//	@Test
 	//	public void test300Hacking() {
