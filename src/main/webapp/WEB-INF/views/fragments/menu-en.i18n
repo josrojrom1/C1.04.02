@@ -86,6 +86,7 @@ master.menu.assistant.practicumSession = List my sessions
 # master.menu.auditor ########################################################
 master.menu.auditor.audit.list = List my audits
 master.menu.auditor = Auditor
+master.menu.auditor.dashboard = Dashboard
 
 
 # master.menu.user-account ####################################################
