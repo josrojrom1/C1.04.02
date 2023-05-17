@@ -4,6 +4,7 @@ package acme.features.student.activity;
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.Activity;
@@ -34,5 +35,8 @@ public interface StudentActivityRepository extends AbstractRepository {
 
 	@Query("SELECT s FROM Student s WHERE s.id= :id")
 	public Student findStudentById(int id);
+
+	@Query("SELECT a.enrolment FROM Activity a WHERE a.id= :id")
+	Enrolment findEnrolmentByActivityId(@Param("id") Integer Id);
 
 }

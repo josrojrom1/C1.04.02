@@ -35,10 +35,12 @@ public class StudentActivityShowService extends AbstractService<Student, Activit
 		boolean status;
 		int id;
 		Activity activity;
+		Enrolment enrolment;
 
 		id = super.getRequest().getData("id", int.class);
 		activity = this.repository.findActivityById(id);
-		status = activity != null && super.getRequest().getPrincipal().hasRole(Student.class) && activity.getEnrolment().getStudent().getId() == super.getRequest().getPrincipal().getActiveRoleId();
+		enrolment = this.repository.findEnrolmentByActivityId(id);
+		status = activity != null && enrolment != null && super.getRequest().getPrincipal().hasRole(Student.class) && activity.getEnrolment().getStudent().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 		super.getResponse().setAuthorised(status);
 	}
 
