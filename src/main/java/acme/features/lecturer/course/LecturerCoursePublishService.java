@@ -95,8 +95,10 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 
 		if (lecturesDraftModeByCourse.contains(true) || lecturesDraftModeByCourse.isEmpty() || !lecturesLessonTypeByCourse.contains(LessonType.HANDS_ON))
 			object.setDraftMode(true);//En caso de que alguna lecture no este publicada, la lista del curso este vacia, o no existan lectures de practica entonces no se publica
-		else
+		else {
 			object.setDraftMode(false);//En caso contrario podemos publicar el curso correctamente
+			object.setCourseType(this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
+		}
 		this.repository.save(object);
 	}
 
