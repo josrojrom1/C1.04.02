@@ -4,7 +4,6 @@ package acme.features.lecturer.course;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +36,9 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		int id;
 		id = super.getRequest().getData("id", int.class);
 		course = this.repository.findOneCourseById(id);
-		status = course != null;
+		status = course != null && course.isDraftMode() && //
+			super.getRequest().getPrincipal().hasRole(course.getLecturer()) && //
+			course.getLecturer().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -58,16 +59,13 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 
 	@Override
 	public void validate(final Course object) {
-		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
-			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "lecturer.lecture.form.error.retailPrice.positiveOrZero");
-
-		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
-			super.state(object.getRetailPrice().getAmount() <= 99999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
-
-		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
-			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.lecture.form.error.retailPrice.negative");
+		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "lecturer.lecture.form.error.retailPrice.positiveOrZero");
+			super.state(object.getRetailPrice().getAmount() <= 99999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
+			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.lecture.form.error.retailPrice.negative");
+
 			String currencies;
 			boolean b = false;
 			currencies = this.repository.findConfigurationAcceptedCurrencies();
@@ -81,21 +79,24 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 			super.state(b != false, "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
 		}
 
-		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Course existing;
+			existing = this.repository.findOneCourseByCode(object.getCode());
+			super.state(existing == null || existing.getId() == object.getId(), "code", "lecturer.lecture.form.error.course.code.duplicated");
+		}
 
 	}
 
 	@Override
 	public void perform(final Course object) {
 		assert object != null;
-		final Collection<Lecture> lecturesByCourse = this.repository.findAllLecturesByCourse(object.getId());
-		final List<Boolean> drafModeList = lecturesByCourse.stream().map(x -> x.isDraftMode()).collect(Collectors.toList());
-		final List<LessonType> lectureTypes = lecturesByCourse.stream().map(x -> x.getLectureType()).collect(Collectors.toList());
-		//Comprobamos que no existan lectures no publicadas y que tengan al menos una de practicas para que no sea puramente teorica
-		if (!drafModeList.contains(true) && !drafModeList.isEmpty() && lectureTypes.contains(LessonType.HANDS_ON))
-			object.setDraftMode(false);
+		final Collection<Boolean> lecturesDraftModeByCourse = this.repository.findAllLecturesDraftModeByCourse(object.getId());
+		final Collection<LessonType> lecturesLessonTypeByCourse = this.repository.findAllLecturesLessonTypeByCourse(object.getId());
+
+		if (lecturesDraftModeByCourse.contains(true) || lecturesDraftModeByCourse.isEmpty() || !lecturesLessonTypeByCourse.contains(LessonType.HANDS_ON))
+			object.setDraftMode(true);//En caso de que alguna lecture no este publicada, la lista del curso este vacia, o no existan lectures de practica entonces no se publica
 		else
-			object.setDraftMode(true);
+			object.setDraftMode(false);//En caso contrario podemos publicar el curso correctamente
 		this.repository.save(object);
 	}
 

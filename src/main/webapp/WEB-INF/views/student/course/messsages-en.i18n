@@ -14,6 +14,7 @@ student.course.form.label.title= Title
 student.course.form.label.abst= Abstract
 student.course.form.label.courseType= Course type
 student.course.form.label.retailPrice= Retail price
+student.course.form.label.moneyExchange= Money Exchange
 student.course.form.label.link = Link
 student.course.form.label.lecturer-id = Lecturer Id
 student.course.form.label.lectures-title= Title of lectures

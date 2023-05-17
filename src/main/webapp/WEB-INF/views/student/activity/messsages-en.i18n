@@ -26,3 +26,6 @@ student.activity.list.label.abst= Abstract
 student.activity.list.label.enrolment = Enrolment
 student.activity.list.button.create = Create
 #--------------Errors------------------------------#
+student.activity.form.error.spam = Do not spam
+student.activity.form.error.startTimePeriod = start time period not valid
+student.activity.form.error.endTimePeriod =  end time period not valid

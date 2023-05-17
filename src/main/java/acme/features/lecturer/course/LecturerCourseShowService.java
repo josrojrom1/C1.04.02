@@ -75,11 +75,8 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 	@Override
 	public void unbind(final Course object) {
 		assert object != null;
-		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
 		final Collection<Lecture> lecturesByCourse = this.repository.findAllLecturesByCourse(object.getId());
 		final Boolean hasLectures;
-		MoneyExchange moneyExchange;
-		moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
 		if (lecturesByCourse.isEmpty())
 			hasLectures = false;
 		else
@@ -89,8 +86,15 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		tuple = super.unbind(object, "code", "title", "abst", "retailPrice", "link");
 		tuple.put("courseType", this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
 		tuple.put("draftMode", object.isDraftMode());
-		tuple.put("moneyExchange", moneyExchange.getTarget());
 		tuple.put("hasLectures", hasLectures);
+		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
+		if (!systemCurrency.equals(object.getRetailPrice().getCurrency())) {
+			MoneyExchange moneyExchange;
+			moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
+			tuple.put("moneyExchange", moneyExchange.getTarget());
+			tuple.put("showExchange", true);
+		} else
+			tuple.put("showExchange", false);
 
 		super.getResponse().setData(tuple);
 	}

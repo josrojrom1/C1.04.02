@@ -29,12 +29,7 @@ public class LecturerCourseDeleteService extends AbstractService<Lecturer, Cours
 	@Override
 	public void authorise() {
 		boolean status;
-		Course course;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-		course = this.repository.findOneCourseById(id);
-		status = course != null;
+		status = super.getRequest().getPrincipal().hasRole(Lecturer.class);
 		super.getResponse().setAuthorised(status);
 	}
 
