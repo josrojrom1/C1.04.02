@@ -49,8 +49,8 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		final Integer totalNumOfHandsonAudits;
 		//final Double averageNumberOfLecturesLearningTime;
 
-		totalNumOfTheoryAudits = this.repository.totalNumOfTheoryAudits();
-		totalNumOfHandsonAudits = this.repository.totalNumOfHandsonAudits();
+		//totalNumOfTheoryAudits = this.repository.totalNumOfTheoryAudits();
+		//totalNumOfHandsonAudits = this.repository.totalNumOfHandsonAudits();
 
 		//averageNumberOfLecturesLearningTime = this.repository.averageNumberOfLecturesLearningTime();
 		/*
@@ -70,8 +70,8 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		 */
 		dashboard = new AuditorDashboard();
 
-		dashboard.setTotalNumOfTheoryAudits(totalNumOfTheoryAudits);
-		dashboard.setTotalNumOfHandsonAudits(totalNumOfHandsonAudits);
+		//dashboard.setTotalNumOfTheoryAudits(totalNumOfTheoryAudits);
+		//dashboard.setTotalNumOfHandsonAudits(totalNumOfHandsonAudits);
 		/*
 		 * 
 		 * dashboard.setAvegageNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);

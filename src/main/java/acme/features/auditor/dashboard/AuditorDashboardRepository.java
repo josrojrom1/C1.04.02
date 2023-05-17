@@ -20,13 +20,34 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AuditorDashboardRepository extends AbstractRepository {
 
-	@Query("select count(a) from Audit a where a.course.courseType = 'THEORY'")
-	Integer totalNumOfTheoryAudits();
+	//@Query("select count(a) from Audit a where a.course.courseType = 'THEORY'")
+	//Integer totalNumOfTheoryAudits();
 
-	@Query("select count(a) from Audit a where a.course.courseType = 'HANDS_ON'")
-	Integer totalNumOfHandsonAudits();
+	//@Query("select count(a) from Audit a where a.course.courseType = 'HANDS_ON'")
+	//Integer totalNumOfHandsonAudits();
 
-	//@Query("select avg(select count(a.learningTime) from Lecture a) from Lecture e")
-	//Double averageNumberOfLecturesLearningTime();
+	@Query("select avg(a) from AuditingRecord a where a.audit.id = :id")
+	Double averageNumberOfAuditingRecords(int id);
+
+	@Query("select stddev(a) from AuditingRecord a where a.audit.id = :id")
+	Double deviationNumberOfAuditingRecords(int id);
+
+	@Query("select min(a) from AuditingRecord a where a.audit.id = :id")
+	Double minNumberOfAuditingRecords(int id);
+
+	@Query("select max(a) from AuditingRecord a where a.audit.id = :id")
+	Double maxNumberOfAuditingRecords(int id);
+
+	@Query("select avg(TIME_TO_SEC(TIMEDIFF(a.startPeriod, a.endPeriod)) / 3600) from AuditingRecord a")
+	Double averagePeriodLenghtOfAuditingRecords();
+
+	@Query("select stddev(TIME_TO_SEC(TIMEDIFF(a.startPeriod, a.endPeriod)) / 3600) from AuditingRecord a")
+	Double deviationPeriodLenghtOfAuditingRecords();
+
+	@Query("select min(TIME_TO_SEC(TIMEDIFF(a.startPeriod, a.endPeriod)) / 3600) from AuditingRecord a")
+	Double minPeriodLenghtOfAuditingRecords();
+
+	@Query("select max(TIME_TO_SEC(TIMEDIFF(a.startPeriod, a.endPeriod)) / 3600) from AuditingRecord a")
+	Double maxPeriodLenghtOfAuditingRecords();
 
 }
