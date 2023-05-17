@@ -43,44 +43,22 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 
 	@Override
 	public void load() {
-		final AuditorDashboard dashboard;
+		AuditorDashboard dashboard;
+		int id;
 
-		final Integer totalNumOfTheoryAudits;
-		final Integer totalNumOfHandsonAudits;
-		//final Double averageNumberOfLecturesLearningTime;
+		id = super.getRequest().getPrincipal().getActiveRoleId();
 
-		//totalNumOfTheoryAudits = this.repository.totalNumOfTheoryAudits();
-		//totalNumOfHandsonAudits = this.repository.totalNumOfHandsonAudits();
+		int totalNumOfTheoryAudits;
+		int totalNumOfHandsonAudits;
 
-		//averageNumberOfLecturesLearningTime = this.repository.averageNumberOfLecturesLearningTime();
-		/*
-		 * Double averageNumberOfApplicationsPerEmployer;
-		 * Double averageNumberOfApplicationsPerWorker;
-		 * Double averageNumberOfJobsPerEmployer;
-		 * Double ratioOfPendingApplications;
-		 * Double ratioOfAcceptedApplications;
-		 * Double ratioOfRejectedApplications;
-		 * 
-		 * averageNumberOfApplicationsPerEmployer = this.repository.averageNumberOfApplicationsPerEmployer();
-		 * averageNumberOfApplicationsPerWorker = this.repository.averageNumberOfApplicationsPerWorker();
-		 * averageNumberOfJobsPerEmployer = this.repository.averageNumberOfJobsPerEmployer();
-		 * ratioOfPendingApplications = this.repository.ratioOfPendingApplications();
-		 * ratioOfAcceptedApplications = this.repository.ratioOfAcceptedApplications();
-		 * ratioOfRejectedApplications = this.repository.ratioOfRejectedApplications();
-		 */
+		totalNumOfTheoryAudits = this.repository.totalNumOfTheoryAudits(id);
+		totalNumOfHandsonAudits = this.repository.totalNumOfHandsonAudits(id);
+
 		dashboard = new AuditorDashboard();
 
-		//dashboard.setTotalNumOfTheoryAudits(totalNumOfTheoryAudits);
-		//dashboard.setTotalNumOfHandsonAudits(totalNumOfHandsonAudits);
-		/*
-		 * 
-		 * dashboard.setAvegageNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);
-		 * dashboard.setAverageNumberOfApplicationsPerWorker(averageNumberOfApplicationsPerWorker);
-		 * dashboard.setAverageNumberOfJobsPerEmployer(averageNumberOfJobsPerEmployer);
-		 * dashboard.setRatioOfPendingApplications(ratioOfPendingApplications);
-		 * dashboard.setRatioOfAcceptedApplications(ratioOfAcceptedApplications);
-		 * dashboard.setRatioOfRejectedApplications(ratioOfRejectedApplications);
-		 */
+		dashboard.setTotalNumOfTheoryAudits(totalNumOfTheoryAudits);
+		dashboard.setTotalNumOfHandsonAudits(totalNumOfHandsonAudits);
+
 		super.getBuffer().setData(dashboard);
 	}
 
@@ -88,8 +66,7 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 	public void unbind(final AuditorDashboard object) {
 		Tuple tuple;
 
-		tuple = super.unbind(object, //
-			"totalNumOfTheoryAudits", "totalNumOfHandsonAudits");
+		tuple = super.unbind(object, "totalNumOfTheoryAudits", "totalNumOfHandsonAudits");
 
 		super.getResponse().setData(tuple);
 	}

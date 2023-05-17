@@ -12,6 +12,8 @@
 
 package acme.features.auditor.dashboard;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -20,11 +22,14 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AuditorDashboardRepository extends AbstractRepository {
 
-	//@Query("select count(a) from Audit a where a.course.courseType = 'THEORY'")
-	//Integer totalNumOfTheoryAudits();
+	@Query("select count(a) from Audit a where a.course.courseType = 'THEORY' and a.auditor.id = :id")
+	int totalNumOfTheoryAudits(int id);
 
-	//@Query("select count(a) from Audit a where a.course.courseType = 'HANDS_ON'")
-	//Integer totalNumOfHandsonAudits();
+	@Query("select count(a) from Audit a where a.course.courseType = 'HANDS_ON' and a.auditor.id = :id")
+	int totalNumOfHandsonAudits(int id);
+
+	@Query("select(c.courseType) from Course c")
+	List<String> busqueda();
 
 	@Query("select avg(a) from AuditingRecord a where a.audit.id = :id")
 	Double averageNumberOfAuditingRecords(int id);
