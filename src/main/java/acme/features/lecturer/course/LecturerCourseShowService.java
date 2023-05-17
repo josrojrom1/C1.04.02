@@ -35,12 +35,11 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int id;
 		final Course course;
 		final Lecturer lecturer;
-
-		masterId = super.getRequest().getData("id", int.class);
-		course = this.repository.findOneCourseById(masterId);
+		id = super.getRequest().getData("id", int.class);
+		course = this.repository.findOneCourseById(id);
 		lecturer = course == null ? null : course.getLecturer();
 		status = super.getRequest().getPrincipal().hasRole(lecturer) || course != null;
 		super.getResponse().setAuthorised(status);
@@ -49,7 +48,6 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 
 	@Override
 	public void load() {
-
 		Course object;
 		int id;
 		id = super.getRequest().getData("id", int.class);
@@ -59,15 +57,17 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 	}
 
 	public LessonType courseType(final Collection<Lecture> lecturesFromACourse) {
-		int theory = 0;
-		int handson = 0;
+		int theory = 0;//..........En este método calculamos el courseType de un curso.
+		int handson = 0;//.........Recordemos que el sistema rechaza cursos puros teóricos.
 		LessonType res = LessonType.THEORY;
 		for (final Lecture l : lecturesFromACourse)
 			if (l.getLectureType().equals(LessonType.THEORY))
 				theory += 1;
 			else if (l.getLectureType().equals(LessonType.HANDS_ON))
 				handson += 1;
-		if (theory < handson || theory == handson)
+		if (theory > handson)
+			res = LessonType.THEORY;
+		else
 			res = LessonType.HANDS_ON;
 		return res;
 	}
@@ -75,11 +75,8 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 	@Override
 	public void unbind(final Course object) {
 		assert object != null;
-		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
 		final Collection<Lecture> lecturesByCourse = this.repository.findAllLecturesByCourse(object.getId());
 		final Boolean hasLectures;
-		MoneyExchange moneyExchange;
-		moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
 		if (lecturesByCourse.isEmpty())
 			hasLectures = false;
 		else
@@ -89,8 +86,15 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		tuple = super.unbind(object, "code", "title", "abst", "retailPrice", "link");
 		tuple.put("courseType", this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
 		tuple.put("draftMode", object.isDraftMode());
-		tuple.put("moneyExchange", moneyExchange.getTarget());
 		tuple.put("hasLectures", hasLectures);
+		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
+		if (!systemCurrency.equals(object.getRetailPrice().getCurrency())) {
+			MoneyExchange moneyExchange;
+			moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
+			tuple.put("moneyExchange", moneyExchange.getTarget());
+			tuple.put("showExchange", true);
+		} else
+			tuple.put("showExchange", false);
 
 		super.getResponse().setData(tuple);
 	}

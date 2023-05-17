@@ -50,12 +50,16 @@ public class AnyCourseShowService extends AbstractService<Any, Course> {
 	@Override
 	public void unbind(final Course object) {
 		Tuple tuple;
-		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
-		MoneyExchange moneyExchange;
-		moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
 		tuple = super.unbind(object, "code", "title", "abst", "retailPrice", "link");
 		tuple.put("principal", super.getRequest().getPrincipal().isAuthenticated());
-		tuple.put("moneyExchange", moneyExchange.getTarget());
+		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
+		if (!systemCurrency.equals(object.getRetailPrice().getCurrency())) {
+			MoneyExchange moneyExchange;
+			moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
+			tuple.put("moneyExchange", moneyExchange.getTarget());
+			tuple.put("showExchange", true);
+		} else
+			tuple.put("showExchange", false);
 		super.getResponse().setData(tuple);
 	}
 }

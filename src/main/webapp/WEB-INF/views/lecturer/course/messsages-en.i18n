@@ -20,7 +20,7 @@ lecturer.course.list.label.lecturer = Lecturer
 lecturer.course.list.label.tutorial = Tutorial
 lecturer.course.list.label.audit = Audit
 lecturer.course.list.label.practicum = Practicum
-lecturer.course.list.button.create = Crete new course
+lecturer.course.list.button.create = Create new course
 
 #--------------SHOW--------------------------------
 lecturer.course.form.label.code = Code
@@ -40,10 +40,14 @@ lecturer.course.form.button.publish = Publish
 lecturer.course.form.button.lectures = Related lectures
 lecturer.course.form.label.moneyExchange = Money exchange
 
-#---------------COURSE OF LECTURE-----------------------
-lecturer.lecture.form.error.retailPrice.positiveOrZero = The price should be positive or zero.
-lecturer.lecture.form.error.retailPrice.currency = Only can use a currency accepted by the system
+#------------VALIDATION ERROR MESSAGES-------------------
+lecturer.lecture.form.error.retailPrice.max = The máximum price is 99999
+lecturer.lecture.form.error.retailPrice.positiveOrZero = The price should be positive or zero
+lecturer.lecture.form.error.retailPrice.negative = Negative numbers aren't allow
 lecturer.lecture.form.error.course.code.duplicated = The code introduced is used by another course 
-lecturer.course.button.courseOfLecture.create = Add lectures to the course
+lecturer.lecture.form.error.retailPrice.currency = You can only use currencies accepted by the system
+
+#---------------COURSE OF LECTURE-----------------------
+lecturer.course.button.courseOfLecture.create = Add lectures
 lecturer.course.button.courseOfLecture.list = Remove lecture
 

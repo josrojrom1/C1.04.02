@@ -16,11 +16,17 @@ student.enrolment.show.label.course = Curso
 student.enrolment.show.label.goals = Objetivos
 student.enrolment.show.label.workTime = Tiempo de Trabajo
 student.enrolment.show.button.create = Registrar
+student.enrolment.form.label.creditCardHolder= Propietario tarjeta de crédito
+student.enrolment.form.label.expiryDate= Fecha de expiración
+student.enrolment.form.label.cvc= CCV
+student.enrolment.form.label.upperNibble= Nibble superior
+student.enrolment.form.label.lowerNibble= Nibble inferior
 
-student.enrolment.form.button.update = Update
-student.enrolment.form.button.delete = Delete
-student.enrolment.form.button.create = Create
-student.enrolment.form.button.publish = Publish
+student.enrolment.form.button.update = Actualizar
+student.enrolment.form.button.delete = Borrar
+student.enrolment.form.button.create = Crear
+student.enrolment.form.button.publish = Publicar
+student.enrolment.form.button.finalise= Finalizar
 #--------------LIST------------------------------#
 student.enrolment.list.label.code = Código
 student.enrolment.list.label.motivation = Motivo
@@ -29,3 +35,6 @@ student.enrolment.list.button.create = Registrar
 #--------------Errors------------------------------#
 student.enrolment.form.error.duplicated = El código ya existe
 student.enrolment.form.error.workTime = El tiempo no puede ser negativo
+student.enrolment.authentication.note.form.error.notAccepted = No aceptado
+Student.enrolment.authentication.note.form.error.finalisationError = No válido
+student.enrolment.form.error.spam = No hagas spam

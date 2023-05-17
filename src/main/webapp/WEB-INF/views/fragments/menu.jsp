@@ -94,8 +94,10 @@
 
 		<!-- STUDENT -->
 		<acme:menu-option code="master.menu.student" access="hasRole('Student')">
+			<acme:menu-suboption code="master.menu.student.dashboard" action="/student/student-dashboard/show"/>
 			<acme:menu-suboption code="master.menu.student.enrolment" action="/student/enrolment/list"/>
 			<acme:menu-suboption code="master.menu.student.activity" action="/student/activity/list"/>
+			<acme:menu-suboption code="master.menu.student.course" action="/student/course/list"/>
 		</acme:menu-option>
 	</acme:menu-left>
 
@@ -120,15 +122,7 @@
 
 			<!-- BECOME LECTURER -->
 			<acme:menu-suboption code="master.menu.user-account.become-lecturer" action="/authenticated/lecturer/create" access="!hasRole('Lecturer')"/>
-			<acme:menu-suboption code="master.menu.user-account.lecturer" action="/authenticated/lecturer/update" access="hasRole('Lecturer')"/>
-			
-			<!-- BECOME PROVIDER -->
-			<acme:menu-suboption code="master.menu.user-account.become-provider" action="/authenticated/provider/create" access="!hasRole('Provider')"/>
-			<acme:menu-suboption code="master.menu.user-account.provider" action="/authenticated/provider/update" access="hasRole('Provider')"/>
-			
-			<!-- BECOME CONSUMER -->
-			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRole('Consumer')"/>
-			<acme:menu-suboption code="master.menu.user-account.consumer" action="/authenticated/consumer/update" access="hasRole('Consumer')"/>
+			<!--<acme:menu-suboption code="master.menu.user-account.lecturer" action="/authenticated/lecturer/update" access="hasRole('Lecturer')"/> -->
 			
 			<!-- BECOME AUDITOR -->
 			<acme:menu-suboption code="master.menu.user-account.become-auditor" action="/authenticated/auditor/create" access="!hasRole('Auditor')"/>

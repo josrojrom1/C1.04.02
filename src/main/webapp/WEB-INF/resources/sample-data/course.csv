@@ -5,3 +5,5 @@ course-03,ABC 001,a,a,32.32 EUR,null,false,lecturer-01
 course-04,ABC 002,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345,a,32.32 EUR,null,false,lecturer-01
 course-05,ABC 003,a,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,32.32 EUR,null,false,lecturer-01
 course-06,ABC 004,Esto es un titulo de prueba,abst de prueba,1.5 EUR,https://youtube.com,true,lecturer-01
+course-07,AAA 111,test,test,9.9 EUR,null,true,lecturer-01
+course-08,AAA 222,test,test,9.9 EUR,null,true,lecturer-01

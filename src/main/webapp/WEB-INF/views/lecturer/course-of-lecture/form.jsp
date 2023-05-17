@@ -28,8 +28,8 @@
 		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
-			<acme:input-textbox code="lecturer.courseOfLecture.form.label.course" path="courseTitle" readonly="true"/>
-			<acme:input-select code="lecturer.courseOfLecture.form.label.lecture" path="lecture" choices="${lectures}"/>
+			<acme:input-textbox code="lecturer.courseOfLecture.form.label.course.title" path="courseTitle" readonly="true"/>
+			<acme:input-select code="lecturer.courseOfLecture.form.label.lectures" path="lecture" choices="${lectures}"/>
 	
 			<acme:submit code="lecturer.courseOfLecture.form.button.create" action="/lecturer/course-of-lecture/create"/>
 		</jstl:when>

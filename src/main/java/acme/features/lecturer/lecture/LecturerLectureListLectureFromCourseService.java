@@ -27,7 +27,9 @@ public class LecturerLectureListLectureFromCourseService extends AbstractService
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Lecturer.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -39,7 +41,6 @@ public class LecturerLectureListLectureFromCourseService extends AbstractService
 	@Override
 	public void unbind(final Lecture object) {
 		assert object != null;
-
 		Tuple tuple;
 		tuple = super.unbind(object, "title", "abst", "learningTime", "body", "lectureType", "link");
 		super.getResponse().setData(tuple);

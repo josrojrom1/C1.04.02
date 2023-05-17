@@ -27,14 +27,15 @@ public class LecturerCourseListService extends AbstractService<Lecturer, Course>
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Lecturer.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		final Collection<Course> objects;
 		final Principal principal;
-
 		principal = super.getRequest().getPrincipal();
 		objects = this.repository.findAllCoursesByLecturerId(principal.getActiveRoleId());
 

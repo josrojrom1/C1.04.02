@@ -1,6 +1,9 @@
 
 package acme.features.lecturer.course;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +28,16 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		Course course;
+		int id;
+		id = super.getRequest().getData("id", int.class);
+		course = this.repository.findOneCourseById(id);
+		status = course != null && course.isDraftMode() && //
+			super.getRequest().getPrincipal().hasRole(course.getLecturer()) && //
+			course.getLecturer().getId() == super.getRequest().getPrincipal().getActiveRoleId();
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -46,14 +58,30 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 
 	@Override
 	public void validate(final Course object) {
-
-		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
-			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "lecturer.lecture.form.error.retailPrice.positiveOrZero");
-
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!this.repository.findAllCodesFromCourses().contains(object.getCode()), "code", "lecturer.lecture.form.error.course.code.duplicated");
-
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "lecturer.lecture.form.error.retailPrice.positiveOrZero");
+			super.state(object.getRetailPrice().getAmount() <= 99999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
+			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.lecture.form.error.retailPrice.negative");
+
+			String currencies;
+			boolean b = false;
+			currencies = this.repository.findConfigurationAcceptedCurrencies();
+			final List<String> listCurrencies;
+			final String[] aux = currencies.replace("[", "").replace("]", "").split(",");
+			listCurrencies = Arrays.asList(aux);
+			for (final String c : listCurrencies)
+				if (c.equals(object.getRetailPrice().getCurrency()))
+					b = true;
+			super.state(b != false, "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Course existing;
+			existing = this.repository.findOneCourseByCode(object.getCode());
+			super.state(existing == null || existing.getId() == object.getId(), "code", "lecturer.lecture.form.error.course.code.duplicated");
+		}
 	}
 
 	@Override

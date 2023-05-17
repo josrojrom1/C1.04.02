@@ -19,20 +19,20 @@ public class StudentDashboard extends AbstractForm {
 
 	protected int				totalNumberTheoryWorkbookActivities;
 
-	protected Double			workbookAverage;
+	protected Double			activityWorkbookTimeAverage;
 
-	protected Double			workbookDeviation;
+	protected Double			activityWorkbookTimeDeviation;
 
-	protected Double			workbookMaxPeriod;
+	protected Double			activityWorkbookTimeMaximum;
 
-	protected Double			workbookMinPeriod;
+	protected Double			activityWorkbookTimeMinimum;
 
-	protected Double			enrolmentAverage;
+	protected Double			courseEnrolledTimeAverage;
 
-	protected Double			enrolmentDeviation;
+	protected Double			courseEnrolledTimeDeviation;
 
-	protected Double			enrolmentMaxTime;
+	protected Double			courseEnrolledTimeMaximum;
 
-	protected Double			enrolmentMinTime;
+	protected Double			courseEnrolledTimeMinimum;
 
 }

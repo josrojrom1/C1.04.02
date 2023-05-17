@@ -5,3 +5,5 @@ lecture-03,"Planificación Automática","En esta asignatura aprenderá las bases
 lecture-04,"esto es el title de la lecture 2","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",3,"a","HANDS_ON",false,null,lecturer-02
 lecture-05,"esto es el title de la lecture 2","esto es el resumen lecturer 2",3,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","HANDS_ON",false,"https://example.es",lecturer-02
 lecture-06,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345","a",3,"body","THEORY",false,"https://example.es",lecturer-02
+lecture-07,"test","test",1,"test","HANDS_ON",false,null,lecturer-01
+lecture-08,"z testing update","testing update",2,"testing update","HANDS_ON",true,https://example.com,lecturer-01
