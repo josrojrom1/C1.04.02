@@ -19,7 +19,7 @@
 			<acme:input-textbox code="lecturer.course.form.label.link" path="link"/>
 
 			<acme:button code="lecturer.course.button.courseOfLecture.create" action="/lecturer/course-of-lecture/create?id=${id}"/>			
-			<acme:button code="lecturer.course.button.courseOfLecture.list" action="/lecturer/course-of-lecture/list?courseId=${id}"/>
+			<acme:button code="lecturer.course.button.courseOfLecture.list" action="/lecturer/course-of-lecture/list?id=${id}"/>
 			<acme:submit code="lecturer.course.form.button.update" action="/lecturer/course/update?id=${id}"/>
 			<acme:submit code="lecturer.course.form.button.delete" action="/lecturer/course/delete"/>
 			<jstl:if test="${hasLectures==true}">
