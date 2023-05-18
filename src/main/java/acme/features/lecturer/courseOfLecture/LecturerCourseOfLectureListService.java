@@ -23,23 +23,22 @@ public class LecturerCourseOfLectureListService extends AbstractService<Lecturer
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+		status = super.getRequest().hasData("id", int.class);
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
-		boolean status;
-		final CourseOfLecture col = this.repository.findCourseOfLectureById(super.getRequest().getData("id", int.class));
-		status = col != null && //
-			super.getRequest().getPrincipal().hasRole(Lecturer.class) &&//
-			col.getCourse().getLecturer().getId() == super.getRequest().getPrincipal().getActiveRoleId();
+		final boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Lecturer.class);
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Collection<CourseOfLecture> objects;
-		objects = this.repository.findCourseOfLectureByCourseId(super.getRequest().getData("courseId", int.class));
+		objects = this.repository.findCourseOfLectureByCourseId(super.getRequest().getData("id", int.class));
 		super.getBuffer().setData(objects);
 	}
 

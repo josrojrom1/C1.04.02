@@ -47,6 +47,7 @@ public class AssistantTutorialSessionListMineService extends AbstractService<Ass
 		Tuple tuple;
 		tuple = super.unbind(object, "title");
 		tuple.put("tutorial", object.getTutorial().getCode());
+		tuple.put("showCreate", false);
 		super.getResponse().setData(tuple);
 	}
 }
