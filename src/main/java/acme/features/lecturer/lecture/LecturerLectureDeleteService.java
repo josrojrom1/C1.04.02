@@ -32,7 +32,12 @@ public class LecturerLectureDeleteService extends AbstractService<Lecturer, Lect
 	@Override
 	public void authorise() {
 		boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Lecturer.class);
+		Lecture lecture;
+		int id;
+		id = super.getRequest().getData("id", int.class);
+		lecture = this.repository.findLectureById(id);
+		status = super.getRequest().getPrincipal().hasRole(Lecturer.class) &&//
+			lecture.getLecturer().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 		super.getResponse().setAuthorised(status);
 	}
 

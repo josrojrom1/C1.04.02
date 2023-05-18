@@ -44,7 +44,7 @@ public class Course extends AbstractEntity {
 	protected String			abst;
 
 	//CourseType atributo derivado (se calcula segun las lectures que tenga)
-	@NotNull
+
 	protected LessonType		courseType;
 
 	//Retail price (positive or nought)
