@@ -42,10 +42,16 @@ public class AssistantTutorialSessionListService extends AbstractService<Assista
 	public void load() {
 		Collection<TutorialSession> objects;
 		int id;
-
+		Tutorial tutorial;
+		boolean showCreate;
 		id = super.getRequest().getData("masterId", int.class);
 		objects = this.repository.findManyTutorialSessionByTutorial(id);
+
 		super.getResponse().setGlobal("masterId", id);
+		tutorial = this.repository.findOneTutorial(id);
+		showCreate = tutorial.isDraftMode() && super.getRequest().getPrincipal().hasRole(Assistant.class);
+		super.getResponse().setGlobal("showCreate", showCreate);
+
 		super.getBuffer().setData(objects);
 	}
 

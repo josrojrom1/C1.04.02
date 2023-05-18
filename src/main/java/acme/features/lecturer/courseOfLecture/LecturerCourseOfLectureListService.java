@@ -29,7 +29,10 @@ public class LecturerCourseOfLectureListService extends AbstractService<Lecturer
 	@Override
 	public void authorise() {
 		boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Lecturer.class);
+		final CourseOfLecture col = this.repository.findCourseOfLectureById(super.getRequest().getData("id", int.class));
+		status = col != null && //
+			super.getRequest().getPrincipal().hasRole(Lecturer.class) &&//
+			col.getCourse().getLecturer().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 		super.getResponse().setAuthorised(status);
 	}
 

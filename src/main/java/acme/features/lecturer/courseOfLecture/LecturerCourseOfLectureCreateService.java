@@ -29,7 +29,7 @@ public class LecturerCourseOfLectureCreateService extends AbstractService<Lectur
 	@Override
 	public void authorise() {
 		boolean status;
-		status = this.getRequest().getPrincipal().hasRole(Lecturer.class);
+		status = super.getRequest().getPrincipal().hasRole(Lecturer.class);
 		super.getResponse().setAuthorised(status);
 	}
 

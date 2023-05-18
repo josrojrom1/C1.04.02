@@ -33,7 +33,7 @@ public class StudentEnrolmentFinaliseService extends AbstractService<Student, En
 
 		id = super.getRequest().getData("id", int.class);
 		enrolment = this.repository.findEnrolmentById(id);
-		status = !enrolment.getIsFinalised() && super.getRequest().getPrincipal().hasRole(enrolment.getStudent());
+		status = enrolment != null && !enrolment.getIsFinalised() && super.getRequest().getPrincipal().hasRole(enrolment.getStudent()) && enrolment.getStudent().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 
 		super.getResponse().setAuthorised(status);
 	}
