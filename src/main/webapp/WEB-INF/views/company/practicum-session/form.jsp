@@ -16,6 +16,6 @@
 		<acme:submit code="company.practicumSession.form.button.delete" action="/company/practicum-session/delete"/>
 	</jstl:if>
 	<jstl:if test="${acme:anyOf(_command, 'create')}">
-		<acme:submit code="company.practicumSession.form.button.create" action="/company/practicum-session/create?masterId=${masterId}"/>
+		<acme:submit code="company.practicumSession.form.button.create" action="/company/practicum-session/create?masterId=${id}"/>
 	</jstl:if>
 </acme:form>

@@ -20,6 +20,7 @@ company.practicum.show.label.course = Course
 company.practicum.form.button.update = Update
 company.practicum.form.button.delete = Delete
 company.practicum.form.button.create = Create
+company.practicum.form.button.createAddendum = Make Addendum
 company.practicum.form.button.publish = Publish
 #--------------LIST------------------------------#
 company.practicum.list.label.code = Code

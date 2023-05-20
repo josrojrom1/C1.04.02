@@ -50,9 +50,12 @@ public class Practicum extends AbstractEntity {
 
 	protected double			totalTime;
 
+	//Whether or not the Practicum has been published
 	protected boolean			draftMode;
 
-	protected boolean			addendum;
+	//Wheter or not the Practicum has an addendum session in it
+	protected boolean			hasAddendum;
+
 	@ManyToOne()
 	@Valid
 	@NotNull

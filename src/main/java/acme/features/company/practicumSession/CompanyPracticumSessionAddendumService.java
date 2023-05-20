@@ -42,7 +42,7 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		Practicum practicum;
 		id = super.getRequest().getData("masterId", int.class);
 		practicum = this.repository.findOnePracticum(id);
-		status = practicum != null && super.getRequest().getPrincipal().hasRole(Company.class) && super.getRequest().getPrincipal().getActiveRoleId() == practicum.getCompany().getId() && !practicum.isDraftMode() && !practicum.isAddendum();
+		status = practicum != null && super.getRequest().getPrincipal().hasRole(Company.class) && super.getRequest().getPrincipal().getActiveRoleId() == practicum.getCompany().getId() && !practicum.isDraftMode() && !practicum.isHasAddendum();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -91,7 +91,7 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		assert object != null;
 		Practicum practicum;
 		practicum = this.repository.findOnePracticum(super.getRequest().getData("masterId", int.class));
-		practicum.setAddendum(true);
+		practicum.setHasAddendum(true);
 		this.practicum_repository.save(practicum);
 		this.repository.save(object);
 	}

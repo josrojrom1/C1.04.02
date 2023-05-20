@@ -52,6 +52,9 @@ public class PracticumSession extends AbstractEntity {
 	@URL
 	protected String			link;
 
+	//If this session is an addendum session
+	protected boolean			isAddendum;
+
 	@NotNull
 	@Valid
 	@ManyToOne

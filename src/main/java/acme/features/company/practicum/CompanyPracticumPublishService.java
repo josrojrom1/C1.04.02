@@ -35,7 +35,7 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 
 		masterId = super.getRequest().getData("id", int.class);
 		practicum = this.repository.findOnePracticum(masterId);
-		status = practicum != null && practicum.isDraftMode() && super.getRequest().getPrincipal().hasRole(practicum.getCompany()) && practicum.getCompany().getId() == super.getRequest().getPrincipal().getActiveRoleId();
+		status = practicum != null && practicum.isDraftMode() && super.getRequest().getPrincipal().hasRole(Company.class) && practicum.getCompany().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -59,7 +59,7 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findOneCourseById(courseId);
 
-		super.bind(object, "code", "title", "abst", "goals", "totalTime");
+		super.bind(object, "code", "title", "abst", "goals");
 		object.setCourse(course);
 	}
 
@@ -71,8 +71,6 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 			existing = this.repository.findOnePracticumByCode(object.getCode());
 			super.state(existing == null || existing.getId() == object.getId(), "code", "Company.Practicum.form.error.duplicated");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("totalTime"))
-			super.state(object.getTotalTime() >= 0, "totalTime", "Company.Practicum.form.error.totalTime");
 	}
 
 	@Override
@@ -94,10 +92,11 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
+		tuple = super.unbind(object, "code", "title", "abst", "goals");
+		tuple.put("totalTime", object.getTotalTime() + object.getTotalTime() * (1.0 / 10.0));
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", object.isDraftMode());
-		tuple.put("addendum", object.isAddendum());
+		tuple.put("addendum", object.isHasAddendum());
 		tuple.put("courseChoices", courseChoices);
 
 		super.getResponse().setData(tuple);

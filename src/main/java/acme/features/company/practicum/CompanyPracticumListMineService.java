@@ -49,7 +49,8 @@ public class CompanyPracticumListMineService extends AbstractService<Company, Pr
 		String Company;
 		Company = object.getCompany().getUserAccount().getIdentity().getName();
 		Company = Company + " " + object.getCompany().getUserAccount().getIdentity().getSurname();
-		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
+		tuple = super.unbind(object, "code", "title", "abst", "goals");
+		tuple.put("totalTime", object.getTotalTime() + object.getTotalTime() * (1.0 / 10.0));
 		tuple.put("company", Company);
 		super.getResponse().setData(tuple);
 	}
