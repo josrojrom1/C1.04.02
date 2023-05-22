@@ -40,7 +40,7 @@ public class Enrolment extends AbstractEntity {
 	@Length(max = 100)
 	protected String			goals;
 
-	protected int				workTime;
+	//workTime atributo derivado
 
 	@NotNull
 	@Valid

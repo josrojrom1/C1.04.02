@@ -79,8 +79,6 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 			existing = this.repository.findEnrolmentByCode(object.getCode());
 			super.state(existing == null || existing.getId() == object.getId(), "code", "student.enrolment.form.error.duplicated");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("workTime"))
-			super.state(object.getWorkTime() >= 0, "workTime", "student.enrolment.form.error.workTime");
 
 		if (!super.getBuffer().getErrors().hasErrors("motivation")) {
 			String validar;

@@ -1,4 +1,4 @@
-key,code,motivation,goals,workTime,key:student,key:course,isFinalised,creditCardHolder,lowerNibble
-enrolment-01,ABC0001,be the best,get good marks,4,student-01,course-01,false,alala,003
-enrolment-02,AZC0211,l,xIumRxR=LDyIV!VXTi=Jcuk¡u·1Qº'iPb9$l=dalSmgyW8(sVB0wuntozExwG4JZLm0uNk9m%G8du)65KN8%(SflM5PK·$fPzccU,5,student-02,course-02,true,tarjetaloca,7756
-enrolment-03,QBW0231,WHz3Vaml0H@U%oyH¿TRMH@fi€!fUmji€8J0iq/%3IRd3JG@=7wP2MDEA9bMN2YJ%DR0v!ht(apn,f,0,student-01,course-02,false,tarjetagris,5655
+key,code,motivation,goals,key:student,key:course,isFinalised,creditCardHolder,lowerNibble
+enrolment-01,ABC0001,be the best,get good marks,student-01,course-01,false,alala,003
+enrolment-02,AZC0211,l,xIumRxR=LDyIV!VXTi=Jcuk¡u·1Qº'iPb9$l=dalSmgyW8(sVB0wuntozExwG4JZLm0uNk9m%G8du)65KN8%(SflM5PK·$fPzccU,student-02,course-02,true,tarjetaloca,7756
+enrolment-03,QBW0231,WHz3Vaml0H@U%oyH¿TRMH@fi€!fUmji€8J0iq/%3IRd3JG@=7wP2MDEA9bMN2YJ%DR0v!ht(apn,f,student-01,course-02,false,tarjetagris,5655

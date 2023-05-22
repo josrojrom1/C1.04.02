@@ -1,7 +1,6 @@
 
 package acme.features.student.activity;
 
-import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Date;
 
@@ -74,14 +73,11 @@ public class StudentActivityCreateService extends AbstractService<Student, Activ
 	public void validate(final Activity object) {
 		assert object != null;
 		//validación de la fechas
-		if (!super.getBuffer().getErrors().hasErrors("startTimePeriod")) {
-			final Date moment = MomentHelper.deltaFromCurrentMoment(1, ChronoUnit.DAYS);
-			super.state(object.getStartTimePeriod().after(moment), "startTimePeriod", "student.activity.form.error.startTimePeriod");
+
+		if (!super.getBuffer().getErrors().hasErrors("endTimePeriod")) {
+			super.state(object.getStartTimePeriod().before(object.getEndTimePeriod()), "endTimePeriod", "student.activity.form.error.endTimePeriod");
+			super.state(object.getStartTimePeriod() != object.getEndTimePeriod(), "endTimePeriod", "student.activity.form.error.endTimePeriod");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("endTimePeriod"))
-			super.state(object.getStartTimePeriod().before(object.getEndTimePeriod()), "startTimePeriod, endTimePeriod", "student.activity.form.error.endTimePeriod");
-
 		if (!super.getBuffer().getErrors().hasErrors("title")) {
 			String validar;
 			validar = object.getTitle();
