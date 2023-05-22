@@ -115,9 +115,11 @@ public class StudentActivityUpdateService extends AbstractService<Student, Activ
 		tuple = super.unbind(object, "title", "abst", "startTimePeriod", "endTimePeriod", "link");
 		tuple.put("enrolment", choices.getSelected().getKey());
 		tuple.put("choices", choices);
+		tuple.put("isFinalised", object.getEnrolment().getIsFinalised());
 		tuple.put("activityType", lessonChoices.getSelected().getKey());
 		tuple.put("lessonChoices", lessonChoices);
 		tuple.put("readEnrolment", false);
+		tuple.put("masterId", object.getEnrolment().getId());
 		super.getResponse().setData(tuple);
 	}
 

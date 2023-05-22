@@ -13,6 +13,7 @@
 			<acme:input-textbox code="student.enrolment.show.label.code" path="code"/>
 		<acme:input-textbox code="student.enrolment.show.label.motivation" path="motivation"/>
 		<acme:input-textbox code="student.enrolment.show.label.goals" path="goals"/>
+		<acme:input-double code="student.enrolment.show.label.workTime" path= "workTime" readonly="true"/>
 		<acme:input-select code="student.enrolment.show.label.course" path="course" choices="${courseChoices}"/>
 			
 			<jstl:choose>
