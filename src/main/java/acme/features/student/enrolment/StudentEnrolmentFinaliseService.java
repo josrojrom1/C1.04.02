@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.Enrolment;
 import acme.framework.components.models.Tuple;
+import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
@@ -69,8 +70,10 @@ public class StudentEnrolmentFinaliseService extends AbstractService<Student, En
 		final boolean isUpperNibbleAccepted = upperNibble != null;
 		final boolean isLowerNibbleAccepted = lowerNibble != null;
 
-		super.state(ccv.length() == 3, "creditCardHolder", "authentication.note.form.error.notAccepted");
+		super.state(ccv.length() == 3, "cvc", "authentication.note.form.error.notAccepted");
 		super.state(upperNibble.length() == 8, "upperNibble", "authentication.note.form.error.notAccepted");
+		super.state(lowerNibble.length() == 4, "lowerNibble", "authentication.note.form.error.notAccepted");
+		super.state(expiryDate.after(MomentHelper.getCurrentMoment()), "expiryDate", "authentication.note.form.error.notAccepted");
 
 		super.state(isCCHAccepted, "creditCardHolder", "authentication.note.form.error.finalisationError");
 		super.state(isExpiryDateAccepted, "expiryDate", "authentication.note.form.error.notAccepted");
@@ -93,7 +96,7 @@ public class StudentEnrolmentFinaliseService extends AbstractService<Student, En
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "motivation", "goals", "workTime", "course", "creditCardHolder", "lowerNibble", "isFinalised");
+		tuple = super.unbind(object, "code", "motivation", "goals", "course", "creditCardHolder", "lowerNibble", "isFinalised");
 
 		super.getResponse().setData(tuple);
 	}
