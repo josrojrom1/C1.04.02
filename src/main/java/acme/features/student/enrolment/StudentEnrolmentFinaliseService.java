@@ -96,7 +96,7 @@ public class StudentEnrolmentFinaliseService extends AbstractService<Student, En
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "motivation", "goals", "workTime", "course", "creditCardHolder", "lowerNibble", "isFinalised");
+		tuple = super.unbind(object, "code", "motivation", "goals", "course", "creditCardHolder", "lowerNibble", "isFinalised");
 
 		super.getResponse().setData(tuple);
 	}
