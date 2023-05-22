@@ -73,7 +73,7 @@ public class AssistantTutorialSessionUpdateService extends AbstractService<Assis
 			super.state(object.getPeriodStart().after(moment), "periodStart", "assistant.tutorialSession.form.error.periodStart");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("periodFinish"))
-			super.state(object.getPeriodStart().before(object.getPeriodFinish()), "periodStart, periodFinish", "assistant.tutorialSession.form.error.periodFinish");
+			super.state(object.getPeriodStart().before(object.getPeriodFinish()), "periodFinish", "assistant.tutorialSession.form.error.periodFinish");
 
 		if (!super.getBuffer().getErrors().hasErrors("periodFinish")) {
 			final Duration duration = MomentHelper.computeDuration(object.getPeriodStart(), object.getPeriodFinish());
