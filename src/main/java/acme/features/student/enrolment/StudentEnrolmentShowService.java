@@ -57,6 +57,7 @@ public class StudentEnrolmentShowService extends AbstractService<Student, Enrolm
 	@Override
 	public void unbind(final Enrolment object) {
 		assert object != null;
+		Double workTime;
 
 		Collection<Course> courses;
 
@@ -64,12 +65,15 @@ public class StudentEnrolmentShowService extends AbstractService<Student, Enrolm
 		SelectChoices courseChoices;
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 		Tuple tuple;
+		workTime = this.repository.findWorkTimeByEnrolmentId(object.getId());
+		workTime = workTime != null ? workTime : 0.0;
 
 		tuple = super.unbind(object, "code", "motivation", "goals", "creditCardHolder", "lowerNibble");
 
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("isFinalised", object.getIsFinalised());
 		tuple.put("courseChoices", courseChoices);
+		tuple.put("workTime", workTime);
 
 		super.getResponse().setData(tuple);
 	}
