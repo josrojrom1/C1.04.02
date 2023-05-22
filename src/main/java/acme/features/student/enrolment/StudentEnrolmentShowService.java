@@ -65,7 +65,7 @@ public class StudentEnrolmentShowService extends AbstractService<Student, Enrolm
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "motivation", "goals", "workTime", "creditCardHolder", "lowerNibble");
+		tuple = super.unbind(object, "code", "motivation", "goals", "creditCardHolder", "lowerNibble");
 
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("isFinalised", object.getIsFinalised());

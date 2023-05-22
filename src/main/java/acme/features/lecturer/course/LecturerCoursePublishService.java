@@ -85,6 +85,13 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 			super.state(existing == null || existing.getId() == object.getId(), "code", "lecturer.lecture.form.error.course.code.duplicated");
 		}
 
+		Course course;
+		final Collection<Lecture> lectures;
+		course = this.repository.findOneCourseByCode(object.getCode());
+		final int id = course.getId();
+		lectures = this.repository.findAllLecturesByCourse(id);
+		super.state(this.courseType(lectures).equals(LessonType.HANDS_ON), "*", "lecturer.course.form.courseType.reject-pure-theoretical");
+
 	}
 
 	@Override
@@ -98,8 +105,10 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		else {
 			object.setDraftMode(false);//En caso contrario podemos publicar el curso correctamente
 			object.setCourseType(this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
+
+			this.repository.save(object);
+
 		}
-		this.repository.save(object);
 	}
 
 	public LessonType courseType(final Collection<Lecture> lecturesCourse) {

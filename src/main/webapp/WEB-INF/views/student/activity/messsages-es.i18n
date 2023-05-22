@@ -27,6 +27,6 @@ student.activity.list.label.abst= Resumen
 student.activity.list.label.enrolment = Matrícula
 student.activity.list.button.create = Crear
 #--------------Errors------------------------------#
+student.activity.form.error.startTimePeriod = Tiempo inicial no válido
 student.activity.form.error.spam = No hagas spam
-student.activity.form.error.startTimePeriod = tiempo de inicio no válido
 student.activity.form.error.endTimePeriod =  tiempo final no válido

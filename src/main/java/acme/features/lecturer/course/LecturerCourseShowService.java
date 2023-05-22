@@ -88,6 +88,7 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		tuple.put("courseType", this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
 		tuple.put("draftMode", object.isDraftMode());
 		tuple.put("hasLectures", hasLectures);
+
 		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
 		if (!systemCurrency.equals(object.getRetailPrice().getCurrency())) {
 			MoneyExchange moneyExchange;
