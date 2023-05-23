@@ -12,10 +12,9 @@ public class StudentEnrolmentListTest extends TestHarness {
 	//TEST POSITIVO
 
 	@ParameterizedTest
-
 	@CsvFileSource(resources = "/student/enrolment/list-all-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String course, final String code, final String motivation) {
-		//En este test comprobamos que las lectures se muestran correctamente
+		//En este test comprobamos que los enrolments se muestran correctamente
 		super.signIn("student1", "student1");
 		super.clickOnMenu("Student", "Enrolment");
 		super.checkListingExists();
@@ -30,7 +29,7 @@ public class StudentEnrolmentListTest extends TestHarness {
 
 	@Test
 	public void test200Hacking() {
-		//Con este test comprobamos que no podemos acceder a la lista de lecturas desde un rol no autorizado
+		//Con este test comprobamos que no podemos acceder a la lista de enrolments desde un rol no autorizado
 		super.checkLinkExists("Sign in");
 		super.request("/student/enrolment/list");
 		super.checkPanicExists();
