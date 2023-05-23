@@ -28,3 +28,4 @@ company.practicumSession.form.error.duplicated = Code is already taken
 company.practicumSession.form.error.duration = The duration has to between 1 and 5 hours
 company.practicumSession.form.error.timePeriodStart = The start period has to be at least one day ahead
 company.practicumSession.form.error.timePeriodEnd = The start has to be before the end
+company.practicumSession.form.error.spam = Do not Spam

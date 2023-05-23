@@ -54,7 +54,7 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findOneCourseById(courseId);
-		super.bind(object, "code", "title", "abst", "goals");
+		super.bind(object, "code", "title", "abst", "goals", "publishTime");
 		object.setCourse(course);
 	}
 
@@ -65,22 +65,22 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Practicum existing;
 			existing = this.repository.findOnePracticumByCode(object.getCode());
-			super.state(existing == null, "code", "Company.Practicum.form.error.duplicated");
+			super.state(existing == null, "code", "company.practicum.form.error.duplicated");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("title")) {
 			String validar;
 			validar = object.getTitle();
-			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "assistant.tutorial.form.error.spam");
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("abst")) {
 			String validar;
 			validar = object.getAbst();
-			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "assistant.tutorial.form.error.spam");
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("goals")) {
 			String validar;
 			validar = object.getGoals();
-			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "assistant.tutorial.form.error.spam");
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
 		}
 	}
 
@@ -105,11 +105,11 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "title", "abst", "goals");
+		tuple = super.unbind(object, "code", "title", "abst", "goals", "publishTime");
 		tuple.put("totalTime", 0.0);
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", true);
-		tuple.put("addendum", false);
+		tuple.put("hasAddendum", false);
 		tuple.put("courseChoices", courseChoices);
 
 		super.getResponse().setData(tuple);

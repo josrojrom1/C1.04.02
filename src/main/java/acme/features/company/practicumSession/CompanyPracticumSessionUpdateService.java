@@ -5,23 +5,32 @@ import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Practicum;
 import acme.entities.PracticumSession;
+import acme.features.company.practicum.CompanyPracticumRepository;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
+import acme.utility.SpamDetector;
 
 @Service
 public class CompanyPracticumSessionUpdateService extends AbstractService<Company, PracticumSession> {
 
 	@Autowired
-	CompanyPracticumSessionRepository repository;
+	CompanyPracticumSessionRepository		repository;
+
+	@Autowired
+	protected SpamDetector					textValidator;
+
+	@Autowired
+	protected CompanyPracticumRepository	repository2;
 
 
 	@Override
@@ -76,11 +85,30 @@ public class CompanyPracticumSessionUpdateService extends AbstractService<Compan
 			final Duration d1 = Duration.ofDays(7);
 			super.state(d1.compareTo(duration) >= 0, "*", "company.practicumSession.form.error.duration");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicumSession.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("abst")) {
+			String validar;
+			validar = object.getAbst();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicumSession.form.error.spam");
+		}
 	}
 
 	@Override
 	public void perform(final PracticumSession object) {
 		assert object != null;
+		Practicum practicum;
+		practicum = this.repository.findOnePracticum(super.getRequest().getData("masterId", int.class));
+		final Long old_time = TimeUnit.MILLISECONDS.toSeconds(this.repository.findOnePracticumSession(object.getId()).getTimePeriodEnd().getTime() - this.repository.findOnePracticumSession(object.getId()).getTimePeriodStart().getTime());
+		final Long time = TimeUnit.MILLISECONDS.toSeconds(object.getTimePeriodEnd().getTime() - object.getTimePeriodStart().getTime());
+		if (old_time > time)
+			practicum.setTotalTime(practicum.getTotalTime() - (old_time - time));
+		else if (time > old_time)
+			practicum.setTotalTime(practicum.getTotalTime() + (time - old_time));
+		this.repository2.save(practicum);
 		this.repository.save(object);
 	}
 
@@ -97,6 +125,8 @@ public class CompanyPracticumSessionUpdateService extends AbstractService<Compan
 		tuple.put("Practicum", choices.getSelected().getKey());
 		tuple.put("choices", choices);
 		tuple.put("draftMode", object.getPracticum().isDraftMode());
+		tuple.put("hasAddendum", object.getPracticum().isHasAddendum());
+		tuple.put("isAddendum", object.isAddendum());
 		tuple.put("readPracticum", true);
 		tuple.put("masterId", super.getRequest().getData("masterId", int.class));
 		super.getResponse().setData(tuple);

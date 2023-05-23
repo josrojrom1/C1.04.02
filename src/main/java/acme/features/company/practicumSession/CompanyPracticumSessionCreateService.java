@@ -25,6 +25,7 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 	@Autowired
 	protected CompanyPracticumSessionRepository	repository;
 
+	@Autowired
 	protected CompanyPracticumRepository		repository2;
 
 
@@ -62,7 +63,7 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 	@Override
 	public void bind(final PracticumSession object) {
 		assert object != null;
-		super.bind(object, "title", "abst", "sessionType", "timePeriodStart", "timePeriodEnd", "link");
+		super.bind(object, "title", "abst", "timePeriodStart", "timePeriodEnd", "link");
 	}
 
 	@Override
@@ -110,6 +111,7 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 		tuple.put("practicum", choices.getSelected().getKey());
 		tuple.put("choices", choices);
 		tuple.put("draftMode", object.getPracticum().isDraftMode());
+		tuple.put("hasAddendum", object.getPracticum().isHasAddendum());
 		tuple.put("readPracticum", true);
 		tuple.put("masterId", super.getRequest().getData("masterId", int.class));
 		super.getResponse().setData(tuple);

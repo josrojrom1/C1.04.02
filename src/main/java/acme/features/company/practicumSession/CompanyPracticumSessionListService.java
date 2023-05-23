@@ -29,12 +29,12 @@ public class CompanyPracticumSessionListService extends AbstractService<Company,
 	@Override
 	public void authorise() {
 		boolean status;
-		Practicum Practicum;
+		Practicum practicum;
 		int id;
 
 		id = super.getRequest().getData("masterId", int.class);
-		Practicum = this.repository.findOnePracticum(id);
-		status = super.getRequest().getPrincipal().hasRole(Company.class) && Practicum != null;
+		practicum = this.repository.findOnePracticum(id);
+		status = super.getRequest().getPrincipal().hasRole(Company.class) && practicum != null;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -42,11 +42,17 @@ public class CompanyPracticumSessionListService extends AbstractService<Company,
 	public void load() {
 		Collection<PracticumSession> objects;
 		int id;
-
+		Practicum practicum;
+		boolean showCreate;
 		id = super.getRequest().getData("masterId", int.class);
-		objects = this.repository.findManyPracticumSessionByPracticum(id);
-		super.getBuffer().setData(objects);
+		objects = this.repository.findManyPracticumSessionByCompany(id);
+
 		super.getResponse().setGlobal("masterId", id);
+		practicum = this.repository.findOnePracticum(id);
+		showCreate = practicum.isDraftMode() && super.getRequest().getPrincipal().hasRole(Company.class);
+		super.getResponse().setGlobal("showCreate", showCreate);
+
+		super.getBuffer().setData(objects);
 	}
 
 	@Override
@@ -56,13 +62,15 @@ public class CompanyPracticumSessionListService extends AbstractService<Company,
 		Tuple tuple;
 		int id;
 		boolean showCreate;
-		tuple = super.unbind(object, "title");
 
 		id = super.getRequest().getData("masterId", int.class);
 		practicum = this.repository.findOnePracticum(id);
-		showCreate = practicum.isDraftMode() && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
-		tuple.put("practicum", practicum.getCode());
+		showCreate = practicum.isDraftMode() && super.getRequest().getPrincipal().hasRole(Company.class);
+		super.getResponse().setGlobal("masterId", id);
 		super.getResponse().setGlobal("showCreate", showCreate);
+		tuple = super.unbind(object, "title");
+		tuple.put("practicum", practicum.getCode());
+		tuple.put("showCreate", showCreate);
 		super.getResponse().setData(tuple);
 	}
 }

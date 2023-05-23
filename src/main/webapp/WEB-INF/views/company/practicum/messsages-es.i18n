@@ -14,7 +14,8 @@ company.practicum.show.label.title = Título
 company.practicum.show.label.abst = Resumen
 company.practicum.show.label.goals = Objetivos
 company.practicum.show.label.totalTime = Tiempo total estimado
-company.practicum.show.label.assistant = Asistente
+company.practicum.show.label.publishTime = Fecha de publicación
+company.practicum.show.label.company = Empresa
 company.practicum.show.label.course = Curso
 
 company.practicum.form.button.update = Actualizar
@@ -22,6 +23,7 @@ company.practicum.form.button.delete = Eliminar
 company.practicum.form.button.create = Crear
 company.practicum.form.button.createAddendum = Hacer Addendum
 company.practicum.form.button.publish = Publicar
+company.practicum.form.button.sessions = Listar sesiones
 #-------------List-------------------------------#
 company.practicum.list.label.code= Código
 company.practicum.list.label.title= Título
@@ -30,3 +32,4 @@ company.practicum.list.button.create = Crear
 #-------------Errors-------------------------------#
 company.practicum.form.error.duplicated = Código duplicado
 company.practicum.form.error.totalTime = El tiempo no puede ser negativo
+company.practicum.form.error.spam = No hagas spam

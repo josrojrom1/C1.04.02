@@ -12,12 +12,16 @@ import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
+import acme.utility.SpamDetector;
 
 @Service
 public class CompanyPracticumUpdateService extends AbstractService<Company, Practicum> {
 
 	@Autowired
-	protected CompanyPracticumRepository repository;
+	protected CompanyPracticumRepository	repository;
+
+	@Autowired
+	protected SpamDetector					textValidator;
 
 
 	@Override
@@ -35,7 +39,7 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 
 		masterId = super.getRequest().getData("id", int.class);
 		practicum = this.repository.findOnePracticum(masterId);
-		status = practicum != null && practicum.isDraftMode() && super.getRequest().getPrincipal().hasRole(Company.class) && practicum.getCompany().getId() == super.getRequest().getPrincipal().getActiveRoleId();
+		status = practicum != null && practicum.isDraftMode() && super.getRequest().getPrincipal().hasRole(practicum.getCompany()) && practicum.getCompany().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -59,7 +63,7 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findOneCourseById(courseId);
 
-		super.bind(object, "code", "title", "abst", "goals");
+		super.bind(object, "code", "title", "abst", "goals", "totalTime", "publishTime");
 		object.setCourse(course);
 	}
 
@@ -69,7 +73,22 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Practicum existing;
 			existing = this.repository.findOnePracticumByCode(object.getCode());
-			super.state(existing == null || existing.getId() == object.getId(), "code", "Company.Practicum.form.error.duplicated");
+			super.state(existing == null || existing.getId() == object.getId(), "code", "company.practicum.form.error.duplicated");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("abst")) {
+			String validar;
+			validar = object.getAbst();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("goals")) {
+			String validar;
+			validar = object.getGoals();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
 		}
 	}
 
@@ -92,8 +111,8 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "title", "abst", "goals");
-		tuple.put("totalTime", object.getTotalTime() + object.getTotalTime() * (1.0 / 10.0));
+		tuple = super.unbind(object, "code", "title", "abst", "goals", "publishTime");
+		tuple.put("totalTime", object.getTotalTime());
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", object.isDraftMode());
 		tuple.put("courseChoices", courseChoices);
