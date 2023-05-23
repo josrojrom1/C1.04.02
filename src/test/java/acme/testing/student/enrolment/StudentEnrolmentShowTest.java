@@ -21,6 +21,7 @@ public class StudentEnrolmentShowTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/student/enrolment/show-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String code, final String motivation, final String goals, final String course) {
+		//HINT: En este test comprobamos que mostramos la vista de un enrolment correctamente
 		super.signIn("student1", "student1");
 		super.clickOnMenu("Student", "Enrolment");
 		super.sortListing(0, "asc");
@@ -36,7 +37,7 @@ public class StudentEnrolmentShowTest extends TestHarness {
 	//TEST HACKING
 	@Test
 	public void test300Hacking() {
-		// HINT: this test tries to show an unpublished job by someone who is not the principal.
+		// HINT: en este test intentamos ver un enrolment desde un rol quue no lo tiene asignado
 
 		Collection<Enrolment> enrolments;
 		String param;
