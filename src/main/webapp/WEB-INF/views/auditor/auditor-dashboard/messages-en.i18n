@@ -13,4 +13,5 @@ auditor.dashboard.form.title.general-indicators = General indicators
 auditor.dashboard.form.title.application-statuses = Application statuses  
 auditor.dashboard.form.label.total-num-theory-audits =  Total number of theory audits
 auditor.dashboard.form.label.total-num-handson-audits = Total number of hands on audits
+auditor.dasboard.form.label.audit-auditing-record-average = Average of auditing records
 
