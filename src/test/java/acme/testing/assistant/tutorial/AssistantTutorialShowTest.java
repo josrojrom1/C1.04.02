@@ -40,11 +40,18 @@ public class AssistantTutorialShowTest extends TestHarness {
 		String param;
 		tutorials = this.repository.findManyTutorialsFromUsername("assistant1");
 		for (final Tutorial tutorial : tutorials) {
+
 			param = String.format("id=%d", tutorial.getId());
 			super.checkLinkExists("Sign in");
 			super.request("/assistant/tutorial/show", param);
 			super.checkPanicExists();
+
 			super.signIn("assistant2", "assistant2");
+			super.request("/assistant/tutorial/show", param);
+			super.checkPanicExists();
+			super.signOut();
+
+			super.signIn("lecturer1", "lecturer1");
 			super.request("/assistant/tutorial/show", param);
 			super.checkPanicExists();
 			super.signOut();

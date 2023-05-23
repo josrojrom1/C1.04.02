@@ -112,14 +112,13 @@ public class AssistantTutorialSessionUpdateService extends AbstractService<Assis
 		choices = SelectChoices.from(tutorials, "code", object.getTutorial());
 		lessonChoices = SelectChoices.from(LessonType.class, object.getSessionType());
 		Tuple tuple;
-		tuple = super.unbind(object, "title", "abst", "periodStart", "periodFinish", "link");
+		tuple = super.unbind(object, "title", "abst", "sessionType", "periodStart", "periodFinish", "link");
 		tuple.put("tutorial", choices.getSelected().getKey());
 		tuple.put("choices", choices);
-		tuple.put("lessonType", lessonChoices.getSelected().getKey());
 		tuple.put("draftMode", object.getTutorial().isDraftMode());
 		tuple.put("lessonChoices", lessonChoices);
 		tuple.put("readTutorial", true);
-		tuple.put("masterId", super.getRequest().getData("masterId", int.class));
+		tuple.put("masterId", super.getRequest().getData("id", int.class));
 		super.getResponse().setData(tuple);
 	}
 
