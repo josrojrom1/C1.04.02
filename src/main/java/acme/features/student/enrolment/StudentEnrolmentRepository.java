@@ -37,4 +37,6 @@ public interface StudentEnrolmentRepository extends AbstractRepository {
 	@Query("select a from Activity a where a.enrolment.id = :id")
 	Collection<Activity> findAllActivitiesFromEnrolmentId(int id);
 
+	@Query("select sum(TIME_TO_SEC(TIMEDIFF(a.endTimePeriod, a.startTimePeriod)) / 3600) from Activity a where a.enrolment.id=:id")
+	Double findWorkTimeByEnrolmentId(int id);
 }
