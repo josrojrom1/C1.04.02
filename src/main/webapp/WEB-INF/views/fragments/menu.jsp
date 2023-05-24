@@ -45,6 +45,8 @@
 
 		<!-- AUDITOR -->
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
+			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/auditor-dashboard/show"/>
+			<acme:menu-separator/>
 
 			<acme:menu-suboption code="master.menu.auditor.audit.list" action="/auditor/audit/list"/>
 		</acme:menu-option>
@@ -80,6 +82,7 @@
 
 		<!-- ASSISTANT -->
 		<acme:menu-option code="master.menu.assistant" access="hasRole('Assistant')">
+			<acme:menu-suboption code="master.menu.assistant.dashboard" action="/assistant/assistant-dashboard/show"/>
 			<acme:menu-suboption code="master.menu.assistant.tutorial" action="/assistant/tutorial/list"/>
       		<acme:menu-suboption code="master.menu.assistant.tutorialSession" action="/assistant/tutorial-session/list-mine"/>
 		</acme:menu-option>

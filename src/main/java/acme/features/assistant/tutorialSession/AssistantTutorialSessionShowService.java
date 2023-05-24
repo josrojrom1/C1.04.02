@@ -61,11 +61,10 @@ public class AssistantTutorialSessionShowService extends AbstractService<Assista
 		choices = SelectChoices.from(tutorials, "code", object.getTutorial());
 		lessonChoices = SelectChoices.from(LessonType.class, object.getSessionType());
 		Tuple tuple;
-		tuple = super.unbind(object, "title", "abst", "periodStart", "periodFinish", "link");
+		tuple = super.unbind(object, "title", "abst", "sessionType", "periodStart", "periodFinish", "link");
 		tuple.put("tutorial", choices.getSelected().getKey());
 		tuple.put("choices", choices);
 		tuple.put("draftMode", object.getTutorial().isDraftMode());
-		tuple.put("lessonType", lessonChoices.getSelected().getKey());
 		tuple.put("lessonChoices", lessonChoices);
 		tuple.put("readTutorial", true);
 		tuple.put("masterId", object.getTutorial().getId());

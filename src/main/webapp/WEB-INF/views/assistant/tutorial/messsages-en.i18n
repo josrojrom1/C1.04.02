@@ -26,7 +26,7 @@ assistant.tutorial.form.button.sessions = List sessions
 assistant.tutorial.list.label.code = Code
 assistant.tutorial.list.label.title = Title
 assistant.tutorial.list.label.assistant = Assistant
-assistant.tutorial.list.button.create = Create
+assistant.tutorial.list.button.create = Create a tutorial
 #--------------Errors------------------------------#
 assistant.tutorial.form.error.duplicated = Code is already taken
 assistant.tutorial.form.error.totalTime = Time can´t be negative
