@@ -23,8 +23,7 @@
 
 
 	<tr>
-		<!-- TOTAL NUM THEORY/HANDS ON LECTURES)-->
-		<th><h2><acme:message code="assistant.dashboard.form.lectures-section"/></h2></th>
+		<th><h2><acme:message code="assistant.dashboard.form.tutorial-section"/></h2></th>
 	</tr>
 	
 	<tr>
@@ -37,7 +36,55 @@
 		<td><acme:print value="${totalNumOfHandsonTutorials}"/></td>
 	
 	</tr>
-
+	
+	<tr>
+		<th><h2><acme:message code="assistant.dashboard.form.tutorial-section"/></h2></th>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="assistant.dashboard.form.label.tutorialAverage"/></th>
+		<td><acme:print value="${tutorialAverage}"/></td>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="assistant.dashboard.form.label.tutorialDeviation"/></th>
+		<td><acme:print value="${tutorialDeviation}"/></td>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="assistant.dashboard.form.label.tutorialMaximum"/></th>
+		<td><acme:print value="${tutorialMaximun}"/></td>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="assistant.dashboard.form.label.tutorialMinimum"/></th>
+		<td><acme:print value="${tutorialMinimun}"/></td>
+	</tr>
+	
+	<tr>
+		<th><h2><acme:message code="assistant.dashboard.form.sessions-section"/></h2></th>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="assistant.dashboard.form.label.sessionsAverage"/></th>
+		<td><acme:print value="${sessionsAverage}"/></td>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="assistant.dashboard.form.label.sessionsDeviation"/></th>
+		<td><acme:print value="${sessionsDeviation}"/></td>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="assistant.dashboard.form.label.sessionsMaximum"/></th>
+		<td><acme:print value="${sessionsMaximun}"/></td>
+	</tr>
+	
+	<tr>
+		<th scope="row"><acme:message code="assistant.dashboard.form.label.sessionsMinimum"/></th>
+		<td><acme:print value="${sessionsMinimun}"/></td>
+	</tr>
+	
 	
 </table>
 	

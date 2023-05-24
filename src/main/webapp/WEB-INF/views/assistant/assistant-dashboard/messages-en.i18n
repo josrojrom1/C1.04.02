@@ -13,14 +13,14 @@ assistant.dashboard.form.title.general-indicators = General indicators
 assistant.dashboard.form.label.total-num-theory =  Total number of theory tutorials
 assistant.dashboard.form.label.total-num-handson = Total number of hands on tutorial
 
+assistant.dashboard.form.tutorial-section = Tutorials
+assistant.dashboard.form.label.tutorialAverage = Average Time 
+assistant.dashboard.form.label.tutorialDeviation = Deviation Time
+assistant.dashboard.form.label.tutorialMaximum = Maximum Time
+assistant.dashboard.form.label.tutorialMinimum = Minimum Time
 
-assistant.dasboard.form.label.lecture-learning-time-average = Average learning time of lectures
-assistant.dasboard.form.label.lecture-learning-time-deviation = Deviation learning time of lectures
-assistant.dasboard.form.label.lecture-learning-time-maximum = Máximum learning time of lectures
-assistant.dasboard.form.label.lecture-learning-time-minimum = Mínimun learning time of lectures
-assistant.dashboard.form.lectures-section = Lectures
-assistant.dashboard.form.courses-section = Course
-assistant.dasboard.form.label.course-learning-time-average = Average learning time of courses
-assistant.dasboard.form.label.course-learning-time-deviation = Deviation learning time of courses
-assistant.dasboard.form.label.course-learning-time-maximum = Máximum learning time of courses
-assistant.dasboard.form.label.course-learning-time-minimum = Mínimun learning time of courses
+assistant.dashboard.form.sessions-section = Tutorial Sessions
+assistant.dashboard.form.label.sessionsAverage = Average Time 
+assistant.dashboard.form.label.sessionsDeviation = Deviation Time
+assistant.dashboard.form.label.sessionsMaximum = Maximum Time
+assistant.dashboard.form.label.sessionsMinimum = Minimum Time
