@@ -3,15 +3,10 @@ package acme.testing.any.peep;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.testing.TestHarness;
 
 public class AnyPeepShowTest extends TestHarness {
-
-	@Autowired
-	protected AnyPeepTestRepository repository;
-
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/any/peep/show-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
