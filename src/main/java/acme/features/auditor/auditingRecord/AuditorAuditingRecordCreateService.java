@@ -38,11 +38,12 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-		id = super.getRequest().getData("id", int.class);
 		Audit audit;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
 		audit = this.repository.findAuditById(id);
-		status = audit != null && super.getRequest().getPrincipal().hasRole(Auditor.class);
+		status = audit != null && audit.isDraftMode() && audit.getAuditor().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 		super.getResponse().setAuthorised(status);
 	}
 
