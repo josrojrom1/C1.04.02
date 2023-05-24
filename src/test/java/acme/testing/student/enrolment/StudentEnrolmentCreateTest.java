@@ -14,7 +14,7 @@ public class StudentEnrolmentCreateTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/student/enrolment/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String code, final String motivation, final String goals, final String course) {
-		//HINT: Este test muestra como se crea un enrolment correctamente
+		//HINT: Este test muestra como se crea un ernolment correctamente
 		super.signIn("student1", "student1");
 		super.clickOnMenu("Student", "Enrolment");
 		super.checkListingExists();
