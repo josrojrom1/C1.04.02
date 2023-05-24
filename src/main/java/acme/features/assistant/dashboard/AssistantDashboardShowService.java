@@ -40,7 +40,6 @@ public class AssistantDashboardShowService extends AbstractService<Assistant, As
 		dashboard = new AssistantDashboard();
 		dashboard.setTotalNumOfHandsonTutorials(totalNumHandsOn);
 		dashboard.setTotalNumOfTheoryTutorials(totalNumTheory);
-		System.out.println(totalNumHandsOn);
 		super.getBuffer().setData(dashboard);
 	}
 	@Override
