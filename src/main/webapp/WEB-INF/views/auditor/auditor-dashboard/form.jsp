@@ -36,7 +36,11 @@
 		</td>
 	</tr>
 	
-	<!-- LEARNING TIME OF LECTURES (AVG,DEV,MIN,MAX)-->
+	<!-- AUDITING RECORDS OF AUDITS (AVG,DEV,MIN,MAX)-->
+	<tr>
+		<th scope="row"><acme:message code="auditor.dasboard.form.label.audit-auditing-record-average"/></th>
+		<td><acme:print value="${auditRAverage}"/></td>
+	</tr>
 	
 	
 	

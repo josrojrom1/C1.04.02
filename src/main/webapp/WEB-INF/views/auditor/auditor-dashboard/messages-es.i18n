@@ -12,3 +12,4 @@ auditor.dashboard.form.title.general-indicators = Indicadores generales
 auditor.dashboard.form.title.application-statuses = Estados de solicitud
 auditor.dashboard.form.label.total-num-theory-audits =  Número total de auditorias de teoría
 auditor.dashboard.form.label.total-num-handson-audits = Número total de auditorias prácticas
+auditor.dasboard.form.label.audit-auditing-record-average = Media de los registros de auditorias

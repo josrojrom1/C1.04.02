@@ -50,14 +50,19 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 
 		int totalNumOfTheoryAudits;
 		int totalNumOfHandsonAudits;
+		Double auditRAverage;
 
+		//AUDITS
 		totalNumOfTheoryAudits = this.repository.totalNumOfTheoryAudits(id);
 		totalNumOfHandsonAudits = this.repository.totalNumOfHandsonAudits(id);
+		//AUDITING RECORDS
+		auditRAverage = this.repository.averageNumberOfAuditingRecords(id);
 
 		dashboard = new AuditorDashboard();
 
 		dashboard.setTotalNumOfTheoryAudits(totalNumOfTheoryAudits);
 		dashboard.setTotalNumOfHandsonAudits(totalNumOfHandsonAudits);
+		dashboard.setAuditRAverage(auditRAverage);
 
 		super.getBuffer().setData(dashboard);
 	}
@@ -66,7 +71,7 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 	public void unbind(final AuditorDashboard object) {
 		Tuple tuple;
 
-		tuple = super.unbind(object, "totalNumOfTheoryAudits", "totalNumOfHandsonAudits");
+		tuple = super.unbind(object, "totalNumOfTheoryAudits", "totalNumOfHandsonAudits", "auditRAverage");
 
 		super.getResponse().setData(tuple);
 	}

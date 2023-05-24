@@ -22,16 +22,16 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AuditorDashboardRepository extends AbstractRepository {
 
-	@Query("select count(a) from Audit a where a.course.courseType = 'THEORY' and a.auditor.id = :id")
+	@Query("select count(a) from Audit a where a.course.courseType = '0' and a.auditor.id = :id and a.draftMode = false")
 	int totalNumOfTheoryAudits(int id);
 
-	@Query("select count(a) from Audit a where a.course.courseType = 'HANDS_ON' and a.auditor.id = :id")
+	@Query("select count(a) from Audit a where a.course.courseType = '1' and a.auditor.id = :id and a.draftMode = false")
 	int totalNumOfHandsonAudits(int id);
 
 	@Query("select(c.courseType) from Course c")
 	List<String> busqueda();
 
-	@Query("select avg(a) from AuditingRecord a where a.audit.id = :id")
+	@Query("select avg(a) from AuditingRecord a where a.audit.auditor.id = :id")
 	Double averageNumberOfAuditingRecords(int id);
 
 	@Query("select stddev(a) from AuditingRecord a where a.audit.id = :id")
