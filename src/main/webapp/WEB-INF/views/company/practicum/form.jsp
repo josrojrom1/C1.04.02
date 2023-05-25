@@ -10,10 +10,10 @@
 	<acme:input-textbox code="company.practicum.show.label.title" path="title"/>
 	<acme:input-textbox code="company.practicum.show.label.abst" path="abst"/>
 	<acme:input-textbox code="company.practicum.show.label.goals" path="goals"/>
-	<acme:input-double code="company.practicum.show.label.totalTime" path="totalTime"/>
+	<acme:input-double code="company.practicum.show.label.totalTime" path="totalTime" readonly="true"/>
 	<acme:input-select code="company.practicum.show.label.course" path="course" choices="${courseChoices}"/>
 	
-	<jstl:if test="${acme:anyOf(_command, 'show|delete|update|publish' && draftmode)}">
+	<jstl:if test="${acme:anyOf(_command, 'show|delete|update|publish') && draftMode}">
 		<acme:submit code="company.practicum.form.button.update" action="/company/practicum/update"/>
 		<acme:submit code="company.practicum.form.button.delete" action="/company/practicum/delete"/>
 		<acme:submit code="company.practicum.form.button.publish" action="/company/practicum/publish"/>

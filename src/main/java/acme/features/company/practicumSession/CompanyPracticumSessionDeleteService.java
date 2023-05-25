@@ -21,6 +21,7 @@ public class CompanyPracticumSessionDeleteService extends AbstractService<Compan
 	@Autowired
 	protected CompanyPracticumSessionRepository	repository;
 
+	@Autowired
 	protected CompanyPracticumRepository		repository2;
 
 
@@ -39,7 +40,7 @@ public class CompanyPracticumSessionDeleteService extends AbstractService<Compan
 
 		id = super.getRequest().getData("id", int.class);
 		session = this.repository.findOnePracticumSession(id);
-		status = session != null && super.getRequest().getPrincipal().hasRole(Company.class) && session.getPracticum().getCompany().getId() == super.getRequest().getPrincipal().getActiveRoleId() && session.getPracticum().isDraftMode();
+		status = session != null && session.getPracticum().isDraftMode() && super.getRequest().getPrincipal().hasRole(Company.class) && session.getPracticum().getCompany().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -67,7 +68,7 @@ public class CompanyPracticumSessionDeleteService extends AbstractService<Compan
 	@Override
 	public void perform(final PracticumSession object) {
 		Practicum practicum;
-		practicum = this.repository.findOnePracticum(super.getRequest().getData("masterId", int.class));
+		practicum = object.getPracticum();
 		final Long time = TimeUnit.MILLISECONDS.toSeconds(object.getTimePeriodEnd().getTime() - object.getTimePeriodStart().getTime());
 		final double hours = time.doubleValue() / 3600;
 		practicum.setTotalTime(practicum.getTotalTime() - hours);

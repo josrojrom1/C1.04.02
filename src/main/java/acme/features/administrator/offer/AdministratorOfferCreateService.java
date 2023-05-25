@@ -95,10 +95,6 @@ public class AdministratorOfferCreateService extends AbstractService<Administrat
 	public void perform(final Offer object) {
 		assert object != null;
 
-		Date moment;
-
-		moment = MomentHelper.getCurrentMoment();
-		object.setMoment(moment);
 		this.repository.save(object);
 	}
 
