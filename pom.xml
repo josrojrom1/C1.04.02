@@ -22,8 +22,10 @@
 	<description>This is the project from the first deliverable</description>
 
 	<groupId>Acme</groupId>	
-	<artifactId>Acme-L3-D04-23.4</artifactId>
-	<version>23.4</version>
+	<artifactId>Acme-L3-D04-23.4.1</artifactId>
+
+	<version>23.4.1</version>
+
 	<packaging>war</packaging>
 
 	<parent>

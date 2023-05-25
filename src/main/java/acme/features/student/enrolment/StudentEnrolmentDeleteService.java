@@ -54,7 +54,7 @@ public class StudentEnrolmentDeleteService extends AbstractService<Student, Enro
 	public void bind(final Enrolment object) {
 		assert object != null;
 
-		super.bind(object, "code", "motivation", "goals", "student", "workTime", "creditCardHolder", "lowerNibble", "isFinalised");
+		super.bind(object, "code", "motivation", "goals", "student", "creditCardHolder", "lowerNibble", "isFinalised");
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class StudentEnrolmentDeleteService extends AbstractService<Student, Enro
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "motivation", "goals", "workTime", "creditCardHolder", "lowerNibble");
+		tuple = super.unbind(object, "code", "motivation", "goals", "creditCardHolder", "lowerNibble");
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("isFinalised", false);
 		tuple.put("courseChoices", courseChoices);

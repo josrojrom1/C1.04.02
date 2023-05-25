@@ -1,5 +1,5 @@
 key,title,abst,activityType,startTimePeriod,endTimePeriod,link,key:enrolment
-activity-01-01,"ingles","leccion 1","THEORY","2023/03/16 20:30","2023/03/16 21:30","",enrolment-01
-activity-01-02,"e","%7L)?rB1fKl3NT8q$mTVc%x€mE8BchYa8qVpNKrZmuh(¡ZTPeBXoqZAHvk¿¡%2jLfO5?AR=?zk$OaP&0s5R€5qSFrE49Jjvabnj¡","HANDS_ON","2023/02/06 23:38","2023/02/11 11:40","https://www.abc.es/",enrolment-01
 activity-02-01,"&&R)jfXtYEAry2¡tPuºgQ=N!kdVz73q&ºd7@A4/f¡wESiNjiIL@B8TG&!JpffGtIqDQ¿Le€L@6y","q","THEORY","2023/03/10 09:21","2023/03/14 02:50","https://github.com/",enrolment-02
-activity-02-02,"t","umldwe","HANDS_ON","2023/01/12 10:34","2023/02/14 12:41","https://garticphone.com/es",enrolment-02
+activity-02-02,"t","umldwe","HANDS_ON","2023/01/12 10:34","2023/01/13 12:41","https://garticphone.com/es",enrolment-02
+activity-02-03,"ingles","leccion 1","THEORY","2023/03/16 20:30","2023/03/16 21:30","",enrolment-02
+activity-02-04,"e","%7L)?rB1fKl3NT8q$mTVc%x€mE8BchYa8qVpNKrZmuh(¡ZTPeBXoqZAHvk¿¡%2jLfO5?AR=?zk$OaP&0s5R€5qSFrE49Jjvabnj¡","HANDS_ON","2023/02/06 23:38","2023/02/07 11:40","https://www.abc.es/",enrolment-02

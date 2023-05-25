@@ -23,7 +23,7 @@ assistant.tutorialSession.form.button.create = Crear
 #--------------LIST------------------------------#
 assistant.tutorialSession.list.label.title = Título
 assistant.tutorialSession.list.label.tutorial = Tutoría
-assistant.tutorialSession.list.button.create = Crear
+assistant.tutorialSession.list.button.create = Crear una sesión
 #--------------Errors------------------------------#
 assistant.tutorialSession.form.error.duplicated = El código ya existe
 assistant.tutorialSession.form.error.duration = La duración tiene que estar entre 1 y 5 horas

@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.Audit;
 import acme.entities.AuditingRecord;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -27,7 +28,14 @@ public class AuditorAuditingRecordListService extends AbstractService<Auditor, A
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		Audit audit;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		audit = this.repository.findAuditById(id);
+		status = super.getRequest().getPrincipal().hasRole(Auditor.class) && audit != null && super.getRequest().getPrincipal().getActiveRoleId() == audit.getAuditor().getId();
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
