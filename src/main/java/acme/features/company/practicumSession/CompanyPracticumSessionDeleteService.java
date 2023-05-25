@@ -2,12 +2,14 @@
 package acme.features.company.practicumSession;
 
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Practicum;
 import acme.entities.PracticumSession;
+import acme.features.company.practicum.CompanyPracticumRepository;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -17,7 +19,9 @@ import acme.roles.Company;
 public class CompanyPracticumSessionDeleteService extends AbstractService<Company, PracticumSession> {
 
 	@Autowired
-	protected CompanyPracticumSessionRepository repository;
+	protected CompanyPracticumSessionRepository	repository;
+
+	protected CompanyPracticumRepository		repository2;
 
 
 	@Override
@@ -62,6 +66,12 @@ public class CompanyPracticumSessionDeleteService extends AbstractService<Compan
 
 	@Override
 	public void perform(final PracticumSession object) {
+		Practicum practicum;
+		practicum = this.repository.findOnePracticum(super.getRequest().getData("masterId", int.class));
+		final Long time = TimeUnit.MILLISECONDS.toSeconds(object.getTimePeriodEnd().getTime() - object.getTimePeriodStart().getTime());
+		final double hours = time.doubleValue() / 3600;
+		practicum.setTotalTime(practicum.getTotalTime() - hours);
+		this.repository2.save(practicum);
 		this.repository.delete(object);
 	}
 
@@ -79,6 +89,7 @@ public class CompanyPracticumSessionDeleteService extends AbstractService<Compan
 		tuple.put("practicum", choices.getSelected().getKey());
 		tuple.put("choices", choices);
 		tuple.put("draftMode", object.getPracticum().isDraftMode());
+		tuple.put("hasAddendum", object.getPracticum().isHasAddendum());
 		tuple.put("readPracticum", true);
 		super.getResponse().setData(tuple);
 	}

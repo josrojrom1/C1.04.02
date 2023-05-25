@@ -47,6 +47,7 @@ public class CompanyPracticumSessionListMineService extends AbstractService<Comp
 		Tuple tuple;
 		tuple = super.unbind(object, "title");
 		tuple.put("practicum", object.getPracticum().getCode());
+		tuple.put("showCreate", false);
 		super.getResponse().setData(tuple);
 	}
 }
