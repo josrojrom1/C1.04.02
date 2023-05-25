@@ -12,6 +12,7 @@ auditor.auditingRecord.list.label.subject = Asignatura
 auditor.auditingRecord.list.label.mark = Nota
 auditor.auditingRecord.list.label.auditor = Auditor
 auditor.auditingRecord.list.label.audit = Auditoria
+auditor.auditingRecord.list.label.correction = Correccion
 
 
 auditor.auditingRecord.form.label.subject = Asignatura

@@ -12,6 +12,7 @@ auditor.auditingRecord.list.label.subject = Subject
 auditor.auditingRecord.list.label.mark = Mark
 auditor.auditingRecord.list.label.auditor = Auditor
 auditor.auditingRecord.list.label.audit = Audit
+auditor.auditingRecord.list.label.correction = Correction
 
 auditor.auditingRecord.form.label.subject = Subject
 auditor.auditingRecord.form.label.conclusion = Conclusion
