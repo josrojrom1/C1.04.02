@@ -30,16 +30,16 @@ public class StudentActivityCreateTest extends TestHarness {
 		super.clickOnSubmit("Create");
 		super.clickOnMenu("Student", "Activity");
 		super.checkListingExists();
-		super.sortListing(0, "asc"); //Según el orden de la lista la nueva entrada es la primera
+		super.sortListing(0, "desc"); //Según el orden de la lista la nueva entrada es la primera
 		super.clickOnListingRecord(recordIndex);
-		//super.checkFormExists();
-		//super.checkInputBoxHasValue("title", title);
-		//super.checkInputBoxHasValue("abst", abst);
-		//super.checkInputBoxHasValue("activityType", activityType);
-		//super.checkInputBoxHasValue("startTimePeriod", startTimePeriod);
-		//super.checkInputBoxHasValue("endTimePeriod", endTimePeriod);
-		//super.checkInputBoxHasValue("link", link);
-		//super.checkInputBoxHasValue("enrolment", enrolment);
+		super.checkFormExists();
+		super.checkInputBoxHasValue("title", title);
+		super.checkInputBoxHasValue("abst", abst);
+		super.checkInputBoxHasValue("activityType_proxy", activityType);
+		super.checkInputBoxHasValue("startTimePeriod", startTimePeriod);
+		super.checkInputBoxHasValue("endTimePeriod", endTimePeriod);
+		super.checkInputBoxHasValue("link", link);
+		super.checkInputBoxHasValue("enrolment_proxy", enrolment);
 		super.signOut();
 	}
 

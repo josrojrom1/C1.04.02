@@ -19,13 +19,15 @@ company.practicumSession.form.label.practicum = Practicum
 company.practicumSession.form.button.update = Update
 company.practicumSession.form.button.delete = Delete
 company.practicumSession.form.button.create = Create
+company.practicumSession.form.button.addendum = Create Addendum
 #--------------LIST------------------------------#
 company.practicumSession.list.label.title = Title
 company.practicumSession.list.label.practicum = Practicum
 company.practicumSession.list.button.create = Create
+company.practicumSession.list.button.addendum = Create Addendum
 #--------------Errors------------------------------#
 company.practicumSession.form.error.duplicated = Code is already taken
-company.practicumSession.form.error.duration = The duration has to between 1 and 5 hours
-company.practicumSession.form.error.timePeriodStart = The start period has to be at least one day ahead
+company.practicumSession.form.error.duration = The duration has to be at least a week
+company.practicumSession.form.error.timePeriodStart = The start period has to be at least one week ahead
 company.practicumSession.form.error.timePeriodEnd = The start has to be before the end
 company.practicumSession.form.error.spam = Do not Spam

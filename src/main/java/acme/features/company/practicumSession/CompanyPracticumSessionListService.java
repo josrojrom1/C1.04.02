@@ -45,11 +45,12 @@ public class CompanyPracticumSessionListService extends AbstractService<Company,
 		Practicum practicum;
 		boolean showCreate;
 		id = super.getRequest().getData("masterId", int.class);
-		objects = this.repository.findManyPracticumSessionByCompany(id);
+		objects = this.repository.findManyPracticumSessionByPracticum(id);
 
 		super.getResponse().setGlobal("masterId", id);
 		practicum = this.repository.findOnePracticum(id);
 		showCreate = practicum.isDraftMode() && super.getRequest().getPrincipal().hasRole(Company.class);
+		super.getResponse().setGlobal("hasAddendum", practicum.isHasAddendum());
 		super.getResponse().setGlobal("showCreate", showCreate);
 
 		super.getBuffer().setData(objects);
@@ -70,7 +71,10 @@ public class CompanyPracticumSessionListService extends AbstractService<Company,
 		super.getResponse().setGlobal("showCreate", showCreate);
 		tuple = super.unbind(object, "title");
 		tuple.put("practicum", practicum.getCode());
+		tuple.put("draftMode", practicum.isDraftMode());
+		tuple.put("hasAddendum", practicum.isHasAddendum());
 		tuple.put("showCreate", showCreate);
+		tuple.put("masterId", super.getRequest().getData("masterId", int.class));
 		super.getResponse().setData(tuple);
 	}
 }
