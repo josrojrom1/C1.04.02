@@ -53,11 +53,13 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		assert object != null;
 		int courseId;
 		Course course;
-
+		Date moment;
+		moment = MomentHelper.getCurrentMoment();
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findOneCourseById(courseId);
 		super.bind(object, "code", "title", "abst", "goals", "totalTime");
 		object.setCourse(course);
+		object.setPublishTime(moment);
 	}
 
 	@Override
@@ -89,11 +91,8 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 	@Override
 	public void perform(final Practicum object) {
 		assert object != null;
-		Date moment;
-		moment = MomentHelper.getCurrentMoment();
 		object.setDraftMode(true);
 		object.setHasAddendum(false);
-		object.setPublishTime(moment);
 		this.repository.save(object);
 	}
 

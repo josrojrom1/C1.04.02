@@ -19,6 +19,6 @@
 		<acme:submit code="company.practicumSession.form.button.create" action="/company/practicum-session/create?masterId=${id}"/>
 	</jstl:if>
 	<jstl:if test="${!draftMode && !hasAddendum}">
-		<acme:submit code="company.practicumSession.form.button.addendum" action="/company/practicum-session/addendum?masterId=${id}"/>
+		<acme:submit code="company.practicumSession.form.button.addendum" action="/company/practicum-session/addendum?masterId=${masterId}"/>
 	</jstl:if>
 </acme:form>

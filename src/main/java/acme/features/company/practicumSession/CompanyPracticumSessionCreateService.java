@@ -45,13 +45,13 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 		System.out.println(id);
 		practicum = this.repository.findOnePracticum(id);
 		status = practicum != null && super.getRequest().getPrincipal().hasRole(Company.class) && super.getRequest().getPrincipal().getActiveRoleId() == practicum.getCompany().getId() && practicum.isDraftMode();
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
 		PracticumSession object;
-		Practicum practicum;
+		final Practicum practicum;
 		Date moment;
 		moment = MomentHelper.getCurrentMoment();
 		practicum = this.repository.findOnePracticum(super.getRequest().getData("masterId", int.class));
@@ -67,6 +67,9 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 	public void bind(final PracticumSession object) {
 		assert object != null;
 		super.bind(object, "title", "abst", "timePeriodStart", "timePeriodEnd", "link");
+		//Practicum practicum;
+		//practicum = this.repository.findOnePracticum(super.getRequest().getData("masterId", int.class));
+		//object.setPracticum(practicum);
 	}
 
 	@Override
@@ -79,12 +82,12 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("timePeriodEnd"))
-			super.state(object.getTimePeriodStart().before(object.getTimePeriodEnd()), "timePeriodStart, timePeriodEnd", "company.practicumSession.form.error.timePeriodEnd");
+			super.state(object.getTimePeriodStart().before(object.getTimePeriodEnd()), "timePeriodEnd", "company.practicumSession.form.error.timePeriodEnd");
 
 		if (!super.getBuffer().getErrors().hasErrors("periodFinish")) {
 			final Duration duration = MomentHelper.computeDuration(object.getTimePeriodStart(), object.getTimePeriodEnd());
 			final Duration d1 = Duration.ofDays(7);
-			super.state(d1.compareTo(duration) >= 0, "*", "company.practicumSession.form.error.duration");
+			super.state(duration.compareTo(d1) >= 0, "*", "company.practicumSession.form.error.duration");
 		}
 
 	}
@@ -116,7 +119,7 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 		tuple.put("draftMode", object.getPracticum().isDraftMode());
 		tuple.put("hasAddendum", object.getPracticum().isHasAddendum());
 		tuple.put("readPracticum", true);
-		tuple.put("masterId", super.getRequest().getData("masterId", int.class));
+		tuple.put("id", super.getRequest().getData("masterId", int.class));
 		super.getResponse().setData(tuple);
 	}
 }
