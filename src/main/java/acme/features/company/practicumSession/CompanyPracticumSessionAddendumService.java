@@ -31,7 +31,9 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+		status = super.getRequest().hasData("masterId", int.class);
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
@@ -111,7 +113,7 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		tuple = super.unbind(object, "title", "abst", "timePeriodStart", "timePeriodEnd", "link");
 		tuple.put("practicum", choices.getSelected().getKey());
 		tuple.put("choices", choices);
-		tuple.put("isAddendum", object.isAddendum());
+		tuple.put("hasAddendum", object.getPracticum().isHasAddendum());
 		tuple.put("draftMode", object.getPracticum().isDraftMode());
 		tuple.put("readPracticum", true);
 		tuple.put("masterId", super.getRequest().getData("masterId", int.class));

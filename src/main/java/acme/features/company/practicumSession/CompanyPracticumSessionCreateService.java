@@ -31,7 +31,9 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+		status = super.getRequest().hasData("masterId", int.class);
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
@@ -40,6 +42,7 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 		int id;
 		Practicum practicum;
 		id = super.getRequest().getData("masterId", int.class);
+		System.out.println(id);
 		practicum = this.repository.findOnePracticum(id);
 		status = practicum != null && super.getRequest().getPrincipal().hasRole(Company.class) && super.getRequest().getPrincipal().getActiveRoleId() == practicum.getCompany().getId() && practicum.isDraftMode();
 		super.getResponse().setAuthorised(status);

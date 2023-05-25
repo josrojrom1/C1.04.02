@@ -2,6 +2,7 @@
 package acme.features.company.practicum;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import acme.entities.Course;
 import acme.entities.Practicum;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
+import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
 import acme.utility.SpamDetector;
@@ -54,7 +56,7 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findOneCourseById(courseId);
-		super.bind(object, "code", "title", "abst", "goals", "publishTime");
+		super.bind(object, "code", "title", "abst", "goals");
 		object.setCourse(course);
 	}
 
@@ -87,9 +89,12 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 	@Override
 	public void perform(final Practicum object) {
 		assert object != null;
+		Date moment;
+		moment = MomentHelper.getCurrentMoment();
 		object.setDraftMode(true);
 		object.setHasAddendum(false);
 		object.setTotalTime(0.0);
+		object.setPublishTime(moment);
 		this.repository.save(object);
 	}
 
@@ -105,7 +110,8 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "title", "abst", "goals", "publishTime");
+		tuple = super.unbind(object, "code", "title", "abst", "goals");
+		tuple.put("publishTime", null);
 		tuple.put("totalTime", 0.0);
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", true);
