@@ -56,7 +56,7 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findOneCourseById(courseId);
-		super.bind(object, "code", "title", "abst", "goals");
+		super.bind(object, "code", "title", "abst", "goals", "totalTime");
 		object.setCourse(course);
 	}
 
@@ -93,7 +93,6 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		moment = MomentHelper.getCurrentMoment();
 		object.setDraftMode(true);
 		object.setHasAddendum(false);
-		object.setTotalTime(0.0);
 		object.setPublishTime(moment);
 		this.repository.save(object);
 	}
@@ -110,9 +109,7 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "title", "abst", "goals");
-		tuple.put("publishTime", null);
-		tuple.put("totalTime", 0.0);
+		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", true);
 		tuple.put("hasAddendum", false);
