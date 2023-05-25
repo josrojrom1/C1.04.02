@@ -16,37 +16,37 @@ public class AuditorAuditingRecordCorrectTest extends TestHarness {
 	@Autowired
 	AuditorAuditingRecordTestRepository repository;
 
-	//	@ParameterizedTest
-	//	@CsvFileSource(resources = "/auditor/auditingRecord/correct-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	//	public void test100Positive(final int recordIndex, final String subject, final String assessment, final String startPeriod, final String endPeriod, final String mark, final String link, final String correction) {
-	//		//este test comprueba la creacion de los registros de una auditoria de un auditor
-	//		super.signIn("auditor1", "auditor1");
-	//		super.clickOnMenu("Auditor", "List my audits");
-	//		super.sortListing(0, "asc");
-	//		super.clickOnListingRecord(recordIndex);
-	//		super.clickOnButton("Add Correction");
-	//
-	//		super.fillInputBoxIn("subject", subject);
-	//		super.fillInputBoxIn("assessment", assessment);
-	//		super.fillInputBoxIn("startPeriod", startPeriod);
-	//		super.fillInputBoxIn("endPeriod", endPeriod);
-	//		super.fillInputBoxIn("mark", mark);
-	//		super.fillInputBoxIn("link", link);
-	//		super.fillInputBoxIn("confirm", correction);
-	//
-	//		super.clickOnSubmit("Add correct");
-	//
-	//		super.clickOnMenu("Auditor", "List my audits");
-	//		super.sortListing(0, "asc");
-	//		super.clickOnListingRecord(recordIndex);
-	//		super.clickOnButton("Auditing records");
-	//		super.sortListing(0, "asc");
-	//		super.checkColumnHasValue(recordIndex, 0, subject);
-	//		super.checkColumnHasValue(recordIndex, 1, mark);
-	//
-	//		super.signOut();
-	//	}
 
+	@ParameterizedTest
+	@CsvFileSource(resources = "/auditor/auditingRecord/correct-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test100Positive(final int recordIndex, final String subject, final String assessment, final String startPeriod, final String endPeriod, final String mark, final String link, final String correction) {
+		//este test comprueba la creacion de los registros de una auditoria de un auditor
+		super.signIn("auditor1", "auditor1");
+		super.clickOnMenu("Auditor", "List my audits");
+		super.sortListing(0, "asc");
+		super.clickOnListingRecord(recordIndex);
+		super.clickOnButton("Add Correction");
+
+		super.fillInputBoxIn("subject", subject);
+		super.fillInputBoxIn("assessment", assessment);
+		super.fillInputBoxIn("startPeriod", startPeriod);
+		super.fillInputBoxIn("endPeriod", endPeriod);
+		super.fillInputBoxIn("mark", mark);
+		super.fillInputBoxIn("link", link);
+		super.fillInputBoxIn("confirm", correction);
+
+		super.clickOnSubmit("Add correct");
+
+		super.clickOnMenu("Auditor", "List my audits");
+		super.sortListing(0, "asc");
+		super.clickOnListingRecord(recordIndex);
+		super.clickOnButton("Auditing records");
+		super.sortListing(0, "asc");
+		super.checkColumnHasValue(recordIndex, 0, subject);
+		super.checkColumnHasValue(recordIndex, 1, mark);
+
+		super.signOut();
+	}
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/auditor/auditingRecord/correct-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
