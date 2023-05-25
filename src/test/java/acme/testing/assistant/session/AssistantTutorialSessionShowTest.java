@@ -27,11 +27,11 @@ public class AssistantTutorialSessionShowTest extends TestHarness {
 		super.checkFormExists();
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("abst", abst);
-		//super.checkInputBoxHasValue("sessionType", sessionType);
+		super.checkInputBoxHasValue("sessionType_proxy", sessionType);
 		super.checkInputBoxHasValue("periodStart", periodStart);
 		super.checkInputBoxHasValue("periodFinish", periodFinish);
 		super.checkInputBoxHasValue("link", link);
-		//super.checkInputBoxHasValue("tutorial", tutorial);
+		super.checkInputBoxHasValue("tutorial_proxy", tutorial);
 
 		super.signOut();
 	}
@@ -51,11 +51,11 @@ public class AssistantTutorialSessionShowTest extends TestHarness {
 		super.checkFormExists();
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("abst", abst);
-		//super.checkInputBoxHasValue("sessionType", sessionType);
+		super.checkInputBoxHasValue("sessionType_proxy", sessionType);
 		super.checkInputBoxHasValue("periodStart", periodStart);
 		super.checkInputBoxHasValue("periodFinish", periodFinish);
 		super.checkInputBoxHasValue("link", link);
-		//super.checkInputBoxHasValue("tutorial", tutorial);
+		super.checkInputBoxHasValue("tutorial_proxy", tutorial);
 
 		super.signOut();
 	}
