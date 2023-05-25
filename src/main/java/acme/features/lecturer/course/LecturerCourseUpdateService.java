@@ -11,12 +11,16 @@ import acme.entities.Course;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
+import acme.utility.SpamDetector;
 
 @Service
 public class LecturerCourseUpdateService extends AbstractService<Lecturer, Course> {
 
 	@Autowired
-	protected LecturerCourseRepository repository;
+	protected LecturerCourseRepository	repository;
+
+	@Autowired
+	protected SpamDetector				textValidator;
 
 
 	@Override
@@ -80,6 +84,22 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 			Course existing;
 			existing = this.repository.findOneCourseByCode(object.getCode());
 			super.state(existing == null || existing.getId() == object.getId(), "code", "lecturer.lecture.form.error.course.code.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "title", "assistant.tutorial.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("abst")) {
+			String validar;
+			validar = object.getAbst();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "abst", "assistant.tutorial.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("link")) {
+			String validar;
+			validar = object.getLink();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "link", "assistant.tutorial.form.error.spam");
 		}
 	}
 

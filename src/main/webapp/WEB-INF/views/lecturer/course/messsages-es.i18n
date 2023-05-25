@@ -45,7 +45,7 @@ lecturer.lecture.form.error.retailPrice.currency = Solo se pueden usar las divis
 lecturer.lecture.form.error.course.code.duplicated = El código introducido está repetido
 lecturer.lecture.form.error.retailPrice.max = El precio máximo es de 99999
 lecturer.lecture.form.error.retailPrice.negative = Los números negativos no están permitidos
-lecturer.course.form.courseType.reject-pure-theoretical = Los cursos con mas asignaturas teoricas que prácticas son considerados cursos prácticos y rechazados por el sistema
+lecturer.course.form.courseType.reject-pure-theoretical = Los cursos con mas asignaturas teoricas que prácticas son considerados cursos teóricos y rechazados por el sistema
 
 
 #---------------COURSE OF LECTURE-----------------------

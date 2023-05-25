@@ -11,12 +11,15 @@ import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
+import acme.utility.SpamDetector;
 
 @Service
 public class StudentEnrolmentFinaliseService extends AbstractService<Student, Enrolment> {
 
 	@Autowired
-	protected StudentEnrolmentRepository repository;
+	protected StudentEnrolmentRepository	repository;
+	@Autowired
+	protected SpamDetector					textValidator;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -80,6 +83,12 @@ public class StudentEnrolmentFinaliseService extends AbstractService<Student, En
 		super.state(isCCVAccepted, "cvc", "authentication.note.form.error.notAccepted");
 		super.state(isLowerNibbleAccepted, "lowerNibble", "authentication.note.form.error.finalisationError");
 		super.state(isUpperNibbleAccepted, "upperNibble", "authentication.note.form.error.notAccepted");
+
+		if (!super.getBuffer().getErrors().hasErrors("creditCardHolder")) {
+			String validar;
+			validar = object.getCreditCardHolder();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "student.enrolment.form.error.spam");
+		}
 
 	}
 

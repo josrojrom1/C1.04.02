@@ -72,7 +72,8 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 		id = super.getRequest().getData("id", int.class);
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "title", "abst", "retailPrice", "link", "lecturer");
+		tuple = super.unbind(object, "code", "title", "abst", "retailPrice", "link");
+		tuple.put("lecturer", object.getLecturer().getUserAccount().getUsername());
 
 		lectures = this.repository.findLecturesByCourseId(id);
 		tuple.put("lectures", lectures);
