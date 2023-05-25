@@ -13,7 +13,7 @@
 	<acme:input-integer code="student.course.form.label.moneyExchange" path="moneyExchange"/>
 	</jstl:if>
 	<acme:input-url code="student.course.form.label.link" path="link" />
-	<acme:input-integer code="student.course.form.label.lecturer-id" path="id"/>
+	<acme:input-textbox code="student.course.form.label.lecturer" path="lecturer"/>
 	<acme:input-textbox code="student.course.form.label.lectures-title" path="title"/>
 
 </acme:form>
