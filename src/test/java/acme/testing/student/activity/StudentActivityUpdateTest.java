@@ -42,15 +42,16 @@ public class StudentActivityUpdateTest extends TestHarness {
 		super.fillInputBoxIn("enrolment", enrolment);
 		super.clickOnSubmit("Update");
 		super.checkListingExists();
+		super.sortListing(0, "asc");
 		super.clickOnListingRecord(0);
 		super.checkFormExists();
-		//super.checkInputBoxHasValue("title", title);
-		//super.checkInputBoxHasValue("abst", abst);
-		//super.checkInputBoxHasValue("activityType", activityType);
-		//super.checkInputBoxHasValue("startTimePeriod", startTimePeriod);
-		//super.checkInputBoxHasValue("endTimePeriod", endTimePeriod);
-		//super.checkInputBoxHasValue("link", link);
-		//super.checkInputBoxHasValue("enrolment", enrolment);
+		super.checkInputBoxHasValue("title", title);
+		super.checkInputBoxHasValue("abst", abst);
+		super.checkInputBoxHasValue("activityType_proxy", activityType);
+		super.checkInputBoxHasValue("startTimePeriod", startTimePeriod);
+		super.checkInputBoxHasValue("endTimePeriod", endTimePeriod);
+		super.checkInputBoxHasValue("link", link);
+		super.checkInputBoxHasValue("enrolment_proxy", enrolment);
 		super.signOut();
 	}
 	//TEST NEGATIVO
