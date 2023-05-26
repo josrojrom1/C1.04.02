@@ -19,8 +19,8 @@ public class FavouriteLinkTest extends TestHarness {
 	@Test
 	public void test100Positive() {
 		super.requestHome();
-		super.clickOnMenu("Anonymous", "Favourite link");
-		super.checkCurrentUrl("http://www.example.com");
+		super.clickOnMenu("Anonymous", "47546590: Reina Munoz, Jose Antonio");
+		super.checkCurrentUrl("https://www.youtube.com");
 	}
 
 }
