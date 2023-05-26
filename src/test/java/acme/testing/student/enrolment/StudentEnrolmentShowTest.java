@@ -53,6 +53,12 @@ public class StudentEnrolmentShowTest extends TestHarness {
 			super.request("/student/enrolment/show", param);
 			super.checkPanicExists();
 			super.signOut();
+
+			super.checkLinkExists("Sign in");
+			super.signIn("student2", "student2");
+			super.request("/student/enrolment/show", param);
+			super.checkPanicExists();
+			super.signOut();
 		}
 	}
 
