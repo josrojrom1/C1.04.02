@@ -12,6 +12,7 @@ public class AnyPeepShowTest extends TestHarness {
 	@CsvFileSource(resources = "/any/peep/show-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100positive(final int recordIndex, final String moment, final String title, final String nick, final String message, final String email, final String link) {
 		super.clickOnMenu("Peeps", "List of Peeps");
+		super.sortListing(0, "asc");
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("moment", moment);

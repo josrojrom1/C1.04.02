@@ -28,4 +28,4 @@ any.peep.form.label.email = Email
 any.peep.form.label.link = Link
 any.peep.form.button.create = Publish
 
-
+any.peep.form.error.spam = Do not spam

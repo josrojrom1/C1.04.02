@@ -25,3 +25,6 @@ any.peep.form.label.message = Mensaje
 any.peep.form.label.email = Correo
 any.peep.form.label.link = Enlace
 any.peep.form.button.create = Publicar
+
+
+any.peep.form.error.spam = No hagas spam
