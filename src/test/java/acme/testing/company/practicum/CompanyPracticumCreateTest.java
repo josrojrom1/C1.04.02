@@ -28,7 +28,7 @@ public class CompanyPracticumCreateTest extends TestHarness {
 		super.clickOnMenu("Company", "List my practica");
 		super.checkListingExists();
 
-		super.sortListing(0, "asc");
+		super.sortListing(0, "desc");
 		super.checkColumnHasValue(recordIndex, 0, code);
 		super.checkColumnHasValue(recordIndex, 1, title);
 

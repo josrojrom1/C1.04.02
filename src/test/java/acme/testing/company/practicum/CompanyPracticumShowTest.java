@@ -22,6 +22,7 @@ public class CompanyPracticumShowTest extends TestHarness {
 	public void test100positive(final int recordIndex, final String code, final String title, final String abst, final String goals, final String totalTime, final String course) {
 		super.signIn("company1", "company1");
 		super.clickOnMenu("Company", "List my practica");
+		super.sortListing(0, "desc");
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("code", code);
