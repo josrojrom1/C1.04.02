@@ -43,20 +43,7 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		int id;
 		Practicum practicum;
 		id = super.getRequest().getData("masterId", int.class);
-		System.out.println(id);
 		practicum = this.repository.findOnePracticum(id);
-		System.out.println(practicum);
-		System.out.println("Practicum no nulo");
-		System.out.println(practicum != null);
-		System.out.println("Es Company");
-		System.out.println(super.getRequest().getPrincipal().hasRole(Company.class));
-		System.out.println("ComparaIds");
-		System.out.println(super.getRequest().getPrincipal().getActiveRoleId());
-		System.out.println(practicum.getCompany().getId());
-		System.out.println("Draftmode en 0");
-		System.out.println(!practicum.isDraftMode());
-		System.out.println("Addendum en 0");
-		System.out.println(!practicum.isHasAddendum());
 		status = practicum != null && super.getRequest().getPrincipal().hasRole(Company.class) && super.getRequest().getPrincipal().getActiveRoleId() == practicum.getCompany().getId() && !practicum.isDraftMode() && !practicum.isHasAddendum();
 		super.getResponse().setAuthorised(status);
 	}
@@ -65,13 +52,15 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 	public void load() {
 		PracticumSession object;
 		Practicum practicum;
-		Date moment;
-		moment = MomentHelper.getCurrentMoment();
+		Date moment1;
+		Date moment2;
+		moment1 = MomentHelper.deltaFromCurrentMoment(7, ChronoUnit.DAYS);
+		moment2 = MomentHelper.deltaFromCurrentMoment(14, ChronoUnit.DAYS);
 		practicum = this.repository.findOnePracticum(super.getRequest().getData("masterId", int.class));
 		object = new PracticumSession();
 		object.setPracticum(practicum);
-		object.setTimePeriodStart(moment);
-		object.setTimePeriodEnd(moment);
+		object.setTimePeriodStart(moment1);
+		object.setTimePeriodEnd(moment2);
 		object.setAddendum(true);
 		super.getBuffer().setData(object);
 	}
@@ -88,17 +77,21 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		assert object != null;
 		//Validación de la fechas
 		if (!super.getBuffer().getErrors().hasErrors("timePeriodStart")) {
-			final Date moment = MomentHelper.deltaFromCurrentMoment(7, ChronoUnit.DAYS);
-			super.state(object.getTimePeriodStart().after(moment), "timePeriodStart", "company.practicumSession.form.error.timePeriodStart");
+			final Date moment = MomentHelper.getCurrentMoment();
+			final Duration duration = MomentHelper.computeDuration(moment, object.getTimePeriodStart());
+			final Duration d1 = Duration.ofDays(7);
+			d1.minus(1, ChronoUnit.MINUTES);
+			super.state(duration.compareTo(d1) >= 0, "timePeriodStart", "company.practicumSession.form.error.timePeriodStart");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("timePeriodEnd"))
 			super.state(object.getTimePeriodStart().before(object.getTimePeriodEnd()), "timePeriodEnd", "company.practicumSession.form.error.timePeriodEnd");
 
 		if (!super.getBuffer().getErrors().hasErrors("periodFinish")) {
-			final Duration duration = MomentHelper.computeDuration(object.getTimePeriodStart(), object.getTimePeriodEnd());
-			final Duration d1 = Duration.ofDays(7);
-			super.state(duration.compareTo(d1) >= 0, "*", "company.practicumSession.form.error.duration");
+			final Duration duration2 = MomentHelper.computeDuration(object.getTimePeriodStart(), object.getTimePeriodEnd());
+			final Duration d2 = Duration.ofDays(7);
+			d2.minus(1, ChronoUnit.MINUTES);
+			super.state(duration2.compareTo(d2) >= 0, "*", "company.practicumSession.form.error.duration");
 		}
 
 	}

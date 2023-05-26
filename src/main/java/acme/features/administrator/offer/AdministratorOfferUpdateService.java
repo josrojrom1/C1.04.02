@@ -69,6 +69,7 @@ public class AdministratorOfferUpdateService extends AbstractService<Administrat
 			final Calendar inicio = Calendar.getInstance();
 			inicio.setTime(object.getTimePeriodStart());
 			inicio.add(Calendar.DATE, 7);
+			inicio.add(Calendar.MINUTE, -1);
 
 			super.state(end.after(inicio), "timePeriodEnd", "administrator.offer.form.error.totalTime");
 		}

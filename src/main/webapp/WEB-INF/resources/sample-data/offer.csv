@@ -1,7 +1,7 @@
 key,moment,heading,summary,timePeriodStart,timePeriodEnd,retailPrice,link
-offer-01,"2022/03/15 12:30","3ste heading t!ene un total de setenta y cinco c@r@cteres y tal y cual sabe","esto es el summary de offer-01","2023/03/16 20:30","2023/03/17 22:30",11.5 EUR,"https://www.example.com"
-offer-02,"2022/03/14 14:30","a","esto es el summary de offer-02","2023/03/16 20:30","2023/03/17 20:30",1.5 EUR,"https://www.example.com"
-offer-03,"2022/03/13 17:30","esto es el heading de offer-03","3ste summary t!ene un total de cien c@r@cteres y tal y cual sabes esta pensado para verificar esto#","2023/03/16 18:30","2023/03/17 20:30",90.0 EUR,"https://www.example.com"
-offer-04,"2022/03/12 19:30","esto es el heading de offer-04","a","2023/03/16 20:30","2023/03/17 20:30",-9.0 EUR,"https://www.example.com"
-offer-05,"2022/03/11 22:30","esto es el heading de offer-05","esto es el summary de offer-05","2023/03/16 20:30","2023/03/17 21:30",120.0 EUR,""
-offer-06,"2022/03/16 21:30","Se ofertan servicios de construcción de viviendas instantáneas","Básicamente hacemos casas al instante con un mazo mágico","2023/03/16 19:30","2023/03/17 20:30",2490.0 EUR,"https://www.casasinstantaneas.com"
+offer-01,2022/03/15 12:30,3ste heading t!ene un total de setenta y cinco c@r@cteres y tal y cual sabe,esto es el summary de offer-01,2023/03/16 12:30,2023/03/26 22:30,11.5 EUR,https://www.example.com
+offer-02,2022/03/14 14:30,a,esto es el summary de offer-02,2023/03/16 20:30,2023/03/26 20:30,1.5 EUR,https://www.example.com
+offer-03,2022/03/13 17:30,esto es el heading de offer-03,3ste summary t!ene un total de cien c@r@cteres y tal y cual sabes esta pensado para verificar esto#,2023/03/14 17:30,2023/03/21 17:30,90.0 EUR,https://www.example.com
+offer-04,2022/03/12 19:30,esto es el heading de offer-04,a,2023/03/16 20:30,2023/03/17 20:30,9.0 EUR,https://www.example.com
+offer-05,2022/03/11 22:30,esto es el heading de offer-05,esto es el summary de offer-05,2023/03/16 20:30,2023/03/17 21:30,120.0 EUR,
+offer-06,2022/03/16 21:30,Se ofertan servicios de construcción de viviendas instantáneas,Básicamente hacemos casas al instante con un mazo mágico,2023/03/16 19:30,2023/03/17 20:30,2490.0 EUR,https://www.casasinstantaneas.com
