@@ -1,6 +1,9 @@
 
 package acme.features.student.enrolment;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +65,9 @@ public class StudentEnrolmentFinaliseService extends AbstractService<Student, En
 		assert object != null;
 
 		final String cch = this.getRequest().getData("creditCardHolder", String.class);
-		final Date expiryDate = this.getRequest().getData("expiryDate", Date.class);
+
+		final String expiryDate = this.getRequest().getData("expiryDate", String.class);
+
 		final String cvc = this.getRequest().getData("cvc", String.class);
 		final String upperNibble = this.getRequest().getData("upperNibble", String.class);
 		final String lowerNibble = this.getRequest().getData("lowerNibble", String.class);
@@ -102,7 +107,7 @@ public class StudentEnrolmentFinaliseService extends AbstractService<Student, En
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("expiryDate"))
-			super.state(expiryDate.after(MomentHelper.getCurrentMoment()), "expiryDate", "authentication.note.form.error.notAccepted");
+			super.state(this.canConvertToDate(expiryDate, "yyyy/mm/dd HH:MM"), "expiryDate", "authentication.note.form.error.notAccepted");
 
 	}
 
@@ -130,6 +135,30 @@ public class StudentEnrolmentFinaliseService extends AbstractService<Student, En
 			return true;
 		} catch (final NumberFormatException e) {
 			return false;
+		}
+	}
+
+	public boolean canConvertToDate(final String str, final String format) {
+		final SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+		boolean res = false;
+		try {
+			final Date fechaParseada = dateFormat.parse(str);
+			if (fechaParseada.after(MomentHelper.getCurrentMoment()))
+				res = true;
+			return res;
+		} catch (final ParseException e) {
+			return res;
+		}
+	}
+
+	public Date convertirStringADate(final String fechaTexto) {
+		final DateFormat formatoFecha = new SimpleDateFormat("yyyy/mm/dd HH:MM");
+		try {
+			return formatoFecha.parse(fechaTexto);
+		} catch (final ParseException e) {
+			System.out.println("Error al convertir la fecha.");
+			e.printStackTrace();
+			return null;
 		}
 	}
 
