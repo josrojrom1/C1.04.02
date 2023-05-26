@@ -41,8 +41,7 @@ public class AuthenticatedBulletinShowService extends AbstractService<Authentica
 		bulletin = this.repository.findOneBulletinById(id);
 		deadLine = MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.SECONDS);
 		//Comprobamos que el moment del bulletin esta antes que un seg menos de la fecha actual
-		status = MomentHelper.isBefore(bulletin.getMoment(), deadLine);
-
+		status = MomentHelper.isBefore(bulletin.getMoment(), deadLine) && super.getRequest().getPrincipal().hasRole(Authenticated.class);
 		super.getResponse().setAuthorised(status);
 	}
 

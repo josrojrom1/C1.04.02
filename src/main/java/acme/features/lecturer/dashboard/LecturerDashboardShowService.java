@@ -43,7 +43,9 @@ public class LecturerDashboardShowService extends AbstractService<Lecturer, Lect
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Lecturer.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

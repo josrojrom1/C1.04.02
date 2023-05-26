@@ -18,12 +18,8 @@ public class AuthenticatedBulletinListService extends AbstractService<Authentica
 	protected AuthenticatedBulletinRepository repository;
 
 
-	//Check method determines if the request has the required input data
 	@Override
 	public void check() {
-		//boolean status;
-		//status = super.getRequest().hasData("id", int.class);
-		//super.getResponse().setChecked(status);
 
 		super.getResponse().setChecked(true);
 
@@ -31,29 +27,10 @@ public class AuthenticatedBulletinListService extends AbstractService<Authentica
 
 	@Override
 	public void authorise() {
-		//final boolean status;
-		//final int id;
-		//final Collection<Bulletin> bulletins;
-		//final Date deadLine;
 
-		//id = super.getRequest().getData("id", int.class);
-		//bulletins = this.repository.findAllBulletinsById(id);
-		//deadLine = MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.SECONDS);
-
-		//for (final Bulletin b : bulletins) {
-		//Comprobamos que el moment del bulletin esta antes que un seg menos de la fecha actual
-		//status = MomentHelper.isBefore(b.getMoment(), deadLine);
-		//if (status == false)
-		//break;
-
-		//}
-
-		//status = !super.getRequest().getPrincipal().hasRole(Authenticated.class);
-
-		//super.getResponse().setAuthorised(status);
-
-		super.getResponse().setAuthorised(true);
-
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Authenticated.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
