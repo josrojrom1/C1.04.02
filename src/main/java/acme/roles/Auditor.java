@@ -22,17 +22,17 @@ public class Auditor extends AbstractRole {
 
 	//firm
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	protected String			firm;
 
 	//Professional ID
 	@NotBlank
-	@Length(max = 26)
+	@Length(max = 25)
 	protected String			professionalId;
 
 	//Certifications
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	protected String			certifications;
 
 	//Optional link
