@@ -63,9 +63,9 @@ public class AssistantTutorialSessionShowService extends AbstractService<Assista
 		Tuple tuple;
 		tuple = super.unbind(object, "title", "abst", "sessionType", "periodStart", "periodFinish", "link");
 		tuple.put("tutorial", choices.getSelected().getKey());
+		tuple.put("lessonChoices", lessonChoices);
 		tuple.put("choices", choices);
 		tuple.put("draftMode", object.getTutorial().isDraftMode());
-		tuple.put("lessonChoices", lessonChoices);
 		tuple.put("readTutorial", true);
 		tuple.put("masterId", object.getTutorial().getId());
 		super.getResponse().setData(tuple);

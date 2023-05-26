@@ -31,7 +31,10 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Boolean status;
+
+		status = super.getRequest().getPrincipal().hasRole(Auditor.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

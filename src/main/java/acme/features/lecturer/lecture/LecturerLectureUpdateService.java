@@ -10,12 +10,16 @@ import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
+import acme.utility.SpamDetector;
 
 @Service
 public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lecture> {
 
 	@Autowired
-	protected LecturerLectureRepository repository;
+	protected LecturerLectureRepository	repository;
+
+	@Autowired
+	protected SpamDetector				textValidator;
 
 
 	@Override
@@ -60,6 +64,29 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("learningTime"))
 			super.state(object.getLearningTime() >= 0.01, "learningTime", "lecturer.lecture.form.error.learningTime");
+
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "title", "assistant.tutorial.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("abst")) {
+			String validar;
+			validar = object.getAbst();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "abst", "assistant.tutorial.form.error.spam");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("body")) {
+			String validar;
+			validar = object.getBody();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "body", "assistant.tutorial.form.error.spam");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("link")) {
+			String validar;
+			validar = object.getLink();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "link", "assistant.tutorial.form.error.spam");
+		}
 	}
 
 	@Override

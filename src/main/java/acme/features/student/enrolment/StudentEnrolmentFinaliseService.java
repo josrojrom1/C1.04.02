@@ -11,12 +11,15 @@ import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
+import acme.utility.SpamDetector;
 
 @Service
 public class StudentEnrolmentFinaliseService extends AbstractService<Student, Enrolment> {
 
 	@Autowired
-	protected StudentEnrolmentRepository repository;
+	protected StudentEnrolmentRepository	repository;
+	@Autowired
+	protected SpamDetector					textValidator;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -64,22 +67,32 @@ public class StudentEnrolmentFinaliseService extends AbstractService<Student, En
 		final String upperNibble = this.getRequest().getData("upperNibble", String.class);
 		final String lowerNibble = this.getRequest().getData("lowerNibble", String.class);
 
-		final Boolean isCCHAccepted = cch != null;
+		final Boolean isCCHAccepted = cch != null && cch != "";
 		final Boolean isExpiryDateAccepted = expiryDate != null;
 		final Boolean isCCVAccepted = ccv != null;
 		final boolean isUpperNibbleAccepted = upperNibble != null;
 		final boolean isLowerNibbleAccepted = lowerNibble != null;
-
-		super.state(ccv.length() == 3, "cvc", "authentication.note.form.error.notAccepted");
-		super.state(upperNibble.length() == 8, "upperNibble", "authentication.note.form.error.notAccepted");
-		super.state(lowerNibble.length() == 4, "lowerNibble", "authentication.note.form.error.notAccepted");
-		super.state(expiryDate.after(MomentHelper.getCurrentMoment()), "expiryDate", "authentication.note.form.error.notAccepted");
 
 		super.state(isCCHAccepted, "creditCardHolder", "authentication.note.form.error.finalisationError");
 		super.state(isExpiryDateAccepted, "expiryDate", "authentication.note.form.error.notAccepted");
 		super.state(isCCVAccepted, "cvc", "authentication.note.form.error.notAccepted");
 		super.state(isLowerNibbleAccepted, "lowerNibble", "authentication.note.form.error.finalisationError");
 		super.state(isUpperNibbleAccepted, "upperNibble", "authentication.note.form.error.notAccepted");
+
+		if (!super.getBuffer().getErrors().hasErrors("creditCardHolder")) {
+			String validar;
+			validar = object.getCreditCardHolder();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "student.enrolment.form.error.spam");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("cvc"))
+			super.state(ccv.length() == 3, "cvc", "authentication.note.form.error.notAccepted");
+		if (!super.getBuffer().getErrors().hasErrors("upperNibble"))
+			super.state(upperNibble.length() == 8, "upperNibble", "authentication.note.form.error.notAccepted");
+		if (!super.getBuffer().getErrors().hasErrors("lowerNibble"))
+			super.state(lowerNibble.length() == 4, "lowerNibble", "authentication.note.form.error.notAccepted");
+		if (!super.getBuffer().getErrors().hasErrors("expiryDate"))
+			super.state(expiryDate.after(MomentHelper.getCurrentMoment()), "expiryDate", "authentication.note.form.error.notAccepted");
 
 	}
 

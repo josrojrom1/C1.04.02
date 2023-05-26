@@ -1,0 +1,11 @@
+recordIndex,subject,assessment,startPeriod,endPeriod,mark,link,correction
+0,nigeria,esto lo ha generado un test,2020/09/26 11:00,2020/09/26 12:00,A,,true
+0,,esto lo ha generado un test,2020/09/26 11:00,2020/09/26 12:00,A,,true
+0,esta creación de sesion va a fallar o no o si o no o si o no o si o no o si o no onasdfasdfasdasdfasdfasdfasdfasdfasdfsdfasdfasdfasdfasdfasdfasdfasdfasdfasdf,esto lo ha generado un test,2020/09/26 11:00,2020/09/26 12:00,A,,true
+0,test de creación de sesión,,2020/09/26 11:00,2020/09/26 12:00,A,,true
+0,otro test de creación,esto lo ha generado un test iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,2020/09/26 11:00,2020/09/26 12:00,A,,true
+0,a la 5 va la vencida,esto lo ha generado un test,2020/09/26 13:00,2020/09/26 12:00,A,,true
+0,o es a la sexta,esto lo ha generado un test,asdfas,2020/09/26 12:00,A,,true
+0,creo que nunca van a salir bien,esto lo ha generado un test,2020/09/26 11:00,2020/09/26 12:00,---,https://www.example.com,true
+0,están hechos para fallar,te recomiendo la película "La milla verde",2020/09/26 11:00,2020/09/26 12:00,A,linkMalhecho,true
+0,están hechos para fallar,te recomiendo la película "La milla verde",2020/09/26 11:00,2020/09/26 12:00,A,,false

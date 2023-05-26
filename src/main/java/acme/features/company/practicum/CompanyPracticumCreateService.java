@@ -2,6 +2,7 @@
 package acme.features.company.practicum;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,14 +11,19 @@ import acme.entities.Course;
 import acme.entities.Practicum;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
+import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
+import acme.utility.SpamDetector;
 
 @Service
 public class CompanyPracticumCreateService extends AbstractService<Company, Practicum> {
 
 	@Autowired
-	protected CompanyPracticumRepository repository;
+	protected CompanyPracticumRepository	repository;
+
+	@Autowired
+	protected SpamDetector					textValidator;
 
 
 	@Override
@@ -27,7 +33,9 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Company.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -45,11 +53,13 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		assert object != null;
 		int courseId;
 		Course course;
-
+		Date moment;
+		moment = MomentHelper.getCurrentMoment();
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findOneCourseById(courseId);
 		super.bind(object, "code", "title", "abst", "goals", "totalTime");
 		object.setCourse(course);
+		object.setPublishTime(moment);
 	}
 
 	@Override
@@ -59,17 +69,30 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Practicum existing;
 			existing = this.repository.findOnePracticumByCode(object.getCode());
-			super.state(existing == null, "code", "Company.Practicum.form.error.duplicated");
+			super.state(existing == null, "code", "company.practicum.form.error.duplicated");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("totalTime"))
-			super.state(object.getTotalTime() >= 0, "totalTime", "Company.Practicum.form.error.totalTime");
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("abst")) {
+			String validar;
+			validar = object.getAbst();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("goals")) {
+			String validar;
+			validar = object.getGoals();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
+		}
 	}
 
 	@Override
 	public void perform(final Practicum object) {
 		assert object != null;
 		object.setDraftMode(true);
-		object.setAddendum(false);
+		object.setHasAddendum(false);
 		this.repository.save(object);
 	}
 
@@ -88,7 +111,7 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", true);
-		tuple.put("addendum", false);
+		tuple.put("hasAddendum", false);
 		tuple.put("courseChoices", courseChoices);
 
 		super.getResponse().setData(tuple);

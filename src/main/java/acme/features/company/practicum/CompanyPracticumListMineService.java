@@ -49,7 +49,7 @@ public class CompanyPracticumListMineService extends AbstractService<Company, Pr
 		String Company;
 		Company = object.getCompany().getUserAccount().getIdentity().getName();
 		Company = Company + " " + object.getCompany().getUserAccount().getIdentity().getSurname();
-		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
+		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime", "publishTime");
 		tuple.put("company", Company);
 		super.getResponse().setData(tuple);
 	}

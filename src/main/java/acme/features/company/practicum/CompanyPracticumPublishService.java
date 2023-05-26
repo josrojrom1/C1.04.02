@@ -2,6 +2,7 @@
 package acme.features.company.practicum;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import acme.entities.Course;
 import acme.entities.Practicum;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
+import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
@@ -24,12 +26,12 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 	public void check() {
 		boolean status;
 		status = super.getRequest().hasData("id", int.class);
-		super.getResponse().setChecked(status);
+		super.getResponse().setChecked(true);
 	}
 
 	@Override
 	public void authorise() {
-		boolean status;
+		final boolean status;
 		int masterId;
 		Practicum practicum;
 
@@ -38,6 +40,7 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 		status = practicum != null && practicum.isDraftMode() && super.getRequest().getPrincipal().hasRole(practicum.getCompany()) && practicum.getCompany().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -61,6 +64,9 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 
 		super.bind(object, "code", "title", "abst", "goals", "totalTime");
 		object.setCourse(course);
+		Date moment;
+		moment = MomentHelper.getCurrentMoment();
+		object.setPublishTime(moment);
 	}
 
 	@Override
@@ -69,10 +75,8 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Practicum existing;
 			existing = this.repository.findOnePracticumByCode(object.getCode());
-			super.state(existing == null || existing.getId() == object.getId(), "code", "Company.Practicum.form.error.duplicated");
+			super.state(existing == null || existing.getId() == object.getId(), "code", "company.practicum.form.error.duplicated");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("totalTime"))
-			super.state(object.getTotalTime() >= 0, "totalTime", "Company.Practicum.form.error.totalTime");
 	}
 
 	@Override
@@ -95,9 +99,10 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
+		tuple.put("publishTime", object.getPublishTime());
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", object.isDraftMode());
-		tuple.put("addendum", object.isAddendum());
+		tuple.put("addendum", object.isHasAddendum());
 		tuple.put("courseChoices", courseChoices);
 
 		super.getResponse().setData(tuple);

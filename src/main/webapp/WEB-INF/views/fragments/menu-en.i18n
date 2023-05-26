@@ -82,7 +82,7 @@ master.menu.lecturer.dashboard = Dashboard
 
 master.menu.company = Company
 master.menu.company.practicum = List my practica
-master.menu.assistant.practicumSession = List my sessions
+master.menu.company.practicumSession = List my sessions
 
 # master.menu.auditor ########################################################
 master.menu.auditor.audit.list = List my audits

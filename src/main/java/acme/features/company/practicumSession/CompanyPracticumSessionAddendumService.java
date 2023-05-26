@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,13 +26,14 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 	protected CompanyPracticumSessionRepository	repository;
 
 	@Autowired
-	protected CompanyPracticumRepository		practicum_repository;
+	protected CompanyPracticumRepository		repository2;
 
 
 	@Override
 	public void check() {
 		boolean status;
 		status = super.getRequest().hasData("masterId", int.class);
+		System.out.println(super.getRequest().getData("masterId", int.class));
 		super.getResponse().setChecked(status);
 	}
 
@@ -41,8 +43,21 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		int id;
 		Practicum practicum;
 		id = super.getRequest().getData("masterId", int.class);
+		System.out.println(id);
 		practicum = this.repository.findOnePracticum(id);
-		status = practicum != null && super.getRequest().getPrincipal().hasRole(Company.class) && super.getRequest().getPrincipal().getActiveRoleId() == practicum.getCompany().getId() && !practicum.isDraftMode() && !practicum.isAddendum();
+		System.out.println(practicum);
+		System.out.println("Practicum no nulo");
+		System.out.println(practicum != null);
+		System.out.println("Es Company");
+		System.out.println(super.getRequest().getPrincipal().hasRole(Company.class));
+		System.out.println("ComparaIds");
+		System.out.println(super.getRequest().getPrincipal().getActiveRoleId());
+		System.out.println(practicum.getCompany().getId());
+		System.out.println("Draftmode en 0");
+		System.out.println(!practicum.isDraftMode());
+		System.out.println("Addendum en 0");
+		System.out.println(!practicum.isHasAddendum());
+		status = practicum != null && super.getRequest().getPrincipal().hasRole(Company.class) && super.getRequest().getPrincipal().getActiveRoleId() == practicum.getCompany().getId() && !practicum.isDraftMode() && !practicum.isHasAddendum();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -57,13 +72,15 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		object.setPracticum(practicum);
 		object.setTimePeriodStart(moment);
 		object.setTimePeriodEnd(moment);
+		object.setAddendum(true);
 		super.getBuffer().setData(object);
 	}
 
 	@Override
 	public void bind(final PracticumSession object) {
 		assert object != null;
-		super.bind(object, "title", "abst", "sessionType", "timePeriodStart", "timePeriodEnd", "link");
+		super.bind(object, "title", "abst", "timePeriodStart", "timePeriodEnd", "link");
+
 	}
 
 	@Override
@@ -76,12 +93,12 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("timePeriodEnd"))
-			super.state(object.getTimePeriodStart().before(object.getTimePeriodEnd()), "timePeriodStart, timePeriodEnd", "company.practicumSession.form.error.timePeriodEnd");
+			super.state(object.getTimePeriodStart().before(object.getTimePeriodEnd()), "timePeriodEnd", "company.practicumSession.form.error.timePeriodEnd");
 
 		if (!super.getBuffer().getErrors().hasErrors("periodFinish")) {
 			final Duration duration = MomentHelper.computeDuration(object.getTimePeriodStart(), object.getTimePeriodEnd());
 			final Duration d1 = Duration.ofDays(7);
-			super.state(d1.compareTo(duration) >= 0, "*", "company.practicumSession.form.error.duration");
+			super.state(duration.compareTo(d1) >= 0, "*", "company.practicumSession.form.error.duration");
 		}
 
 	}
@@ -91,8 +108,11 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		assert object != null;
 		Practicum practicum;
 		practicum = this.repository.findOnePracticum(super.getRequest().getData("masterId", int.class));
-		practicum.setAddendum(true);
-		this.practicum_repository.save(practicum);
+		final Long time = TimeUnit.MILLISECONDS.toSeconds(object.getTimePeriodEnd().getTime() - object.getTimePeriodStart().getTime());
+		final double hours = time.doubleValue() / 3600;
+		practicum.setTotalTime(practicum.getTotalTime() + hours);
+		practicum.setHasAddendum(true);
+		this.repository2.save(practicum);
 		this.repository.save(object);
 	}
 
@@ -108,6 +128,7 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		tuple = super.unbind(object, "title", "abst", "timePeriodStart", "timePeriodEnd", "link");
 		tuple.put("practicum", choices.getSelected().getKey());
 		tuple.put("choices", choices);
+		tuple.put("hasAddendum", object.getPracticum().isHasAddendum());
 		tuple.put("draftMode", object.getPracticum().isDraftMode());
 		tuple.put("readPracticum", true);
 		tuple.put("masterId", super.getRequest().getData("masterId", int.class));

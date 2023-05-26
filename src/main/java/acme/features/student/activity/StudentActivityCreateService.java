@@ -51,7 +51,6 @@ public class StudentActivityCreateService extends AbstractService<Student, Activ
 
 		object = new Activity();
 		object.setStartTimePeriod(moment);
-		object.setEndTimePeriod(moment);
 		super.getBuffer().setData(object);
 
 	}
@@ -62,7 +61,7 @@ public class StudentActivityCreateService extends AbstractService<Student, Activ
 		int enrolmentId;
 		final Enrolment enrolment;
 
-		enrolmentId = super.getRequest().getData("enrolment", int.class);
+		enrolmentId = super.getRequest().getData("enrolment_proxy", int.class);
 		enrolment = this.repository.findEnrolmentById(enrolmentId);
 
 		super.bind(object, "title", "abst", "activityType", "startTimePeriod", "endTimePeriod", "link");

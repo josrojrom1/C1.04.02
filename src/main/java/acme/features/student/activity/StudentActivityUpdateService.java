@@ -62,8 +62,10 @@ public class StudentActivityUpdateService extends AbstractService<Student, Activ
 	public void bind(final Activity object) {
 		assert object != null;
 		final Enrolment enrolment;
+		int enrolmentId;
 
-		enrolment = object.getEnrolment();
+		enrolmentId = super.getRequest().getData("enrolment_proxy", int.class);
+		enrolment = this.repository.findEnrolmentById(enrolmentId);
 
 		super.bind(object, "title", "abst", "activityType", "startTimePeriod", "endTimePeriod", "link");
 		object.setEnrolment(enrolment);
@@ -106,20 +108,20 @@ public class StudentActivityUpdateService extends AbstractService<Student, Activ
 		SelectChoices lessonChoices;
 		Tuple tuple;
 		int enrolmentId;
-
+		boolean isFinalised;
 		enrolmentId = super.getRequest().getPrincipal().getActiveRoleId();
 		enrolments = this.repository.findAllEnrolmentsFinalisedFromStudentId(enrolmentId);
 		choices = SelectChoices.from(enrolments, "code", object.getEnrolment());
 		lessonChoices = SelectChoices.from(LessonType.class, object.getActivityType());
 
+		isFinalised = object.getEnrolment() != null ? object.getEnrolment().getIsFinalised() : true;
 		tuple = super.unbind(object, "title", "abst", "startTimePeriod", "endTimePeriod", "link");
 		tuple.put("enrolment", choices.getSelected().getKey());
 		tuple.put("choices", choices);
-		tuple.put("isFinalised", object.getEnrolment().getIsFinalised());
+		tuple.put("isFinalised", isFinalised);
 		tuple.put("activityType", lessonChoices.getSelected().getKey());
 		tuple.put("lessonChoices", lessonChoices);
 		tuple.put("readEnrolment", false);
-		tuple.put("masterId", object.getEnrolment().getId());
 		super.getResponse().setData(tuple);
 	}
 
