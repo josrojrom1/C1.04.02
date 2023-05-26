@@ -41,7 +41,7 @@ public class AssistantTutorialSessionUpdateTest extends TestHarness {
 
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("abst", abst);
-		//super.checkInputBoxHasValue("sessionType", sessionType);
+		super.checkInputBoxHasValue("sessionType_proxy", sessionType);
 		super.checkInputBoxHasValue("periodStart", periodStart);
 		super.checkInputBoxHasValue("periodFinish", periodFinish);
 		super.checkInputBoxHasValue("link", link);

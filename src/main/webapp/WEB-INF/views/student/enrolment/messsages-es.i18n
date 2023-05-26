@@ -40,3 +40,4 @@ student.enrolment.authentication.note.form.error.notAccepted = No aceptado
 Student.enrolment.authentication.note.form.error.finalisationError = No válido
 student.enrolment.form.error.spam = No hagas spam
 authentication.note.form.error.notAccepted = No aceptado
+authentication.note.form.error.finalisationError= No dejar en blanco

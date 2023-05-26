@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.entities.Enrolment;
 import acme.testing.TestHarness;
 
-public class StudentEnrolmentFinalise extends TestHarness {
+public class StudentEnrolmentFinaliseTest extends TestHarness {
 
 	@Autowired
 	protected StudentEnrolmentTestRepository repository;

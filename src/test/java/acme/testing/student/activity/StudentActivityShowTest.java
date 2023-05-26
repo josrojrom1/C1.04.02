@@ -1,10 +1,14 @@
 
 package acme.testing.student.activity;
 
+import java.util.Collection;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.entities.Activity;
 import acme.testing.TestHarness;
 
 public class StudentActivityShowTest extends TestHarness {
@@ -25,35 +29,35 @@ public class StudentActivityShowTest extends TestHarness {
 		super.checkFormExists();
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("abst", abst);
-		super.checkInputBoxHasValue("activityType", activityType);
+		super.checkInputBoxHasValue("activityType_proxy", activityType);
 		super.checkInputBoxHasValue("startTimePeriod", startTimePeriod);
 		super.checkInputBoxHasValue("endTimePeriod", endTimePeriod);
 		super.checkInputBoxHasValue("link", link);
-		super.checkInputBoxHasValue("enrolment", enrolment);
+		super.checkInputBoxHasValue("enrolment_proxy", enrolment);
 		super.signOut();
 	}
-	/*
-	 * //TEST HACKING
-	 * 
-	 * @Test
-	 * public void test300Hacking() {
-	 * // HINT: en este test intentamos ver un enrolment desde un estudiante que no tiene asiganada esa actividad
-	 * 
-	 * Collection<Activity> activities;
-	 * String param;
-	 * 
-	 * activities = this.repository.findManyActivitiesByStudentUsername("student2");
-	 * for (final Activity activity : activities) {
-	 * 
-	 * param = String.format("id=%d", activity.getId());
-	 * super.checkLinkExists("Sign in");
-	 * super.request("/student/activity/show", param);
-	 * super.checkPanicExists();
-	 * super.signIn("student1", "student1");
-	 * super.request("/student/activity/show", param);
-	 * super.checkPanicExists();
-	 * super.signOut();
-	 * }
-	 * }
-	 */
+
+	//TEST HACKING
+
+	@Test
+	public void test300Hacking() {
+		// HINT: en este test intentamos ver un enrolment desde un estudiante que no tiene asiganada esa actividad
+
+		Collection<Activity> activities;
+		String param;
+
+		activities = this.repository.findManyActivitiesByStudentUsername("student2");
+		for (final Activity activity : activities) {
+
+			param = String.format("id=%d", activity.getId());
+			super.checkLinkExists("Sign in");
+			super.request("/student/activity/show", param);
+			super.checkPanicExists();
+			super.signIn("student1", "student1");
+			super.request("/student/activity/show", param);
+			super.checkPanicExists();
+			super.signOut();
+		}
+	}
+
 }
