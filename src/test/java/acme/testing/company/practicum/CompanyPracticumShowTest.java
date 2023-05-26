@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.entities.Tutorial;
+import acme.entities.Practicum;
 import acme.testing.TestHarness;
 
 public class CompanyPracticumShowTest extends TestHarness {
@@ -37,12 +37,12 @@ public class CompanyPracticumShowTest extends TestHarness {
 	@Test
 	public void test300hacking() {
 		// HINT: this test tries to show tutorials to unauthorised principals, like anonymous or other assistants
-		Collection<Tutorial> tutorials;
+		final Collection<Practicum> practica;
 		String param;
-		tutorials = this.repository.findManyPracticumsFromUsername("company1");
-		for (final Tutorial tutorial : tutorials) {
+		practica = this.repository.findManyPracticumsFromUsername("company1");
+		for (final Practicum practicum : practica) {
 
-			param = String.format("id=%d", tutorial.getId());
+			param = String.format("id=%d", practicum.getId());
 			super.checkLinkExists("Sign in");
 			super.request("/company/practicum/show", param);
 			super.checkPanicExists();

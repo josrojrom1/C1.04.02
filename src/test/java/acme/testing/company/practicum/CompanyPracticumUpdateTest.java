@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.entities.Tutorial;
+import acme.entities.Practicum;
 import acme.testing.TestHarness;
 
 public class CompanyPracticumUpdateTest extends TestHarness {
@@ -68,12 +68,12 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 
 	@Test
 	public void test300Hacking() {
-		Collection<Tutorial> tutorials;
+		Collection<Practicum> practica;
 		String param;
 
-		tutorials = this.repository.findManyPracticumsFromUsername("company1");
-		for (final Tutorial tutorial : tutorials) {
-			param = String.format("id=%d", tutorial.getId());
+		practica = this.repository.findManyPracticumsFromUsername("company1");
+		for (final Practicum practicum : practica) {
+			param = String.format("id=%d", practicum.getId());
 			super.checkLinkExists("Sign in");
 			super.request("/company/practicum/update", param);
 			super.checkPanicExists();
