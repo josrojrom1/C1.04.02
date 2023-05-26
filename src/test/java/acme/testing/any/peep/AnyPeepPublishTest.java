@@ -34,7 +34,7 @@ public class AnyPeepPublishTest extends TestHarness {
 
 	}
 	@ParameterizedTest
-	@CsvFileSource(resources = "/any/peep/publish-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/any/peep/publish-logged-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test101Positive(final int recordIndex, final String moment, final String title, final String nick, final String message, final String email, final String link) {
 		// HINT: En este test, listamos las peeps, creamos una de ellas y la publicamos
 		super.signIn("assistant1", "assistant1");
