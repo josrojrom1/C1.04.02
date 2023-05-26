@@ -52,7 +52,6 @@ public class Enrolment extends AbstractEntity {
 	@ManyToOne
 	protected Student			student;
 
-	@NotBlank
 	@Length(max = 76)
 	protected String			creditCardHolder;
 
