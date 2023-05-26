@@ -10,17 +10,17 @@
 
 
 assistant.dashboard.form.title.general-indicators = Indicadores generales
-assistant.dashboard.form.label.total-num-theory =  Número total de tutorias de teoría
-assistant.dashboard.form.label.total-num-handson = Número total de tutorias prácticas
+assistant.dashboard.form.label.total-num-theory =  Número total de tutorías de Teoría
+assistant.dashboard.form.label.total-num-handson = Número total de tutorías de Práctica
 
+assistant.dashboard.form.tutorial-section = Tutorías
+assistant.dashboard.form.label.tutorialAverage = Tiempo medio
+assistant.dashboard.form.label.tutorialDeviation = Desviación del tiempo
+assistant.dashboard.form.label.tutorialMaximum = Tiempo máximo
+assistant.dashboard.form.label.tutorialMinimum = Tiempo mínimo
 
-assistant.dasboard.form.label.lecture-learning-time-average = Media de horas de aprendizaje de asignaturas
-assistant.dasboard.form.label.lecture-learning-time-deviation = Desviación de horas de aprendizaje de asignaturas
-assistant.dasboard.form.label.lecture-learning-time-maximum = Máximo tiempo de aprendizaje de asignaturas
-assistant.dasboard.form.label.lecture-learning-time-minimum = Mínimo tiempo de aprendizaje de asignaturas
-assistant.dashboard.form.lectures-section = Asignaturas
-assistant.dashboard.form.courses-section = Cursos
-assistant.dasboard.form.label.course-learning-time-average = Media de horas de aprendizaje de cursos
-assistant.dasboard.form.label.course-learning-time-deviation = Desviación de horas de aprendizaje de cursos
-assistant.dasboard.form.label.course-learning-time-maximum = Máximo tiempo de aprendizaje de cursos
-assistant.dasboard.form.label.course-learning-time-minimum = Mínimo tiempo de aprendizaje de cursos
+assistant.dashboard.form.sessions-section = Sesiones de tutorías
+assistant.dashboard.form.label.sessionsAverage = Tiempo medio
+assistant.dashboard.form.label.sessionsDeviation = Desviación del tiempo
+assistant.dashboard.form.label.sessionsMaximum = Tiempo máximo
+assistant.dashboard.form.label.sessionsMinimum = Tiempo mínimo

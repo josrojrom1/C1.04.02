@@ -13,12 +13,16 @@ import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
+import acme.utility.SpamDetector;
 
 @Service
 public class AnyPeepCreateService extends AbstractService<Any, Peep> {
 
 	@Autowired
-	protected AnyPeepRepository repository;
+	protected AnyPeepRepository	repository;
+
+	@Autowired
+	protected SpamDetector		textValidator;
 
 
 	@Override
@@ -66,6 +70,22 @@ public class AnyPeepCreateService extends AbstractService<Any, Peep> {
 	@Override
 	public void validate(final Peep object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "title", "any.peep.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("nick")) {
+			String validar;
+			validar = object.getNick();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "nick", "any.peep.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("message")) {
+			String validar;
+			validar = object.getMessage();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "message", "any.peep.form.error.spam");
+		}
 	}
 	@Override
 	public void perform(final Peep object) {

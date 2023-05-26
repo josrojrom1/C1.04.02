@@ -35,18 +35,46 @@ public class AssistantDashboardShowService extends AbstractService<Assistant, As
 		id = super.getRequest().getPrincipal().getActiveRoleId();
 		int totalNumHandsOn;
 		int totalNumTheory;
+		double sessionAvg;
+		double sessionDev;
+		double sessionMin;
+		double sessionMax;
+		double tutorialAvg;
+		double tutorialDev;
+		double tutorialMin;
+		double tutorialMax;
+
 		totalNumHandsOn = this.repository.getTotalNumTutorialHandsOn(id);
 		totalNumTheory = this.repository.getTotalNumTutorialTheory(id);
+		sessionAvg = this.repository.getAverageTimeTutorialSession(id);
+		sessionDev = this.repository.getDeviationTimeTutorialSession(id);
+		sessionMin = this.repository.getMinTimeTutorialSession(id);
+		sessionMax = this.repository.getMaxTimeTutorialSession(id);
+
+		tutorialAvg = this.repository.getAverageTimeTutorial(id);
+		tutorialDev = this.repository.getDeviationTimeTutorial(id);
+		tutorialMin = this.repository.getMinTimeTutorial(id);
+		tutorialMax = this.repository.getMaxTimeTutorial(id);
+
 		dashboard = new AssistantDashboard();
 		dashboard.setTotalNumOfHandsonTutorials(totalNumHandsOn);
 		dashboard.setTotalNumOfTheoryTutorials(totalNumTheory);
+		dashboard.setTutorialAverage(tutorialAvg);
+		dashboard.setTutorialDeviation(tutorialDev);
+		dashboard.setTutorialMaximun(tutorialMax);
+		dashboard.setTutorialMinimun(tutorialMin);
+		dashboard.setSessionsAverage(sessionAvg);
+		dashboard.setSessionsDeviation(sessionDev);
+		dashboard.setSessionsMinimun(sessionMin);
+		dashboard.setSessionsMaximun(sessionMax);
+
 		super.getBuffer().setData(dashboard);
 	}
 	@Override
 	public void unbind(final AssistantDashboard object) {
 		Tuple tuple;
 
-		tuple = super.unbind(object, "totalNumOfHandsonTutorials", "totalNumOfTheoryTutorials");
+		tuple = super.unbind(object, "totalNumOfHandsonTutorials", "totalNumOfTheoryTutorials", "tutorialAverage", "tutorialDeviation", "tutorialMinimun", "tutorialMaximun", "sessionsAverage", "sessionsDeviation", "sessionsMinimun", "sessionsMaximun");
 		super.getResponse().setData(tuple);
 	}
 }
