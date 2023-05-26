@@ -37,10 +37,10 @@
 		<jstl:when test="${_command == 'finalise'}">
 			<acme:input-textbox readonly = "${true}" code="student.enrolment.form.label.code" path="code"/>	
 			<acme:input-textbox code="student.enrolment.form.label.creditCardHolder" path="creditCardHolder"/>
-			<acme:input-moment code="student.enrolment.form.label.expiryDate" path="expiryDate"/>
-			<acme:input-integer code="student.enrolment.form.label.cvc" path="cvc"/>
-			<acme:input-integer code="student.enrolment.form.label.upperNibble" path="upperNibble"/>
-			<acme:input-integer code="student.enrolment.form.label.lowerNibble" path="lowerNibble"/>
+			<acme:input-textbox code="student.enrolment.form.label.expiryDate" path="expiryDate"/>
+			<acme:input-textbox code="student.enrolment.form.label.cvc" path="cvc"/>
+			<acme:input-textbox code="student.enrolment.form.label.upperNibble" path="upperNibble"/>
+			<acme:input-textbox code="student.enrolment.form.label.lowerNibble" path="lowerNibble"/>
 
 			<acme:submit code="student.enrolment.form.button.finalise" action="/student/enrolment/finalise?id=${id}"/>
 		</jstl:when>
