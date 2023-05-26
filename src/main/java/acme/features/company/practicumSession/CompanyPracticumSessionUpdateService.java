@@ -73,17 +73,21 @@ public class CompanyPracticumSessionUpdateService extends AbstractService<Compan
 		assert object != null;
 		//Validación de las fechas
 		if (!super.getBuffer().getErrors().hasErrors("timePeriodStart")) {
-			final Date moment = MomentHelper.deltaFromCurrentMoment(7, ChronoUnit.DAYS);
-			super.state(object.getTimePeriodStart().after(moment), "timePeriodStart", "company.practicumSession.form.error.timePeriodStart");
+			final Date moment = MomentHelper.getCurrentMoment();
+			final Duration duration = MomentHelper.computeDuration(moment, object.getTimePeriodStart());
+			final Duration d1 = Duration.ofDays(7);
+			d1.minus(1, ChronoUnit.MINUTES);
+			super.state(duration.compareTo(d1) >= 0, "timePeriodStart", "company.practicumSession.form.error.timePeriodStart");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("timePeriodEnd"))
 			super.state(object.getTimePeriodStart().before(object.getTimePeriodEnd()), "timePeriodStart, timePeriodEnd", "company.practicumSession.form.error.timePeriodEnd");
 
 		if (!super.getBuffer().getErrors().hasErrors("timePeriodStart") && !super.getBuffer().getErrors().hasErrors("timePeriodEnd")) {
-			final Duration duration = MomentHelper.computeDuration(object.getTimePeriodStart(), object.getTimePeriodEnd());
-			final Duration d1 = Duration.ofDays(7);
-			super.state(duration.compareTo(d1) >= 0, "*", "company.practicumSession.form.error.duration");
+			final Duration duration2 = MomentHelper.computeDuration(object.getTimePeriodStart(), object.getTimePeriodEnd());
+			final Duration d2 = Duration.ofDays(7);
+			d2.minus(1, ChronoUnit.MINUTES);
+			super.state(duration2.compareTo(d2) >= 0, "*", "company.practicumSession.form.error.duration");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("title")) {
@@ -91,6 +95,7 @@ public class CompanyPracticumSessionUpdateService extends AbstractService<Compan
 			validar = object.getTitle();
 			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicumSession.form.error.spam");
 		}
+
 		if (!super.getBuffer().getErrors().hasErrors("abst")) {
 			String validar;
 			validar = object.getAbst();

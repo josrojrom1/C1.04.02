@@ -90,7 +90,6 @@
 		<!-- COMPANY -->
 		<acme:menu-option code="master.menu.company" access="hasRole('Company')">
 			<acme:menu-suboption code="master.menu.company.practicum" action="/company/practicum/list-mine"/>
-			<acme:menu-suboption code="master.menu.company.practicumSession" action="/company/practicum-session/list-mine"/>
 		</acme:menu-option>
 
 		<!-- STUDENT -->
