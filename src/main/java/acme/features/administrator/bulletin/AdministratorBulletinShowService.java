@@ -30,19 +30,10 @@ public class AdministratorBulletinShowService extends AbstractService<Administra
 	//Authorise method determines if the request is legal or not
 	@Override
 	public void authorise() {
-		//final boolean status;
-		//final int id;
-		//final Bulletin bulletin;
-		//final Date deadLine;
 
-		//id = super.getRequest().getData("id", int.class);
-		//bulletin = this.repository.findOneBulletinById(id);
-		//deadLine = MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.SECONDS);
-		//Comprobamos que el moment del bulletin esta antes que un seg menos de la fecha actual
-		//status = MomentHelper.isBefore(bulletin.getMoment(), deadLine);
-
-		//super.getResponse().setAuthorised(status);
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Administrator.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	//Load method stores in a buffer the retrieved request
