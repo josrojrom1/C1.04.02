@@ -31,7 +31,7 @@ public class AdministratorBannerDeleteService extends AbstractService<Administra
 
 		id = super.getRequest().getData("id", int.class);
 		banner = this.repository.findOneBannerById(id);
-		status = banner != null;
+		status = banner != null && super.getRequest().getPrincipal().hasRole(Administrator.class);
 		super.getResponse().setAuthorised(status);
 	}
 

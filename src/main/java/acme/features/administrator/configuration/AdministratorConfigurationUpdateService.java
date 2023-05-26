@@ -23,6 +23,8 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 
 	@Override
 	public void authorise() {
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Administrator.class);
 		super.getResponse().setAuthorised(true);
 	}
 

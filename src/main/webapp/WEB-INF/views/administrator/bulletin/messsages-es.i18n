@@ -24,3 +24,4 @@ administrator.bulletin.form.label.flag = Flag
 administrator.bulletin.form.label.link = Enlace
 administrator.bulletin.form.button.create = Publicar
 administrator.bulletin.form.label.confirmation = Confirmación
+administrator.bulletin.form.error.spam = No hagas spam

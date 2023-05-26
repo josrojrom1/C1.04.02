@@ -20,13 +20,13 @@ public class AdministratorConfigurationListService extends AbstractService<Admin
 
 	@Override
 	public void check() {
-		//		boolean status;
-		//		status = super.getRequest().hasData("id", int.class);
 		super.getResponse().setChecked(true);
 	}
 
 	@Override
 	public void authorise() {
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Administrator.class);
 		super.getResponse().setAuthorised(true);
 	}
 

@@ -13,12 +13,16 @@ import acme.framework.components.accounts.UserAccount;
 import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
+import acme.utility.SpamDetector;
 
 @Service
 public class AuthenticatedNoteCreateService extends AbstractService<Authenticated, Note> {
 
 	@Autowired
-	protected AuthenticatedNoteRepository repository;
+	protected AuthenticatedNoteRepository	repository;
+
+	@Autowired
+	protected SpamDetector					textValidator;
 
 
 	@Override
@@ -66,6 +70,18 @@ public class AuthenticatedNoteCreateService extends AbstractService<Authenticate
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "title", "assistant.tutorial.form.error.spam");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("message")) {
+			String validar;
+			validar = object.getMessage();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "message", "assistant.tutorial.form.error.spam");
+		}
 	}
 
 	@Override

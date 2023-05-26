@@ -13,6 +13,7 @@ import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
+import acme.utility.SpamDetector;
 
 @Service
 public class AdministratorBulletinCreateService extends AbstractService<Administrator, Bulletin> {
@@ -20,7 +21,10 @@ public class AdministratorBulletinCreateService extends AbstractService<Administ
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AdministratorBulletinRepository repository;
+	protected AdministratorBulletinRepository	repository;
+
+	@Autowired
+	protected SpamDetector						textValidator;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -32,7 +36,10 @@ public class AdministratorBulletinCreateService extends AbstractService<Administ
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Administrator.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -65,7 +72,16 @@ public class AdministratorBulletinCreateService extends AbstractService<Administ
 		boolean confirmation;
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
-
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "title", "administrator.bulletin.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("message")) {
+			String validar;
+			validar = object.getMessage();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "message", "administrator.bulletin.form.error.spam");
+		}
 	}
 
 	@Override
