@@ -18,6 +18,7 @@ import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
+import acme.utility.SpamDetector;
 
 @Service
 public class CompanyPracticumSessionCreateService extends AbstractService<Company, PracticumSession> {
@@ -27,6 +28,9 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 
 	@Autowired
 	protected CompanyPracticumRepository		repository2;
+
+	@Autowired
+	protected SpamDetector						textValidator;
 
 
 	@Override
@@ -91,6 +95,16 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 			final Duration d2 = Duration.ofDays(7);
 			d2.minus(1, ChronoUnit.MINUTES);
 			super.state(duration2.compareTo(d2) >= 0, "*", "company.practicumSession.form.error.duration");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("abst")) {
+			String validar;
+			validar = object.getAbst();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
 		}
 
 	}
