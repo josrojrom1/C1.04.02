@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.Course;
 import acme.entities.Tutorial;
+import acme.entities.TutorialSession;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -73,6 +74,10 @@ public class AssistantTutorialPublishService extends AbstractService<Assistant, 
 		}
 		if (!super.getBuffer().getErrors().hasErrors("totalTime"))
 			super.state(object.getTotalTime() >= 0, "totalTime", "assistant.tutorial.form.error.totalTime");
+
+		Collection<TutorialSession> sessions;
+		sessions = this.repository.findTutorialSessionById(object.getId());
+		super.state(sessions != null && !sessions.isEmpty(), "*", "assistant.tutorial.form.error.publish");
 	}
 
 	@Override
