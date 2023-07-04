@@ -33,15 +33,13 @@
 			
 		</jstl:when>	
 		
-		<jstl:when test="${acme:anyOf(_command, 'show') && draftMode== false}">
+		<jstl:when test="${_command == 'show' && draftMode== false}">
 			<acme:input-textbox code="lecturer.lecture.form.label.title" path="title" readonly="True"/>
 			<acme:input-textarea code="lecturer.lecture.form.label.abst" path="abst" readonly="True"/>
 			<acme:input-integer code="lecturer.lecture.form.label.learningTime" path="learningTime" readonly="True"/>
 			<acme:input-textarea code="lecturer.lecture.form.label.body" path="body" readonly="True"/>
 			<acme:input-select code="lecturer.lecture.form.label.lectureType"  path="lectureType"  choices="${lectureTypes}" readonly="True"/>
-			<acme:input-url code="lecturer.lecture.form.label.link" path="link" readonly="True"/>
-		
-			<acme:submit code="lecturer.lecture.form.button.delete" action="/lecturer/lecture/delete"/>
+			<acme:input-url code="lecturer.lecture.form.label.link" path="link" readonly="True"/>		
 		</jstl:when>
 
 		<jstl:when test="${_command == 'create'}">
