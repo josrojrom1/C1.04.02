@@ -37,7 +37,7 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 		int id;
 		id = super.getRequest().getData("id", int.class);
 		course = this.repository.findOneCourseById(id);
-		status = course.isDraftMode() && super.getRequest().getPrincipal().hasRole(Lecturer.class) &&//
+		status = course.isDraftMode() &&//
 			course.getLecturer().getId() == super.getRequest().getPrincipal().getActiveRoleId();
 		super.getResponse().setAuthorised(status);
 

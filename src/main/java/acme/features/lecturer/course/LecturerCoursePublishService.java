@@ -1,6 +1,7 @@
 
 package acme.features.lecturer.course;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -94,7 +95,10 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		course = this.repository.findOneCourseByCode(object.getCode());
 		final int id = course.getId();
 		lectures = this.repository.findAllLecturesByCourse(id);
-		super.state(this.courseType(lectures).equals(LessonType.HANDS_ON), "*", "lecturer.course.form.courseType.reject-pure-theoretical");
+		final List<LessonType> lessonTypeList = new ArrayList<>();
+		for (final Lecture l : lectures)
+			lessonTypeList.add(l.getLectureType());
+		super.state(lessonTypeList.contains(LessonType.HANDS_ON), "*", "lecturer.course.form.courseType.reject-pure-theoretical");
 
 		if (!super.getBuffer().getErrors().hasErrors("title")) {
 			String validar;
@@ -140,10 +144,13 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 				theory += 1;
 			else if (l.getLectureType().equals(LessonType.HANDS_ON))
 				handsOn += 1;
-		if (theory > handsOn)
+		if (theory > handsOn && handsOn > 0)
 			res = LessonType.THEORY;
-		else
+		else if (handsOn > theory)
 			res = LessonType.HANDS_ON;
+		else if (handsOn == theory && handsOn > 0)
+			res = LessonType.BALANCED;
+
 		return res;
 	}
 
