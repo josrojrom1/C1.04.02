@@ -68,7 +68,7 @@ public class AssistantTutorialCreateService extends AbstractService<Assistant, T
 			super.state(existing == null, "code", "assistant.tutorial.form.error.duplicated");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("totalTime"))
-			super.state(object.getTotalTime() >= 0, "totalTime", "assistant.tutorial.form.error.totalTime");
+			super.state(object.getTotalTime() >= 0, "totalTime", "assistant.tutorial.form.error.totalTime");//TODO creo que no hace falta
 
 		if (!super.getBuffer().getErrors().hasErrors("title")) {
 			String validar;
