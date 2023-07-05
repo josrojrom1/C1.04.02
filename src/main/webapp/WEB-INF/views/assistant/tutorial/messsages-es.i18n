@@ -31,3 +31,4 @@ assistant.tutorial.list.button.create = Crear una tutoria
 assistant.tutorial.form.error.duplicated = Código duplicado
 assistant.tutorial.form.error.totalTime = El tiempo no puede ser negativo
 assistant.tutorial.form.error.spam = No hagas spam
+assistant.tutorial.form.error.publish = No puedes publicar una tutoría sin ninguna sesión

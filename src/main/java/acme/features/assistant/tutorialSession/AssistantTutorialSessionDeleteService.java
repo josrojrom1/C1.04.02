@@ -36,7 +36,7 @@ public class AssistantTutorialSessionDeleteService extends AbstractService<Assis
 
 		id = super.getRequest().getData("id", int.class);
 		session = this.repository.findOneTutorialSession(id);
-		status = session != null && super.getRequest().getPrincipal().hasRole(Assistant.class) && session.getTutorial().getAssistant().getId() == super.getRequest().getPrincipal().getActiveRoleId() && session.getTutorial().isDraftMode();
+		status = session != null && session.getTutorial().getAssistant().getId() == super.getRequest().getPrincipal().getActiveRoleId() && session.getTutorial().isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}

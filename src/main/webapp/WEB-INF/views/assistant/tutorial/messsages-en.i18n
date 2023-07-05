@@ -31,3 +31,4 @@ assistant.tutorial.list.button.create = Create a tutorial
 assistant.tutorial.form.error.duplicated = Code is already taken
 assistant.tutorial.form.error.totalTime = Time can´t be negative
 assistant.tutorial.form.error.spam = Do not spam
+assistant.tutorial.form.error.publish = You cannot publish a tutorial without any session
