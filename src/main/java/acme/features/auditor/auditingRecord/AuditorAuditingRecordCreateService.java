@@ -3,7 +3,6 @@ package acme.features.auditor.auditingRecord;
 
 import java.time.Duration;
 import java.time.ZoneId;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,6 @@ import acme.entities.AuditingRecord;
 import acme.entities.Mark;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
 import acme.utility.SpamDetector;
@@ -72,14 +70,12 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 	public void validate(final AuditingRecord object) {
 		assert object != null;
 
-		Date ahora;
-		ahora = MomentHelper.getCurrentMoment();
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
 			super.state(object.getStartPeriod().before(object.getEndPeriod()), "startPeriod", "auditor.auditingRecord.form.error.date");
 
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
-			super.state(Duration.between(object.getStartPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(), ahora.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()).toHours() >= 1, "startPeriod",
-				"auditor.auditingRecord.form.error.date");
+			super.state(Duration.between(object.getStartPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(), object.getEndPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()).toHours() >= 1, "startPeriod",
+				"auditor.auditingRecord.form.error.date2");
 
 		if (!super.getBuffer().getErrors().hasErrors("subject")) {
 			String validar;

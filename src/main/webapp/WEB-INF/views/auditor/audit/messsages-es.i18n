@@ -32,3 +32,4 @@ auditor.audit.form.button.addCorrection = Añadir Correccion
 
 auditor.audit.error.spam = No incluyas Spam
 auditor.audit.form.error.duplicated = El codigo ya existe
+auditor.audit.form.error.publish = La auditoria no contiene ningun registro
