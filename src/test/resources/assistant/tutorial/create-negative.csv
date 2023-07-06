@@ -1,17 +1,17 @@
 recordIndex,code,title,abst,goals,totalTime,course
-0,AAA1222,tutoria test,tutoria de dp para hacer tests,no pasar el test,5.50,Curso de Programación Web básico
-0,AAA,tutoria test,tutoria de dp para hacer tests,no pasar el test,5.50,Curso de Programación Web básico
-0,BBB1222,tutoria testaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,tutoria de dp para hacer tests,no pasar el test,5.50,Curso de Programación Web básico
-0,BBB1222,,tutoria de dp para hacer tests,no pasar el test,5.50,Curso de Programación Web básico
-0,BBB1222,tutoria test,tutoria de dp para hacer testsqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq,no pasar el test,5.50,Curso de Programación Web básico
-0,BBB1222,tutoria test,,pasar el test,5.50,Curso de Programación Web básico
-0,BBB1222,tutoria test,tutoria de dp para hacer tests,no pasar el test rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,5.50,Curso de Programación Web básico
-0,BBB1222,tutoria test,tutoria de dp para hacer tests,,5.50,Curso de Programación Web básico
-0,BBB1222,tutoria test,tutoria de dp para hacer tests,nopasar el test,-5.50,Curso de Programación Web básico
-0,BBB1222,tutoria test,tutoria de dp para hacer tests,nopasar el test,,Curso de Programación Web básico
-0,BBB1222,tutoria test,tutoria de dp para hacer tests,nopasar el test,5.50,---
-0,BBB1222,viagra,tutoria de dp para hacer tests,nopasar el test,5,Curso de Programación Web básico
-0,BBB1222,tutoria test,sexo,nopasar el test,5,Curso de Programación Web básico
-0,BBB1222,tutoria test,tutoria de dp para hacer tests,sexo,5,Curso de Programación Web básico
-0,BBB1222,tutoria test,tutoria de dp para hacer tests,nopasar el test,hola,Curso de Programación Web básico
-0,,tutoria test,tutoria de dp para hacer tests,nopasar el test,5,Curso de Programación Web básico
+0,AAA1222,pruebas,codigo duplicado,que no pasen los tests,3.30,Curso de Programación Web básico
+0,AAA,mas cosas,no sirve el código,nooo,5.50,Curso de Inteligencia Artificial
+0,BBB1222,tutoria testaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,titulo es demasiado largo,esta vez no puede ser €€€€€€€€,2.00,Curso de Programación Web básico
+0,BBB1223,,titulo vacio €€€€,no toca @@##¿?¡'¡´-.,5.50,Curso de Inteligencia Artificial
+0,BBB1224,resumen largo,tutoria de dp para hacer testsqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq,todavia falla^+`+^*´´{*,3.00,Curso de Programación Web básico
+0,BBB1225,la tutoria de mates,,abst vacio,9.10,Curso de Programación Web básico
+0,BBB1226,buenast atred,goals demasiado largo,no pasar el test rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,7.40,Curso de Inteligencia Artificial
+0,BBB1227,necesita goals,goals vacio,,1.5,Curso de Programación Web básico
+0,BBB1228,tutoria test 4,totaltime negativo,nopasar el test,-5.50,Curso de Inteligencia Artificial
+0,GHJ1234,mas testing ¿¿@2##,total time vacio,totaltime vacio,,Curso de Programación Web básico
+0,KOP5890,tardes @#~€€¬~#,el curso nulo,x,5.50,---
+0,JJJ1111,viagra,spam en el titulo,falla,5,Curso de Programación Web básico
+0,ALO1433,se acaba,sexo,spam en el abst,5,Curso de Inteligencia Artificial
+0,ALO3314,Spam,spam en el goals,sexo,5,Curso de Programación Web básico
+0,BBB1222,tutoria test,dato erroneo en totaltime,no puede ser,hola,Curso de Inteligencia Artificial
+0,,tutoria test,codigo vacio,hasta luego,5,Curso de Programación Web básico
