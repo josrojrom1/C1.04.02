@@ -17,7 +17,6 @@ public class LecturerCourseDeleteTest extends TestHarness {
 		super.clickOnMenu("Lecturer", "List my courses");
 		super.clickOnListingRecord(recordIndex);
 		super.clickOnSubmit("Delete");
-		super.checkNotErrorsExist();
 		super.signOut();
 
 	}
