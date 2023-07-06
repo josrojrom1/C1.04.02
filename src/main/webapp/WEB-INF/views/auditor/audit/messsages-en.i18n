@@ -31,3 +31,4 @@ auditor.auditingRecord.list.button.createAuditingRecord = Create auditing record
 auditor.audit.form.button.addCorrection = Add Correction
 
 auditor.audit.error.spam = Don't include Spam
+auditor.audit.form.error.duplicated = The code already exist
