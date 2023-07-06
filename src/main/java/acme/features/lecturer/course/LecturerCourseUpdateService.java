@@ -65,14 +65,14 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
 			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "lecturer.lecture.form.error.retailPrice.positiveOrZero");
-			super.state(object.getRetailPrice().getAmount() <= 99999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
+			super.state(object.getRetailPrice().getAmount() <= 999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
 			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.lecture.form.error.retailPrice.negative");
 
 			String currencies;
 			boolean b = false;
 			currencies = this.repository.findConfigurationAcceptedCurrencies();
 			final List<String> listCurrencies;
-			final String[] aux = currencies.replace("[", "").replace("]", "").split(",");
+			final String[] aux = currencies.replace(" ", "").replace("[", "").replace("]", "").split(",");
 			listCurrencies = Arrays.asList(aux);
 			for (final String c : listCurrencies)
 				if (c.equals(object.getRetailPrice().getCurrency()))
