@@ -77,7 +77,7 @@ public class AuditorAuditingRecordCorrectTest extends TestHarness {
 
 		Collection<AuditingRecord> records;
 		String param;
-		records = this.repository.findManyAuditingRecordByAssistant("auditor1");
+		records = this.repository.findManyAuditingRecordByAuditor("auditor1");
 
 		for (final AuditingRecord record : records) {
 			param = String.format("id=%d", record.getAudit().getId());

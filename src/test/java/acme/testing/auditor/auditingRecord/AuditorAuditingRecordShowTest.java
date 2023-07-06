@@ -45,7 +45,7 @@ public class AuditorAuditingRecordShowTest extends TestHarness {
 	public void test300Hacking() {
 		Collection<AuditingRecord> records;
 		String param;
-		records = this.repository.findManyAuditingRecordByAssistant("auditor2");
+		records = this.repository.findManyAuditingRecordByAuditor("auditor2");
 		for (final AuditingRecord record : records) {
 			param = String.format("id=%d", record.getId());
 			super.checkLinkExists("Sign in");
