@@ -50,5 +50,5 @@ lecturer.course.form.courseType.reject-pure-theoretical = Los cursos sin asignat
 
 #---------------COURSE OF LECTURE-----------------------
 lecturer.course.button.courseOfLecture.create = Añadir asignaturas
-lecturer.course.button.courseOfLecture.list = Eliminar asignatura
+lecturer.course.button.courseOfLecture.list = Listar/Eliminar asignatura
 
