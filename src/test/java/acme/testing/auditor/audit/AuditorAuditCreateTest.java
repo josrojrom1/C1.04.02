@@ -28,7 +28,7 @@ public class AuditorAuditCreateTest extends TestHarness {
 		super.clickOnMenu("Auditor", "List my audits");
 		super.checkListingExists();
 
-		super.sortListing(0, "asc");
+		super.sortListing(0, "desc");
 		super.checkColumnHasValue(recordIndex, 0, code);
 
 		super.clickOnListingRecord(recordIndex);

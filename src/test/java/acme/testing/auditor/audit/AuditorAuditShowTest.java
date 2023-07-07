@@ -22,6 +22,7 @@ public class AuditorAuditShowTest extends TestHarness {
 	public void test100positive(final int recordIndex, final String code, final String conclusion, final String weakPoints, final String strongPoints, final String mark, final String course) {
 		super.signIn("auditor1", "auditor1");
 		super.clickOnMenu("Auditor", "List my audits");
+		super.sortListing(0, "asc");
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("code", code);
