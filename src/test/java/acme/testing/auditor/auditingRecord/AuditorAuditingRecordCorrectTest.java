@@ -24,7 +24,7 @@ public class AuditorAuditingRecordCorrectTest extends TestHarness {
 		super.signIn("auditor1", "auditor1");
 		super.clickOnMenu("Auditor", "List my audits");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.clickOnButton("Add Correction");
 
 		super.fillInputBoxIn("subject", subject);
@@ -39,9 +39,9 @@ public class AuditorAuditingRecordCorrectTest extends TestHarness {
 
 		super.clickOnMenu("Auditor", "List my audits");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.clickOnButton("Auditing records");
-		super.sortListing(0, "asc");
+		super.sortListing(0, "desc");
 		super.checkColumnHasValue(recordIndex, 0, subject);
 		super.checkColumnHasValue(recordIndex, 1, mark);
 
@@ -55,7 +55,7 @@ public class AuditorAuditingRecordCorrectTest extends TestHarness {
 		super.signIn("auditor1", "auditor1");
 		super.clickOnMenu("Auditor", "List my audits");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.clickOnButton("Add Correction");
 
 		super.fillInputBoxIn("subject", subject);
