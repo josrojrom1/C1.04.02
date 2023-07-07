@@ -50,5 +50,5 @@ lecturer.course.form.courseType.reject-pure-theoretical = Courses with no handso
 
 #---------------COURSE OF LECTURE-----------------------
 lecturer.course.button.courseOfLecture.create = Add lectures
-lecturer.course.button.courseOfLecture.list = Remove lecture
+lecturer.course.button.courseOfLecture.list = List/Remove lecture
 

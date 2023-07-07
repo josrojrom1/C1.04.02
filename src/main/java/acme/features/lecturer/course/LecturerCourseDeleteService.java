@@ -65,8 +65,7 @@ public class LecturerCourseDeleteService extends AbstractService<Lecturer, Cours
 		assert object != null;
 
 		final Collection<CourseOfLecture> courseOfLectures = this.repository.findCourseOfLecturesByCourse(object);
-		for (final CourseOfLecture courseOfLecture : courseOfLectures)
-			this.repository.delete(courseOfLecture);
+		this.repository.deleteAll(courseOfLectures);
 		this.repository.delete(object);
 	}
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.Course;
 import acme.entities.Lecture;
+import acme.entities.LectureType;
 import acme.entities.LessonType;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -68,19 +69,18 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
 			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "lecturer.lecture.form.error.retailPrice.positiveOrZero");
-			super.state(object.getRetailPrice().getAmount() <= 99999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
+			super.state(object.getRetailPrice().getAmount() <= 999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
 			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.lecture.form.error.retailPrice.negative");
 
 			String currencies;
 			boolean b = false;
 			currencies = this.repository.findConfigurationAcceptedCurrencies();
 			final List<String> listCurrencies;
-			final String[] aux = currencies.replace("[", "").replace("]", "").split(",");
+			final String[] aux = currencies.replace(" ", "").replace("[", "").replace("]", "").split(",");
 			listCurrencies = Arrays.asList(aux);
 			for (final String c : listCurrencies)
 				if (c.equals(object.getRetailPrice().getCurrency()))
 					b = true;
-
 			super.state(b != false, "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
 		}
 
@@ -95,10 +95,10 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		course = this.repository.findOneCourseByCode(object.getCode());
 		final int id = course.getId();
 		lectures = this.repository.findAllLecturesByCourse(id);
-		final List<LessonType> lessonTypeList = new ArrayList<>();
+		final List<LectureType> lectureTypeList = new ArrayList<>();
 		for (final Lecture l : lectures)
-			lessonTypeList.add(l.getLectureType());
-		super.state(lessonTypeList.contains(LessonType.HANDS_ON), "*", "lecturer.course.form.courseType.reject-pure-theoretical");
+			lectureTypeList.add(l.getLectureType());
+		super.state(lectureTypeList.contains(LectureType.HANDS_ON), "*", "lecturer.course.form.courseType.reject-pure-theoretical");
 
 		if (!super.getBuffer().getErrors().hasErrors("title")) {
 			String validar;

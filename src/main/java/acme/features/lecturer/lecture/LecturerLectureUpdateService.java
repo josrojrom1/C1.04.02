@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Lecture;
-import acme.entities.LessonType;
+import acme.entities.LectureType;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -104,7 +104,7 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 		Tuple tuple;
 		SelectChoices choices;
 
-		choices = SelectChoices.from(LessonType.class, object.getLectureType());
+		choices = SelectChoices.from(LectureType.class, object.getLectureType());
 		tuple = super.unbind(object, "title", "abst", "learningTime", "body", "lectureType", "link");
 
 		tuple.put("id", object.getId());

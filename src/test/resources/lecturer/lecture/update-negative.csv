@@ -10,5 +10,6 @@ recordIndex,title,abst,learningTime,body,lectureType,link
 8,"test","test",1,"test",THEORY,=)(/=)(/=)(/=)(/=)(/
 9,"test","test",9999999999999999,"test",HANDS_ON,""
 10,nigeria,abst,1,body,THEORY,""
-11,title,viagra,1,body,HANDS_ON,""
+11,title,viagra,1,body,HANDS_ON,nigeria
 12,title,abst,1,nigeria,THEORY,""
+13,title,abst,1,nigeria,THEORY,nigeria

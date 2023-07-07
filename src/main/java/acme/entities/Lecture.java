@@ -47,7 +47,7 @@ public class Lecture extends AbstractEntity {
 
 	//Lecture type (theoretical or hands-on)
 	@NotNull
-	protected LessonType		lectureType;
+	protected LectureType		lectureType;
 
 	//Optional link with further information
 	@URL

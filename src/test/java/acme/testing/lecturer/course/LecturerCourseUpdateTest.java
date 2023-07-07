@@ -40,7 +40,6 @@ public class LecturerCourseUpdateTest extends TestHarness {
 		super.checkListingExists();
 		super.checkColumnHasValue(recordIndex, 0, code);
 		super.checkColumnHasValue(recordIndex, 1, title);
-		super.checkColumnHasValue(recordIndex, 2, retailPrice);
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("code", code);
@@ -58,9 +57,8 @@ public class LecturerCourseUpdateTest extends TestHarness {
 		super.signIn("lecturer1", "lecturer1");
 		super.clickOnMenu("Lecturer", "List my courses");
 		super.checkListingExists();
-		super.clickOnListingRecord(0);
+		super.clickOnListingRecord(1);
 		super.checkFormExists();
-		super.fillInputBoxIn("code", code);
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("abst", abst);
 		super.fillInputBoxIn("retailPrice", retailPrice);

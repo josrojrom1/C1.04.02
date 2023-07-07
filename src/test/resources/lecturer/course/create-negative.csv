@@ -16,3 +16,5 @@ recordIndex,code,title,abst,retailPrice,link
 14,"TTT 111",test,viagra,EUR 1,""
 15,"TTT 111",test,test,EUR 1,nigeria
 16,"CPR 001",test,test,EUR 1,""
+17,"TTT 111","示例文本","test",USD 100.00,https://example.com
+18,"TTT 111","نص نموذجي","test",GBP 1.00,nigeria
