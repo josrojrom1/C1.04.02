@@ -5,7 +5,7 @@
 
 
 <acme:form>
-	<acme:input-moment code="administrator.bulletin.form.label.moment" path="moment"/>
+	<acme:input-moment code="administrator.bulletin.form.label.moment" path="moment" readonly='True'/>
 	<acme:input-textbox code="administrator.bulletin.form.label.title" path="title"/>	
 	<acme:input-select code="administrator.bulletin.form.label.flag" path="flag" choices="${flagType}"/>
 	<acme:input-textarea code="administrator.bulletin.form.label.message" path="message"/>
