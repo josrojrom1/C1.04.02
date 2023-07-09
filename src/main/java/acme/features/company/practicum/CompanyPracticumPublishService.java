@@ -2,16 +2,15 @@
 package acme.features.company.practicum;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Course;
 import acme.entities.Practicum;
+import acme.entities.PracticumSession;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
@@ -26,7 +25,7 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 	public void check() {
 		boolean status;
 		status = super.getRequest().hasData("id", int.class);
-		super.getResponse().setChecked(true);
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
@@ -64,9 +63,6 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 
 		super.bind(object, "code", "title", "abst", "goals", "totalTime");
 		object.setCourse(course);
-		Date moment;
-		moment = MomentHelper.getCurrentMoment();
-		object.setPublishTime(moment);
 	}
 
 	@Override
@@ -77,6 +73,9 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 			existing = this.repository.findOnePracticumByCode(object.getCode());
 			super.state(existing == null || existing.getId() == object.getId(), "code", "company.practicum.form.error.duplicated");
 		}
+		Collection<PracticumSession> sessions;
+		sessions = this.repository.findPracticumSessionsById(object.getId());
+		super.state(!sessions.isEmpty(), "*", "company.practicum.form.error.noSessions");
 	}
 
 	@Override
@@ -91,7 +90,7 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 		assert object != null;
 		Collection<Course> courses;
 
-		courses = this.repository.findAllPublishedCourses();
+		courses = this.repository.findAllPublishedHandsOnCourses();
 
 		SelectChoices courseChoices;
 
@@ -99,7 +98,6 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
-		tuple.put("publishTime", object.getPublishTime());
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", object.isDraftMode());
 		tuple.put("addendum", object.isHasAddendum());

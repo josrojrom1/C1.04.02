@@ -54,7 +54,7 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 		assert object != null;
 
 		Collection<Course> courses;
-		courses = this.repository.findAllPublishedCourses();
+		courses = this.repository.findAllPublishedHandsOnCourses();
 		SelectChoices courseChoices;
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 

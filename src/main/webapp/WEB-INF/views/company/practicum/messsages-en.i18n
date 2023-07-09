@@ -33,3 +33,4 @@ company.practicum.list.button.create = Create
 company.practicum.form.error.duplicated = Code is already taken
 company.practicum.form.error.totalTime = Time can´t be negative
 company.practicum.form.error.spam = Do not spam
+company.practicum.form.error.noSessions = Cannot publish an empty practicum

@@ -33,7 +33,6 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 	public void check() {
 		boolean status;
 		status = super.getRequest().hasData("masterId", int.class);
-		System.out.println(super.getRequest().getData("masterId", int.class));
 		super.getResponse().setChecked(status);
 	}
 

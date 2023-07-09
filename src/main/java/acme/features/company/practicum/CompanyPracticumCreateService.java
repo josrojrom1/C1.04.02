@@ -59,7 +59,6 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		course = this.repository.findOneCourseById(courseId);
 		super.bind(object, "code", "title", "abst", "goals", "totalTime");
 		object.setCourse(course);
-		object.setPublishTime(moment);
 	}
 
 	@Override
@@ -101,7 +100,7 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		assert object != null;
 		Collection<Course> courses;
 
-		courses = this.repository.findAllPublishedCourses();
+		courses = this.repository.findAllPublishedHandsOnCourses();
 
 		SelectChoices courseChoices;
 

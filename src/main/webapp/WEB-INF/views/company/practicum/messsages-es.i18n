@@ -33,3 +33,4 @@ company.practicum.list.button.create = Crear
 company.practicum.form.error.duplicated = Código duplicado
 company.practicum.form.error.totalTime = El tiempo no puede ser negativo
 company.practicum.form.error.spam = No hagas spam
+company.practicum.form.error.noSessions = No se puede publicar una práctica sin sesiones

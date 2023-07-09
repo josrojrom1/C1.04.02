@@ -56,7 +56,7 @@ public class CompanyPracticumDeleteService extends AbstractService<Company, Prac
 	public void bind(final Practicum object) {
 		assert object != null;
 
-		super.bind(object, "code", "title", "abst", "goals", "totalTime", "publishTime");
+		super.bind(object, "code", "title", "abst", "goals", "totalTime");
 	}
 
 	@Override
@@ -79,12 +79,12 @@ public class CompanyPracticumDeleteService extends AbstractService<Company, Prac
 		assert object != null;
 
 		Collection<Course> courses;
-		courses = this.repository.findAllPublishedCourses();
+		courses = this.repository.findAllPublishedHandsOnCourses();
 		SelectChoices courseChoices;
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime", "publishTime");
+		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
 		tuple.put("course", courseChoices.getSelected());
 		tuple.put("draftMode", object.isDraftMode());
 		tuple.put("hasAddendum", object.isHasAddendum());
