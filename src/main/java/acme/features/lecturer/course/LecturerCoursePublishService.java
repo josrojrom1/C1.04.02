@@ -1,6 +1,7 @@
 
 package acme.features.lecturer.course;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.Course;
 import acme.entities.Lecture;
+import acme.entities.LectureType;
 import acme.entities.LessonType;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -67,19 +69,18 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
 			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "lecturer.lecture.form.error.retailPrice.positiveOrZero");
-			super.state(object.getRetailPrice().getAmount() <= 99999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
+			super.state(object.getRetailPrice().getAmount() <= 999, "retailPrice", "lecturer.lecture.form.error.retailPrice.max");
 			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.lecture.form.error.retailPrice.negative");
 
 			String currencies;
 			boolean b = false;
 			currencies = this.repository.findConfigurationAcceptedCurrencies();
 			final List<String> listCurrencies;
-			final String[] aux = currencies.replace("[", "").replace("]", "").split(",");
+			final String[] aux = currencies.replace(" ", "").replace("[", "").replace("]", "").split(",");
 			listCurrencies = Arrays.asList(aux);
 			for (final String c : listCurrencies)
 				if (c.equals(object.getRetailPrice().getCurrency()))
 					b = true;
-
 			super.state(b != false, "retailPrice", "lecturer.lecture.form.error.retailPrice.currency");
 		}
 
@@ -94,7 +95,10 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		course = this.repository.findOneCourseByCode(object.getCode());
 		final int id = course.getId();
 		lectures = this.repository.findAllLecturesByCourse(id);
-		super.state(this.courseType(lectures).equals(LessonType.HANDS_ON), "*", "lecturer.course.form.courseType.reject-pure-theoretical");
+		final List<LectureType> lectureTypeList = new ArrayList<>();
+		for (final Lecture l : lectures)
+			lectureTypeList.add(l.getLectureType());
+		super.state(lectureTypeList.contains(LectureType.HANDS_ON), "*", "lecturer.course.form.courseType.reject-pure-theoretical");
 
 		if (!super.getBuffer().getErrors().hasErrors("title")) {
 			String validar;
@@ -140,10 +144,13 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 				theory += 1;
 			else if (l.getLectureType().equals(LessonType.HANDS_ON))
 				handsOn += 1;
-		if (theory > handsOn)
+		if (theory > handsOn && handsOn > 0)
 			res = LessonType.THEORY;
-		else
+		else if (handsOn > theory)
 			res = LessonType.HANDS_ON;
+		else if (handsOn == theory && handsOn > 0)
+			res = LessonType.BALANCED;
+
 		return res;
 	}
 

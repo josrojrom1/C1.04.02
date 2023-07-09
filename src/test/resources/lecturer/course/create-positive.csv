@@ -1,2 +1,5 @@
 recordIndex,code,title,abst,retailPrice,link
-0,"AAA 100","Titulo del curso de prueba 1","Resumen de prueba del curso 0",EUR 9.00,""
+0,"ZZZ 400","A","A",GBP 0.10,https://example.com
+1,"ZZZ 300","A","Resumen de prueba del curso",USD 999.00,""
+2,"ZZZ 200","test","AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",EUR 9.00,https://example.com
+3,"ZZZ 100","75-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","Resumen de prueba del curso 0",EUR 9.00,""

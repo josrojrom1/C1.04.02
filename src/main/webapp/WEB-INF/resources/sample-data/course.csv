@@ -1,9 +1,5 @@
 key,code,title,abst,retailPrice,link,draftMode,courseType,key:lecturer
 course-01,CPR 001,Curso de Programación Web básico,En este curso aprenderá las bases para el desarrollo web,19.95 USD,https://youtube.com/cursoChuloDeHTML,false,HANDS_ON,lecturer-01
-course-02,CIA 001,Curso de Inteligencia Artificial,Introduccón a la clasificacón de documentos y el uso de librerías python,15.19 EUR,null,false,HANDS_ON,lecturer-02
-course-03,ABC 001,a,a,32.32 EUR,null,false,HANDS_ON,lecturer-01
-course-04,ABC 002,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345,a,32.32 EUR,null,false,HANDS_ON,lecturer-01
-course-05,ABC 003,a,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,32.32 EUR,null,false,HANDS_ON,lecturer-01
-course-06,ABC 004,Esto es un titulo de prueba,abst de prueba,1.5 EUR,https://youtube.com,true,HANDS_ON,lecturer-01
-course-07,AAA 111,test,test,9.9 EUR,null,true,HANDS_ON,lecturer-01
-course-08,AAA 222,test,test,9.9 EUR,null,true,HANDS_ON,lecturer-01
+course-02,CIA 001,Curso de Inteligencia Artificial,Introduccón a la clasificacón de documentos y el uso de librerías python,15.19 EUR,null,false,BALANCED,lecturer-02
+course-03,CTP 001,Curso de Testing y Pruebas,Introducción al Testing formal e Informal,32.32 EUR,null,true,THEORY,lecturer-01
+course-04,CDI 001,Curso de Derecho Informático,Aprende todas las leyes informáticas actuales,80.12 USD,null,true,THEORY,lecturer-02

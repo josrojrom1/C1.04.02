@@ -36,15 +36,14 @@ public class LecturerCoursePublishTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/lecturer/course/publish-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test200Negative(final int recordIndex) {
-		// HINT: En este test intentamos publicar un course el cual aun no puede ser publicado, en este caso porque no tiene lectures
-		super.signIn("lecturer1", "lecturer1");
+	public void test200Negative(final int recordIndex, final String code, final String title, final String abst, final String retailPrice, final String link) {
+		// HINT: En este test intentamos publicar un course el cual aun no puede ser publicado, en este caso porque solo tiene lectures teóricas
+		super.signIn("lecturer2", "lecturer2");
 		super.clickOnMenu("Lecturer", "List my courses");
 		super.checkListingExists();
 		super.clickOnListingRecord(0);
-		super.checkFormExists();
-		super.checkNotButtonExists("Publish");
-		super.checkNotErrorsExist();
+		super.clickOnSubmit("Publish");
+		super.checkErrorsExist();
 		super.signOut();
 	}
 

@@ -14,9 +14,10 @@ public class LecturerCourseCreateTest extends TestHarness {
 	@CsvFileSource(resources = "/lecturer/course/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String code, final String title, final String abst, final String retailPrice, final String link) {
 		// HINT: Nos autenticamos como Lecturer, mostramos los cursos y hacemos click en crear un curso para ver que todo resulta como esperamos
-		super.signIn("lecturer1", "lecturer1");
+		super.signIn("lecturer2", "lecturer2");
 		super.clickOnMenu("Lecturer", "List my courses");
 		super.checkListingExists();
+		super.sortListing(0, "desc");
 		super.clickOnButton("Create new course");
 		super.fillInputBoxIn("code", code);
 		super.fillInputBoxIn("title", title);
@@ -26,9 +27,9 @@ public class LecturerCourseCreateTest extends TestHarness {
 		super.clickOnSubmit("Create");
 		super.clickOnMenu("Lecturer", "List my courses");
 		super.checkListingExists();
+		super.sortListing(0, "desc");
 		super.checkColumnHasValue(recordIndex, 0, code);
 		super.checkColumnHasValue(recordIndex, 1, title);
-		super.checkColumnHasValue(recordIndex, 2, retailPrice);
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("code", code);

@@ -27,7 +27,7 @@ public class LecturerLectureCreateTest extends TestHarness {
 		super.clickOnSubmit("Create");
 		super.clickOnMenu("Lecturer", "List my lectures");
 		super.checkListingExists();
-		super.sortListing(0, "desc");
+		super.sortListing(0, "asc");
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("title", title);
