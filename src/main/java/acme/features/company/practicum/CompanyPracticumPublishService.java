@@ -21,6 +21,7 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 	protected CompanyPracticumRepository repository;
 
 
+	//Locurita
 	@Override
 	public void check() {
 		boolean status;
