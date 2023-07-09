@@ -2,8 +2,10 @@
 package acme.features.administrator.offer;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -78,7 +80,7 @@ public class AdministratorOfferCreateService extends AbstractService<Administrat
 			momento.setTime(object.getMoment());
 			momento.add(Calendar.DATE, 1);
 			momento.add(Calendar.MINUTE, -1);
-			super.state(momento.before(start), "moment", "administrator.offer.form.error.instanceMoment");
+			super.state(momento.before(start), "timePeriodStart", "administrator.offer.form.error.instanceMoment");
 		}
 
 		//Checks if start moment is at least a week prior to end moment
@@ -96,6 +98,21 @@ public class AdministratorOfferCreateService extends AbstractService<Administrat
 			super.state(end.after(inicio), "timePeriodEnd", "administrator.offer.form.error.totalTime");
 		}
 
+		//Checks if money is at least 0 and if the price currency is in the accepted list
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "administrator.offer.form.error.retailPrice");
+
+			String currencies;
+			boolean b = false;
+			currencies = this.repository.findConfiguration().getAcceptedCurrencies();
+			final List<String> listCurrencies;
+			final String[] aux = currencies.replace(" ", "").replace("[", "").replace("]", "").split(",");
+			listCurrencies = Arrays.asList(aux);
+			for (final String c : listCurrencies)
+				if (c.equals(object.getRetailPrice().getCurrency()))
+					b = true;
+			super.state(b != false, "retailPrice", "administrator.offer.form.error.wrongCurrency");
+		}
 	}
 
 	@Override

@@ -11,6 +11,8 @@
 	<acme:input-textbox code="company.practicum.show.label.abst" path="abst"/>
 	<acme:input-textbox code="company.practicum.show.label.goals" path="goals"/>
 	<acme:input-double code="company.practicum.show.label.totalTime" path="totalTime" readonly="true"/>
+	<acme:input-double code="company.practicum.show.label.totalTimePlus" path="totalTimePlus" readonly="true"/>
+	<acme:input-double code="company.practicum.show.label.totalTimeLess" path="totalTimeLess" readonly="true"/>
 	<acme:input-select code="company.practicum.show.label.course" path="course" choices="${courseChoices}"/>
 	
 	<jstl:if test="${acme:anyOf(_command, 'show|delete|update|publish') && draftMode}">

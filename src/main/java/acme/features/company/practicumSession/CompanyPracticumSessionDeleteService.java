@@ -70,7 +70,8 @@ public class CompanyPracticumSessionDeleteService extends AbstractService<Compan
 		Practicum practicum;
 		practicum = object.getPracticum();
 		final Long time = TimeUnit.MILLISECONDS.toSeconds(object.getTimePeriodEnd().getTime() - object.getTimePeriodStart().getTime());
-		final double hours = time.doubleValue() / 3600;
+		final double hour_factor = 3600.0;
+		final double hours = time.doubleValue() / hour_factor;
 		practicum.setTotalTime(practicum.getTotalTime() - hours);
 		this.repository2.save(practicum);
 		this.repository.delete(object);

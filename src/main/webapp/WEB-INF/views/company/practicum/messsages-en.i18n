@@ -14,7 +14,8 @@ company.practicum.show.label.title = Title
 company.practicum.show.label.abst = Abstract
 company.practicum.show.label.goals = Goals
 company.practicum.show.label.totalTime = Estimated total time
-company.practicum.show.label.publishTime = Publish date
+company.practicum.show.label.totalTimePlus = Maximum estimated total time
+company.practicum.show.label.totalTimeLess = Minimum estimated total time
 company.practicum.show.label.company = Company
 company.practicum.show.label.course = Course
 
@@ -34,3 +35,6 @@ company.practicum.form.error.duplicated = Code is already taken
 company.practicum.form.error.totalTime = Time can´t be negative
 company.practicum.form.error.spam = Do not spam
 company.practicum.form.error.noSessions = Cannot publish an empty practicum
+company.practicum.form.error.nullCourse = Cannot publish a practicum if no course is selected
+company.practicum.form.error.unpublishedCourse = Cannot publish a practicum if its course is unpublished
+company.practicum.form.error.wrongCourseType = Cannot publish a practicum in non-hands-on courses

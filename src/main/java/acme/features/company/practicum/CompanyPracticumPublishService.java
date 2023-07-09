@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Course;
+import acme.entities.LessonType;
 import acme.entities.Practicum;
 import acme.entities.PracticumSession;
 import acme.framework.components.jsp.SelectChoices;
@@ -38,7 +39,6 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 		masterId = super.getRequest().getData("id", int.class);
 		practicum = this.repository.findOnePracticum(masterId);
 		status = practicum != null && practicum.isDraftMode() && super.getRequest().getPrincipal().hasRole(practicum.getCompany()) && practicum.getCompany().getId() == super.getRequest().getPrincipal().getActiveRoleId();
-
 		super.getResponse().setAuthorised(status);
 
 	}
@@ -74,9 +74,28 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 			existing = this.repository.findOnePracticumByCode(object.getCode());
 			super.state(existing == null || existing.getId() == object.getId(), "code", "company.practicum.form.error.duplicated");
 		}
-		Collection<PracticumSession> sessions;
-		sessions = this.repository.findPracticumSessionsById(object.getId());
-		super.state(!sessions.isEmpty(), "*", "company.practicum.form.error.noSessions");
+
+		//Comprobar que el curso no sea nulo al publicarla
+		try {
+			//Comprobar que se ha seleccionado un curso
+			final Course curso = this.repository.findOneCourseById(object.getCourse().getId());
+
+			if (curso != null) {
+				//Comprobar que el curso ya está publicado
+				super.state(!curso.isDraftMode(), "*", "company.practicum.form.error.unpublishedCourse");
+
+				//Comprobar que el curso sea de prácticas
+				final LessonType tipo = curso.getCourseType();
+				super.state(tipo == LessonType.HANDS_ON, "*", "company.practicum.form.error.wrongCourseType");
+			}
+		} catch (final NullPointerException e) {
+			super.state(false, "*", "company.practicum.form.error.nullCourse");
+		}
+		
+		//Comprobar que tenga sesiones
+				Collection<PracticumSession> sessions;
+				sessions = this.repository.findPracticumSessionsById(object.getId());
+				super.state(!sessions.isEmpty(), "*", "company.practicum.form.error.noSessions");
 	}
 
 	@Override
@@ -91,7 +110,7 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 		assert object != null;
 		Collection<Course> courses;
 
-		courses = this.repository.findAllPublishedHandsOnCourses();
+		courses = this.repository.findAllHandsOnCourses();
 
 		SelectChoices courseChoices;
 
@@ -99,6 +118,8 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "abst", "goals", "totalTime");
+		tuple.put("totalTimePlus", object.getTotalTime() + 0.1 * object.getTotalTime());
+		tuple.put("totalTimeLess", object.getTotalTime() - 0.1 * object.getTotalTime());
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", object.isDraftMode());
 		tuple.put("addendum", object.isHasAddendum());

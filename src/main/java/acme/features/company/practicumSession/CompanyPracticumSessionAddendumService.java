@@ -101,7 +101,8 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		Practicum practicum;
 		practicum = this.repository.findOnePracticum(super.getRequest().getData("masterId", int.class));
 		final Long time = TimeUnit.MILLISECONDS.toSeconds(object.getTimePeriodEnd().getTime() - object.getTimePeriodStart().getTime());
-		final double hours = time.doubleValue() / 3600;
+		final double hour_factor = 3600.0;
+		final double hours = time.doubleValue() / hour_factor;
 		practicum.setTotalTime(practicum.getTotalTime() + hours);
 		practicum.setHasAddendum(true);
 		this.repository2.save(practicum);

@@ -46,8 +46,7 @@ public class Practicum extends AbstractEntity {
 	@Length(max = 100)
 	protected String			goals;
 
-	//Estimated total time (Practicum sessions time ± 10%)
-
+	//Estimated total time (10% Range shown in App)
 	protected double			totalTime;
 
 	//Whether or not the Practicum has been published
