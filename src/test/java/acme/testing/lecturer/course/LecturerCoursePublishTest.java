@@ -23,10 +23,10 @@ public class LecturerCoursePublishTest extends TestHarness {
 	@CsvFileSource(resources = "/lecturer/course/publish-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex) {
 		// HINT: En este test nos autenticamos como Lecturer, listamos los courses, seleccionamos uno de ellos y lo publicamos
-		super.signIn("lecturer1", "lecturer1");
+		super.signIn("lecturer2", "lecturer2");
 		super.clickOnMenu("Lecturer", "List my courses");
 		super.checkListingExists();
-		super.clickOnListingRecord(1);
+		super.clickOnListingRecord(0);
 		super.checkFormExists();
 		super.clickOnSubmit("Publish");
 		super.checkNotErrorsExist();
