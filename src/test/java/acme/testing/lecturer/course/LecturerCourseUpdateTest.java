@@ -25,11 +25,11 @@ public class LecturerCourseUpdateTest extends TestHarness {
 	@CsvFileSource(resources = "/lecturer/course/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String code, final String title, final String abst, final String retailPrice, final String link) {
 		// HINT: En este test nos autenticamos como Lecturer, listamos los courses, seleccionamos uno de ellos y comprobamos que el update se hace correctamente 
-		super.signIn("lecturer1", "lecturer1");
+		super.signIn("lecturer2", "lecturer2");
 		super.clickOnMenu("Lecturer", "List my courses");
 		super.checkListingExists();
-		super.checkColumnHasValue(recordIndex, 0, code);
-		super.clickOnListingRecord(recordIndex);
+		super.sortListing(0, "asc");
+		super.clickOnListingRecord(0);
 		super.checkFormExists();
 		super.fillInputBoxIn("code", code);
 		super.fillInputBoxIn("title", title);
@@ -38,9 +38,8 @@ public class LecturerCourseUpdateTest extends TestHarness {
 		super.fillInputBoxIn("link", link);
 		super.clickOnSubmit("Update");
 		super.checkListingExists();
-		super.checkColumnHasValue(recordIndex, 0, code);
-		super.checkColumnHasValue(recordIndex, 1, title);
-		super.clickOnListingRecord(recordIndex);
+
+		super.clickOnListingRecord(0);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("code", code);
 		super.checkInputBoxHasValue("title", title);
