@@ -29,7 +29,8 @@ auditor.auditingRecord.form.button.publish = Publish
 auditor.auditingRecord.form.button.correct = Add correct
 auditor.auditingRecord.form.label.confirmation = Confirm
 
-auditor.auditingRecord.form.error.date = The end period must be after start period(Min 1 hour from current moment)
+auditor.auditingRecord.form.error.date = The end period must be after start period
+auditor.auditingRecord.form.error.date2 = Period must last at least 1 hour
 
 auditor.auditingRecord.error.spam = Don't include Spam
 

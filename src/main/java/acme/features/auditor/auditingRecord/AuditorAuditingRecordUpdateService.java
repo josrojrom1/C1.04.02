@@ -73,8 +73,8 @@ public class AuditorAuditingRecordUpdateService extends AbstractService<Auditor,
 			super.state(object.getStartPeriod().before(object.getEndPeriod()), "startPeriod", "auditor.auditingRecord.form.error.date");
 
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
-			super.state(Duration.between(object.getStartPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(), ahora.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()).toHours() >= 1, "startPeriod",
-				"auditor.auditingRecord.form.error.date");
+			super.state(Duration.between(object.getStartPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(), object.getEndPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()).toHours() >= 1, "startPeriod",
+				"auditor.auditingRecord.form.error.date2");
 
 		if (!super.getBuffer().getErrors().hasErrors("subject")) {
 			String validar;

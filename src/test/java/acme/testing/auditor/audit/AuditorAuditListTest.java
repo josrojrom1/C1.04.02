@@ -15,6 +15,7 @@ public class AuditorAuditListTest extends TestHarness {
 		super.signIn("auditor1", "auditor1");
 		super.clickOnMenu("Auditor", "List my audits");
 		super.checkListingExists();
+		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndex, 0, code);
 		super.signOut();
 	}

@@ -23,8 +23,8 @@ public class AuditorAuditingRecordCreateTest extends TestHarness {
 		//este test comprueba la creacion de los registros de una auditoria de un auditor
 		super.signIn("auditor2", "auditor2");
 		super.clickOnMenu("Auditor", "List my audits");
-		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.sortListing(0, "desc");
+		super.clickOnListingRecord(0);
 		super.clickOnButton("Create auditing record");
 
 		super.fillInputBoxIn("subject", subject);
@@ -37,10 +37,10 @@ public class AuditorAuditingRecordCreateTest extends TestHarness {
 		super.clickOnSubmit("Create");
 
 		super.clickOnMenu("Auditor", "List my audits");
-		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.sortListing(0, "desc");
+		super.clickOnListingRecord(0);
 		super.clickOnButton("Auditing records");
-		super.sortListing(0, "asc");
+		super.sortListing(0, "desc");
 		super.checkColumnHasValue(recordIndex, 0, subject);
 		super.checkColumnHasValue(recordIndex, 1, mark);
 
@@ -53,7 +53,7 @@ public class AuditorAuditingRecordCreateTest extends TestHarness {
 		//este test comprueba la creacion de los registros de una auditoria de un auditor
 		super.signIn("auditor2", "auditor2");
 		super.clickOnMenu("Auditor", "List my audits");
-		super.sortListing(0, "asc");
+		super.sortListing(0, "desc");
 		super.clickOnListingRecord(recordIndex);
 		super.clickOnButton("Create auditing record");
 
@@ -75,7 +75,7 @@ public class AuditorAuditingRecordCreateTest extends TestHarness {
 
 		Collection<AuditingRecord> records;
 		String param;
-		records = this.repository.findManyAuditingRecordByAssistant("auditor2");
+		records = this.repository.findManyAuditingRecordByAuditor("auditor2");
 
 		for (final AuditingRecord record : records) {
 			param = String.format("id=%d", record.getAudit().getId());

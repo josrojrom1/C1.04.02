@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Audit;
+import acme.entities.AuditingRecord;
 import acme.entities.Course;
 import acme.entities.Mark;
 import acme.framework.components.jsp.SelectChoices;
@@ -93,6 +94,10 @@ public class AuditorAuditPublishService extends AbstractService<Auditor, Audit> 
 			strong = object.getStrongPoints();
 			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(strong), "strongPoints", "auditor.audit.error.spam");
 		}
+
+		Collection<AuditingRecord> sessions;
+		sessions = this.repository.findAuditingRecordById(object.getId());
+		super.state(sessions != null && !sessions.isEmpty(), "*", "auditor.audit.form.error.publish");
 
 	}
 

@@ -45,6 +45,7 @@ public class AuditingRecord extends AbstractEntity {
 	protected Date				startPeriod;
 
 	@NotNull
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				endPeriod;
 
