@@ -122,9 +122,9 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	public void perform(final Course object) {
 		assert object != null;
 		final Collection<Boolean> lecturesDraftModeByCourse = this.repository.findAllLecturesDraftModeByCourse(object.getId());
-		final Collection<LessonType> lecturesLessonTypeByCourse = this.repository.findAllLecturesLessonTypeByCourse(object.getId());
+		final Collection<LectureType> lecturesLessonTypeByCourse = this.repository.findAllLecturesLessonTypeByCourse(object.getId());
 
-		if (lecturesDraftModeByCourse.contains(true) || lecturesDraftModeByCourse.isEmpty() || !lecturesLessonTypeByCourse.contains(LessonType.HANDS_ON))
+		if (lecturesDraftModeByCourse.contains(true) || lecturesDraftModeByCourse.isEmpty() || !lecturesLessonTypeByCourse.contains(LectureType.HANDS_ON))
 			object.setDraftMode(true);//En caso de que alguna lecture no este publicada, la lista del curso este vacia, o no existan lectures de practica entonces no se publica
 		else {
 			object.setDraftMode(false);//En caso contrario podemos publicar el curso correctamente
@@ -138,15 +138,17 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	public LessonType courseType(final Collection<Lecture> lecturesCourse) {
 		int theory = 0;
 		int handsOn = 0;
-		LessonType res = LessonType.THEORY;
+		LessonType res = null;
 		for (final Lecture l : lecturesCourse)
-			if (l.getLectureType().equals(LessonType.THEORY))
+			if (l.getLectureType().equals(LectureType.THEORY))
 				theory += 1;
-			else if (l.getLectureType().equals(LessonType.HANDS_ON))
+			else if (l.getLectureType().equals(LectureType.HANDS_ON))
 				handsOn += 1;
 		if (theory > handsOn && handsOn > 0)
 			res = LessonType.THEORY;
 		else if (handsOn > theory)
+			res = LessonType.HANDS_ON;
+		else if (theory == 0)
 			res = LessonType.HANDS_ON;
 		else if (handsOn == theory && handsOn > 0)
 			res = LessonType.BALANCED;

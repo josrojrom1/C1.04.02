@@ -10,7 +10,7 @@ import acme.entities.Audit;
 import acme.entities.Course;
 import acme.entities.CourseOfLecture;
 import acme.entities.Lecture;
-import acme.entities.LessonType;
+import acme.entities.LectureType;
 import acme.entities.Practicum;
 import acme.entities.Tutorial;
 import acme.entities.configuration.Configuration;
@@ -54,7 +54,7 @@ public interface LecturerCourseRepository extends AbstractRepository {
 	Collection<Boolean> findAllLecturesDraftModeByCourse(int id);
 
 	@Query("select col.lecture.lectureType from CourseOfLecture col where col.course.id = :id")
-	Collection<LessonType> findAllLecturesLessonTypeByCourse(int id);
+	Collection<LectureType> findAllLecturesLessonTypeByCourse(int id);
 
 	@Query("select col.lecture from CourseOfLecture col where col.course.id = :id")
 	Collection<Lecture> findAllLecturesByCourse(int id);
