@@ -13,6 +13,7 @@ administrator.configuration.form.label.systemCurrency = System Currency
 administrator.configuration.form.label.acceptedCurrencies = Accepted Currencies
 administrator.configuration.list.label.systemCurrency = System Currency
 administrator.configuration.list.label.acceptedCurrencies = Accepted Currencies
+administrator.configuration.form.label.threshold = Spam Threshold
 
 #--------------UPDATE------------------------------#
 administrator.configuration.form.button.update= Update
@@ -20,3 +21,4 @@ administrator.configuration.form.button.update= Update
 
 #--------------Errors------------------------------#
 administrator.configuration.form.error.currency= This currency is not accepted
+administrator.configuration.form.error.threshold= Value has to be between 0 and 1
