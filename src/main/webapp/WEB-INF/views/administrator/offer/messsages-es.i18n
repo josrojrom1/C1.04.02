@@ -34,4 +34,6 @@ administrator.offer.form.button.delete = Borrar
 administrator.offer.form.button.create = Crear Oferta
 #--------------ERRORS--------------------------------#
 administrator.offer.form.error.totalTime = El tiempo entre el inicio y el fin ha de ser de al menos 1 semana
-administrator.offer.form.error.instanceMoment = El momento debe ser al menos un día previo al inicio
+administrator.offer.form.error.instanceMoment = El inicio debe de ser al menos un día después de la instanciación
+administrator.offer.form.error.retailPrice = El precio a de ser igual o mayor que 0
+administrator.offer.form.error.wrongCurrency = El precio tiene una divisa no aceptada

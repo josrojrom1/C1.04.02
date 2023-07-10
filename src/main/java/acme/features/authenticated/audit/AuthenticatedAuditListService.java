@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Audit;
-import acme.entities.Course;
 import acme.framework.components.accounts.Authenticated;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -22,21 +21,13 @@ public class AuthenticatedAuditListService extends AbstractService<Authenticated
 	@Override
 	public void check() {
 
-		boolean status;
-
-		status = super.getRequest().hasData("masterId", int.class);
-
-		super.getResponse().setChecked(status);
+		super.getResponse().setChecked(true);
 	}
 
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
-		Course course;
-		masterId = super.getRequest().getData("masterId", int.class);
-		course = this.repository.findCourseById(masterId);
-		status = course != null;
+		status = super.getRequest().getPrincipal().hasRole(Authenticated.class);
 		super.getResponse().setAuthorised(status);
 
 	}
@@ -45,8 +36,7 @@ public class AuthenticatedAuditListService extends AbstractService<Authenticated
 	public void load() {
 
 		Collection<Audit> objects;
-		final int id = super.getRequest().getData("masterId", int.class);
-		objects = this.repository.findCourseAudits(id);
+		objects = this.repository.findAllAuditsPublish();
 		super.getBuffer().setData(objects);
 	}
 

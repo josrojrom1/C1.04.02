@@ -24,10 +24,10 @@ public class AuditorAuditingRecordUpdateTest extends TestHarness {
 		super.signIn("auditor2", "auditor2");
 		super.clickOnMenu("Auditor", "List my audits");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.clickOnButton("Auditing records");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(1);
 
 		super.fillInputBoxIn("subject", subject);
 		super.fillInputBoxIn("assessment", assessment);
@@ -40,10 +40,10 @@ public class AuditorAuditingRecordUpdateTest extends TestHarness {
 
 		super.clickOnMenu("Auditor", "List my audits");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.clickOnButton("Auditing records");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(1);
 		super.checkInputBoxHasValue("subject", subject);
 		super.checkInputBoxHasValue("assessment", assessment);
 		super.checkInputBoxHasValue("startPeriod", startPeriod);
@@ -61,10 +61,10 @@ public class AuditorAuditingRecordUpdateTest extends TestHarness {
 		super.signIn("auditor2", "auditor2");
 		super.clickOnMenu("Auditor", "List my audits");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.clickOnButton("Auditing records");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(1);
 
 		super.fillInputBoxIn("subject", subject);
 		super.fillInputBoxIn("assessment", assessment);
@@ -84,7 +84,7 @@ public class AuditorAuditingRecordUpdateTest extends TestHarness {
 
 		Collection<AuditingRecord> records;
 		String param;
-		records = this.repository.findManyAuditingRecordByAssistant("auditor2");
+		records = this.repository.findManyAuditingRecordByAuditor("auditor2");
 
 		for (final AuditingRecord record : records) {
 			param = String.format("id=%d", record.getAudit().getId());

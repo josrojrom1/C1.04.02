@@ -24,9 +24,9 @@ public class AuditorAuditUpdateTest extends TestHarness {
 		super.signIn("auditor2", "auditor2");
 		super.clickOnMenu("Auditor", "List my audits");
 		super.checkListingExists();
-		super.sortListing(0, "asc");
+		super.sortListing(0, "desc");
 
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.checkFormExists();
 		super.fillInputBoxIn("code", code);
 		super.fillInputBoxIn("conclusion", conclusion);
@@ -36,7 +36,8 @@ public class AuditorAuditUpdateTest extends TestHarness {
 		super.clickOnSubmit("Update");
 
 		super.checkListingExists();
-		super.clickOnListingRecord(recordIndex);
+		super.sortListing(0, "desc");
+		super.clickOnListingRecord(0);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("code", code);
 		super.checkInputBoxHasValue("conclusion", conclusion);
@@ -53,7 +54,7 @@ public class AuditorAuditUpdateTest extends TestHarness {
 		super.signIn("auditor2", "auditor2");
 		super.clickOnMenu("Auditor", "List my audits");
 		super.checkListingExists();
-		super.sortListing(0, "asc");
+		super.sortListing(0, "desc");
 
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();

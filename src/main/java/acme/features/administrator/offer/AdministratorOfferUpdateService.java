@@ -1,7 +1,9 @@
 
 package acme.features.administrator.offer;
 
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,6 +60,18 @@ public class AdministratorOfferUpdateService extends AbstractService<Administrat
 	@Override
 	public void validate(final Offer object) {
 		assert object != null;
+
+		//Checks if start moment is at least one day after instance moment
+		if (!super.getBuffer().getErrors().hasErrors("moment") && !super.getBuffer().getErrors().hasErrors("timePeriodStart")) {
+			final Calendar start = Calendar.getInstance();
+			start.setTime(object.getTimePeriodStart());
+
+			final Calendar momento = Calendar.getInstance();
+			momento.setTime(object.getMoment());
+			momento.add(Calendar.DATE, 1);
+			momento.add(Calendar.MINUTE, -1);
+			super.state(momento.before(start), "timePeriodStart", "administrator.offer.form.error.instanceMoment");
+		}
 		//Checks if start moment is at least a week prior to end moment
 		if (!super.getBuffer().getErrors().hasErrors("timePeriodStart") && !super.getBuffer().getErrors().hasErrors("timePeriodEnd")) {
 			final Calendar start = Calendar.getInstance();
@@ -73,16 +87,21 @@ public class AdministratorOfferUpdateService extends AbstractService<Administrat
 
 			super.state(end.after(inicio), "timePeriodEnd", "administrator.offer.form.error.totalTime");
 		}
-		//Checks if start moment is at least one day after instance moment
-		if (!super.getBuffer().getErrors().hasErrors("moment") && !super.getBuffer().getErrors().hasErrors("timePeriodStart")) {
-			final Calendar start = Calendar.getInstance();
-			start.setTime(object.getTimePeriodStart());
 
-			final Calendar momento = Calendar.getInstance();
-			momento.setTime(object.getMoment());
-			momento.add(Calendar.DATE, 1);
+		//Checks if money is at least 0 and if the price currency is in the accepted list
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+			super.state(object.getRetailPrice().getAmount() >= 0, "retailPrice", "administrator.offer.form.error.retailPrice");
 
-			super.state(momento.before(start), "moment", "administrator.offer.form.error.instanceMoment");
+			String currencies;
+			boolean b = false;
+			currencies = this.repository.findConfiguration().getAcceptedCurrencies();
+			final List<String> listCurrencies;
+			final String[] aux = currencies.replace(" ", "").replace("[", "").replace("]", "").split(",");
+			listCurrencies = Arrays.asList(aux);
+			for (final String c : listCurrencies)
+				if (c.equals(object.getRetailPrice().getCurrency()))
+					b = true;
+			super.state(b != false, "retailPrice", "administrator.offer.form.error.wrongCurrency");
 		}
 	}
 

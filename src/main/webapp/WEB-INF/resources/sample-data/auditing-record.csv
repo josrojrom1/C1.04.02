@@ -1,7 +1,11 @@
 key,subject,assessment,startPeriod,endPeriod,mark,link,correction,key:audit
-auditing-record-01-01,Matemáticas,D5=)iº4@0qP8/7€tOCP!x$!Z4qUWIPT=UaQFdxtVz$h¡·n6y7@d%r!lm7v%F&(@5MMynVHwPgfeONZw50E4TI!4gdZzZ8&oGmByZ,2022/03/15 17:47,2022/03/16 20:30,B,https://www.kahoot.com,false,audit-01-01
-auditing-record-01-02,Diseño y Pruebas II,4@0qP8/7€tOCP!x$!Z4qUWIPT=U,2012/06/24 05:37,2012/06/27 21:37,A,,false,audit-01-01
-auditing-record-01-03,Diseño y Pruebas II,4@0qP8/7€tOCP!x$!Z4qUWIPT=U,2012/06/24 05:37,2012/06/27 21:37,A,,false,audit-01-01
-auditing-record-01-04,Diseño y Pruebas II,4@0qP8/7€tOCP!x$!Z4qUWIPT=U,2012/06/24 05:37,2012/06/27 21:37,C,,false,audit-01-01
-auditing-record-02-01,Diseño y Pruebas I,E,2020/06/24 07:27,2020/08/03 11:07,A_PLUS,https://www.youtube.com,false,audit-02-01
-auditing-record-02-02,ROZ3FS9dTNCv06aWcD!SgxDldCHzY(ImwpMR/g5Eq$!p&?$(G3¿%)Q6$)&l8UK?IbMxvuBrvj$e,n6y7@d%r!lm7v%F&(@5MMynVHwPgfeONZw50E4TI!4gd,2015/01/30 01:32,2015/02/22 18:50,A_PLUS,https://www.mongodb.com,false,audit-02-01
+auditing-record-01-01,Matemáticas,Dos examenes a lo largo del curso y un trabajo final,2022/03/15 17:47,2022/03/16 20:30,B,https://www.kahoot.com,false,audit-01-01
+auditing-record-01-02,Diseño y Pruebas II,Buenas calificaciones en general,2012/06/24 05:37,2012/06/27 21:37,A,,false,audit-01-01
+auditing-record-01-03,Diseño y Pruebas II,Media de calificacion baja,2012/06/24 05:37,2012/06/27 21:37,C,,false,audit-01-01
+auditing-record-01-04,Diseño y Pruebas II,Bastante competente,2012/06/24 05:37,2012/06/27 21:37,C,,false,audit-01-01
+auditing-record-02-01,Diseño y Pruebas I,Evaluacion mediante media del comportamiento,2020/06/24 07:27,2020/08/03 11:07,A_PLUS,https://www.youtube.com,false,audit-02-01
+auditing-record-02-02,Algorimos geneticos,Mejoria con respecto a los registros normales,2022/07/29 22:59,2022/07/29 23:59,B,https://www.youtube.com,true,audit-02-01
+auditing-record-02-03,Universidad Sevilla,Se efectua correcion en los registros,2022/07/29 23:00,2022/07/30 00:00,C,https://www.youtube.com,true,audit-02-01
+auditing-record-02-04,Curso de prueba,Pesimo comportamiento - nota baja,2020/06/24 07:27,2020/08/03 11:07,F_MINUS,https://www.youtube.com,false,audit-02-01
+auditing-record-02-05,Curso de prueba II,Otra registro de correcion,2020/06/24 07:27,2020/08/03 11:07,F,https://www.youtube.com,true,audit-02-01
+auditing-record-02-06,Ciencias,Todo bien en general,2015/01/30 01:32,2015/02/22 18:50,A_PLUS,https://www.mongodb.com,false,audit-02-01

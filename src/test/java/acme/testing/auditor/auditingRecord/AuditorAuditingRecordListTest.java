@@ -24,10 +24,11 @@ public class AuditorAuditingRecordListTest extends TestHarness {
 		super.signIn("auditor2", "auditor2");
 		super.clickOnMenu("Auditor", "List my audits");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.clickOnButton("Auditing records");
 
 		super.checkListingExists();
+		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndex, 0, subject);
 		super.checkColumnHasValue(recordIndex, 1, mark);
 		super.signOut();
@@ -37,7 +38,7 @@ public class AuditorAuditingRecordListTest extends TestHarness {
 	public void test300Hacking() {
 		Collection<Audit> audits;
 		String param;
-		audits = this.repository.findManyAuditsByAssistant("auditor2");
+		audits = this.repository.findManyAuditsByAuditor("auditor2");
 		for (final Audit audit : audits) {
 			param = String.format("id=%d", audit.getId());
 			super.checkLinkExists("Sign in");

@@ -46,10 +46,9 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 		int id;
 		Practicum practicum;
 		id = super.getRequest().getData("masterId", int.class);
-		System.out.println(id);
 		practicum = this.repository.findOnePracticum(id);
 		status = practicum != null && super.getRequest().getPrincipal().hasRole(Company.class) && super.getRequest().getPrincipal().getActiveRoleId() == practicum.getCompany().getId() && practicum.isDraftMode();
-		super.getResponse().setAuthorised(true);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -115,7 +114,8 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 		Practicum practicum;
 		practicum = this.repository.findOnePracticum(super.getRequest().getData("masterId", int.class));
 		final Long time = TimeUnit.MILLISECONDS.toSeconds(object.getTimePeriodEnd().getTime() - object.getTimePeriodStart().getTime());
-		final double hours = time.doubleValue() / 3600;
+		final double hour_factor = 3600.0;
+		final double hours = time.doubleValue() / hour_factor;
 		practicum.setTotalTime(practicum.getTotalTime() + hours);
 		this.repository2.save(practicum);
 		this.repository.save(object);
