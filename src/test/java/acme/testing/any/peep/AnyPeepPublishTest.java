@@ -72,7 +72,6 @@ public class AnyPeepPublishTest extends TestHarness {
 		super.checkListingExists();
 		super.clickOnButton("Publish");
 		super.checkFormExists();
-		super.fillInputBoxIn("moment", moment);
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("message", message);
 		super.fillInputBoxIn("email", email);
@@ -91,7 +90,6 @@ public class AnyPeepPublishTest extends TestHarness {
 		super.checkListingExists();
 		super.clickOnButton("Publish");
 		super.checkFormExists();
-		super.fillInputBoxIn("moment", moment);
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("nick", nick);
 		super.fillInputBoxIn("message", message);
