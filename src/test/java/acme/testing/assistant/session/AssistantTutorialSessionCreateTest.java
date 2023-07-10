@@ -24,7 +24,7 @@ public class AssistantTutorialSessionCreateTest extends TestHarness {
 		super.signIn("assistant2", "assistant2");
 		super.clickOnMenu("Assistant", "List my tutorials");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.clickOnButton("List sessions");
 		super.clickOnButton("Create a session");
 
@@ -39,7 +39,7 @@ public class AssistantTutorialSessionCreateTest extends TestHarness {
 
 		super.clickOnMenu("Assistant", "List my tutorials");
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(0);
 		super.clickOnButton("List sessions");
 		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndex, 0, title);
