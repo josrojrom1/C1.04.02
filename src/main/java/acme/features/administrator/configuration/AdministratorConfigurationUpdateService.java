@@ -43,7 +43,7 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 	public void bind(final Configuration object) {
 		assert object != null;
 
-		super.bind(object, "systemCurrency", "acceptedCurrencies");
+		super.bind(object, "systemCurrency", "acceptedCurrencies", "spamThreshold");
 
 	}
 
@@ -52,6 +52,8 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("systemCurrency"))
 			super.state(object.getAcceptedCurrencies().contains(object.getSystemCurrency()), "systemCurrency", "administrator.configuration.form.error.currency");
+		if (!super.getBuffer().getErrors().hasErrors("spamThreshold"))
+			super.state(object.getSpamThreshold() >= 0 && object.getSpamThreshold() <= 1, "spamThreshold", "administrator.configuration.form.error.threshold");
 	}
 
 	@Override
@@ -66,7 +68,7 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 		assert object != null;
 		Tuple tuple;
 
-		tuple = super.unbind(object, "systemCurrency", "acceptedCurrencies");
+		tuple = super.unbind(object, "systemCurrency", "acceptedCurrencies", "spamThreshold");
 		super.getResponse().setData(tuple);
 	}
 }
