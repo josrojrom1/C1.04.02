@@ -1,9 +1,0 @@
-key,title,abst,learningTime,body,lectureType,draftMode,link,key:lecturer
-lecture-01,"HTML + CSS + JavaScript","En esta asignatura aprenderá como programar en lenguajes orientados al desarrollo web desde cero",2,"body","HANDS_ON",false,"https://example.es",lecturer-01
-lecture-02,"PHP + mariaDB","En esta asignatura aprenderá a gestionar peticiones mediante PHP y a crear una BD en mariaDB",3,"body","THEORY",false,"https://example.es",lecturer-01
-lecture-03,"Planificación Automática","En esta asignatura aprenderá las bases de los algoritmos de planificación automática",3,"body","HANDS_ON",false,"https://example.es",lecturer-02
-lecture-04,"esto es el title de la lecture 2","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",3,"a","HANDS_ON",false,null,lecturer-02
-lecture-05,"esto es el title de la lecture 2","esto es el resumen lecturer 2",3,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","HANDS_ON",false,"https://example.es",lecturer-02
-lecture-06,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345","a",3,"body","THEORY",false,"https://example.es",lecturer-02
-lecture-07,"test","test",1,"test","HANDS_ON",false,null,lecturer-01
-lecture-08,"z testing update","testing update",2,"testing update","HANDS_ON",true,https://example.com,lecturer-01

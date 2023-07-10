@@ -1,8 +1,0 @@
-key,moment,title,author,message,email,link
-note-01,"2022/02/02 04:25","Esto es un titulo de prueba","<administrator> - <Acme, Administrator>","message de prueba","amer@acme.es","https://youtube.com"
-note-02,"2022/02/02 05:25","Esto es un titulo de prueba","<administrator> - <Acme, Administrator>","a","amer@acme.es","https://youtube.com"
-note-03,"2022/05/22 06:25","a","<lecturer1> - <Cabesita, Ivan>","a","amer@acme.es","https://youtube.com"
-note-04,"2022/02/01 07:25","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345","<lecturer2> - <Reguera, Lucia>","a","amer@acme.es","https://youtube.com"
-note-05,"2022/07/20 14:25","Ayuda","<assistant1> - <Perez, Manolo>","hola",null,"https://youtube.com"
-note-06,"2022/07/24 11:45","Buenas","<student1> - <Reguera, Pedro>","mensaje prueba",pepe@acme.es,"https://minecraft.com"
-note-07,"2022/07/29 15:21","Buenas tardes","<auditor1> - <Reina, Jose>","hola mundo",jesustoledo@acme.es,"https://football.com"
