@@ -35,4 +35,6 @@ administrator.offer.form.button.delete = Delete
 administrator.offer.form.button.create = Create Offer
 #--------------ERRORS--------------------------------#
 administrator.offer.form.error.totalTime = Start and end must be a week apart from each other
-administrator.offer.form.error.instanceMoment = Moment has to be at least a day prior to start
+administrator.offer.form.error.instanceMoment = Start must be at least a day after instantiation
+administrator.offer.form.error.retailPrice = Retail price must be positive or nought
+administrator.offer.form.error.wrongCurrency = Price expressed in unaccepted currency

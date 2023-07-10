@@ -27,8 +27,8 @@ public interface CompanyPracticumRepository extends AbstractRepository {
 	@Query("SELECT c FROM Company c where c.id = :id")
 	public Company findOneCompanyById(int id);
 
-	@Query("SELECT c FROM Course c WHERE c.draftMode = false")
-	public Collection<Course> findAllPublishedCourses();
+	@Query("SELECT c FROM Course c WHERE c.courseType = 1")
+	public Collection<Course> findAllHandsOnCourses();
 
 	@Query("SELECT c FROM Course c WHERE c.id=:id")
 	public Course findOneCourseById(int id);
@@ -38,4 +38,5 @@ public interface CompanyPracticumRepository extends AbstractRepository {
 
 	@Query("SELECT ps FROM PracticumSession ps WHERE ps.practicum.id=:id")
 	public Collection<PracticumSession> findPracticumSessionsById(int id);
+
 }

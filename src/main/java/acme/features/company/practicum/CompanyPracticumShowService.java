@@ -54,13 +54,15 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 		assert object != null;
 
 		Collection<Course> courses;
-		courses = this.repository.findAllPublishedCourses();
+		courses = this.repository.findAllHandsOnCourses();
 		SelectChoices courseChoices;
 		courseChoices = SelectChoices.from(courses, "title", object.getCourse());
 
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "abst", "goals");
 		tuple.put("totalTime", object.getTotalTime());
+		tuple.put("totalTimePlus", object.getTotalTime() + 0.1 * object.getTotalTime());
+		tuple.put("totalTimeLess", object.getTotalTime() - 0.1 * object.getTotalTime());
 		tuple.put("course", courseChoices.getSelected().getKey());
 		tuple.put("draftMode", object.isDraftMode());
 		tuple.put("hasAddendum", object.isHasAddendum());

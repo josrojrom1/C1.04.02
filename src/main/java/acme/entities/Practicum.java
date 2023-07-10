@@ -1,13 +1,9 @@
 
 package acme.entities;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -50,8 +46,7 @@ public class Practicum extends AbstractEntity {
 	@Length(max = 100)
 	protected String			goals;
 
-	//Estimated total time (Practicum sessions time ± 10%)
-
+	//Estimated total time (10% Range shown in App)
 	protected double			totalTime;
 
 	//Whether or not the Practicum has been published
@@ -59,11 +54,6 @@ public class Practicum extends AbstractEntity {
 
 	//Wheter or not the Practicum has an addendum session in it
 	protected boolean			hasAddendum;
-
-	@NotNull
-	@Valid
-	@Temporal(TemporalType.TIMESTAMP)
-	protected Date				publishTime;
 
 	@ManyToOne()
 	@Valid

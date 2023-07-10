@@ -14,7 +14,8 @@ company.practicum.show.label.title = Título
 company.practicum.show.label.abst = Resumen
 company.practicum.show.label.goals = Objetivos
 company.practicum.show.label.totalTime = Tiempo total estimado
-company.practicum.show.label.publishTime = Fecha de publicación
+company.practicum.show.label.totalTimePlus = Tiempo máximo estimado
+company.practicum.show.label.totalTimeLess = Tiempo mínimo estimado
 company.practicum.show.label.company = Empresa
 company.practicum.show.label.course = Curso
 
@@ -33,3 +34,7 @@ company.practicum.list.button.create = Crear
 company.practicum.form.error.duplicated = Código duplicado
 company.practicum.form.error.totalTime = El tiempo no puede ser negativo
 company.practicum.form.error.spam = No hagas spam
+company.practicum.form.error.noSessions = No se puede publicar una práctica sin sesiones
+company.practicum.form.error.nullCourse =  No se puede publicar una práctica sin asignarle un curso
+company.practicum.form.error.unpublishedCourse = No se puede asignar una práctica a un curso sin publicar
+company.practicum.form.error.wrongCourseType = No se puede asignar una práctica a un curso no práctico

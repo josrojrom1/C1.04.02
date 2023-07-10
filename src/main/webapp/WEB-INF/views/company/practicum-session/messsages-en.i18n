@@ -23,6 +23,7 @@ company.practicumSession.form.button.addendum = Create Addendum
 #--------------LIST------------------------------#
 company.practicumSession.list.label.title = Title
 company.practicumSession.list.label.practicum = Practicum
+company.practicumSession.list.label.isAddendum = Is Addendum?
 company.practicumSession.list.button.create = Create
 company.practicumSession.list.button.addendum = Create Addendum
 #--------------Errors------------------------------#

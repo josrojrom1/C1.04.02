@@ -111,10 +111,14 @@ public class CompanyPracticumSessionUpdateService extends AbstractService<Compan
 		System.out.println(practicum);
 		final Long old_time = TimeUnit.MILLISECONDS.toSeconds(this.repository.findOnePracticumSession(object.getId()).getTimePeriodEnd().getTime() - this.repository.findOnePracticumSession(object.getId()).getTimePeriodStart().getTime());
 		final Long time = TimeUnit.MILLISECONDS.toSeconds(object.getTimePeriodEnd().getTime() - object.getTimePeriodStart().getTime());
-		if (old_time > time)
-			practicum.setTotalTime(practicum.getTotalTime() - (old_time - time) / 3600);
-		else if (time > old_time)
-			practicum.setTotalTime(practicum.getTotalTime() + (time - old_time) / 3600);
+		final double hour_factor = 3600.0;
+		if (old_time > time) {
+			final double final_time = practicum.getTotalTime() - (old_time - time) / hour_factor;
+			practicum.setTotalTime(final_time);
+		} else if (time > old_time) {
+			final double final_time = practicum.getTotalTime() - (time - old_time) / hour_factor;
+			practicum.setTotalTime(final_time);
+		}
 		this.repository2.save(practicum);
 		this.repository.save(object);
 	}
