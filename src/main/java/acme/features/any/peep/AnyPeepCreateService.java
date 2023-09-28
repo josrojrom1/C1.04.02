@@ -103,15 +103,8 @@ public class AnyPeepCreateService extends AbstractService<Any, Peep> {
 		assert object != null;
 
 		Tuple tuple;
-		Principal principal;
-		principal = super.getRequest().getPrincipal();
 
 		tuple = super.unbind(object, "moment", "title", "nick", "message", "email", "link");
-
-		if (principal.hasRole(Anonymous.class))
-			tuple.put("readonly1", true);
-		else
-			tuple.put("readonly1", false);
 
 		super.getResponse().setData(tuple);
 	}
