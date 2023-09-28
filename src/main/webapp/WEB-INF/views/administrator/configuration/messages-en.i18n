@@ -14,6 +14,7 @@ administrator.configuration.form.label.acceptedCurrencies = Accepted Currencies
 administrator.configuration.list.label.systemCurrency = System Currency
 administrator.configuration.list.label.acceptedCurrencies = Accepted Currencies
 administrator.configuration.form.label.threshold = Spam Threshold
+administrator.configuration.form.label.terms = Spam Terms
 
 #--------------UPDATE------------------------------#
 administrator.configuration.form.button.update= Update
