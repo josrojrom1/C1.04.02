@@ -26,31 +26,31 @@ public class Peep extends AbstractEntity {
 
 	//Serialisation identifier-----------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long										serialVersionUID	= 1L;
 
 	//Attributes---------------------
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
 	@NotNull
-	protected Date				moment;
+	protected Date													moment;
 
 	@Length(max = 75)
 	@NotBlank
-	protected String			title;
+	protected String												title;
 
 	@Length(max = 75)
-	//@NotBlank  (Restriccion Anonymous)
+	@NotBlank  (Restriccion Anonymous)
 	protected String			nick;
 
 	@Length(max = 100)
 	@NotBlank
-	protected String			message;
+	protected String												message;
 
 	@Email
-	protected String			email;
+	protected String												email;
 
 	@URL
-	protected String			link;
+	protected String												link;
 
 }
