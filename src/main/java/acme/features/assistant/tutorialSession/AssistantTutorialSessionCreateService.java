@@ -76,15 +76,14 @@ public class AssistantTutorialSessionCreateService extends AbstractService<Assis
 			super.state(object.getPeriodStart().after(moment), "periodStart", "assistant.tutorialSession.form.error.periodStart");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("periodFinish"))
-			super.state(object.getPeriodStart().before(object.getPeriodFinish()), "periodFinish", "assistant.tutorialSession.form.error.periodFinish");
-
-		if (!super.getBuffer().getErrors().hasErrors("periodFinish")) {
+		if (!super.getBuffer().getErrors().hasErrors("periodFinish") && !super.getBuffer().getErrors().hasErrors("periodStart")) {
+			super.state(object.getPeriodFinish().after(object.getPeriodStart()), "periodFinish", "assistant.tutorialSession.form.error.periodFinish");
 			final Duration duration = MomentHelper.computeDuration(object.getPeriodStart(), object.getPeriodFinish());
 			final Duration d1 = Duration.ofHours(1);
 			final Duration d2 = Duration.ofHours(5);
 			super.state(d1.compareTo(duration) <= 0 && d2.compareTo(duration) >= 0, "*", "assistant.tutorialSession.form.error.duration");
 		}
+
 		if (!super.getBuffer().getErrors().hasErrors("title")) {
 			String validar;
 			validar = object.getTitle();
