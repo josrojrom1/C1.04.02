@@ -37,6 +37,10 @@
 		<jstl:when test="${acme:anyOf(_command, 'show') && draftMode == false}">
 
 			<acme:input-textbox code="lecturer.course.form.label.code" path="code" readonly = "True"/>
+			
+			<acme:input-textarea code="lecturer.course.form.label.courseType" path="courseType" readonly = "True"/>
+			
+			
 			<acme:input-textbox code="lecturer.course.form.label.title" path="title" readonly = "True"/>
 			<acme:input-textarea code="lecturer.course.form.label.abst" path="abst" readonly = "True"/>
 			<acme:input-money code="lecturer.course.form.label.retailPrice" path="retailPrice" readonly = "True"/>
