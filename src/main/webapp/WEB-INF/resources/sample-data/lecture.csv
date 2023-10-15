@@ -2,8 +2,19 @@ key,title,abst,learningTime,body,lectureType,draftMode,link,key:lecturer
 lecture-01,"HTML + CSS + JavaScript","En esta asignatura aprenderá como programar en lenguajes orientados al desarrollo web desde cero",2,"body","HANDS_ON",false,"https://example.es",lecturer-01
 lecture-02,"PHP + mariaDB","En esta asignatura aprenderá a gestionar peticiones mediante PHP y a crear una BD en mariaDB",3,"body","THEORY",false,"https://example.es",lecturer-01
 lecture-03,"Planificación Automática","En esta asignatura aprenderá las bases de los algoritmos de planificación automática",3,"body","HANDS_ON",false,"https://example.es",lecturer-02
-lecture-04,"esto es el title de la lecture 2","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",3,"a","HANDS_ON",false,null,lecturer-02
-lecture-05,"esto es el title de la lecture 2","esto es el resumen lecturer 2",3,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","HANDS_ON",false,"https://example.es",lecturer-02
-lecture-06,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345","a",3,"body","THEORY",false,"https://example.es",lecturer-02
-lecture-07,"test","test",1,"test","HANDS_ON",false,null,lecturer-01
-lecture-08,"z testing update","testing update",2,"testing update","HANDS_ON",true,https://example.com,lecturer-01
+lecture-04,"a","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",3,"a","HANDS_ON",false,null,lecturer-02
+lecture-05,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345","a",3,"body","HANDS_ON",false,"https://example.es",lecturer-02
+lecture-06,"test","test",1,"test","HANDS_ON",false,null,lecturer-01
+lecture-07,"z testing update","testing update",2,"testing update","HANDS_ON",true,https://example.com,lecturer-01
+lecture-08,"Titulo para comprobar la longitud máxima del campo (max 75) ---------------","a",2,"body","THEORY",false,"https://example.es",lecturer-01
+lecture-09,"€|@##~€[]{}{}{{ññ","a",2,"a","HANDS_ON",false,"https://example.es",lecturer-01
+lecture-10,"a","a",2,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","HANDS_ON",false,null,lecturer-01
+lecture-11,"﷼﷼﷼﷼﷼﷼","a",2,"a","HANDS_ON",false,null,lecturer-01
+lecture-12,"﷼﷼﷼﷼﷼﷼","圜圜圜圜圜圜圜圜圜圜",2,"a","HANDS_ON",false,null,lecturer-01
+lecture-13,"﷼﷼﷼﷼﷼﷼","圜圜圜圜圜圜圜圜圜圜",1,"б⟩ ⟨в⟩ ⟨г⟩ ⟨д⟩ ⟨ж⟩ ⟨з⟩ ⟨к⟩ ⟨л⟩ ⟨м⟩ ⟨н⟩ ⟨п⟩ ⟨р⟩ ⟨с⟩ ⟨т⟩ ⟨ф⟩ ⟨х⟩ ⟨ц⟩ ⟨ч⟩ ⟨ш⟩ ⟨щ⟩)","HANDS_ON",false,null,lecturer-01
+lecture-14,"﷼﷼﷼","a",6,"a","HANDS_ON",false,null,lecturer-01
+lecture-15,"﷼﷼﷼﷼﷼","圜圜圜圜圜圜圜圜圜圜",2,"a","HANDS_ON",false,null,lecturer-01
+lecture-16,"Привіт народ","a",1,"a","THEORY",false,null,lecturer-02
+lecture-17,"Привіт на","전 세계 여러분 안녕하세요",3,"a","HANDS_ON",false,"https://youtube.com",lecturer-02
+lecture-18,"Привіт наро","전 세계 여러분 안녕하세요",5,"שלום לך עולם","THEORY",false,null,lecturer-02
+lecture-19,"test1","test1",9999,"test","THEORY",false,"https://example.com",lecturer-01
