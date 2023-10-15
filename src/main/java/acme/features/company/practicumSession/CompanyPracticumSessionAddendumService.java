@@ -18,6 +18,7 @@ import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
+import acme.utility.SpamDetector;
 
 @Service
 public class CompanyPracticumSessionAddendumService extends AbstractService<Company, PracticumSession> {
@@ -27,6 +28,9 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 
 	@Autowired
 	protected CompanyPracticumRepository		repository2;
+
+	@Autowired
+	protected SpamDetector						textValidator;
 
 
 	@Override
@@ -75,22 +79,43 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 	public void validate(final PracticumSession object) {
 		assert object != null;
 		//Validación de la fechas
-		if (!super.getBuffer().getErrors().hasErrors("timePeriodStart")) {
-			final Date moment = MomentHelper.getCurrentMoment();
-			final Duration duration = MomentHelper.computeDuration(moment, object.getTimePeriodStart());
-			final Duration d1 = Duration.ofDays(7);
-			d1.minus(1, ChronoUnit.MINUTES);
-			super.state(duration.compareTo(d1) >= 0, "timePeriodStart", "company.practicumSession.form.error.timePeriodStart");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("timePeriodStart"))
+			try {
+				final Date moment = MomentHelper.getCurrentMoment();
+				final Duration duration = MomentHelper.computeDuration(moment, object.getTimePeriodStart());
+				final Duration d1 = Duration.ofDays(7);
+				d1.minus(1, ChronoUnit.MINUTES);
+				super.state(duration.compareTo(d1) >= 0, "timePeriodStart", "company.practicumSession.form.error.timePeriodStart");
+			} catch (final NullPointerException e) {
+				super.state(true, "timePeriodStart", "company.practicumSession.form.error.nullTime");
+			}
 
 		if (!super.getBuffer().getErrors().hasErrors("timePeriodEnd"))
-			super.state(object.getTimePeriodStart().before(object.getTimePeriodEnd()), "timePeriodEnd", "company.practicumSession.form.error.timePeriodEnd");
+			try {
+				super.state(object.getTimePeriodStart().before(object.getTimePeriodEnd()), "timePeriodEnd", "company.practicumSession.form.error.timePeriodEnd");
+			} catch (final NullPointerException e) {
+				super.state(true, "timePeriodEnd", "company.practicumSession.form.error.nullTime");
+			}
 
-		if (!super.getBuffer().getErrors().hasErrors("periodFinish")) {
-			final Duration duration2 = MomentHelper.computeDuration(object.getTimePeriodStart(), object.getTimePeriodEnd());
-			final Duration d2 = Duration.ofDays(7);
-			d2.minus(1, ChronoUnit.MINUTES);
-			super.state(duration2.compareTo(d2) >= 0, "*", "company.practicumSession.form.error.duration");
+		if (!super.getBuffer().getErrors().hasErrors("periodFinish"))
+			try {
+				final Duration duration2 = MomentHelper.computeDuration(object.getTimePeriodStart(), object.getTimePeriodEnd());
+				final Duration d2 = Duration.ofDays(7);
+				d2.minus(1, ChronoUnit.MINUTES);
+				super.state(duration2.compareTo(d2) >= 0, "*", "company.practicumSession.form.error.duration");
+			} catch (final AssertionError e) {
+				super.state(true, "*", "company.practicumSession.form.error.duration");
+			}
+
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			String validar;
+			validar = object.getTitle();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("abst")) {
+			String validar;
+			validar = object.getAbst();
+			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "company.practicum.form.error.spam");
 		}
 
 	}
