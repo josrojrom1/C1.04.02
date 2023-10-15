@@ -13,9 +13,7 @@
 			<acme:input-textbox code="lecturer.course.form.label.title" path="title"/>
 			<acme:input-textarea code="lecturer.course.form.label.abst" path="abst"/>
 			<acme:input-money code="lecturer.course.form.label.retailPrice" path="retailPrice"/>
-			<jstl:if test="${showExchange}">
-			<acme:input-money code="lecturer.course.form.label.moneyExchange" path="moneyExchange" readonly="true"/>
-			</jstl:if>
+
 			<acme:input-textbox code="lecturer.course.form.label.link" path="link"/>
 
 			<acme:button code="lecturer.course.button.courseOfLecture.create" action="/lecturer/course-of-lecture/create?id=${id}"/>
