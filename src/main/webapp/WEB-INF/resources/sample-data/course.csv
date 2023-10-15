@@ -3,7 +3,7 @@ course-01,CPR 001,"Curso de Programación Web básico","En este curso aprenderá
 course-02,CIA 001,"Curso de Inteligencia Artificial","Introduccón a la clasificacón de documentos y el uso de librerías python",15.19 EUR,null,false,"BALANCED",lecturer-02
 course-03,CTP 001,"Curso de Testing y Pruebas","Introducción al Testing formal e Informal",32.32 EUR,null,true,"THEORY",lecturer-01
 course-04,CDI 001,"Curso de Derecho Informático","Aprende todas las leyes informáticas actuales",80.12 USD,null,true,"THEORY",lecturer-02
-course-99,CPR 189,"Curso de Programación Web Avanzado","Aquí aprenderá mejores prácticas desarrollo web",29.95 USD,"https://youtube.com/cursoChuloDeHTML",true,"HANDS_ON",lecturer-01
+course-99,CPR 189,"Curso de Programación Web Avanzado","Aquí aprenderá mejores prácticas desarrollo web",29.95 EUR,"https://youtube.com/cursoChuloDeHTML",true,"HANDS_ON",lecturer-01
 course-05,Z 001,"Curso de zsh","En este curso aprenderá las bases para usar una terminal zsh",6.95 USD,"https://youtube.com/cursoChuloDeZsh",false,"THEORY",lecturer-01
 course-06,JJ 001,"Curso de JavaScript Junior","En este curso aprenderá las bases para programar en JavaScript",16.95 USD,null,false,"THEORY",lecturer-01
 course-07,TT 111,"zTitulo para comprobar la longitud máxima del campo (max 75) --------------","a",16.95 USD,null,false,"HANDS_ON",lecturer-01
