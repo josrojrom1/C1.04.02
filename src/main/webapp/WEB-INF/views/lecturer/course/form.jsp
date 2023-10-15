@@ -46,7 +46,6 @@
 			<acme:input-textbox code="lecturer.course.form.label.link" path="link" readonly = "True"/>
 			
 			<acme:button code="lecturer.course.form.button.lectures" action="/lecturer/lecture/list-lecture-from-course?id=${id}"/>
-			<acme:submit code="lecturer.course.form.button.delete" action="/lecturer/course/delete"/>
 		</jstl:when>
 		
 		
