@@ -9,9 +9,6 @@
 	<acme:input-textbox code="any.course.form.label.title" path="title"/>
 	<acme:input-textarea code="any.course.form.label.abst" path="abst"/>
 	<acme:input-money code="any.course.form.label.retailPrice" path="retailPrice"/>
-	<jstl:if test="${showExchange}">
-	<acme:input-money code="any.course.form.label.moneyExchange" path="moneyExchange" readonly="true"/>
-	</jstl:if>
 	<acme:input-textbox code="any.course.form.label.link" path="link"/>
 </acme:form>
 <jstl:choose>

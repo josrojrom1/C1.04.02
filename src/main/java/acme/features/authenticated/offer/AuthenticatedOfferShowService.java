@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Offer;
-import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
-import acme.forms.MoneyExchange;
 import acme.framework.components.accounts.Authenticated;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -15,10 +13,7 @@ import acme.framework.services.AbstractService;
 public class AuthenticatedOfferShowService extends AbstractService<Authenticated, Offer> {
 
 	@Autowired
-	protected AuthenticatedOfferRepository				repository;
-
-	@Autowired
-	protected AuthenticatedMoneyExchangePerformService	moneyExchangeService;
+	protected AuthenticatedOfferRepository repository;
 
 
 	@Override
@@ -54,15 +49,6 @@ public class AuthenticatedOfferShowService extends AbstractService<Authenticated
 		assert object != null;
 		Tuple tuple;
 		tuple = super.unbind(object, "moment", "heading", "summary", "timePeriodStart", "timePeriodEnd", "retailPrice", "link");
-		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
-		if (!systemCurrency.equals(object.getRetailPrice().getCurrency())) {
-			MoneyExchange moneyExchange;
-			moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
-			tuple.put("moneyExchange", moneyExchange.getTarget());
-			tuple.put("showExchange", true);
-		} else
-			tuple.put("showExchange", false);
-
 		super.getResponse().setData(tuple);
 	}
 }
