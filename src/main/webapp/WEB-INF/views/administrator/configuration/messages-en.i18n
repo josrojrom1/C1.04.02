@@ -14,10 +14,11 @@ administrator.configuration.form.label.acceptedCurrencies = Accepted Currencies
 administrator.configuration.list.label.systemCurrency = System Currency
 administrator.configuration.list.label.acceptedCurrencies = Accepted Currencies
 administrator.configuration.form.label.threshold = Spam Threshold
-
+administrator.configuration.form.label.terms = Spam Terms
+administrator.configuration.form.label.spam-terms = Spam Terms
 #--------------UPDATE------------------------------#
 administrator.configuration.form.button.update= Update
-
+acme.validation.configuration.spam-terms = Spam terms
 
 #--------------Errors------------------------------#
 administrator.configuration.form.error.currency= This currency is not accepted
