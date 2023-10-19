@@ -78,6 +78,12 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 	@Override
 	public void validate(final PracticumSession object) {
 		assert object != null;
+
+		boolean confirmation;
+
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+
 		//Validación de la fechas
 		if (!super.getBuffer().getErrors().hasErrors("timePeriodStart"))
 			try {
@@ -150,6 +156,7 @@ public class CompanyPracticumSessionAddendumService extends AbstractService<Comp
 		tuple.put("draftMode", object.getPracticum().isDraftMode());
 		tuple.put("readPracticum", true);
 		tuple.put("masterId", super.getRequest().getData("masterId", int.class));
+		tuple.put("confirmation", false);
 		super.getResponse().setData(tuple);
 	}
 }

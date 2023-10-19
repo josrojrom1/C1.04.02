@@ -15,6 +15,7 @@ company.practicumSession.form.label.timePeriodStart = Inicio
 company.practicumSession.form.label.timePeriodEnd = Fin
 company.practicumSession.form.label.link = Link
 company.practicumSession.form.label.practicum = Práctica
+company.practicumSession.form.label.confirmation = Confirmación
 
 company.practicumSession.form.button.update = Actualizar
 company.practicumSession.form.button.delete = Eliminar
