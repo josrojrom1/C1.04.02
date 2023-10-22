@@ -12,4 +12,4 @@ course-09,TT 333,"z3","b",0.01 USD,null,false,"THEORY",lecturer-02
 course-10,TT 444,"z","b",9999.99 EUR,"https://youtube.com",false,"HANDS_ON",lecturer-02
 course-11,TT 555,"שלום לך עולם",b,9.99 USD,null,false,"THEORY",lecturer-02
 course-12,TT 666,"שלום לך עולם","Բարև աշխարհ",9.99 USD,"https://example.com",false,"THEORY",lecturer-02
-course-13,TT 777,"ハローワールド","हेल्लो संसार",9.99 USD,null,false,"THEORY",lecturer-02
+course-13,TT 777,"ハローワールド","हेल्लो संसार",9.99 USD,null,true,"THEORY",lecturer-02

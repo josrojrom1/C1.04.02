@@ -41,6 +41,7 @@ public class LecturerCoursePublishTest extends TestHarness {
 		super.signIn("lecturer2", "lecturer2");
 		super.clickOnMenu("Lecturer", "List my courses");
 		super.checkListingExists();
+		super.sortListing(0, "desc");
 		super.clickOnListingRecord(0);
 		super.clickOnSubmit("Publish");
 		super.checkErrorsExist();
