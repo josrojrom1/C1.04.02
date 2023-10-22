@@ -25,7 +25,6 @@ public class AssistantTutorialUpdateTest extends TestHarness {
 		super.clickOnMenu("Assistant", "List my tutorials");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
-
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.fillInputBoxIn("code", code);
