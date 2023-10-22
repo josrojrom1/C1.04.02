@@ -11,4 +11,5 @@ recordIndex,subject,assessment,startPeriod,endPeriod,mark,link
 0,están hechos para fallar,testest,2020/09/26 11:00,2020/09/26 10:00,A,
 0,están hechos para fallar,fallan las fechas,2022/07/26 11:00,2023/09/26 12:00,A,
 0,están hechos para fallar,fechas mal",2022/07/29 11:00,2022/07/29 11:30,A,
-0,están hechos para fallar,espero que no falte comprobacion en fechas:),2023/07/29 11:00,2023/07/29 12:30,A,
+0,están hechos para fallar,faltaba comprobar fechas nulas:(,,2023/07/29 12:30,A,
+0,están hechos para fallar,faltaba comprobar fechas nulas:(,2020/09/26 11:00,,A,
