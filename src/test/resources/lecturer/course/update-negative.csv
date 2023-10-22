@@ -1,17 +1,16 @@
 recordIndex,code,title,abst,retailPrice,link
-0,"CPT 001","","",9.9 EUR,""
-1,"",a,b,12 EUR,https://youtube.com
-2,"T",asd,asd,14 USD,""
-3,"TT 11",asdf,asdf,15 EUR,""
-4,"TTT 121","",asd,123 EUR,https://Example.com
-5,"TTT 331",asd,"",1 EUR,""
-6,"CPT 001","AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","A",12.12 USD,https://example.com
-7,"CPT 001","A","AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",14.00 GBP,""
-8,"CPT 001","","ejemplo de abstract para el test",15.15 EUR,""
-9,"CPT 001","A","a",ejemplo update,""
-10,"CPT 001","A","123asd",0 EUR,nigeria
-11,"CPT 001","A","123asd",-1 USD,""
-12,"CPT 001","A","A",999999 EUR,""
-13,"CPT 001","A","A",12.12 RRR,https://example.com
-14,"CPT 001","示例文本","nigeria",13.13 GBP,""
-15,"CPT 001","sex","",null,nigeria
+0,,a,b,12 EUR,https://youtube.com
+1,"T",asd,asd,14 USD,null
+2,"TT 11",asdf,asdf,15 EUR,""
+3,"TTT 121","",asd,123 EUR,https://Example.com
+4,"TTT 331",asd,"",1 EUR,""
+5,"CPT 001","AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","A",12.12 USD,https://example.com
+6,"CPT 001","A","AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",14.00 GBP,""
+7,"CPT 001","","ejemplo de abstract para el test",15.15 EUR,""
+8,"CPT 001","A","a",ejemplo update,""
+9,"CPT 001","A","123asd",0 EUR,nigeria
+10,"CPT 001","A","123asd",-1 USD,""
+11,"CPT 001","A","A",999999 EUR,""
+12,"CPT 001","A","A",12.12 RRR,https://example.com
+13,"CPT 001","示例文本","nigeria",13.13 GBP,""
+14,"CPT 001","sex","",null,nigeria

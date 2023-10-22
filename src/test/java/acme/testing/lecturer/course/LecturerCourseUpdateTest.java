@@ -53,10 +53,10 @@ public class LecturerCourseUpdateTest extends TestHarness {
 	@CsvFileSource(resources = "/lecturer/course/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test200Negative(final int recordIndex, final String code, final String title, final String abst, final String retailPrice, final String link) {
 		// HINT: En este test actualizamos un course con datos incorrectos
-		super.signIn("lecturer1", "lecturer1");
+		super.signIn("lecturer2", "lecturer2");
 		super.clickOnMenu("Lecturer", "List my courses");
 		super.checkListingExists();
-		super.clickOnListingRecord(1);
+		super.clickOnListingRecord(0);
 		super.checkFormExists();
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("abst", abst);
