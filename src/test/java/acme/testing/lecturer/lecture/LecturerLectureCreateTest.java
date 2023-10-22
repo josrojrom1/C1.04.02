@@ -14,7 +14,7 @@ public class LecturerLectureCreateTest extends TestHarness {
 	@CsvFileSource(resources = "/lecturer/lecture/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String title, final String abst, final String learningTime, final String body, final String lectureType, final String link) {
 		// HINT: Nos autenticamos como Lecturer, mostramos las lectures y hacemos click en crear una lecture para ver que todo resulta como esperamos
-		super.signIn("lecturer1", "lecturer1");
+		super.signIn("lecturer3", "lecturer3");
 		super.clickOnMenu("Lecturer", "List my lectures");
 		super.checkListingExists();
 		super.clickOnButton("Create new lecture");
@@ -46,7 +46,7 @@ public class LecturerLectureCreateTest extends TestHarness {
 	public void test200Negative(final int recordIndex, final String title, final String abst, final String learningTime, final String body, final String lectureType, final String link) {
 		// HINT: En este test intentamos crear cursos con datos incorrectos.
 
-		super.signIn("lecturer1", "lecturer1");
+		super.signIn("lecturer3", "lecturer3");
 		super.clickOnMenu("Lecturer", "List my lectures");
 		super.clickOnButton("Create new lecture");
 		super.checkFormExists();
