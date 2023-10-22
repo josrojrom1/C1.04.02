@@ -19,9 +19,11 @@
 		<acme:submit code="company.practicumSession.form.button.create" action="/company/practicum-session/create?masterId=${id}"/>
 	</jstl:if>
 	<jstl:if test="${!draftMode && !hasAddendum && isAddendum}">
+		<acme:input-checkbox code="company.practicumSession.form.label.confirmation" path="confirmation"/>
 		<acme:submit code="company.practicumSession.form.button.addendum" action="/company/practicum-session/addendum?masterId=${masterId}"/>
 	</jstl:if>
 	<jstl:if test="${!draftMode && !hasAddendum && isAddendum==null}">
+		<acme:input-checkbox code="company.practicumSession.form.label.confirmation" path="confirmation"/>
 		<acme:submit code="company.practicumSession.form.button.addendum" action="/company/practicum-session/addendum?masterId=${masterId}"/>
 	</jstl:if>
 </acme:form>
