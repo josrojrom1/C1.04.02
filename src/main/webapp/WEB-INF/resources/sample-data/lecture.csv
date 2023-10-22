@@ -12,7 +12,7 @@ lecture-10,"a","a",2,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 lecture-11,"﷼﷼﷼﷼﷼﷼","a",2,"a","HANDS_ON",false,null,lecturer-01
 lecture-12,"﷼﷼﷼﷼﷼﷼","sdf",2,"a","HANDS_ON",false,null,lecturer-01
 lecture-13,"﷼﷼﷼﷼﷼﷼","Привіт на",1,"б⟩ ⟨в⟩ ⟨г⟩ ⟨д⟩ ⟨ж⟩ ⟨з⟩ ⟨к⟩ ⟨л⟩ ⟨м⟩ ⟨н⟩ ⟨п⟩ ⟨р⟩ ⟨с⟩ ⟨т⟩ ⟨ф⟩ ⟨х⟩ ⟨ц⟩ ⟨ч⟩ ⟨ш⟩ ⟨щ⟩)","HANDS_ON",false,null,lecturer-01
-lecture-14,"﷼﷼﷼","a",6,"a","HANDS_ON",false,null,lecturer-01
+lecture-14,"﷼﷼﷼","a",6,"a","HANDS_ON",true,null,lecturer-01
 lecture-15,"﷼﷼﷼﷼﷼","Привіт на",2,"a","HANDS_ON",false,null,lecturer-01
 lecture-16,"Привіт народ","a",1,"a","THEORY",false,null,lecturer-02
 lecture-17,"Привіт на","전 세계 여러분 안녕하세요",3,"a","HANDS_ON",false,"https://youtube.com",lecturer-02

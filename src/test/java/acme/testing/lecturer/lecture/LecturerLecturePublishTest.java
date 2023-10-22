@@ -27,7 +27,7 @@ public class LecturerLecturePublishTest extends TestHarness {
 		super.signIn("lecturer1", "lecturer1");
 		super.clickOnMenu("Lecturer", "List my lectures");
 		super.checkListingExists();
-		super.sortListing(0, "desc");
+		super.sortListing(0, "asc");
 		super.clickOnListingRecord(0);
 		super.checkFormExists();
 		super.clickOnSubmit("Publish");
@@ -90,7 +90,7 @@ public class LecturerLecturePublishTest extends TestHarness {
 		Collection<Lecture> lectures;
 		String params;
 
-		super.signIn("lecturer2", "lecturer2");
+		super.signIn("lecturer3", "lecturer3");
 		lectures = this.repository.findManyLecturesByLecturerUsername("lecturer1");
 		for (final Lecture lecture : lectures) {
 			params = String.format("id=%d", lecture.getId());
