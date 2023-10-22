@@ -18,3 +18,6 @@ user-account-company-04,true,"UserIdentity{name: 'Ingrid', surname: 'Tersor', em
 user-account-company-05,true,"UserIdentity{name: 'Giovanni', surname: 'Giorgio', email: 'giogio@acme.com'}",company5,company5
 user-account-company-06,true,"UserIdentity{name: 'Alma', surname: 'García', email: 'algar@acme.com'}",company6,company6
 user-account-company-07,true,"UserIdentity{name: 'Romeo', surname: 'Exxet', email: 'romexx@acme.com'}",company7,company7
+user-account-company-08,true,"UserIdentity{name: 'Apolo', surname: 'Exxet', email: 'apooxx@acme.com'}",company8,company8
+user-account-company-09,true,"UserIdentity{name: 'Disteo', surname: 'Exxet', email: 'disexx@acme.com'}",company9,company9
+user-account-company-10,true,"UserIdentity{name: 'Ingram', surname: 'Exxet', email: 'ingexx@acme.com'}",company10,company10
