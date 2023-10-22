@@ -18,6 +18,7 @@ public class AnyPeepPublishTest extends TestHarness {
 		super.clickOnButton("Publish");
 		super.checkFormExists();
 		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("nick", nick);
 		super.fillInputBoxIn("message", message);
 		super.fillInputBoxIn("email", email);
 		super.fillInputBoxIn("link", link);
@@ -25,7 +26,7 @@ public class AnyPeepPublishTest extends TestHarness {
 		super.checkNotErrorsExist();
 		super.clickOnMenu("Peeps", "List of Peeps");
 		super.checkListingExists();
-		super.sortListing(1, "asc");
+		super.sortListing(1, "desc");
 		super.clickOnListingRecord(recordIndex);
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("message", message);
