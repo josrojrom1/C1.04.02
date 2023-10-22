@@ -8,3 +8,4 @@ recordIndex,title,abst,learningTime,body,lectureType,link
 6,"g","a",3,"test create lecture 6",THEORY,""
 7,"h","a",3,"a",HANDS_ON,https://example.com
 8,"h2","a",99,"a",HANDS_ON,https://example.com
+9,"h3","1",999,"3",THEORY,""
