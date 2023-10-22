@@ -1,0 +1,12 @@
+recordIndex,title,abst,sessionType,periodStart,periodFinish,link,tutorial
+0,,no empty title,THEORY,2022/09/26 15:00,2022/09/26 17:00,ftp://ev.us.es,ABC1234
+0,correccion de testiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii,large title,THEORY,2022/09/26 15:00,2022/09/26 17:00,ftp://ev.us.es,ABC1234
+0,empty abst !!!!!,,HANDS_ON,2022/09/26 15:00,2022/09/26 17:00,ftp://ev.us.es,ABC1234
+0,Very large abst,revisando testsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss,THEORY,2022/09/26 15:00,2022/09/26 17:00,ftp://ev.us.es,ABC1234
+0,correccion de test,sessionType required,---,2022/09/26 15:00,2022/09/26 17:00,ftp://ev.us.es,ABC1234
+0,fecha incorrecta,revisando TESTS,HANDS_ON,2022/09/27 15:00,2022/10/03 17:00,ftp://ev.us.es,ABC1234
+0,correccion de test,menos de 5 horas,THEORY,2022/09/26 15:00,2022/09/26 21:00,ftp://ev.us.es,ABC1234
+0,correccion de test,mas de una hora,THEORY,2022/09/26 15:00,2022/09/26 15:50,ftp://ev.us.es,ABC1234
+0,"""""·$%&/()¨¨¨-.-.",necesita fecha inicio,THEORY,,2022/10/03 17:00,ftp://ev.us.es,ABC1234
+0,necesita fecha,revisando TESTS,THEORY,2022/09/26 15:00,,ftp://ev.us.es,ABC1234
+0,No sirveee,el link es incorrecto,THEORY,2022/09/26 15:00,2022/10/03 17:00,ev.us.es,ABC1234
