@@ -24,7 +24,7 @@ public class LecturerLectureShowTest extends TestHarness {
 		// HINT: En este test nos autenticamos como Lecturer, listamos sus lectures y despues hacemos click en una de ellas y comprobamos que contiene los datos esperados  
 		super.signIn("lecturer1", "lecturer1");
 		super.clickOnMenu("Lecturer", "List my lectures");
-		super.sortListing(0, "asc");
+		super.sortListing(0, "desc");
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("title", title);
@@ -39,7 +39,7 @@ public class LecturerLectureShowTest extends TestHarness {
 	//TEST HACKING
 	@Test
 	public void test300Hacking() {
-		// HINT: this test tries to show an unpublished job by someone who is not the principal.
+		// HINT: 
 
 		Collection<Lecture> lectures;
 		String param;
