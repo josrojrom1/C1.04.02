@@ -54,6 +54,7 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 			super.state(object.getAcceptedCurrencies().contains(object.getSystemCurrency()), "systemCurrency", "administrator.configuration.form.error.currency");
 		if (!super.getBuffer().getErrors().hasErrors("spamThreshold"))
 			super.state(object.getSpamThreshold() >= 0 && object.getSpamThreshold() <= 1, "spamThreshold", "administrator.configuration.form.error.threshold");
+
 	}
 
 	@Override

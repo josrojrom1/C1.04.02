@@ -94,7 +94,6 @@ public class AssistantTutorialSessionCreateService extends AbstractService<Assis
 			validar = object.getAbst();
 			super.getBuffer().getErrors().state(super.getRequest(), !this.textValidator.spamChecker(validar), "*", "assistant.tutorialSession.form.error.spam");
 		}
-
 	}
 
 	@Override

@@ -8,9 +8,8 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.Course;
 import acme.entities.Lecture;
+import acme.entities.LectureType;
 import acme.entities.LessonType;
-import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
-import acme.forms.MoneyExchange;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
@@ -19,10 +18,7 @@ import acme.roles.Lecturer;
 public class LecturerCourseShowService extends AbstractService<Lecturer, Course> {
 
 	@Autowired
-	protected LecturerCourseRepository					repository;
-
-	@Autowired
-	protected AuthenticatedMoneyExchangePerformService	moneyExchangeService;
+	protected LecturerCourseRepository repository;
 
 
 	@Override
@@ -56,19 +52,24 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 
 	}
 
-	public LessonType courseType(final Collection<Lecture> lecturesFromACourse) {
-		int theory = 0;//..........En este método calculamos el courseType de un curso.
-		int handson = 0;//.........Recordemos que el sistema rechaza cursos puros teóricos.
-		LessonType res = LessonType.THEORY;
-		for (final Lecture l : lecturesFromACourse)
-			if (l.getLectureType().equals(LessonType.THEORY))
+	public LessonType courseType(final Collection<Lecture> lecturesCourse) {
+		int theory = 0;
+		int handsOn = 0;
+		LessonType res = null;
+		for (final Lecture l : lecturesCourse)
+			if (l.getLectureType().equals(LectureType.THEORY))
 				theory += 1;
-			else if (l.getLectureType().equals(LessonType.HANDS_ON))
-				handson += 1;
-		if (theory > handson)
+			else if (l.getLectureType().equals(LectureType.HANDS_ON))
+				handsOn += 1;
+		if (theory > handsOn && handsOn > 0)
 			res = LessonType.THEORY;
-		else
+		else if (handsOn > theory)
 			res = LessonType.HANDS_ON;
+		else if (theory == 0)
+			res = LessonType.HANDS_ON;
+		else if (handsOn == theory && handsOn > 0)
+			res = LessonType.BALANCED;
+
 		return res;
 	}
 
@@ -87,15 +88,6 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		tuple.put("courseType", this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
 		tuple.put("draftMode", object.isDraftMode());
 		tuple.put("hasLectures", hasLectures);
-
-		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
-		if (!systemCurrency.equals(object.getRetailPrice().getCurrency())) {
-			MoneyExchange moneyExchange;
-			moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
-			tuple.put("moneyExchange", moneyExchange.getTarget());
-			tuple.put("showExchange", true);
-		} else
-			tuple.put("showExchange", false);
 
 		super.getResponse().setData(tuple);
 	}

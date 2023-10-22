@@ -31,4 +31,5 @@ company.practicumSession.form.error.duplicated = El código ya existe
 company.practicumSession.form.error.duration = La duración tiene que ser de al menos 1 semana
 company.practicumSession.form.error.timePeriodStart = El comienzo tiene que ser al menos dentro de una semana
 company.practicumSession.form.error.timePeriodEnd = El comienzo tiene que ser antes que el final
+company.practicumSession.form.error.nullTime = La fecha no puede ser nula
 company.practicumSession.form.error.spam = No hagas spam

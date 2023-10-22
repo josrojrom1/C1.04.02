@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.Course;
 import acme.entities.Lecture;
-import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.lecturer.course.LecturerCoursePublishService;
-import acme.forms.MoneyExchange;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
@@ -19,13 +17,10 @@ import acme.roles.Student;
 public class StudentCourseShowService extends AbstractService<Student, Course> {
 
 	@Autowired
-	protected StudentCourseRepository					repository;
+	protected StudentCourseRepository		repository;
 
 	@Autowired
-	protected LecturerCoursePublishService				servicecourse;
-
-	@Autowired
-	protected AuthenticatedMoneyExchangePerformService	moneyExchangeService;
+	protected LecturerCoursePublishService	servicecourse;
 
 
 	@Override
@@ -78,15 +73,6 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 		lectures = this.repository.findLecturesByCourseId(id);
 		tuple.put("lectures", lectures);
 		tuple.put("courseType", this.servicecourse.courseType(lectures));
-
-		final String systemCurrency = this.repository.findConfiguration().getSystemCurrency();
-		if (!systemCurrency.equals(object.getRetailPrice().getCurrency())) {
-			MoneyExchange moneyExchange;
-			moneyExchange = this.moneyExchangeService.computeMoneyExchange(object.getRetailPrice(), systemCurrency);
-			tuple.put("moneyExchange", moneyExchange.getTarget());
-			tuple.put("showExchange", true);
-		} else
-			tuple.put("showExchange", false);
 
 		super.getResponse().setData(tuple);
 	}

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.Course;
+import acme.entities.Lecture;
 import acme.entities.configuration.Configuration;
 import acme.framework.repositories.AbstractRepository;
 
@@ -24,5 +25,8 @@ public interface AnyCourseRepository extends AbstractRepository {
 
 	@Query("SELECT c FROM Configuration c")
 	Configuration findConfiguration();
+
+	@Query("select col.lecture from CourseOfLecture col where col.course.id = :id")
+	Collection<Lecture> findAllLecturesByCourse(int id);
 
 }
